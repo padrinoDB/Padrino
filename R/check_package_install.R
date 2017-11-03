@@ -1,3 +1,5 @@
+#' Check for and optionally install packages
+#' 
 #' @description checks to make sure package is installed. If not, 
 #' either auto installs or checks with user first
 #' 
@@ -5,7 +7,9 @@
 #' @param auto.install A logical indicating whether to 
 #' automatically install missing packages or check with user first
 #' 
-#' @value The installed package
+#' @return Message indicating status of installation
+#' 
+#' @importFrom utils install.packages
 #' 
 
 check_install_package <- function(x, auto.install = FALSE) {
@@ -24,7 +28,7 @@ check_install_package <- function(x, auto.install = FALSE) {
       }
       
     } else {
-      install.packages(x)
+      utils::install.packages(x)
       msg <- paste0('Package ', x, ' and any dependencies have been installed and loaded')
       
     }

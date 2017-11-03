@@ -1,0 +1,4 @@
+^README\.Rmd$
+^README-.*\.png$
+^Literature/*$
+^Padrino\.Rproj$
