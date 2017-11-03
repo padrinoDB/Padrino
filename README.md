@@ -19,4 +19,5 @@ Alternatively, if you'd like tontribute to development, please fork the repo, ma
 ### Notes
 
 -   The data base itself does not currently exist. However, this does not necessarily preclude us from developing its functionality! Given the challenges of ensuring that anyone can fully reproduce a model which may have a variety of idiosyncracies (i.e. the authors used some obscenely obscure package to create their growth function), it is not too early to start figuring out programatic solutions to these problems. Examples include:
-    -   Bayesian models to estimate model parameters may become more common in the not distant future. Given the ubiquity of *Stan* and *JAGS*, how do we implement these?
+    -   Bayesian models to estimate IPM parameters may become more common in the not distant future. Given the ubiquity of *Stan* and *JAGS*, how do we implement these in *Padrino*?
+    -   More to come, but I'm pretty tired.
