@@ -2,3 +2,4 @@
 ^README-.*\.png$
 ^Literature/*$
 ^Padrino\.Rproj$
+^\.Rproj\.user$

@@ -32,6 +32,8 @@ check_install_package <- function(x, auto.install = FALSE) {
       msg <- paste0('Package ', x, ' and any dependencies have been installed and loaded')
       
     }
+  } else {
+    msg <- NULL
   }
   
   requireNamespace(x, quietly = TRUE)
