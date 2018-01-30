@@ -14,20 +14,12 @@ knitr::opts_chunk$set(
 
 # Padrino
 
-Padrino a package for interacting with the demography data base of the same name. It consists wrappers to an SQL data base that itself houses a suite of all known, published integral projection models. It is the brain child of Roberto Salguero-Gomez and others. Currently, it does not exist, but we hope to change in that in the coming months. With that in mind, please be patient as we build it out. 
+Padrino a package for interacting with the demography data base of the same name. It will likely consist of wrappers to an SQL data base that itself houses a suite of all known, published integral projection models. It is the brain child of Roberto Salguero-Gomez and others. Currently, it does not exist (::_sad trombone_::), but we hope to change in that in the coming months.
 
-### Installation and contribution
+##### Note: The repo is set to private and will be for the forseeable future. Keep this in mind when sharing code in this repo with others!!!
 
-You can install **Padrino** from github with:
+For now, all commits will go to the `master` branch as this is still so early in development that keeping a separate `devel` branch is pointless. This will change in the future.
 
-```{r gh-installation, eval = FALSE}
-# install.packages("devtools")
-devtools::install_github("levisc8/Padrino")
-```
+If you think of others who could/should contribute, please let me know and I'll add them!
 
-Alternatively, if you'd like to contribute to development, please fork the repo, make your updates, and submit a pull request. We welcome programmers of any level who wish to make meaningful contributions to the project!
-
-### Notes
-* The data base itself does not currently exist. However, this does not necessarily preclude us from developing its functionality! Given the challenges of ensuring that anyone can fully reproduce a model which may have a variety of idiosyncracies (i.e. the authors used some obscenely obscure package to create their growth function), it is not too early to start figuring out programatic solutions to these problems. Examples include:
-    - Bayesian models to estimate IPM parameters may become more common in the not distant future. Given the ubiquity of _Stan_ and _JAGS_, how do we implement these in _Padrino_?
 
