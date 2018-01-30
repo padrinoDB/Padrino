@@ -14,7 +14,9 @@ knitr::opts_chunk$set(
 
 # Padrino
 
-Padrino a package for interacting with the demography data base of the same name. It will likely consist of wrappers to an SQL data base that itself houses a suite of all known, published integral projection models. It is the brain child of Roberto Salguero-Gomez and others. Currently, it does not exist (::_sad trombone_::), but we hope to change in that in the coming months.
+`Padrino` is a package for interacting with the demography data base of the same name. It will likely consist of wrappers to an SQL data base that itself houses a suite of all known, published integral projection models. Currently, it does not exist (::_sad trombone_::), but we hope to change in that in the coming months.
+
+Currently, it seems that the SQL data base itself should consist of ASCII representation of model formulae, the coefficients associated with said models, and the upper/lower bounds of the state variables. That said, I'm open to ideas for alternative implementations as I'm not sure that will cover all the information needed to re-create more complicated IPMs. Alternative ideas should be discussed in the _Issues_ tab to keep everything centralized.
 
 ##### Note: The repo is set to private and will be for the forseeable future. Keep this in mind when sharing code in this repo with others!!!
 
