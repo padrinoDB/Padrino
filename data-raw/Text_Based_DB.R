@@ -49,12 +49,12 @@ dbGetQuery(con, create_metadata_table_command)
 
 create_model_expression_table_command <- "CREATE TABLE model_expression
 (
-  ipm_id character varying NOT NULL,
-  parameter_type character varying NOT NULL,
+  ipm_id character varying NOT NULL REFERENCES metadata,
+  demographic_parameter character varying NOT NULL,
   model_formula character varying NOT NULL,
   model_type character varying NOT NULL,
-  model_family character varying
-  model_expression_pkey PRIMARY KEY (ipm_id, parameter_type)
+  model_family character varying,
+  CONSTRAINT model_expression_pkey PRIMARY KEY (ipm_id, demographic_parameter)
 )
 WITH (
   OIDS=FALSE
@@ -67,12 +67,13 @@ dbGetQuery(con, create_model_expression_table_command)
   
 create_model_values_table_command <- "CREATE TABLE model_values
 (
-  ipm_id character varying NOT NULL,
+  ipm_id character varying NOT NULL REFERENCES metadata,
+  demographic_parameter character varying NOT NULL,
+  state_variable character varying NOT NULL,
   parameter_type character varying NOT NULL,
   parameter_name character varying NOT NULL,
-  parameter_sub_name character varying NOT NULL,
   parameter_value double precision NOT NULL,
-  model_values_pkey PRIMARY KEY (ipm_id, parameter_type, parameter_name)
+  CONSTRAINT model_values_pkey PRIMARY KEY (ipm_id, demographic_parameter, parameter_type)
 )
 WITH (
   OIDS=FALSE
@@ -81,7 +82,7 @@ ALTER TABLE model_values
 OWNER TO postgres;
 "
 
-dbGetQuery(con, create_model_expression_table_command)
+dbGetQuery(con, create_model_values_table_command)
 
 
 # Create a sample model representing the expressions to build an
@@ -105,14 +106,14 @@ Model <- list(Parameters = list(Growth = list(Formula = "sizeNext ~ Normal(mu, s
                                                               SeedSlope = 0.0056,
                                                               Model = c("GLM", "Poisson")))),
               Metadata = data.frame(species_name = "Carduus_nutans",
-                                    model_id = "A11111",
+                                    ipm_id = "A11111",
                                     author = c('Jongejans E; Shea K; Skarpas O; Kelly D; Ellner S'),
                                     doi = "10.1890/09-2226.1"))
 
 # Create tables for pushing to SQL 
 Metadata <- Model$Metadata
-ModelExpressions <- data.frame(model_id = rep("A11111", 4),
-                               parameter_type = c("Survival", "Growth", "PFlowering", "Seeds"),
+ModelExpressions <- data.frame(ipm_id = rep("A11111", 4),
+                               demographic_parameter = c("Survival", "Growth", "PFlowering", "Seeds"),
                                model_formula = c(Model$Parameters$Survival$Formula,
                                                  Model$Parameters$Growth$Formula,
                                                  Model$Parameters$Fecundity$FlowerP$Formula,
