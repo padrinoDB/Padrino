@@ -3,3 +3,5 @@
 ^Literature/*$
 ^Padrino\.Rproj$
 ^\.Rproj\.user$
+^data-raw$
+^metadata$
