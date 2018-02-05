@@ -42,6 +42,7 @@ create_metadata_table_command <- "CREATE TABLE metadata
   tax_order character varying,
   tax_class character varying,
   tax_phylum character varying,
+  kingdom character varying,
   organism_type character varying,
   dicot_monocot character varying,
   angio_gymno character varying,
@@ -49,11 +50,18 @@ create_metadata_table_command <- "CREATE TABLE metadata
   journal character varying,
   pub_year integer NOT NULL,
   doi character varying,
+  corresponding_author character varying,
+  email_year character varying,
+  remark character varying,
+  apa_citation character varying,
+  demog_appendix_link character varying,
   duration integer NOT NULL,
-  study_start integer NOT NULL,
-  study_end integer NOT NULL,
+  start_year integer NOT NULL,
+  start_month integer NOT NULL,
+  end_year integer NOT NULL,
+  end_month integer NOT NULL,
   periodicity decimal (7, 4) NOT NULL,
-  number_populations integer,
+  number_populations integer NOT NULL,
   lat decimal (15, 12),
   lon decimal (15, 12),
   altitude decimal (7, 2),
@@ -63,6 +71,7 @@ create_metadata_table_command <- "CREATE TABLE metadata
   studied_sex character varying,
   eviction_used boolean,
   evict_type character varying,
+  treatment character varying,
   CONSTRAINT metadata_pkey PRIMARY KEY (ipm_id)
 )
 WITH (
@@ -175,6 +184,22 @@ Model <- list(Parameters = list(Growth = list(Formula = "sizeNext ~ Normal(mu, s
                                     doi = "10.1890/09-2226.1"))
 
 # Create tables for pushing to SQL 
+# First, I'm going to make an Excel version and see if I can manage to 
+# get that working. I think this will be useful for integrating former
+# Compadrinos into this workflow
+
+Model <- list(Metadata = read.csv('data-raw/metadata.csv',
+                                  stringsAsFactors = FALSE),
+              StateVar = read.csv('data-raw/state_vars.csv',
+                                  stringsAsFactors = FALSE),
+              ModelExp = read.csv('data-raw/model_exprs.csv',
+                                  stringsAsFactors = FALSE),
+              ModelVal = read.csv('data-raw/model_values.csv',
+                                  stringsAsFactors = FALSE))
+
+
+# Below is a more reproducible version of the Excel workflow, but it's also somewhat
+# opaque. I'm
 
 # Eelke did not include the upper and lower size bounds of his populations (!!!!)
 # but I do have the real boundaries from the ipmBase3_EJ.R script. Future
@@ -215,8 +240,8 @@ ModelValues <- data.frame(ipm_code = rep("A11111", TotalParms),
                           state_variable = rep('Size', TotalParms),
                           parameter_type = c('Mean','Mean', # Survival
                                              'Mean', 'Mean', 'SD', # Growth
-                                             '')
-                                             rep('Constant', NotFecLen)))
+                                             ''),
+                                             rep('Constant', NotFecLen))
 
 dbWriteTable(conn = con,
              name = 'metadata',
