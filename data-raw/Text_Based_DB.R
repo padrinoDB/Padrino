@@ -138,8 +138,27 @@ OWNER TO postgres;
   
 dbGetQuery(con, create_model_statevar_table_command)
   
-## Work from here--------------------------
-# Create a sample model representing the expressions to build an
+## NOTE: CODE BELOW IS NOT TESTED AND DOES NOT ACTUALLY WORK
+## PROVIDED TO GIVE AN IDEA OF WHAT THE WORKFLOW WOULD 
+## LOOK LIKE 
+
+## ---------------------------------------------------------- ##
+
+# Create tables for pushing to SQL 
+# First, I'm going to make an Excel version and see if I can manage to 
+# get that working. I think this will be useful for integrating former
+# Compadrinos into this workflow
+
+Model <- list(Metadata = read.csv('data-raw/metadata.csv',
+                                  stringsAsFactors = FALSE),
+              StateVar = read.csv('data-raw/state_vars.csv',
+                                  stringsAsFactors = FALSE),
+              ModelExp = read.csv('data-raw/model_exprs.csv',
+                                  stringsAsFactors = FALSE),
+              ModelVal = read.csv('data-raw/model_values.csv',
+                                  stringsAsFactors = FALSE))
+
+# OR - Create a sample model representing the expressions to build an
 # IPM
 Model <- list(Parameters = list(Growth = list(Formula = "sizeNext ~ Normal(mu, sd)",
                                               mu = "2.751 + 0.407 * Size",
@@ -182,20 +201,6 @@ Model <- list(Parameters = list(Growth = list(Formula = "sizeNext ~ Normal(mu, s
                                     ipm_id = "A11111",
                                     author = c('Jongejans E; Shea K; Skarpas O; Kelly D; Ellner S'),
                                     doi = "10.1890/09-2226.1"))
-
-# Create tables for pushing to SQL 
-# First, I'm going to make an Excel version and see if I can manage to 
-# get that working. I think this will be useful for integrating former
-# Compadrinos into this workflow
-
-Model <- list(Metadata = read.csv('data-raw/metadata.csv',
-                                  stringsAsFactors = FALSE),
-              StateVar = read.csv('data-raw/state_vars.csv',
-                                  stringsAsFactors = FALSE),
-              ModelExp = read.csv('data-raw/model_exprs.csv',
-                                  stringsAsFactors = FALSE),
-              ModelVal = read.csv('data-raw/model_values.csv',
-                                  stringsAsFactors = FALSE))
 
 
 # Below is a more reproducible version of the Excel workflow, but it's also somewhat
