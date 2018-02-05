@@ -1,14 +1,9 @@
-# Attempt to create an IPM out of expressions and coefficients
-# Using Jongejans et al 2011 spatial IPM (while ignoring the
-# spatial part for now). Lambda should equal 1.88  with 100 meshpoints if all
-# goes well
-
-# I'm going to create a list and then try writing it to an SQL data base that
-# I set up locally. I'm not good at with SQL, but I can't really
-# think of another way to generate a "flat" representation of all of this
-
-
-
+# The first part of this script generates an empty SQL data base provided
+# that you already have the right software installed. The second part
+# sends the new data to it. Note that if you've already set up
+# a data base and simply want to add new data to it, you will
+# to change the SQL commands below to use something like
+# INSERT instead of create
 
 rm(list = ls())
 
@@ -145,9 +140,8 @@ dbGetQuery(con, create_model_statevar_table_command)
 ## ---------------------------------------------------------- ##
 
 # Create tables for pushing to SQL 
-# First, I'm going to make an Excel version and see if I can manage to 
-# get that working. I think this will be useful for integrating former
-# Compadrinos into this workflow
+# First option - enter data in excel sheets, convert to csv, read
+# into R and then prepare for sending to SQL.
 
 Model <- list(Metadata = read.csv('data-raw/metadata.csv',
                                   stringsAsFactors = FALSE),
@@ -159,7 +153,8 @@ Model <- list(Metadata = read.csv('data-raw/metadata.csv',
                                   stringsAsFactors = FALSE))
 
 # OR - Create a sample model representing the expressions to build an
-# IPM
+# IPM using a list in R. This is definitely more reproducible,
+# but comes at the expense of requiring a bit more tech savvy. 
 Model <- list(Parameters = list(Growth = list(Formula = "sizeNext ~ Normal(mu, sd)",
                                               mu = "2.751 + 0.407 * Size",
                                               sd = "sqrt(9.119 * exp(-0.228 * Size))",
@@ -202,14 +197,10 @@ Model <- list(Parameters = list(Growth = list(Formula = "sizeNext ~ Normal(mu, s
                                     author = c('Jongejans E; Shea K; Skarpas O; Kelly D; Ellner S'),
                                     doi = "10.1890/09-2226.1"))
 
-
-# Below is a more reproducible version of the Excel workflow, but it's also somewhat
-# opaque. I'm
-
 # Eelke did not include the upper and lower size bounds of his populations (!!!!)
 # but I do have the real boundaries from the ipmBase3_EJ.R script. Future
-# Padrino digitizers will not have that luxury. Emailing the author is also
-# an option here.
+# Padrino digitizers will not have that luxury. Emailing the author is probably the best
+# option here.
 Metadata <- Model$Metadata
 ModelExpressions <- data.frame(ipm_id = rep("A11111", 4),
                                demographic_parameter = c("Survival", "Growth", "PFlowering", "Seeds"),
