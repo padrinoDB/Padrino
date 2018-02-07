@@ -1,0 +1,15 @@
+---
+title: "Padrino_Splash_Page"
+author: "Sam Levin"
+date: "February 7, 2018"
+output: github_document
+---
+
+
+# Padrino
+
+`Padrino` is a package for interacting with the demography data base of the same name. It consists of wrappers to an SQL data base that itself houses a suite of all known, published integral projection models. The project is in its infancy and thus the data base is not queryable yet, but we hope to change in that in the coming months.
+
+The current digitization and functional capacity building team consists of Sam Levin (iDiv), Rob Salguero-Gomez (University of Oxford), and Dylan Childs (University of Sheffield). Eelke Jongejans (Radboud University) and Steve Ellner (Cornell University) have also contributed invaluable insights to the project. 
+
+
