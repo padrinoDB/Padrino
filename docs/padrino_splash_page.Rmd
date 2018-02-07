@@ -1,15 +1,21 @@
 ---
-title: "Padrino_Splash_Page"
-author: "Sam Levin"
+title: ""
+author: "Padrino & Madrina Database Team"
 date: "February 7, 2018"
 output: github_document
 ---
 
 
-# Padrino
+## Padrino & Madrina
 
-`Padrino` is a package for interacting with the demography data base of the same name. It consists of wrappers to an SQL data base that itself houses a suite of all known, published integral projection models. The project is in its infancy and thus the data base is not queryable yet, but we hope to change in that in the coming months.
+`Padrino` is a package for interacting with the _PADRINO IPM_ and _MADRINA IPM_ databases. It consists of wrappers to an SQL database that itself houses a suite of all known, published integral projection models. The project is in its infancy and thus the database is not queryable yet, but we hope to change in that in the coming months.
+
+The _PADRINO IPM Database_ aims to provide a centralized repository of all known integral projection models for plants. The _MADRINA IPM Database_ aims to do the same, but for animals. These are modeled after the [COMPADRE & COMADRE](http://www.compadre-db.org/) databases which themselves host all known matrix population models (but are much more well developed). 
 
 The current digitization and functional capacity building team consists of Sam Levin (iDiv), Rob Salguero-Gomez (University of Oxford), and Dylan Childs (University of Sheffield). Eelke Jongejans (Radboud University) and Steve Ellner (Cornell University) have also contributed invaluable insights to the project. 
+
+### Want to contribute?
+
+Please contact us at <padrinocontact@gmail.com> for more details on how to contribute!
 
 
