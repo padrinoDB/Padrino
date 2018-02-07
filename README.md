@@ -12,3 +12,5 @@ Currently, it seems that the SQL data base itself should consist of ASCII repres
 For now, all commits will go to the `master` branch as this is still so early in development that keeping a separate `devel` branch is pointless. This will change in the future.
 
 If you think of others who could/should contribute, please let me know and I'll add them!
+
+You can visit the project's webpage [here](https://levisc8.github.io/Padrino.github.io/).
