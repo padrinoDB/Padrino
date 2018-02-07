@@ -12,4 +12,4 @@ The current digitization and functional capacity building team consists of Sam L
 
 ### Want to contribute?
 
-Please contact us at <padrinocontact@gmail.com> for more details on how to contribute!
+Much like the databases, this website is also in its infancy. We welcome collaborators who would like to help build out the functionality of this database. Please contact us at <padrinocontact@gmail.com> for more details on how to contribute!
