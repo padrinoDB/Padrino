@@ -1,0 +1,511 @@
+---
+title: "Digitization Protocol"
+author: "Sam Levin"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: yes
+    toc_depth: 5
+    toc_float: yes
+  pdf_document:
+    toc: yes
+    toc_depth: 5
+---
+
+## Padrino digitization protocol
+
+Welcome to the `Padrino` and `Madrina` digitization team! The following is an in-depth guide for how to translate a published IPM into the _Excel_ sheets and what to do with that sheet once you have completed the process. 
+
+There is a good chance I will have forgotten to include some important aspects of what this work entails. If that happens, please create an _Issue_ in the [GitHub repository](https://github.com/levisc8/Padrino) as opposed to emailing me. This helps me (and, hopefully, you) keep all discussion related to the problem in a centralized location. Most importantly, this centralized location is accesible and searchable by your fellow digitizers, so they can also participate in the discussion or return to it later to reference it as needed.
+
+This document assumes you have a general understanding of an IPM and why we want to have all of them in one place. 
+
+## Data base structure 
+
+`Padrino` and `Madrina` are remotely hosted relational data bases that consider an individual IPM as the "atomic unit", as opposed to each vital rate or parameter. This helps keep relations tidy and avoid unnecessary data duplication, but can introduce some confusion at first. Hopefully, after reading this, the reasons for this decision will become more clear. 
+
+Relational data bases can be a bit tricky to work with if you aren't already familiar with them. My (admittedly limited) experience has been that this is not the most accesible format for most ecologists who are usually more accustomed to working in _R_ or _Excel_. Therefore, we have created a "flat" version of it that is a set of 5 _Excel_ sheets. The columns of each one are described below. The format of each description is: **data type**, description of variable, _constraint_.
+
+
+### Metadata
+
+This is the table you will find when opening the spreadsheet. It contains important information about the study site, species, and authors that aren't necessarily relevant to construction of the IPM, but provide important context nonetheless. 
+
+#### ipm_id
+
+**Character**
+This column contains a unique identifier for each IPM in the data base. There should only be **1** row per IPM in this table. 
+
+_This column cannot be blank._
+
+#### species_author
+
+**Character**
+The genus and species epithet of the organism used by the author in the publication.
+
+_This column cannot be blank._
+
+#### species_accepted
+
+**Character**
+The currently accepted genus and species epithet of the organism. For `Padrino` entries, this will come from the [The Plant List](http://www.theplantlist.org/). For `Madrina` entries, this will come from the [Catalogue of Life](http://www.catalogueoflife.org/).
+
+_This column cannot be blank._
+
+#### tax_genus
+
+**Character**
+The accepted genus name of the organism. For `Padrino` entries, this will come from the [The Plant List](http://www.theplantlist.org/). For `Madrina` entries, this will come from the [Catalogue of Life](http://www.catalogueoflife.org/).
+
+_This column cannot be blank._
+
+#### tax_family
+
+**Character**
+The accepted family of the organism. For `Padrino` entries, this will come from the [The Plant List](http://www.theplantlist.org/). For `Madrina` entries, this will come from the [Catalogue of Life](http://www.catalogueoflife.org/).
+
+_This column may be blank._
+
+#### tax_order
+
+**Character**
+The accepted order of the organism. For `Padrino` entries, this will come from the [The Plant List](http://www.theplantlist.org/). For `Madrina` entries, this will come from the [Catalogue of Life](http://www.catalogueoflife.org/).
+
+_This column may be blank._
+
+#### tax_class
+
+**Character**
+The accepted class of the organism. For `Padrino` entries, this will come from the [The Plant List](http://www.theplantlist.org/). For `Madrina` entries, this will come from the [Catalogue of Life](http://www.catalogueoflife.org/).
+
+_This column may be blank._
+
+#### tax_phylum
+
+**Character**
+The accepted phylum of the organism. For `Padrino` entries, this will come from the [The Plant List](http://www.theplantlist.org/). For `Madrina` entries, this will come from the [Catalogue of Life](http://www.catalogueoflife.org/).
+
+_This column may be blank._
+
+#### kingdom
+
+**Character**
+
+The accepted kingdom of the organism. For `Padrino` entries, this will come from the [The Plant List](http://www.theplantlist.org/). For `Madrina` entries, this will come from the [Catalogue of Life](http://www.catalogueoflife.org/).
+
+_This column may be blank._
+
+#### organism_type
+
+**Character**
+
+##### `Padrino` entries 
+This is the general plant/algae type. This will usually come from the publication itself, but sometimes you may need to use other sources (e.g. other publications or taxonomic data bases) to find this information. Possible values are as follows
+
+- Algae: brown, green or red. Green algae are in the _Plantae_ kingdom, but are still considered algae for the purposes of this variable.
+
+- Fungi: This includes fungus species, yeasts, molds, and multicellular fungi.
+
+- Annual: This includes annuals and biennials. Annuals complete their entire lifecycle (birth, growth, reproduction, death) within a year wherease biennials can stretch that window to two years. For the sake of simplicity (and because both will die following reproduction), they are both classified as "Annual" in `Padrino`.
+
+- Bryophyte: All bryophytes.
+
+- Epiphyte: All epiphytes.
+
+- Fern: All ferns species.
+
+- Herbaceous perennial: All plants that herbaceous and have the potential to live for more than two years.
+
+- Liana: All lianas.
+
+- Palm: All palm species.
+
+- Shrub: Woody upright plants that are not trees or palms.
+
+- Succulent: All succulent species.
+
+- Tree: All tree species.
+
+##### `Madrina` entries
+This is generally the same as `Class` for animals (except humans, which are recorded using their genus and species epithet). Non-animal species that are also not plants are typically recorded as _Bacteria_ or _Virus_.
+
+_This column may be blank_. 
+
+#### dicot_monocot
+
+**Character**
+
+Indicates whether a species is a dicot or monocot. Not applicable for `Madrina` entries.
+
+_This column may be blank._
+
+#### angio_gymno
+
+**Character** 
+
+Indicates whether a species is a angiosperm or gymnosperm. Not applicable for `Madrina` entries.
+
+_This column may be blank._
+
+#### authors
+
+**Character** 
+
+The last name of all authors. Multiple entries should be separated with semicolon (";").
+
+_This column cannot be blank_.
+
+#### journal
+
+**Character**
+
+The document that the information comes from. Possible values are listed below.
+
+- Abbreviated name of the journal: We use the [BIOSIS](http://cms.library.illinois.edu/export/biotech/j-abbrev.html) system for abbreviating journal names. More information on how to use it is in the link.
+
+- Book: Models are sourced from a book.
+
+- PhD Thesis: Models are sourced from a PhD thesis.
+
+- MSc Thesis: Models are sourced from an MSc thesis.
+
+- Report: Models are sourced from a report.
+
+- Conference talk: Models are sourced from a conference talk.
+
+- Conference poster: Models are sourced from a conference poster. 
+
+#### pub_year
+
+**Integer** 
+
+The year that the model was published.
+
+_This column cannot be blank._
+
+#### doi
+
+**Character**
+
+The _DOI_ or _ISBN_ for the publication.
+
+_This column may be blank._
+
+#### corresponding_author
+
+**Character**
+
+The author to whom correspondance should be directed.
+
+_This column may be blank._
+
+#### email_year
+
+**Character**
+
+The email address of the corresponding author with the year it is from in parentheses. If the email address is no longer in use, add the word "Dead" after a comma in the parentheses.
+
+Example: <levisc8@gmail.com> (2018); <levisc8@wfu.edu> (2010, Dead)
+
+_This column may be blank._
+
+#### remark
+
+**Character**
+
+Any observations you have about the model that are not captured by the other columns in `Metadata`.
+
+_This column may be blank._
+
+#### apa_citation
+
+**Character**
+
+The full [APA citation](http://www.bibme.org/apa) for the source.
+
+_This column may be blank._
+
+#### demog_appendix_link
+
+**Character**
+
+If the model parameters are contained in an appendix, then include the link to said appendix here. 
+
+_This column may be blank._
+
+#### duration
+
+**Integer**
+
+Model duration is defined as the $\text{end year} - \text{start_year} + 1$. Thus, this overlooks any years that were skipped.
+
+_This column cannot be blank._
+
+#### start_year
+
+**Integer**
+
+The first year of data collection for the model. 
+
+_This column cannot be blank._
+
+#### start_month
+
+**Integer**
+
+The first month of data collection for the model. Months are numbered starting at 1 for January and continuing to 12 for December.
+
+_This column may be blank._
+
+#### end_year
+
+**Integer**
+
+The last year of data collection for the model. 
+
+_This column cannot be blank._
+
+#### end_month
+
+**Integer**
+
+The last month of data collection for the model.
+
+_This column may be blank._
+
+#### periodicity
+
+**Decimal**
+
+The number of times the model iterates per year. Periodic models with two transitions per year will have a value of two. Some IPMs for long lived tree species may have 5 year transitions; these will have a value of 0.2.
+
+_This column may not be blank._
+
+#### number_populations
+
+**Integer**
+
+The number of populations described by the model.
+
+_This column may not be blank._
+
+#### lat
+
+**Decimal**
+
+The decimal latitude coordinates for the site where data used in the model was collected from. Positive values refer to the northern hemisphere, while negative coordinates refer to the southern hemisphere.
+
+_This column may be blank._
+
+#### lon
+
+**Decimal**
+
+The decimal longitude coordinates for the site where data used in the model was collected from. Positive values refer to the eastern hemisphere, while negative coordinates refer to the western hemisphere.
+
+_This column may be blank._
+
+#### altitude
+
+**Decimal**
+
+The altitude in meters above sea level of the site where data used in the model was collected from.
+
+_This column may be blank._
+
+#### country
+
+**Character**
+
+The [ISO 3](https://unstats.un.org/unsd/tradekb/knowledgebase/country-code) country code. 
+
+_This column may be blank._
+
+#### continent
+
+**Character**
+
+The continent the study was conducted on. Possible values are below.
+
+- n_america: Includes Canada, USA, and Mexico.
+
+- s_america: Includes everything in the Americas except for Canada, USA, and Mexico.
+
+- africa
+
+- asia
+
+- europe
+
+- oceania: Various definitions exist, we are using [this one](https://en.wikipedia.org/wiki/List_of_Oceanian_countries_by_population).
+
+- antarctica
+
+_This column may be blank._
+
+#### ecoregion
+
+**Character**
+
+Indication of the ecoregion for the study, using the categories described in Figure 1 of Olson et al. (2001).  For a more inclusive description of water ecoregions, see http://worldwildlife.org/biomes The one exception for this is the code LAB used for studies conducted in laboratory or greenhouse conditions. Possible values are below.
+
+
+- TMB  Terrestrial  tropical and subtropical moist broadleaf forests
+
+- TDB  Terrestrial  tropical and subtropical dry broadleaf forests
+
+- TSC  Terrestrial  tropical and subtropical coniferous forests
+
+- TBM  Terrestrial  temperate broadleaf and mixed forests
+
+- TCF  Terrestrial  temperate coniferous forests
+
+- BOR  Terrestrial  boreal forests/ taiga
+
+- TGV  Terrestrial  tropical and subtropical grasslands, savannas and shrublands
+
+- TGS  Terrestrial  temperate grasslands, savannas, and shrublands
+
+- FGS  Terrestrial  flooded grasslands and savannas
+
+- MON  Terrestrial  montane grasslands and shrublands
+
+- TUN  Terrestrial – tundra
+
+- MED  Terrestrial  Mediterranean forests, woodlands and scrubs
+
+- DES  Terrestrial  deserts and xeric shrublands
+
+- MAN  Terrestrial – mangroves
+
+- LRE  Freshwater  large river ecosystems
+
+- LRH  Freshwater  large river headwater ecosystems
+
+- LRD  Freshwater  large river delta ecosystems
+
+- SRE  Freshwater  small river ecosystems
+
+- SLE  Freshwater  small lake ecosystems
+
+- LLE  Freshwater  large lake ecosystems
+
+- XBE  Freshwater  xeric basin ecosystems
+
+- POE  Marine  polar ecosystems
+
+- TSS  Marine  temperate shelf and seas ecosystems
+
+- TEU  Marine  temperate upwellings
+
+- TRU  Marine  tropical upwellings
+
+- TRC  Marine  tropical coral
+
+- LAB  Laboratory or greenhouse conditions – controlled, usually indoor, conditions that mean the study species is not affected by the environment conditions typical of the actual geographic location of the study 
+
+_This column may be blank._
+
+#### studied_sex
+
+**Character**
+
+The sex of the individuals modeled.
+
+- M 	Studied only males
+
+- F 	Studied only females
+
+- H 	Studied hermaphrodites
+
+- M/F 	Males and females separately in the same IPM
+
+- A 	All sexes modeled together
+
+_This column may be blank._
+
+#### eviction_used
+
+**Boolean**
+
+Indicates whether authors corrected their discretized kernels for eviction ([Williams et al. 2012](https://scholarship.rice.edu/bitstream/handle/1911/69874/Avoiding%20unintentional%20eviction.pdf?sequence=1)). Possible values are _t_ and _f_. _t_ indicates eviction was corrected for, _f_ indicates that it was not. 
+
+_This column cannot be blank._
+
+#### evict_type
+
+**Character**
+
+The type of correction used for eviction. Still working out the convention to use for this....
+
+_This column may be blank._
+
+#### treatment
+
+**Character**
+
+If a treatment was applied to the modeled population, indicate that here.
+
+_This column may be blank_.
+
+### States
+
+This table contains information on the state variables used by the authors to generate their IPM. 
+
+#### ipm_id
+
+#### state_variable
+
+#### discrete
+
+#### discrete_type
+
+
+### Domains
+
+This table contains information on the domains associated with each state variable in `States`. Keep in mind that one `state_variable` can have multiple domains (which themselves may be defined by a different `state_variable`!).
+
+#### ipm_id
+
+#### state_variable
+
+#### domain
+
+#### lower
+
+#### upper
+
+#### n_meshpoints
+
+### Model Expressions (`ModelExpr`)
+
+#### ipm_id
+
+#### demographic_parameter
+
+#### formula
+
+See [Writing Model Formulae](#model-forms) for additional details
+
+#### model_type
+
+#### model_family
+
+
+
+### Model Values (`ModelValues`)
+
+#### ipm_id
+
+#### demographic_parameter
+
+#### state_variable
+
+#### parameter_type
+
+#### parameter_name
+
+#### parameter_value
+
+
+## Writing Model Formulae {#model-forms}
