@@ -3,14 +3,14 @@ title: "Digitization Protocol"
 author: "Sam Levin"
 date: "`r Sys.Date()`"
 output: 
-  html_document:
-    toc: yes
-    toc_depth: 5
-    toc_float: yes
   pdf_document:
     toc: yes
     toc_depth: 5
     keep_tex: yes
+  html_document:
+    toc: yes
+    toc_depth: 5
+    toc_float: yes
 ---
 \newpage
 ![](logo-padrino-4c.png) ![](logo-madrina-4c.png)
@@ -39,6 +39,7 @@ This is the table you will find when opening the spreadsheet. It contains import
 #### ipm_id
 
 **Character**
+
 This column contains a unique identifier for each IPM in the data base. There should only be **1** row per IPM in this table. 
 
 _This column cannot be blank._
@@ -46,6 +47,7 @@ _This column cannot be blank._
 #### species_author
 
 **Character**
+
 The genus and species epithet of the organism used by the author in the publication.
 
 _This column cannot be blank._
@@ -53,6 +55,7 @@ _This column cannot be blank._
 #### species_accepted
 
 **Character**
+
 The currently accepted genus and species epithet of the organism. For `Padrino` entries, this will come from the [The Plant List](http://www.theplantlist.org/). For `Madrina` entries, this will come from the [Catalogue of Life](http://www.catalogueoflife.org/).
 
 _This column cannot be blank._
@@ -60,6 +63,7 @@ _This column cannot be blank._
 #### tax_genus
 
 **Character**
+
 The accepted genus name of the organism. For `Padrino` entries, this will come from the [The Plant List](http://www.theplantlist.org/). For `Madrina` entries, this will come from the [Catalogue of Life](http://www.catalogueoflife.org/).
 
 _This column cannot be blank._
@@ -67,6 +71,7 @@ _This column cannot be blank._
 #### tax_family
 
 **Character**
+
 The accepted family of the organism. For `Padrino` entries, this will come from the [The Plant List](http://www.theplantlist.org/). For `Madrina` entries, this will come from the [Catalogue of Life](http://www.catalogueoflife.org/).
 
 _This column may be blank._
@@ -74,6 +79,7 @@ _This column may be blank._
 #### tax_order
 
 **Character**
+
 The accepted order of the organism. For `Padrino` entries, this will come from the [The Plant List](http://www.theplantlist.org/). For `Madrina` entries, this will come from the [Catalogue of Life](http://www.catalogueoflife.org/).
 
 _This column may be blank._
@@ -81,6 +87,7 @@ _This column may be blank._
 #### tax_class
 
 **Character**
+
 The accepted class of the organism. For `Padrino` entries, this will come from the [The Plant List](http://www.theplantlist.org/). For `Madrina` entries, this will come from the [Catalogue of Life](http://www.catalogueoflife.org/).
 
 _This column may be blank._
@@ -88,6 +95,7 @@ _This column may be blank._
 #### tax_phylum
 
 **Character**
+
 The accepted phylum of the organism. For `Padrino` entries, this will come from the [The Plant List](http://www.theplantlist.org/). For `Madrina` entries, this will come from the [Catalogue of Life](http://www.catalogueoflife.org/).
 
 _This column may be blank._
