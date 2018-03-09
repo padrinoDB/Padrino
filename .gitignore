@@ -10,3 +10,6 @@ metadata/*.docx
 metadata/*-1c*
 *.csv
 *.html
+*.log
+*.toc
+*.synctex.gz

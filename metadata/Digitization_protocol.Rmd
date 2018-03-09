@@ -10,8 +10,13 @@ output:
   pdf_document:
     toc: yes
     toc_depth: 5
+    keep_tex: yes
 ---
+\newpage
+![](logo-padrino-4c.png) ![](logo-madrina-4c.png)
 
+
+\newpage
 ## Padrino digitization protocol
 
 Welcome to the `Padrino` and `Madrina` digitization team! The following is an in-depth guide for how to translate a published IPM into the _Excel_ sheets and what to do with that sheet once you have completed the process. 
@@ -477,7 +482,10 @@ This table contains information on the domains associated with each state variab
 
 #### n_meshpoints
 
+
 ### Model Expressions (`ModelExpr`)
+
+This table contains textual expressions of the models used to create IPM. A given IPM will have many rows in this table.
 
 #### ipm_id
 
@@ -495,6 +503,10 @@ See [Writing Model Formulae](#model-forms) for additional details
 
 ### Model Values (`ModelValues`)
 
+This contains the actual values for all of the parameters described in `ModelExpr`. A single IPM will have many rows in this table.
+
+Every column in this table **must** be filled in to be able to enter the data base.
+
 #### ipm_id
 
 #### demographic_parameter
@@ -509,3 +521,5 @@ See [Writing Model Formulae](#model-forms) for additional details
 
 
 ## Writing Model Formulae {#model-forms}
+
+Details on conventions and lots of examples!
