@@ -17,7 +17,7 @@ output:
 
 
 \newpage
-## Padrino digitization protocol
+# Padrino digitization protocol
 
 Welcome to the `Padrino` and `Madrina` digitization team! The following is an in-depth guide for how to translate a published IPM into the _Excel_ sheets and what to do with that sheet once you have completed the process. 
 
@@ -25,14 +25,14 @@ There is a good chance I will have forgotten to include some important aspects o
 
 This document assumes you have a general understanding of an IPM and why we want to have all of them in one place. 
 
-## Data base structure 
+# Data base structure 
 
 `Padrino` and `Madrina` are remotely hosted relational data bases that consider an individual IPM as the "atomic unit", as opposed to each vital rate or parameter. This helps keep relations tidy and avoid unnecessary data duplication, but can introduce some confusion at first. Hopefully, after reading this, the reasons for this decision will become more clear. 
 
 Relational data bases can be a bit tricky to work with if you aren't already familiar with them. My (admittedly limited) experience has been that this is not the most accesible format for most ecologists who are usually more accustomed to working in _R_ or _Excel_. Therefore, we have created a "flat" version of it that is a set of 5 _Excel_ sheets. The columns of each one are described below. The format of each description is: **data type**, description of variable, _constraint_.
 
 
-### Metadata
+## Metadata
 
 This is the table you will find when opening the spreadsheet. It contains important information about the study site, species, and authors that aren't necessarily relevant to construction of the IPM, but provide important context nonetheless. 
 
@@ -250,7 +250,7 @@ _This column may be blank._
 
 **Integer**
 
-Model duration is defined as the $\text{end year} - \text{start_year} + 1$. Thus, this overlooks any years that were skipped.
+Model duration is defined as the `end_year - start_year + 1`. Thus, this overlooks any years that were skipped.
 
 _This column cannot be blank._
 
@@ -461,41 +461,95 @@ If a treatment was applied to the modeled population, indicate that here.
 
 _This column may be blank_.
 
-### States
+## States
 
 This table contains information on the state variables used by the authors to generate their IPM. 
 
 #### ipm_id
 
+**Character**
+
+This column contains a unique identifier for each IPM in the data base. However, this differs from the `Metadata` table in that a single IPM may have multiple rows in this table. 
+
+_This column cannot be blank._
+
 #### state_variable
+
+**Character**
+
+This column contains the name of a state variable used to construct an IPM _as reported by the authors of the paper_. For example, this could be **DBH** for a tree species or **Body_Mass** for an animal species. State variables do not need to be continuous. Examples of discrete state variables include reproductive status, age, or pathogen load (e.g. low, medium, high). A single model may use multiple state variables (and thus have multiple rows in this table, see above).
+
+_This column cannot be blank._
 
 #### discrete
 
+**Boolean**
+
+This column indicates whether or not the variable is discrete or continuous. Use `"t"` to indicate a variable is discrete and `"f"` to indicate that it is continuous.
+
+_This column cannot be blank._
+
 #### discrete_type
 
+**Character**
 
-### Domains
+This column indicates the type of discretization used for a discrete state variable. In depth explanations are provided in the [Discrete Variables](#discrete-vars) appendix.
+
+_This column may be blank._
+
+## Domains
 
 This table contains information on the domains associated with each state variable in `States`. Keep in mind that one `state_variable` can have multiple domains (which themselves may be defined by a different `state_variable`!).
 
 #### ipm_id
 
+**Character**
+
+This column contains a unique identifier for each IPM in the data base. However, this differs from the `Metadata` table in that a single IPM may have multiple rows in this table. 
+
+_This column cannot be blank._
+
 #### state_variable
+
+**Character** 
+
+This column contains the same state variables as in the `States` table. However, a given `state_variable` may have multiple domains, so entries in this column need not be unique.
+
+_This column cannot be blank._
 
 #### domain
 
+**Character**
+
+This column contains a unique identifier for the domain of each `state_variable`. For example, if **DBH** is implemented on 3 separate domains in the publication (perhaps for 3 different light environments in some megamatrix), then this could be named **size1**, **size2**, and **size3** for each one. The corresponding rows in `state_variable` should be filled in with **DBH** (i.e. not unique).
+
 #### lower
+
+**decimal**
+
+In most cases, this will be a decimal or integer corresponding to the smallest value of the `state_variable` in the given domain.
 
 #### upper
 
 #### n_meshpoints
 
+**Integer**
 
-### Model Expressions (`ModelExpr`)
+The number of bins that each domain is divided into for numerical integration. For some discrete variables, this will be blank.
+
+_This column may be blank._
+
+## Model Expressions (`ModelExpr`)
 
 This table contains textual expressions of the models used to create IPM. A given IPM will have many rows in this table.
 
 #### ipm_id
+
+**Character**
+
+This column contains a unique identifier for each IPM in the data base. However, this differs from the `Metadata` table in that a single IPM will have multiple rows in this table. 
+
+_This column cannot be blank._
 
 #### demographic_parameter
 
@@ -507,15 +561,23 @@ See [Writing Model Formulae](#model-forms) for additional details
 
 #### model_family
 
+#### kernel_id
 
 
-### Model Values (`ModelValues`)
+
+## Model Values (`ModelValues`)
 
 This contains the actual values for all of the parameters described in `ModelExpr`. A single IPM will have many rows in this table.
 
 Every column in this table **must** be filled in to be able to enter the data base.
 
 #### ipm_id
+
+**Character**
+
+This column contains a unique identifier for each IPM in the data base. However, this differs from the `Metadata` table in that a single IPM will have multiple rows in this table. 
+
+_This column cannot be blank._
 
 #### demographic_parameter
 
@@ -527,7 +589,20 @@ Every column in this table **must** be filled in to be able to enter the data ba
 
 #### parameter_value
 
-
-## Writing Model Formulae {#model-forms}
+# Writing Model Formulae {#model-forms}
 
 Details on conventions and lots of examples!
+
+# Discrete Variables in Padrino and Madrina {#discrete-vars}
+
+The flexibility of IPMs to allow classification of individuals as a function of both continuous and discrete characters is one reason they are so powerful. Unfortunately, it also makes describing them in a data base a bit more complicated. Currently, there are a couple of supported types of discrete variables. 
+
+An IPM can be comprised of some number smaller subcomponents. For this data base, we describe each one separately in `ModelExpr` and then supply the `discrete_type` tag in the `States` table to indicate how those subcomponents need to be combined later on. I will attempt to describe each `discrete_type` in depth below.
+
+- **Lefkovitch:** This `discrete_type` encompasses instances where authors have constructed a block megamatrix with components that are themselves IPMs. For example, Metcalf et al. (2009) generate a 6 x 6 megamatrix with each element corresponding to an IPM that describes transition probabilities from a given size and canopy illumination environment at time _t_ to a givent size and canopy illumination environment at time _t+1_. Blocks on the diagonal of this matrix represent survival and growth transitions for trees that remain in the same light environment through time. Sub-diagonal elements represent survival and growth transitions for trees that move into more shaded environments, while super-diagonal represent survival and growth transitions for trees that move into lighter environments. 
+
+    In general, `discrete_types` of **Lefkovitch** will be used to represent variables where any transition between discrete states is possible. 
+
+- **Leslie/Age:** This `discrete_type` describes IPMs where the discrete variable of interest is ordered an individual **must** transition to the next the next value of the discrete variable if it survives through the projection interval. The most common example of this would be an age x size IPM (e.g. Childs et al. 2003). This can be represented as a block megamatrix where the top row of blocks represents age and size dependent fecundity and sub-diagonal blocks represent age and size depedent growth and survival. All other blocks are filled with 0s. This differs from the **Lefkovitch** designation because not all block-level transitions are possible (i.e. an individual cannot become 5 years old in at _t+1_ if it is only 2 years old at _t_).
+
+- 

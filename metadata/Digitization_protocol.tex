@@ -81,7 +81,7 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{2018-03-09}
+  \date{2018-03-12}
 
 
 \begin{document}
@@ -98,7 +98,7 @@
 
 \newpage
 
-\subsection{Padrino digitization
+\section{Padrino digitization
 protocol}\label{padrino-digitization-protocol}
 
 Welcome to the \texttt{Padrino} and \texttt{Madrina} digitization team!
@@ -118,7 +118,7 @@ the discussion or return to it later to reference it as needed.
 This document assumes you have a general understanding of an IPM and why
 we want to have all of them in one place.
 
-\subsection{Data base structure}\label{data-base-structure}
+\section{Data base structure}\label{data-base-structure}
 
 \texttt{Padrino} and \texttt{Madrina} are remotely hosted relational
 data bases that consider an individual IPM as the ``atomic unit'', as
@@ -136,7 +136,7 @@ Therefore, we have created a ``flat'' version of it that is a set of 5
 format of each description is: \textbf{data type}, description of
 variable, \emph{constraint}.
 
-\subsubsection{Metadata}\label{metadata}
+\subsection{Metadata}\label{metadata}
 
 This is the table you will find when opening the spreadsheet. It
 contains important information about the study site, species, and
@@ -419,8 +419,8 @@ link to said appendix here.
 \textbf{Integer}
 
 Model duration is defined as the
-\(\text{end year} - \text{start_year} + 1\). Thus, this overlooks any
-years that were skipped.
+\texttt{end\_year\ -\ start\_year\ +\ 1}. Thus, this overlooks any years
+that were skipped.
 
 \emph{This column cannot be blank.}
 
@@ -669,20 +669,56 @@ here.
 
 \emph{This column may be blank}.
 
-\subsubsection{States}\label{states}
+\subsection{States}\label{states}
 
 This table contains information on the state variables used by the
 authors to generate their IPM.
 
 \paragraph{ipm\_id}\label{ipm_id-1}
 
+\textbf{Character}
+
+This column contains a unique identifier for each IPM in the data base.
+However, this differs from the \texttt{Metadata} table in that a single
+IPM may have multiple rows in this table.
+
+\emph{This column cannot be blank.}
+
 \paragraph{state\_variable}\label{state_variable}
+
+\textbf{Character}
+
+This column contains the name of a state variable used to construct an
+IPM \emph{as reported by the authors of the paper}. For example, this
+could be \textbf{DBH} for a tree species or \textbf{Body\_Mass} for an
+animal species. State variables do not need to be continuous. Examples
+of discrete state variables include reproductive status, age, or
+pathogen load (e.g.~low, medium, high). A single model may use multiple
+state variables (and thus have multiple rows in this table, see above).
+
+\emph{This column cannot be blank.}
 
 \paragraph{discrete}\label{discrete}
 
+\textbf{Boolean}
+
+This column indicates whether or not the variable is discrete or
+continuous. Use \texttt{"t"} to indicate a variable is discrete and
+\texttt{"f"} to indicate that it is continuous.
+
+\emph{This column cannot be blank.}
+
 \paragraph{discrete\_type}\label{discrete_type}
 
-\subsubsection{Domains}\label{domains}
+\textbf{Character}
+
+This column indicates the type of discretization used for a discrete
+state variable. In depth explanations are provided in the
+\protect\hyperlink{discrete-vars}{Discrete Variables} appendix.
+
+\emph{This column may be blank.}
+
+\subsection{Domains}\label{domains}
 
 This table contains information on the domains associated with each
 state variable in \texttt{States}. Keep in mind that one
@@ -691,23 +727,69 @@ be defined by a different \texttt{state\_variable}!).
 
 \paragraph{ipm\_id}\label{ipm_id-2}
 
+\textbf{Character}
+
+This column contains a unique identifier for each IPM in the data base.
+However, this differs from the \texttt{Metadata} table in that a single
+IPM may have multiple rows in this table.
+
+\emph{This column cannot be blank.}
+
 \paragraph{state\_variable}\label{state_variable-1}
+
+\textbf{Character}
+
+This column contains the same state variables as in the \texttt{States}
+table. However, a given \texttt{state\_variable} may have multiple
+domains, so entries in this column need not be unique.
+
+\emph{This column cannot be blank.}
 
 \paragraph{domain}\label{domain}
 
+\textbf{Character}
+
+This column contains a unique identifier for the domain of each
+\texttt{state\_variable}. For example, if \textbf{DBH} is implemented on
+3 separate domains in the publication (perhaps for 3 different light
+environments in some megamatrix), then this could be named
+\textbf{size1}, \textbf{size2}, and \textbf{size3} for each one. The
+corresponding rows in \texttt{state\_variable} should be filled in with
+\textbf{DBH} (i.e.~not unique).
+
 \paragraph{lower}\label{lower}
+
+\textbf{decimal}
+
+In most cases, this will be a decimal or integer corresponding to the
+smallest value of the \texttt{state\_variable} in the given domain.
 
 \paragraph{upper}\label{upper}
 
 \paragraph{n\_meshpoints}\label{n_meshpoints}
 
-\subsubsection{\texorpdfstring{Model Expressions
+\textbf{Integer}
+
+The number of bins that each domain is divided into for numerical
+integration. For some discrete variables, this will be blank.
+
+\emph{This column may be blank.}
+
+\subsection{\texorpdfstring{Model Expressions
 (\texttt{ModelExpr})}{Model Expressions (ModelExpr)}}\label{model-expressions-modelexpr}
 
 This table contains textual expressions of the models used to create
 IPM. A given IPM will have many rows in this table.
 
 \paragraph{ipm\_id}\label{ipm_id-3}
+
+\textbf{Character}
+
+This column contains a unique identifier for each IPM in the data base.
+However, this differs from the \texttt{Metadata} table in that a single
+IPM will have multiple rows in this table.
+
+\emph{This column cannot be blank.}
 
 \paragraph{demographic\_parameter}\label{demographic_parameter}
 
@@ -720,7 +802,9 @@ additional details
 
 \paragraph{model\_family}\label{model_family}
 
-\subsubsection{\texorpdfstring{Model Values
+\paragraph{kernel\_id}\label{kernel_id}
+
+\subsection{\texorpdfstring{Model Values
 (\texttt{ModelValues})}{Model Values (ModelValues)}}\label{model-values-modelvalues}
 
 This contains the actual values for all of the parameters described in
@@ -730,6 +814,14 @@ Every column in this table \textbf{must} be filled in to be able to
 enter the data base.
 
 \paragraph{ipm\_id}\label{ipm_id-4}
+
+\textbf{Character}
+
+This column contains a unique identifier for each IPM in the data base.
+However, this differs from the \texttt{Metadata} table in that a single
+IPM will have multiple rows in this table.
+
+\emph{This column cannot be blank.}
 
 \paragraph{demographic\_parameter}\label{demographic_parameter-1}
 
@@ -741,10 +833,60 @@ enter the data base.
 
 \paragraph{parameter\_value}\label{parameter_value}
 
-\hypertarget{model-forms}{\subsection{Writing Model
+\hypertarget{model-forms}{\section{Writing Model
 Formulae}\label{model-forms}}
 
 Details on conventions and lots of examples!
+
+\hypertarget{discrete-vars}{\section{Discrete Variables in Padrino and
+Madrina}\label{discrete-vars}}
+
+The flexibility of IPMs to allow classification of individuals as a
+function of both continuous and discrete characters is one reason they
+are so powerful. Unfortunately, it also makes describing them in a data
+base a bit more complicated. Currently, there are a couple of supported
+types of discrete variables.
+
+An IPM can be comprised of some number smaller subcomponents. For this
+data base, we describe each one separately in \texttt{ModelExpr} and
+then supply the \texttt{discrete\_type} tag in the \texttt{States} table
+to indicate how those subcomponents need to be combined later on. I will
+attempt to describe each \texttt{discrete\_type} in depth below.
+
+\begin{itemize}
+\item
+  \textbf{Lefkovitch:} This \texttt{discrete\_type} encompasses
+  instances where authors have constructed a block megamatrix with
+  components that are themselves IPMs. For example, Metcalf et al.
+  (2009) generate a 6 x 6 megamatrix with each element corresponding to
+  an IPM that describes transition probabilities from a given size and
+  canopy illumination environment at time \emph{t} to a givent size and
+  canopy illumination environment at time \emph{t+1}. Blocks on the
+  diagonal of this matrix represent survival and growth transitions for
+  trees that remain in the same light environment through time.
+  Sub-diagonal elements represent survival and growth transitions for
+  trees that move into more shaded environments, while super-diagonal
+  represent survival and growth transitions for trees that move into
+  lighter environments.
+
+  In general, \texttt{discrete\_types} of \textbf{Lefkovitch} will be
+  used to represent variables where any transition between discrete
+  states is possible.
+\item
+  \textbf{Leslie/Age:} This \texttt{discrete\_type} describes IPMs where
+  the discrete variable of interest is ordered an individual
+  \textbf{must} transition to the next the next value of the discrete
+  variable if it survives through the projection interval. The most
+  common example of this would be an age x size IPM (e.g.~Childs et al.
+  2003). This can be represented as a block megamatrix where the top row
+  of blocks represents age and size dependent fecundity and sub-diagonal
+  blocks represent age and size depedent growth and survival. All other
+  blocks are filled with 0s. This differs from the \textbf{Lefkovitch}
+  designation because not all block-level transitions are possible
+  (i.e.~an individual cannot become 5 years old in at \emph{t+1} if it
+  is only 2 years old at \emph{t}).
+\item
+\end{itemize}
 
 
 \end{document}
