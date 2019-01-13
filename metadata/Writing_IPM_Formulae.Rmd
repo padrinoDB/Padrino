@@ -17,7 +17,8 @@ general enough that users of other languages could adapt it on their own. It use
 text strings of the formula for each successive level of parameters in an IPM
 (constants, vital rates, kernels) to represent the underlying models and generate
 the correct iteration matrices. The notation requires some practice to get right
-and has a few quirks in it due to the nature of working with strings in R/Perl.
+and has a few quirks in it due to the nature of working with strings and [regular
+expressions](https://en.wikipedia.org/wiki/Regular_expression). 
 
 Briefly, this document uses the following format to distinguish between tables in
 the database, columns in a table, and entries in a column:
@@ -61,6 +62,12 @@ no LHS or RHS. All terms in this table should appear in the RHS of an expression
 in one of the other tables. 
 
 ### In VitalRateExpr and IpmKernels
+
+Constants in the **ParameterValues** table form the building blocks of the 
+expressions entered elsewhere. Most constants will appear in a **VitalRateExpr**
+*formula* and so as long as they are found in the **ParameterValues** table, no
+further action is required. 
+
 All constants that **do not** appear in a **VitalRateExpr** and only
 appear in an **IpmKernel** need to be written as follows in **VitalRateExpr** *formula*:
 
@@ -69,6 +76,8 @@ taken from the **ParameterValues** table.
 
 This ensures that all kernels that use that value can access it when it comes time
 to build them. 
+
+Continue reading to learn the correct *kernel_id* notation. 
 
 ### In EnvironmetVariables
 
@@ -80,7 +89,15 @@ and density dependent IPMs (where vital rates are at least partially a function
 of the number/state structure of individuals at each time step). Currently, only
 the first type are implemented, so this notation may change. Beware!
 
-For hierarchical models, this table stores the different levels of the hierarchical
+In Padrino, hierarchical models are implemented using a suffix-based notation.
+Suffixes matching parameters/vital rates/kernels are appended to each variable
+and the actual values of those hierarchical effects are substituted in by the code
+that builds the models. Thus, each vital rate and kernel only needs to be written
+once, as opposed to repeating it for each level of the hierarchical effect. For
+more info on this, jump down to the [next section](#hier-confusion) and have a
+glance at the document linked there. 
+
+For hierarchical models, **EnvironmentVariables** table stores the different levels of the hierarchical
 effect and provides information on suffixes that these values are meant to replace.
 Temporal effects (e.g. years of sampling) and spatial effects (e.g. plot names) are
 the most common types of hierarchical effects, but others will appear as well. 
@@ -91,12 +108,14 @@ one could enter `year` or `plot` in this column.
 *vr_expr_name* gives the suffix that is used to denote this effect in other parts
 of the database. This is appended to the name of the continuous state variable ,
 so if the state variable in the model was `size`, then this could be
-entered as `size_yr` or `size_pl`. If a model contains multiple hierarchical effects,
-then each one gets its own row in the table.
+entered as `size_yr` do denote `year`s or `size_pl` to denote `plot`s.
+If a model contains multiple hierarchical effects, then each one gets its own
+row in the table. Multiple suffixes can be appended to parameters/vital rates/kernels 
+as needed. 
 
 Unforunately, *env_range* introduces a bit of complexity. Hierarchical effects are
-generally discrete, may or may not have a set order, and ordered effects may or may
-not be easily represented by a sequence of integers. Below we cover both cases.
+generally discrete, but may or may not have a set order, and ordered effects may or may
+not be easily represented by a sequence of integers. Below we cover each case.
 
 For effects that have an ordered sequence to them (e.g. years of sampling),
 there are two different ways to enter them, depending on whether the ordering is consecutive
@@ -107,25 +126,34 @@ second to last year of sampling.
 
 For effects that are not ordered or are not easily represented with a sequence
 of consecutive integers, then the following notation is used: `c("level_A", "level_B",
-"level_C", "Level_...")`. Note that each level is now encapsulated with quotation
-marks, all levels are separated by commas, and everything is wrapped in `c()`. 
-This is very important (though perhaps a bit lazy of me and the least "language-agnostic"
-aspect of the database).
+"level_C", "Level_...")`. This often occurs when different sites are modeled in the
+same vital rate model or when multiple years are used, but there is a gap in sampling
+such that one year in the middle is not sampled. Note that each level is now
+encapsulated with quotation marks, all levels are separated by commas, 
+and everything is wrapped in `c()`.  This is very important (though perhaps a 
+bit lazy of me and likely the least "language-agnostic" aspect of the database).
 
-The above is a bit vague and confusing, so see the [Worked Examples](#examples) in the next section 
-for a more concrete demonstration of how this works.
+One critical aspect of choosing the appropriate suffix is to ensure that the string
+of characters is unique to the effect **in every expression it appears in**. For
+example, if you named a parameter `grow_int_yrran_yr`, the model would not build 
+correctly because `yr` appears twice in the expression: in "yrran" and in "yr". 
+The code that does the splitting tries to be as precise as possible, but even 
+exact matching would cause this to break as the character string `_yr` appears
+twice in the expression. Additional examples of good and bad practice are given in
+the [Worked Examples](#examples) section. This scheme can take a while to master,
+so please contact me or Sanne Evers if you have any questions at all!
 
-### Why all this confusion for hierarchical models?
+### Why all this confusion for hierarchical models? {#hier-confusion}
 
-The general goal of the framework we implemented for hierarchical models is to 
+The general goal of the framework for hierarchical models is to 
 represent them as closely to how they are defined as possible. This has the additional
 benefit of greatly reducing the amount of typing required to enter them, 
-consequently lowering the risk of typos. A separate PDF explains how this 
+consequently lowering the risk of typos. A separate document explains how this 
 substitution works and can be found [here](https://github.com/levisc8/Padrino/blob/master/metadata/Hierarchical_effects_subbing_schematic.pdf).
 
 Of course, there's nothing quite like diving into the source code to understand
 the logic of it all! The code that deals with the split-duplicate-combining of
-hierarchical models can be found 
+vital rates/kernels in hierarchical models can be found 
 [here](https://github.com/levisc8/RPadrino/blob/master/R/split_ranefs.R) (top level function) and 
 [here](https://github.com/levisc8/RPadrino/blob/master/R/split_ranefs_helpers.R) (internal helpers).
 
