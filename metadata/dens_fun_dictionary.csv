@@ -1,0 +1,19 @@
+Distribution Name,Abbreviation,R_Function
+Beta,Beta,dbeta
+Binomial,Binom,dbinom
+Bernoulli,Bernoulli,dbinom
+Cauchy,Cauchy,dcauchy
+Chi-Squard,Chi,dchisq
+Exponential,Expo,dexp
+F-Distribution,F_dist,df
+Gamma,Gamma,dgamma
+Geometric,Geom,dgeom
+Hypergeometric,Hgeom,dhyper
+Log-normal,Lognorm,dlnorm
+Multinomial,Multinom,dmultinom
+Negative binomial,Negbin,dnbinom
+Normal,Norm,dnorm
+Poisson,Pois,dpois
+T-Distribution,T_Dist,dt
+Uniform,Unif,dunif
+Weibull,Weib,dweibull
