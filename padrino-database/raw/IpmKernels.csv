@@ -49,7 +49,7 @@
 "aaaa21","F","F = s * f_n * pE * fd * d_size","CC","size","size"
 "aaaa21","C","C = s * f_c * CE * fc * d_size","CC","size","size"
 "aaaa22","K","K = P + F","IPM","logD","logD"
-"aaaa22","P","P = s * (1 - pf) * g * d_logD","CC","logD","logD"
+"aaaa22","P","P = s1 * (1 - pf) * g * d_logD","CC","logD","logD"
 "aaaa22","F","F = pe * pf * fn * fd * d_logD","CC","logD","logD"
 "aaaa23","K_yr","K_yr = P_yr + F","IPM","size","size"
 "aaaa23","P_yr","P_yr = s_yr * g_yr * d_size","CC","size","size"
@@ -1021,11 +1021,10 @@
 "aaa326","P","P = (1 - p_fl) * s * g * d_size","CC","size","size"
 "aaa326","F","F = p_fl * fec1 * sdl_size * d_size","CC","size","size"
 "aaa327","S2","S2 = Pe","DD",NA,NA
-"aaa327","S1","S1 = goSB","DD",NA,NA
 "aaa327","P","P = s * g * d_size","CC","size","size"
 "aaa327","goSB","goSB = Pf * Fn * Fs * d_size","CD","size",NA
 "aaa327","goCont","goCont = Ps * Pd * d_size","DC",NA,"size"
-"aaa328","K","K = P + F","IPM",NA,NA
+"aaa328","K","K = P + F","IPM","rcd","rcd"
 "aaa328","P","P = s * (1 - Fp) * g * d_rcd","CC","rcd","rcd"
 "aaa328","F","F = Pe * J * s * Fp * n_seed * d_rcd","CC","rcd","rcd"
 "aaa329","K","K = P + F","IPM","rcd","rcd"
@@ -1087,11 +1086,11 @@
 "aaa338","K","n_seedbank_2_t_1 = mat_mult(GoSB2, n_size_t); n_seedbank_1_t_1 = mat_mult(GoSB1, n_size_t) + mat_mult(leaveSB2, n_seedbank_2_t); n_size_t_1 = mat_mult(leaveSB1, n_seedbank_1_t) + mat_mult(P, n_size_t)","iteration_procedure","size","size"
 "aaa339","P","P = s * g * d_size","CC","size","size"
 "aaa339","goCont","goCont = Ep * fd * d_size","DC",NA,"size"
-"aaa339","goSB","goSB = g_i * fp * fs * d_size","CD","size",NA
+"aaa339","goSB","goSB = r_i * fp * fs * d_size","CD","size",NA
 "aaa339","K","n_seedbank_t_1 = mat_mult(goSB, n_size_t); n_size_t_1 = mat_mult(goCont, n_seedbank_t) + mat_mult(P, n_size_t)","iteration_procedure","size","size"
 "aaa340","P","P = s * g * d_size","CC","size","size"
 "aaa340","goCont","goCont = Ep * fd * d_size","DC",NA,"size"
-"aaa340","goSB","goSB = g_i * fp * fs * d_size","CD","size",NA
+"aaa340","goSB","goSB = r_i * fp * fs * d_size","CD","size",NA
 "aaa340","K","n_seedbank_t_1 = mat_mult(goSB, n_size_t); n_size_t_1 = mat_mult(goCont, n_seedbank_t) + mat_mult(P, n_size_t)","iteration_procedure","size","size"
 "aaa341","K","K = P + F","IPM","size","size"
 "aaa341","P","P = s * g * d_size","CC","size","size"
@@ -1755,13 +1754,5 @@
 "aaaa32","inBG_le","inBG_le = goBG_le * d_size","CD","size",NA
 "aaaa32","K_le","n_size_t_1_le = mat_mult(K_le, n_size_t); n_biggest_t_1_le = mat_mult(inBG_le, n_size_t) + mat_mult(stayBG_le, n_biggest_t)","iteration_procedure","size","size"
 "aaaa56","K_tsf_ls_site_block","n_sb_t_1 = mat_mult(stay_sb, n_sb_t) + mat_mult(goSb_tsf_ls_site_block, n_log_size_t); n_logsize_t_1 = mat_mult(leaveSB_tsf_ls_site_block, n_sb_t) + mat_mult(K_tsf_ls_site_block, n_logsize_t)","iteration_procedure","logsize","logsize"
-"aaa312","K_yr","n_seedbank_t_1 = mat_mult(staySB_yr, n_seedbank_t) + mat_mult(goSB_yr, n_size_t); n_sdl_t_1 = mat_mult(SBsdl_yr, n_seedbank_t) + mat_mult(goSdl_yr, n_size_t); n_size_t_1 = mat_mult(K_yr, n_size_t) + mat_mult(SdlOut_yr, n_sdl_t)","iteration_procedure","size","size"
-"aaa313","K_yr","n_seedbank_t_1 = mat_mult(staySB_yr, n_seedbank_t) + mat_mult(goSB_yr, n_size_t); n_sdl_t_1 = mat_mult(SBsdl_yr, n_seedbank_t) + mat_mult(goSdl_yr, n_size_t); n_size_t_1 = mat_mult(K_yr, n_size_t) + mat_mult(SdlOut_yr, n_sdl_t)","iteration_procedure","size","size"
-"aaa314","K_yr","n_seedbank_t_1 = mat_mult(staySB_yr, n_seedbank_t) + mat_mult(goSB_yr, n_size_t); n_sdl_t_1 = mat_mult(SBsdl_yr, n_seedbank_t) + mat_mult(goSdl_yr, n_size_t); n_size_t_1 = mat_mult(K_yr, n_size_t) + mat_mult(SdlOut_yr, n_sdl_t)","iteration_procedure","size","size"
-"aaa315","K_yr","n_seedbank_t_1 = mat_mult(staySB_yr, n_seedbank_t) + mat_mult(goSB_yr, n_size_t); n_sdl_t_1 = mat_mult(SBsdl_yr, n_seedbank_t) + mat_mult(goSdl_yr, n_size_t); n_size_t_1 = mat_mult(K_yr, n_size_t) + mat_mult(SdlOut_yr, n_sdl_t)","iteration_procedure","size","size"
-"aaa316","K_yr","n_seedbank_t_1 = mat_mult(staySB_yr, n_seedbank_t) + mat_mult(goSB_yr, n_size_t); n_sdl_t_1 = mat_mult(SBsdl_yr, n_seedbank_t) + mat_mult(goSdl_yr, n_size_t); n_size_t_1 = mat_mult(K_yr, n_size_t) + mat_mult(SdlOut_yr, n_sdl_t)","iteration_procedure","size","size"
-"aaa317","K_yr","n_seedbank_t_1 = mat_mult(staySB_yr, n_seedbank_t) + mat_mult(goSB_yr, n_size_t); n_sdl_t_1 = mat_mult(SBsdl_yr, n_seedbank_t) + mat_mult(goSdl_yr, n_size_t); n_size_t_1 = mat_mult(K_yr, n_size_t) + mat_mult(SdlOut_yr, n_sdl_t)","iteration_procedure","size","size"
-"aaa318","K_yr","n_seedbank_t_1 = mat_mult(staySB_yr, n_seedbank_t) + mat_mult(goSB_yr, n_size_t); n_sdl_t_1 = mat_mult(SBsdl_yr, n_seedbank_t) + mat_mult(goSdl_yr, n_size_t); n_size_t_1 = mat_mult(K_yr, n_size_t) + mat_mult(SdlOut_yr, n_sdl_t)","iteration_procedure","size","size"
-"aaa322","K","n_seedbank_t_1 = mat_mult(staySB, n_seedbank_t) + mat_mult(goSB, n_size_t); n_size_t_1 = mat_mult(K, n_size_t) + mat_mult(goCont, n_seedbank_t)","iteration_procedure","size","size"
 "aaa325","K_yr","n_seedbank_t_1 = mat_mult(staySB, n_seedbank_t) + mat_mult(goSB_yr, n_size_t); n_size_t_1 = mat_mult(goCont_yr, n_seedbank_t) + mat_mult(K_yr, n_size_t)","iteration_procedure","size","size"
-"aaa327","K","n_seedbank_t_1 = mat_mult(S1, n_size_t); n_seedling_t_1 = mat_mult(S2, n_seedbank_t); n_size_t_1 = mat_mult(goCont, n_seedling_t) + mat_mult(P, n_size_t)","iteration_procedure","size","size"
+"aaa327","K","n_seedbank_t_1 = mat_mult(goSB, n_size_t); n_seedling_t_1 = mat_mult(S2, n_seedbank_t); n_size_t_1 = mat_mult(goCont, n_seedling_t) + mat_mult(P, n_size_t)","iteration_procedure","size","size"

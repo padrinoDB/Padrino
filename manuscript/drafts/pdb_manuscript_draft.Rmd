@@ -1,0 +1,116 @@
+---
+output: word_document
+---
+
+# Padrino Database Manuscript Outline
+
+## Introduction
+
+1. Integral projection models are an important tool for ecologists interested in conservations, demography, and evolution. 
+
+    + Examples of usage
+    
+    + Figure 1: growth of IPM literature through time, see ipmr Fig 1 for general idea. Perhaps add world map of IPM studies as another panel.
+
+2. Synthesis applications of structured demographic databases
+
+    + Examples of their utility - find citations for Com(p)adre, DatLife, possibly other databases
+    
+    + Obviously, these things are useful. BUT! we couldn't do it for IPMs until recently because we didn't have the right software to rebuild the models with.
+    
+3. Challenge of an IPM database - these models are functions generated from parameter sets, and the iteration kernels themselves are waaayyyyyyyy too big to digitize by hand. 
+
+    + recent software developments (i.e. ipmr) mean that we can re-build most published models provided we have parameter estimates, functional forms, and integration rules. No need for raw data.
+    
+## Padrino details
+    
+4. Padrino is an open-access database of integral projection models. We are actively working on collecting and digitizing every published IPM we can find into the database, but it is not yet complete. To date, we have digitized 464 models from 40 publications in the plant kingdom. 
+
+    + Consists of 12-14 csv files, all linked by an "ipm_id" column. These files can be found on Github/Zenodo, are version controlled, and have an automated testing and deployment pipeline (referred to as continuous integration and abbreviated "CI") that ensures that each model recovers the behavior of the published version. In most cases, this means reproducing the asymptotic population growth rate to a given tolerance level, though for models where this value, or another comparable one is not published (e.g. R0, generation time), then visual checks against published figures are conducted. A model cannot enter a released version of the database unless it is explicitly flagged by the CI process or by a digitizer as validated. 
+    
+    + The database defines a syntax for each model's functional form that is compatible with `ipmr`. While the implementation we present here relies on an R package, `RPadrino`, to work smoothly, the contents of the database *should* be language-agnostic. Thus, it is possible to create bindings to many other computing languages (e.g. Python, Julia).
+    
+## Figure 1
+
+```{r echo = FALSE, fig.cap = "Cumulative number of publications in Padrino by year, and their geographic distribution. This figure only depicts publications that have been digitized, there are more studies that are currently in the pipeline, but not yet ready."}
+library(ggplot2)
+library(gridExtra)
+library(dplyr)
+library(RPadrino)
+
+data(pdb)
+
+met <- pdb$Metadata
+
+pub_rates <- met %>%
+  filter(!duplicated(apa_citation)) %>%
+  group_by(pub_year) %>%
+  summarise(n_tot = n()) %>%
+  ungroup() %>%
+  arrange(pub_year) %>%
+  mutate(run_sum = cumsum(n_tot))
+
+wrld_data <- met %>%
+  mutate(lat = as.numeric(lat),
+         lon = as.numeric(lon)) %>%
+  filter(!is.na(lat) | !is.na(lon))
+
+wrld <- map_data("world")
+
+rate_plt <- ggplot(pub_rates,
+                   aes(x = pub_year,
+                       y = run_sum)) +
+  geom_line(size = 1.25) +
+  theme_bw() +
+  ylab("Cumulative Publications") +
+  xlab("Year")
+
+wrld_plt <- ggplot(wrld,
+                   aes(x     = long,
+                       y     = lat,
+                       group = group)) +
+  geom_polygon(color = "grey50",
+               fill = NA) + 
+  coord_map(xlim = c(-180, 180)) +
+  geom_point(data = wrld_data,
+             aes(x = lon,
+                 y = lat),
+             color = "blue",
+             size = 1.5,
+             alpha = 0.6,
+             inherit.aes = FALSE) +
+  theme_bw() +
+  xlab("Longitude") +
+  ylab("Latitude")
+
+grid.arrange(wrld_plt, rate_plt,
+             layout_matrix = matrix(c(1, 1,
+                                      1, 1,
+                                      1, 1,
+                                      2, 2,
+                                      2, 2),
+                                    nrow = 5,
+                                    ncol = 2,
+                                    byrow = TRUE))
+
+```
+
+
+
+## Figure 2
+
+```{r echo = FALSE}
+
+# Phylogenies (???)
+
+```
+
+
+## Opportunities
+
+5. Padrino presents unique opportunities for synthesis
+
+    + Estimates of life history traits derived from matrix models for some species, particularly trees, may suffer from the discretizing fairly large size ranges and/or ontogenic stages into a single value. IPMs can alleviate this issue and provide more accurate estimates
+    
+    
+    

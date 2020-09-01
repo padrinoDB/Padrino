@@ -12766,7 +12766,7 @@
 "aaa339","Fecundity","constant","fd_mean",5.665517
 "aaa339","Fecundity","constant","fd_sd",2.073354
 "aaa339","Fecundity","constant","Ep",0.15
-"aaa339","Fecundity","constant","g_i",0.5066667
+"aaa339","Fecundity","constant","r_i",0.5066667
 "aaa340","Survival","size","si",0.0209038279
 "aaa340","Survival","size","ss1",0.0831076695
 "aaa340","Survival","size","ss2",-0.0001298578
@@ -12780,7 +12780,7 @@
 "aaa340","Fecundity","constant","fd_mean",5.665517
 "aaa340","Fecundity","constant","fd_sd",2.073354
 "aaa340","Fecundity","constant","Ep",0.15
-"aaa340","Fecundity","constant","g_i",0.5066667
+"aaa340","Fecundity","constant","r_i",0.5066667
 "aaa341","Survival","size","si",-2.830987
 "aaa341","Survival","size","ss1",0.403509
 "aaa341","Survival","size","ss2",-0.000421

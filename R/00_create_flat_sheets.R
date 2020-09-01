@@ -25,10 +25,6 @@ for(i in seq_along(xl)) {
   
   temp <- names(xl)[i]
   
-  out <- xl[[i]]
-  
-  out[out == "NA"] <- NA
-  
   write.csv(xl[[i]], 
             file         = paste("padrino-database/raw/", temp,".csv", sep = ""),
             row.names    = FALSE,

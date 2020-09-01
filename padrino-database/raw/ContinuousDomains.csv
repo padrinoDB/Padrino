@@ -33,10 +33,10 @@
 "aaaa31","size","size_most",1,1999,"K_le; P_le; inBG_le",NA
 "aaaa32","size","size_most",1,1999,"K_le; P_le; inBG_le",NA
 "aaaa33","nrosettes","nrosettes_all",1,60,"K_yr; P_yr; F_yr",NA
-"aaaa34","lnsize","lnsize_all",-3,8,"K; P; F",NA
-"aaaa35","lnsize","lnsize_all",-3,8,"K; P; F",NA
-"aaaa36","lnsize","lnsize_all",-3,8,"K; P; F",NA
-"aaaa37","lnsize","lnsize_all",-3,8,"K; P; F",NA
+"aaaa34","lnsize","lnsize_all",0,5,"K; P; F",NA
+"aaaa35","lnsize","lnsize_all",0,5,"K; P; F",NA
+"aaaa36","lnsize","lnsize_all",0,5,"K; P; F",NA
+"aaaa37","lnsize","lnsize_all",0,5,"K; P; F",NA
 "aaaa38","nleaves","nleaves_all",0.9,36.3,"K_yr_pl; P_yr_pl; F_yr_pl",NA
 "aaaa39","nleaves","nleaves_all",0.9,69.3,"K_yr_pl; P_yr_pl; F_yr_pl",NA
 "aaaa40","nleaves","nleaves_all",0.9,95.7,"K_yr_pl; P_yr_pl; F_yr_pl",NA

@@ -1,0 +1,836 @@
+"ipm_id","error"
+"aaaaa0","<text>:1:1: unexpected '/'
+1: /
+    ^"
+"aaaaa1","<text>:1:1: unexpected '/'
+1: /
+    ^"
+"aaaaa2","<text>:1:1: unexpected '/'
+1: /
+    ^"
+"aaaaa3","<text>:1:1: unexpected '/'
+1: /
+    ^"
+"aaaaa4","<text>:1:1: unexpected '/'
+1: /
+    ^"
+"aaaaa5","<text>:1:1: unexpected '/'
+1: /
+    ^"
+"aaaaa6","<text>:1:1: unexpected '/'
+1: /
+    ^"
+"aaaaa7","<text>:1:1: unexpected '/'
+1: /
+    ^"
+"aaaaa8",NA
+"aaaaa9","The following entry or entries are not the right length: nleaves. Inputs must be numeric vectors of length 3."
+"aaaa10","The following entry or entries are not the right length: nleaves. Inputs must be numeric vectors of length 3."
+"aaaa11","The following entry or entries are not the right length: nleaves. Inputs must be numeric vectors of length 3."
+"aaaa12","The following entry or entries are not the right length: nleaves. Inputs must be numeric vectors of length 3."
+"aaaa13","The following entry or entries are not the right length: nleaves. Inputs must be numeric vectors of length 3."
+"aaaa14","The following entry or entries are not the right length: nleaves. Inputs must be numeric vectors of length 3."
+"aaaa15","<text>:2:0: unexpected end of input
+1: exp(i_0 + i_1 * leafarea_1 + i_2 * j + i_3 * leafarea_1 * j
+   ^"
+"aaaa16","<text>:2:0: unexpected end of input
+1: exp(i_0 + i_1 * leafarea_1 + i_2 * j + i_3 * leafarea_1 * j
+   ^"
+"aaaa17",NA
+"aaaa18",NA
+"aaaa19",NA
+"aaaa20",NA
+"aaaa21","<text>:2:0: unexpected end of input
+1: ifelse(hst_sp
+   ^"
+"aaaa22","cannot coerce type 'special' to vector of type 'character'"
+"aaaa23","cannot coerce type 'builtin' to vector of type 'character'"
+"aaaa24",NA
+"aaaa25",NA
+"aaaa26",NA
+"aaaa27",NA
+"aaaa28",NA
+"aaaa29",NA
+"aaaa30",NA
+"aaaa31",NA
+"aaaa32",NA
+"aaaa33",NA
+"aaaa34",NA
+"aaaa35",NA
+"aaaa36",NA
+"aaaa37",NA
+"aaaa38",NA
+"aaaa39",NA
+"aaaa40",NA
+"aaaa41",NA
+"aaaa42",NA
+"aaaa43",NA
+"aaaa44",NA
+"aaaa45",NA
+"aaaa46",NA
+"aaaa47",NA
+"aaaa48",NA
+"aaaa49",NA
+"aaaa50",NA
+"aaaa51",NA
+"aaaa52",NA
+"aaaa53",NA
+"aaaa54","More than one expression parsed"
+"aaaa55",NA
+"aaaa56","<text>:2:0: unexpected end of input
+1: ifelse( tsf
+   ^"
+"aaaa57",NA
+"aaaa58",NA
+"aaaa59",NA
+"aaaa60",NA
+"aaaa61","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa62","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa63","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa64","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa65","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa66","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa67","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa68","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa69","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa70","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa71","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa72","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa73","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa74","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa75","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa76","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa77","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa78","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa79","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa80","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa81","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa82","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa83","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa84","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa85","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa86","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa87","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa88","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa89","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa90","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa91","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa92","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa93","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa94","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa95","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa96","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa97","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa98","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaaa99","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa100","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa101","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa102","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa103","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa104","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa105","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa106","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa107","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa108","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa109","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa110","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa111","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa112","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa113","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa114","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa115","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa116","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa117","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa118","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa119","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa120","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa121","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa122","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa123","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa124","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa125","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa126","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa127","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa128","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa129","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa130","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa131","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa132","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa133","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa134","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa135","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa136","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa137","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa138","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa139","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa140","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa141","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa142","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa143","<text>:2:0: unexpected end of input
+1: exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip) / (1 + (exp(germ_i + germ_g * gdd5 + germ_fr * annfrost + germ_per * percip))
+   ^"
+"aaa144",NA
+"aaa145",NA
+"aaa146",NA
+"aaa147",NA
+"aaa148",NA
+"aaa149",NA
+"aaa150",NA
+"aaa151",NA
+"aaa152",NA
+"aaa153",NA
+"aaa154",NA
+"aaa155",NA
+"aaa156",NA
+"aaa157",NA
+"aaa158",NA
+"aaa159",NA
+"aaa160",NA
+"aaa161",NA
+"aaa162",NA
+"aaa163",NA
+"aaa164",NA
+"aaa165",NA
+"aaa166",NA
+"aaa167",NA
+"aaa168",NA
+"aaa169",NA
+"aaa170",NA
+"aaa171",NA
+"aaa172",NA
+"aaa173",NA
+"aaa174",NA
+"aaa175",NA
+"aaa176",NA
+"aaa177",NA
+"aaa178",NA
+"aaa179",NA
+"aaa180",NA
+"aaa181",NA
+"aaa182",NA
+"aaa183",NA
+"aaa184",NA
+"aaa185",NA
+"aaa186",NA
+"aaa187",NA
+"aaa188",NA
+"aaa189",NA
+"aaa190",NA
+"aaa191",NA
+"aaa192",NA
+"aaa193",NA
+"aaa194",NA
+"aaa195",NA
+"aaa196",NA
+"aaa197",NA
+"aaa198",NA
+"aaa199",NA
+"aaa200",NA
+"aaa201",NA
+"aaa202",NA
+"aaa203",NA
+"aaa204",NA
+"aaa205",NA
+"aaa206",NA
+"aaa207",NA
+"aaa208",NA
+"aaa209",NA
+"aaa210",NA
+"aaa211",NA
+"aaa212",NA
+"aaa213",NA
+"aaa214",NA
+"aaa215",NA
+"aaa216",NA
+"aaa217",NA
+"aaa218",NA
+"aaa219",NA
+"aaa220",NA
+"aaa221",NA
+"aaa222",NA
+"aaa223",NA
+"aaa224",NA
+"aaa225",NA
+"aaa226",NA
+"aaa227","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa228","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa229","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa230","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa231","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa232","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa233","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa234","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa235","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa236","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa237","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa238","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa239","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa240","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa241","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa242","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa243","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa244","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa245","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa246","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa247","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa248","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa249","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa250","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa251","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa252","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa253","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa254","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa255","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa256","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa257","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa258","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa259","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa260","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa261","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa262","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa263","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa264","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa265","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa266","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa267","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa268","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa269","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa270","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa271","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa272","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa273","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa274","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa275","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa276","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa277","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa278","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa279","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa280","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa281","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa282","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa283","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa284","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa285","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa286","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa287","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa288","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa289","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa290","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa291","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa292","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa293","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa294","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa295","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa296","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa297","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa298","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa299","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa300","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa301","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa302","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa303","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa304","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa305","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa306","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa307","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa308","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa309","<text>:2:0: unexpected end of input
+1: exp(infl_i + infl_s * ((log(size_1 ^ 3) - ipmlv) / ipslv)
+   ^"
+"aaa310",NA
+"aaa311",NA
+"aaa312",NA
+"aaa313",NA
+"aaa314",NA
+"aaa315",NA
+"aaa316",NA
+"aaa317",NA
+"aaa318",NA
+"aaa319","More than one expression parsed"
+"aaa320","More than one expression parsed"
+"aaa321","<text>:2:0: unexpected end of input
+1: +
+   ^"
+"aaa322",NA
+"aaa323",NA
+"aaa324",NA
+"aaa325","Arguments can't have the same name. We found these problems:
+* Multiple arguments named `n_size_yr_t_1` at positions 1 and 4
+* Multiple arguments named `n_seedbank_yr_t_1` at positions 2 and 3"
+"aaa326",NA
+"aaa327",NA
+"aaa328",NA
+"aaa329",NA
+"aaa330","Time-lagged models are not yet implemented"
+"aaa331","Time-lagged models are not yet implemented"
+"aaa332",NA
+"aaa333",NA
+"aaa334","<text>:2:0: unexpected end of input
+1: exp(a1 + a2 * graz_fire_PG + a3 * harv_fire_PG_PH + a4 *size_1 + a5 * harv_fire_PG_PH * size_1
+   ^"
+"aaa335","More than one expression parsed"
+"aaa336","More than one expression parsed"
+"aaa337",NA
+"aaa338",NA
+"aaa339",NA
+"aaa340",NA
+"aaa341",NA
+"aaa342",NA
+"aaa343","cannot coerce type 'builtin' to vector of type 'character'"
+"aaa344","More than one expression parsed"
+"aaa345","More than one expression parsed"
+"aaa346","More than one expression parsed"
+"aaa347","More than one expression parsed"
+"aaa348","More than one expression parsed"
+"aaa349",NA
+"aaa350",NA
+"aaa351",NA
+"aaa352",NA
+"aaa353",NA
+"aaa354",NA
+"aaa355",NA
+"aaa356",NA
+"aaa357",NA
+"aaa358",NA
+"aaa359",NA
+"aaa360",NA
+"aaa361",NA
+"aaa362",NA
+"aaa363",NA
+"aaa364",NA
+"aaa365",NA
+"aaa366",NA
+"aaa367",NA
+"aaa368",NA
+"aaa369",NA
+"aaa370",NA
+"aaa371",NA
+"aaa372",NA
+"aaa373",NA
+"aaa374",NA
+"aaa375",NA
+"aaa376",NA
+"aaa377",NA
+"aaa378",NA
+"aaa379",NA
+"aaa380",NA
+"aaa381",NA
+"aaa382",NA
+"aaa383",NA
+"aaa384",NA
+"aaa385",NA
+"aaa386",NA
+"aaa387",NA
+"aaa388",NA
+"aaa389",NA
+"aaa390",NA
+"aaa391",NA
+"aaa392",NA
+"bbbbb0","Could not find number of bins for model: bbbbb0
+Contact database developers for further help."
+"bbbbb1","Could not find number of bins for model: bbbbb1
+Contact database developers for further help."
+"bbbbb2","Could not find number of bins for model: bbbbb2
+Contact database developers for further help."
+"bbbbb3","Could not find number of bins for model: bbbbb3
+Contact database developers for further help."
+"bbbbb4","Could not find number of bins for model: bbbbb4
+Contact database developers for further help."
+"bbbbb5","Could not find number of bins for model: bbbbb5
+Contact database developers for further help."
+"bbbbb6","Could not find number of bins for model: bbbbb6
+Contact database developers for further help."
+"bbbbb7","<text>:2:0: unexpected end of input
+1: size_1 >
+   ^"
+"bbbbb8",NA
+"bbbbb9",NA
+"bbbb10",NA
+"bbbb11",NA
+"bbbb12",NA
+"bbbb13",NA
+"bbbb14",NA
+"bbbb15",NA
+"bbbb16",NA
+"bbbb17",NA
+"bbbb18",NA
+"bbbb19",NA
+"bbbb20",NA
+"bbbb21",NA
+"bbbb22",NA
+"bbbb23",NA
+"bbbb24",NA
+"bbbb25",NA
+"bbbb26",NA
+"bbbb27",NA
+"bbbb28",NA
+"bbbb29",NA
+"bbbb30",NA
+"bbbb31",NA
+"bbbb32",NA
+"bbbb33",NA
+"bbbb34",NA
+"bbbb35",NA
+"bbbb36",NA
+"bbbb37",NA
+"bbbb38",NA
+"bbbb39",NA
+"bbbb40",NA
+"bbbb41",NA
+"bbbb42",NA
+"bbbb43",NA
+"bbbb44",NA
+"bbbb45",NA
+"bbbb46",NA
+"bbbb47",NA
+"bbbb48",NA
+"bbbb49",NA
+"bbbb50",NA
+"bbbb51",NA
+"bbbb52",NA
+"bbbb53",NA
+"bbbb54",NA
+"bbbb55",NA
+"bbbb56",NA
+"bbbb57",NA
+"bbbb58",NA
+"bbbb59",NA
+"bbbb60",NA
+"bbbb61",NA
+"bbbb62",NA
+"bbbb63",NA
+"bbbb64",NA
+"bbbb65",NA
+"bbbb66",NA
+"bbbb67",NA
+"bbbb68",NA
+"bbbb69",NA
+"bbbb70",NA

@@ -3,7 +3,6 @@
 
 library(fs)
 library(RPadrino)
-library(testthat)
 
 name_ind <- c("Metadata", 
               "StateVariables",
@@ -109,7 +108,7 @@ for(i in seq_along(good_db$Metadata$ipm_id)) {
   } else {
     
     if(!is.na(test_ipm[[1]]$pop_state)){
-    
+      
       test_lam <- lambda(test_ipm[[1]], type_lambda = "last")
       
     } else {
@@ -145,6 +144,27 @@ for(i in seq_along(good_db$Metadata$ipm_id)) {
 }
 
 target_missed <- target_missed[!is.na(target_missed$error) | 
-                               !is.na(target_missed$error_magnitude), ]
+                                 !is.na(target_missed$error_magnitude), ]
 
 write.csv(target_missed, "metadata/unreliable_models.csv", row.names = FALSE)
+
+prod_db_ids <- names(completed_mods)
+
+prod_db     <- lapply(good_db, 
+                      function(x, ids) {
+                        x[x$ipm_id %in% ids, ]
+                      },
+                      ids = prod_db_ids)
+
+for(i in seq_along(prod_db)) {
+  
+  nm <- names(prod_db)[i]
+  
+  write.csv(prod_db[[i]], 
+            file         = paste("padrino-database/clean/", nm,".csv", sep = ""),
+            row.names    = FALSE,
+            quote        = TRUE,
+            na           = "NA",
+            fileEncoding = "UTF-8")
+  
+}
