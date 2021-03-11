@@ -2,37 +2,92 @@
 output: word_document
 ---
 
+Sam C. Levin $^{\ast1,2,3}$, Sanne Evers $^{1,2}$, Mayra Pena-Guerrero $^{1,2}$,  Aldo Compagnoni $^{1,2,3}$, Dylan Z. Childs $^4$, Tiffany M. Knight $^{1,2,5}$, Roberto Salguero-Gomez $^3$
+
+$^1$Institute of Biology, Martin Luther University Halle-Wittenberg, Am Kirchtor 1, 06108 Halle (Saale), Germany
+
+$^2$German Centre for Integrative Biodiversity Research (iDiv) Halle-Jena-Leipzig, Deutscher Platz 5e, 04103 Leipzig, Germany
+
+$^3$Oxford Zoology
+
+$^4$Sheffield
+
+$^5$UFZ
+
+$^*$Corresponding Author:
+
+Sam C Levin
+
+Deutscherplatz 5e, 04103 Leipzig, Germany
+
+email: <levisc8@gmail.com>
+
+
+
+
 # Padrino Database Manuscript Outline
 
 ## Introduction
 
-1. Integral projection models are an important tool for ecologists interested in conservations, demography, and evolution. 
+1. Demography is a critical aspect of ecology and evolutionary biology. Integral projection models are a relatively new, but increasingly important tool for ecologists interested in these fields. 
 
-    + Examples of usage
+    + Examples of IPM usage. Coulson, Childs, Metcalf 2009, Westerband, Paniw, Bernardo, some more conservation papers. 
+    
+      + Probably want to add some Animalia ones. Maybe see some papers on corals as well.
     
     + Figure 1: growth of IPM literature through time, see ipmr Fig 1 for general idea. Perhaps add world map of IPM studies as another panel.
 
-2. Synthesis applications of structured demographic databases
+2. Synthesis applications of structured demographic databases. 
 
     + Examples of their utility - find citations for Com(p)adre, DatLife, possibly other databases
     
-    + Obviously, these things are useful. BUT! we couldn't do it for IPMs until recently because we didn't have the right software to rebuild the models with.
+      + Compadre citations: Salgo 2016 PNAS (fast-slow/repro continuum), Bernard et al 2020 (senesence Fun-Ecol), Capdevila et al (terrestrial-aquatic differences Fun-ecol).
+      
+      + DatLife: Hartemink & Caswell 2018 Pop Ecol (heterogeneity + stochasticity in longevity), 
     
-3. Challenge of an IPM database - these models are functions generated from parameter sets, and the iteration kernels themselves are waaayyyyyyyy too big to digitize by hand. 
+    + Obviously, these things are useful. BUT! we couldn't build one for IPMs until recently because we didn't have the right software to rebuild the models with. `ipmr` alleviates this issue to a large extent. 
+    
+3. Challenge of an IPM database - these models are comprised of functions/constants describing various demographic processes (survival, growth, reproduction, etc.). The iteration kernels themselves are waaayyyyyyyy too big to digitize by hand. 
 
-    + recent software developments (i.e. ipmr) mean that we can re-build most published models provided we have parameter estimates, functional forms, and integration rules. No need for raw data.
+    + recent software developments (`ipmr`) mean that we can re-build most published models provided we have parameter estimates, functional forms, and integration rules. No need for raw data (and perhaps mention that as a limitation too (personally, many have asked us to include raw data)). This means we can approximate the published kernels to a reasonable degree of precision (< 1% error in asymptotic growth rate, R0, other metrics that we use for validation).
     
+Before describing the database in greater detail, we give a quick overview of how IPMs are structured and some associated terminology.
+
+## IPM overview
+    
+IPMs are constructed by relating an individual states at time $t$ to demographic fates at time $t+1$, usually with regression models. The regression models are combined to generate sub-kernels which represent the various demographic processes one can undergo in the projection interval (e.g. growth conditional on survival, sexual and/or asexual reproduction). Sub-kernels are then combined to form a complete projection kernel.
+
+IPMs project a population's trait distribution from one time step to another time step using kernel functions. A density independent, time-invariant model takes the following form:
+
+$$
+n(z',t+1) = \int_L^U K(z',z)n(z,t) dz 
+$$
+
+$$
+K(z',z) = P(z', z) + F(z',z) + C(z',z)
+$$
+
+The projection kernel, $K(z',z)$, acts on the population's trait distribution, $n(z, t)$ to generate a new distribution of trait values, $n(z',t+1)$. $L$ and $U$ are the minimum and maximum values that the trait $z$ can take. The integral over $\int_L^Un(z, t)dz$ and $\int_L^Un(z', t+1)dz$ is the total population size at time $t$ and $t+1$, respectively. The projection kernel is usually comprised of sub-kernels, $P(z',z), F(z',z), C(z',z)$. These sub-kernels represent transitions due to survival and growth/stasis/shrinkage of existing individuals, sexual reproduction of new individuals, and asexual reproduction of new individuals, respectively. 
+
+Since their introduction in Easterling, Ellner & Dixon's (2000) paper, theoretical advances have created generalizations of these models to include, for example, mixtures of discrete and continuous traits and/or states, and time-varying kernels which are functions of stochastic environmental variables (Ellner & Rees 2006, Rees & Ellner 2009, the range of extensions is too great to cover completely here). Theory has also been developed to extend many methods from Matrix Projection Models (MPMs) over to IPMs, resulting in a rich toolkit for researchers to study everything from species-specific management strategies to evolutionary demography and community ecology.
+
 ## Padrino details
-    
+
 4. Padrino is an open-access database of integral projection models. We are actively working on collecting and digitizing every published IPM we can find into the database, but it is not yet complete. To date, we have digitized 464 models from 40 publications in the plant kingdom. 
 
-    + Consists of 12-14 csv files, all linked by an "ipm_id" column. These files can be found on Github/Zenodo, are version controlled, and have an automated testing and deployment pipeline (referred to as continuous integration and abbreviated "CI") that ensures that each model recovers the behavior of the published version. In most cases, this means reproducing the asymptotic population growth rate to a given tolerance level, though for models where this value, or another comparable one is not published (e.g. R0, generation time), then visual checks against published figures are conducted. A model cannot enter a released version of the database unless it is explicitly flagged by the CI process or by a digitizer as validated. 
+    + Consists of 12-14 csv files, all linked by an "ipm_id" column. These files can be found on Github/Zenodo, are version controlled, and have an automated testing and deployment pipeline (referred to as continuous integration and abbreviated "CI") that ensures that each model recovers the behavior of the published version. In most cases, this means reproducing the asymptotic population growth rate to a given tolerance level, though for models where this value, or another comparable one is not published (e.g. R0, generation time), then visual checks against published figures are conducted. A model cannot enter a released version of the database unless it is explicitly flagged by the CI process or by a digitizer as validated. Testing and data validation generally follow the setup described in White et al. (2018 MEE).
     
-    + The database defines a syntax for each model's functional form that is compatible with `ipmr`. While the implementation we present here relies on an R package, `RPadrino`, to work smoothly, the contents of the database *should* be language-agnostic. Thus, it is possible to create bindings to many other computing languages (e.g. Python, Julia).
+    + The database defines a syntax for each model's functional form that is compatible with `ipmr`. While the implementation we present here relies on two R packages, `RPadrino` and `ipmr`, the functional forms in the database *should* be language-agnostic. Thus, it is possible to create bindings to many other computing languages (e.g. Python, Julia).
+    
+    + Studies are primarily digitized by PhD students and research assistants at iDiv and Oxford Zoology. In addition to extracting parameters and metadata from studies, digitizers also contact authors for missing pieces for each model, and perform error checking on already digitized models. The digitization workflow, from fieldwork to release, closely follows the pipeline laid out in Salguero-Gomez et al. (2015) Figure 2. 
+    
+5. The scope of the elemental unit in Padrino, a single IPM, is determined by the way that a model is parameterized. For example, Padrino considers an IPM that was parameterized from mixed models with 5 sites to be a single IPM, even if it produces 5 site-specific kernels using point estimates of the site-specific intercepts. Alternatively, if each data from each site were fit using separate regression models, then this would get entered as 5 single IPMs. The reason for this is how uncertainty in parameter estimates is (or rather, will be) incorporated into Padrino (i.e. it is not reasonable to consider the first parameterization above as 5 separate models when dealing with uncertainty). 
+
+    + Comment for Rob: I guess it's kind of hard to define hard and fast rules for how we aggregate/don't aggregate them. Not sure if the blurb above is sufficient to fully disambiguate this for potential users.
     
 ## Figure 1
 
-```{r echo = FALSE, fig.cap = "Cumulative number of publications in Padrino by year, and their geographic distribution. This figure only depicts publications that have been digitized, there are more studies that are currently in the pipeline, but not yet ready."}
+```{r echo = FALSE, message = FALSE, warning = FALSE, fig.cap = "Cumulative number of publications in Padrino by year, and their geographic distribution. This figure only depicts publications that have been digitized, there are more studies that are currently in the pipeline, but not yet ready."}
 library(ggplot2)
 library(gridExtra)
 library(dplyr)
@@ -101,16 +156,143 @@ grid.arrange(wrld_plt, rate_plt,
 
 ```{r echo = FALSE}
 
-# Phylogenies (???)
+# Phylogeny, and maybe a taxonomic breakdown (????)
 
 ```
 
 
 ## Opportunities
 
-5. Padrino presents unique opportunities for synthesis
+6. Padrino presents unique opportunities for synthesis
 
-    + Estimates of life history traits derived from matrix models for some species, particularly trees, may suffer from the discretizing fairly large size ranges and/or ontogenic stages into a single value. IPMs can alleviate this issue and provide more accurate estimates
+    + Estimates of life history traits derived from matrix models for some species, particularly trees, may suffer from the discretizing fairly large size ranges and/or ontogenic stages into a single value. IPMs may alleviate this issue and provide more accurate estimates
     
+    + Expanded range of species and geographical coverage can be used in conjunction with other demographic databases (e.g. COM(P)ADRE, D3) to power large scale syntheses than were possible before
+    
+      + Padrino is designed to play nicely with Com(p)adre. Metadata variables have very similar names and meanings so if you're already familiar with one, then you're pretty familiar with the other.
+    
+7. Borrowing strength across the phylogenetic tree to advance conservation goals and test theory
+
+    + Integrate w/ UN/IUCN/other global conservation assessments. Recent developments in modelling coupled-species extinction risk mean that we now have a theoretical toolbox (e.g. Simmonds et al 2020) to look at species level risks at short to intermediate term. 
+   
+    + Test the phylogeny -> trait -> LH linkage at finer resolutions (Adler et al. 2014).
+    
+    + Modifying functional forms combined with simulation approaches gives theoreticians an array of realistic life-histories to experiment with.
+
+    
+## Table 1: Metadata
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+
+library(knitr)
+
+met_tab <- data.frame(
+  concept = c(
+    NA_character_,
+    "Taxonomy",
+    rep(NA_character_, 10),
+    "Source",
+    rep(NA_character_, 8),
+    "Temporal Metadata",
+    rep(NA_character_, 5),
+    "Spatial Metadata",
+    rep(NA_character_, 7),
+    "Model-specific metadata",
+    rep(NA_character_, 5)
+  ),
+  var_nm = c(
+    "ipm_id",
+    "species_author",
+    "species_accepted", 
+    "tax_genus", 
+    "tax_family", 
+    "tax_order", 
+    "tax_class",
+    "tax_phylum",
+    "kingdom", 
+    "organism_type", 
+    "dicot_monocot", 
+    "angio_gymno", 
+    "authors",
+    "journal", 
+    "pub_year", 
+    "doi", 
+    "corresponding_author", 
+    "email_year",
+    "remark", 
+    "apa_citation",
+    "demog_appendix_link", 
+    "duration",
+    "start_year", 
+    "start_month", 
+    "end_year",
+    "end_month", 
+    "periodicity", 
+    "population_name", 
+    "number_populations", 
+    "lat", 
+    "lon",
+    "altitude", 
+    "country", 
+    "continent", 
+    "ecoregion", 
+    "studied_sex", 
+    "eviction_used", 
+    "evict_type",
+    "treatment", 
+    "has_time_lag", 
+    "has_age"
+  ),
+  Description = c(
+    "Unique ID for each model",
+    "The Latin species name used by the authors of the paper",
+    "The Latin species name accepted by XYZ Service",
+    "The Latin genus name accepted by XYZ Service",
+    "The Latin family name accepted by XYZ Service",
+    "The Latin order name accepted by XYZ Service",
+    "The Latin class name accepted by XYZ Service",
+    "The Latin phylum name accepted by XYZ Service",
+    "The Latin kingdom name accepted by XYZ Service",
+    "General functional type of the species (e.g. annual, fern, mammal, reptile)",
+    "If a plant species, whether the species is a dicot or a monocot",
+    "If a plant species, whether the species is an angiosperm, gymnosperm, or neither",
+    "All of a study authors' last names, separated with a ';'",
+    "Abbreviated journal name (www.abbreviations.com/jas.php), or 'PhD', 'MSc' if a thesis",
+    "The year of publication",
+    "Digital object identifier and/or ISBN (if available)",
+    "The name of the corresponding author on the paper",
+    "The email address of the corresponding author and the year it was extracted (some email addresses may be defunct now)",
+    "Additional remarks from the digitizer regarding the publication, if any",
+    "The full APA citation for the source",
+    "The URL for the Supplementary information containing additional model details, if available",
+    "The duration of the study, defined 'study_end - study_start + 1'. Does not consider skipped years",
+    "The year demographic data collection began",
+    "The month demohraphic data collection began",
+    "The year demographic data collection ended",
+    "The month demographic data collection ended",
+    "Frequency of the model (1: annual transition, 2: semi-annual transition, 0.2: 5 year transition)",
+    "The name of the population given in the data source",
+    "The number of populations that a given model describes",
+    "The decimal latitude of the population",
+    "The decimal longitude of the population",
+    "The altitude of the population above sea level, obtained either from the publication or Google Earth",
+    "The country or countries in which the data were collected",
+    "The continent or continents on which the data were collected",
+    "The terrestrial or aquatic ecoregion corresponding to Olson et al. (2001) classification. If data are from a controlled setting (greenhouse, lab), denoted with 'LAB'",
+    "Sexes used to construct the model",
+    "Whether or not the authors explicitly state that they corrected for eviction (see Williams et al. 2012)",
+    "If the authors did correct for eviction, then the type of correction that was applied",
+    "A description of any experimental treatment applied to the population",
+    "Whether or not the model contains a time lagged vital rate/kernel",
+    "Whether or not the model has age structure in addition to other continuous state variables"
+  )
+  
+)
+
+met_tab$concept[is.na(met_tab$concept)] <- ""
+
+
+kable(met_tab)
+```
     
     

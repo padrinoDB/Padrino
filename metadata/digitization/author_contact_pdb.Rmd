@@ -1,0 +1,44 @@
+---
+title: "How to contact an author"
+author: "Sam Levin"
+date: "3/11/2021"
+output: word_document
+---
+## How to contact the author
+
+**EMAIL**: This piece of information can typically be obtained –but not always– from the first page of the manuscript, from the author for correspondence. If for some reason co-authors need to be contacted looking up their lab website info (Google it), or if their email addresses appear on the manuscript, write that down too under “Email” separated by “;”. Do not worry too much if the email does not appear, which is particularly likely in old papers. Another way to find the email of the author is to look for more recent publications by the same author (See searching for references section using ISI, below).
+
+**CONTACTED**: Sometimes, vital rate regressions, covariates, bounds for state variables, or some additional piece of information is missing from the manuscript and is not posted online. In that scenario, the authors must be contacted politely requesting this info. Keep track of when the first email goes out by date (format: Month.Day.Year, e.g. 01.30.2008 for the 30th of January of 2008), and the dates of subsequent emails too, separated by “;”, by writing down the date of all emails sent to the author (e.g. 01.30.2008; 10.12.2008; 05.04.2009). 
+
+Do not “bug” an author too frequently. After you have contacted the author move on to the next species. You can send a reminder when you have done a “full round” to all of the species you have been assigned to digitize. Please always reply whenever an author gets back to you thanking him/her for his/her time. If the author is a bit hesitant about sharing the information, mention the possibility of imposing an embargo. Please write down embargo times on the newly introduced column (above).
+Always use the email account <padrinocontact@gmail.com> to contact and communicate with all coauthors. Since all members of the PADRINO core group have access to this account as well, there is no need to cc them in the emails.
+A draft of the contact email can be found the on next page.
+
+**CONTENT OF EMAIL**: If you have contacted the author, please detail here briefly what you asked for. If several emails were sent to the author, please separate the purpose with “;”. Use the same codes as in the “Missing data” column.
+
+**REPLY**: Indicate here whether the author has replied to the email requesting info. Please write “No” immediately after you send an email to an author. If the author replies write a “Yes” and, after the Yes, a little information about what his response was (e.g.: “Yes; will send vectors soon”)
+
+## Email  Template
+
+**EMAIL SUBJECT LINE**: “PADRINO/MADRINA database request – Author + Journal + Year of publication”
+
+e.g. when requesting plant data: “PADRINO database request – Metcalf Ecol 2009”
+
+e.g. when requesting animal data: “MADRINA database request – Ozgul Nature 2010”
+
+
+
+Dear Dr **LAST-NAME-AUTHOR**,
+My name is **YOUR-FIRST-NAME YOUR-LAST-NAME**. I’m a student at the **NAME OF YOUR HOME INSTITUTE**. I am working with Dr Rob Salguero-Gomez (University of Oxford) to compile demographic, taxonomic, ecological and biogeographic data about plant and animal species into two sister databases: PADRINO IPM Database [development page](https://github.com/levisc8/Padrino). In doing so, I have come across your publication titled **“NAME-OF-PAPER”**, published in **YEAR-OF-PUBLICATION** in **JOURNAL-NAME**. After having inspected it, I think your species, **NAME-OF-SPECIES**, would be a great candidate to add to the PADRINO Database. However, I have not been able to find **PIECE-OF-INFORMATION-MISSING-IN-PAPER-THAT-YOU-ARE-INTERESTED-IN (E.G. STATE VARIABLE BOUNDS)**. I was wondering if you would be willing to share with us this information. If you are currently working on these data and would prefer so, we could also impose an embargo period if you decide to share this information with us (e.g. April 2022 or later, as you’d like).
+
+[A colleague of mine already sent you an email some months/years ago. Perhaps the email didn’t reach your inbox. If it did, I am sorry to bother you again, but I would like to kindly ask you to consider sharing this information with us or  - if you’d prefer not to share/clarify it – give us a short response so that we do not bother you again in the future.]
+If you would like more detailed information on our project you can also email our supervisor, Dr Rob Salguero-Gomez (<rob.salguero@zoo.ox.ac.uk>), who will be more than happy to discuss our research with you. Many thanks for your attention. Looking forward to hearing back from you soon,
+
+**YOUR-FIRST-NAME YOUR-LAST-NAME**
+PADRINO data base – digitization team
+
+**Hints**:
+
+-	If you re-contact an author for another species try to “personalize” your email by reminding him that you contact him some months (years) ago
+
+-	If you need more than 2 pieces of information, it is better to make a list than to write the missing information into the text (Many authors don’t like to read Romans)

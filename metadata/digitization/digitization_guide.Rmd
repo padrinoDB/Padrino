@@ -1,0 +1,33 @@
+---
+title: "Padrino digitization guide"
+author: "Sam Levin"
+date: "3/11/2021"
+output: 
+  pdf_document:
+    toc: true
+    toc_depth: 3
+---
+
+## Padrino
+
+Welcome to the project! Padrino is an open access data base that aims to store text representations of as many (ideally all) Integral Projection Models (IPMs) that have been published. The goal is to ensure these models can be rebuilt *as published*, though there are exceptions in some cases (see [here](#exceptions-to-model-alterations)). Beyond the functional forms and parameters, we also store a bunch of metadata to help users select models for synthesis. 
+
+Tragically, the vast majority of papers published do not contain all the information we need to re-build these IPMs. Therefore, we also contact authors to request the missing details. The most common ones are things like the numerical integration rule, the number of meshpoints, and the upper/lower bounds for the state variables used. Functional forms for some vital rates are also pretty common. We have a template for requesting information available [here]()
+
+
+
+
+### Exceptions to our digitization rules {#exceptions-to-model-alterations}
+
+There are only a few times when we might want to enter a model differently from how it appears in the publication. The main way is when there is a typo in a functional form in the manuscript/appendix that doesn't match what is happening in the code the authors provide. For example, consider a survival model with a logistic regression of `survival ~ size`. The correct form would be:
+
+$$
+s_z = \frac{1}{1 + exp(-(\alpha_s + \beta_s *z))}
+$$
+
+However, the paper may contain the following form (notice the missing $-$ in the denominator):
+
+$$
+s_z = \frac{1}{1 + exp(\alpha_s + \beta_s *z)}
+$$
+In this case, it is appropriate to contact the author to double check what the exact functional form used in the model is. If this turns out to be a typo, then we would update the form in the database. 

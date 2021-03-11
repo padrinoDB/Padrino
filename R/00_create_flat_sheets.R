@@ -1,6 +1,7 @@
 library(fs)
 
 source("../RPadrino/data-raw/dev_utils.R")
+library(RPadrino)
 
 xl <- .read_all_sheets("../RPadrino/data-raw/hand_cleaned_padrino.xlsx")
 
