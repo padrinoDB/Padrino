@@ -1,7 +1,0 @@
-"ipm_id","kernel_id","formula","model_family","domain_start","domain_end"
-"aaaa34","K","K = P + F","IPM","lnsize","lnsize"
-"aaaa34","P","P = s * g * d_lnsize","CC","lnsize","lnsize"
-"aaaa34","F","F = r * fn * pE * d * d_lnsize","CC","lnsize","lnsize"
-"aaaa36","K","K = P + F","IPM","lnsize","lnsize"
-"aaaa36","P","P = s * g * d_lnsize","CC","lnsize","lnsize"
-"aaaa36","F","F = r * fn * pE * d * d_lnsize","CC","lnsize","lnsize"
