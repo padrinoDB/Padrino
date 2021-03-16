@@ -1,7 +1,7 @@
 ---
 title: "Padrino digitization guide"
 author: "Sam Levin"
-date: "3/11/2021"
+date: "Last updated: `r Sys.Date()`"
 output: 
   pdf_document:
     toc: true
@@ -170,28 +170,71 @@ You've made it through the metadata table! Next, we'll get into IPM specific det
 
 ## DiscreteStates
 
-1. `ipm_id`: The 6 digit alphanumeric `ipm_id` from the Metadata table.
-
-2. `state_variable`: The name of the discrete state variable. This should match the entry from the StateVariables table.
-
-3. `model_name`: This can be same as `state_variable`, or, if it's a long name, can be an abbreviated form of it. This is the name that will be used when building the model, so 
+Ignore this table for now, I'm fairly certain it will be removed soon.
 
 ## ContinuousDomains
 
 1. `ipm_id`: The 6 digit alphanumeric `ipm_id` from the Metadata table.
 
+2. `state_variable`: the name of the continuous state variable. Should match the value from StateVariables table.
+
+3. `domain`: likely not useful and slated for deletion once I confirm this, skip for now.
+
+4. `lower`: the lower bound of the domain.
+
+5. `upper`: the upper bound of the domain.
+
+6. `kernel_id`: The name of the kernels that it appears in. Because of the way `ipmr` builds these models, you can actually omit the "K" values for new entries. They are present as a historical artefact, but will be removed eventually. The sub-kernel names should be separated by a semicolon (";"). 
+
+7. `notes`: any qualitative observations you have about the domain itself. 
 
 ## IntegrationRules
 
 1. `ipm_id`: The 6 digit alphanumeric `ipm_id` from the Metadata table.
 
+2. `state_variable`: the name of the continuous state variable. Should match the value from StateVariables table.
+
+3. `domain`: likely not useful and slated for deletion once I confirm this, skip for now.
+
+4. `n_meshpoints`: the number of meshpoints used for integration. The information this represents will vary depending on the integration rule. For now, the midpoint rule is the only one that's implemented in `ipmr`. This document will get updated to include formats for other integration rules as they are implemented in that package. 
+
+5. `integration_rule`: the name of the integration rule. If a paper uses something besides `"midpoint"`, write enter the name here, but don't worry about the `n_meshpoints` for now. 
+
+6. `kernel_id`: the kernel name that the integration rule applies to. I can't think of any cases where a model uses different integration rules for different sub-kernels, but I don't *think* it would be problematic either, and tree IPMs may go that direction as they become increasingly sophisticated.
+
 ## StateVectors
 
 1. `ipm_id`: The 6 digit alphanumeric `ipm_id` from the Metadata table.
 
+2. `expression`: This is the name of the `state_variable` from the from the StateVariables table, with an `"n_"` appended to it to denote that it is a population state vector.
+
+3. `n_bins`: The number of bins it will be discretized into. For discrete states, this should always be 1. For continuous states, it should match the `n_meshpoints` value from the IntegrationRules table.
+
+4. `comment`: qualitative comments on the population state distribution function.
+
 ## IpmKernels
 
+Because of the way that `ipmr` implements models, we only need to digitize sub-kernels to generate a complete IPM. In other words, there shouldn't be any need to enter expressions that create the $K(z',z)$ iteration kernel, we only the need the $P(z',z)$ and $F(z',z)$. The rest of this guid is a sort of a quick-reference to remind you what goes where - for help writing kernel formulae, you should consult the [Writing kernels, vital rate, and environmental stochasticity expressions guide](https://github.com/levisc8/Padrino/blob/master/metadata/digitization/pdb_expr_guide.pdf).
+
 1. `ipm_id`: The 6 digit alphanumeric `ipm_id` from the Metadata table.
+
+2. `kernel_id`: The name of the IPM sub-kernel. 
+
+3. `formula`: The formula describing how the vital rates combine to generate a sub-kernel. 
+
+4. `model_family`: One of 4 options:
+
+    + `"CC"`: describes a continuous -> continuous transition. 
+    
+    + `"DC"`: describes a discrete -> continuous transition.
+    
+    + `"CD"`: describes a continuous -> discrete transition.
+    
+    + `"DD"`: describes a discrete -> discrete transition. 
+    
+5. `domain_start`: the name of the state variable that the sub-kernel acts on. 
+
+6. `domain_end`: the name of the state variable that the sub-kernel produces. 
 
 ## VitalRateExpr
 
