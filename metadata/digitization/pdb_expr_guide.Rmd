@@ -1,0 +1,37 @@
+---
+title: "Model expressions in Padrino"
+author: "Sam Levin"
+date: "Last updated: `r Sys.Date()`"
+output: 
+  pdf_document:
+    toc: true
+    toc_depth: 3
+linkcolor: red
+urlcolor: blue
+---
+
+# Overview
+
+Padrino aims to store the mathematical forms of IPMs as text strings. This means that we need to be able to write out the IPM on paper/$LaTeX$/somewhere before we can really know how to enter it. It is important to have a basic understanding of how to write out functional forms for the mean response of a GLM. If you are not already familiar with these, please let speak to either Rob or Sam ASAP so we can get you up to speed!
+
+Models stored in Padrino are rebuilt using [ipmr](https://github.com/levisc8/ipmr). It will be helpful to read that project's [homepage](https://levisc8.github.io/ipmr/), as well as the first two articles on simple  and general IPMs. These readings will give you a much better understanding of how this package handles different vital rate expressions and kernel formulae. Since Padrino depends on this package to rebuild models, the syntax it uses will look very similar to what should go into Padrino (with a couple exceptions, namely when digitizing probability density functions). 
+
+We'll start with simple models, and build complexity as we go through. 
+
+# Simple models
+
+
+# General models
+
+
+# Suffix syntax
+
+
+# Parameter resampled models
+
+
+# Age $\times$ size models
+
+
+
+
