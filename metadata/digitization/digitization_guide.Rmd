@@ -24,11 +24,11 @@ There a few steps in digitizing a paper. These are outlined briefly here, and ea
 
 The first step of entering a paper is to find papers and store them somewhere. Below, we go through the steps this involves, in order.
 
-1. Tracking our incoming literature channel on Slack, as well as checking other sources for papers we may have missed (e.g. Google Scholar, Web of Science, Twitter (seriously, it's a good source)).
+1. Tracking our incoming literature channel on Slack, as well as checking other sources for papers we may have missed (e.g. Google Scholar, Web of Science, Twitter (seriously, it's a good source)).^[on the slack channel, papers that have been posted there and contain an IPM get a thumbs up reaction, all others get a thumbs down. You can "reply in thread" to open a discussion about whether or not to include a paper.]
       
 2. If a paper has an IPM, then we first add it to our shared GoogleSheet containing citation information, species names, author contact info, and digitization progress. This can be accessed [here](https://docs.google.com/spreadsheets/d/1jZbnlrOndybRfLTU1aKfxcQe60O8gSqBDoPiE5SFlrA/edit). If you are denied access, then remind me to send you an invitation to edit. 
           
-      - NB: on the slack channel, papers that have been posted there and contain an IPM get a thumbs up reaction, all others get a thumbs down. You can "reply in thread" to open a discussion about whether or not to include a paper.
+
           
 3. Download a PDF of the paper into the shared Dropbox literature folder. Additionally, if it contains an Appendix with further information, store that as well. The folder's relative path within the PADRINO dropbox folder is: `Dropbox/PADRINO/Literature/PDF/KINGDOM-NAME`.
       
@@ -44,9 +44,33 @@ The `ipm_id` currently takes the place of an SQL key. It is the only column that
 
 2. If any of the underlying kernels have different functional forms across a discrete grouping variable, then we can't combine them, and they must be split into separate `ipm_id`'s.
 
-    - This may happen when, for example, different sites or years generate such different demographic responses that the authors could not find a way to keep everything in one model. 
+    - This may happen when, for example, different sites or years generate such different demographic responses that the authors could not find a way to keep everything in one model. Other times, the whole point of an analysis is to investigate, say, the differences between linear and non-linear responses to a given effect. Generally, if the authors report that they used different regression models, or different kernels, for the same vital rate, then we'll need to split up  the model into different `ipm_id`'s.^[This does not refer to model selection procedures with multiple candidate models, only the final models used in the IPM!]
+    
 
 Once we've decided how many entries the paper is going to get, then we can begin entering the model. 
+
+
+### Begin digitizing the model
+
+We are ready to begin digitizing the model! Details on each column and each table are provided below. Some details on functional form syntax are given below, but a much longer introduction is available [here](https://github.com/levisc8/Padrino/blob/master/metadata/digitization/pdb_expr_guide.pdf), and an introduction to `ipmr` (which powers all of Padrino) is available [here](https://levisc8.github.io/ipmr/articles/ipmr-introduction.html). 
+
+### Test the model
+
+Testing the model requires testing the output against some expected target value. In order to do this, you'll need to install the `pdbDigitUtils` package with the following snippet: 
+
+```{r eval = FALSE}
+
+if(!requireNamespace("remotes")) {
+  install.packages("remotes")
+}
+
+remotes::install_github("levisc8/pdbDigitUtils")
+
+```
+
+This package contains a couple helpful functions for loading a locally stored development version of the database, and testing outputs from individual models. `read_pdb` loads the Excel version of the database into _R_, and `test_model` lets you test a newly entered model. The package is still under development, so additional functionality can be added as requested - just let me know!
+
+If the newly entered model passes all tests, then it is ready to enter the production version of the database. At this point, I'm still working out who should have access to that, so for now, just send me your version of the database via email (<levisc8@gmail.com>), and I'll make sure it gets updated. 
 
 # The tables
 
@@ -220,7 +244,7 @@ Because of the way that `ipmr` implements models, we only need to digitize sub-k
 
 2. `kernel_id`: The name of the IPM sub-kernel. 
 
-3. `formula`: The formula describing how the vital rates combine to generate a sub-kernel. 
+3. `formula`: The formula describing how the vital rates combine to generate a sub-kernel. This field can make use of `ipmr`'s [suffix syntax](https://levisc8.github.io/ipmr/articles/hierarchical-notation.html), so kernels with identical functional forms don't need to be re-entered to work with different parameter values.
 
 4. `model_family`: One of 4 options:
 
@@ -240,25 +264,99 @@ Because of the way that `ipmr` implements models, we only need to digitize sub-k
 
 1. `ipm_id`: The 6 digit alphanumeric `ipm_id` from the Metadata table.
 
+2. `demographic_parameter`: The demographic process that the vital rate relates to. For example, could be "Survival", "Growth", "Fecundity", or "Clonal".
+
+3. `formula`: The mathematical formula for the vital rate. This field can make use of `ipmr`'s [suffix syntax](https://levisc8.github.io/ipmr/articles/hierarchical-notation.html), so vital rates with identical functional forms don't need to be re-entered to work with different parameter values. These can be split out into different cells if they are too long to safely write in a single cell. Vital rates that include probability distributions (e.g. growth, recruitment) must have their own line, and only take the parameters that the distribution accepts. For example:
+
+    + A growth kernel with a Gaussian distribution parameterized by a linear model must have two lines:
+    
+        + `"mu_g = int_g + slope_g * z_1"`
+        
+        + `"g = Norm(mu_g, sigma_g)"`
+        
+    + The following will not work:
+    
+        + `"g = Norm(int_g + slope_g * z_1, sigma_g)"`
+        
+    + See [Writing kernels, vital rate, and environmental stochasticity expressions guide](https://github.com/levisc8/Padrino/blob/master/metadata/digitization/pdb_expr_guide.pdf) for more details. See Padrino's [Density Function Dictionary](https://github.com/levisc8/Padrino/blob/master/metadata/digitization/dens_fun_dictionary.csv) for each distribution's notation.
+    
+4. `model_type`: Should be either "Evaluated" or "Substituted". Anything that contains a probability density function should be "Substituted", and everything else will be "Evaluated".
+
+5. `kernel_id`: The sub-kernel(s) that use the vital rate expression. If it appears in more than one kernel, you can put the sub-kernel names here separated by a semicolon (e.g. "P; F").
+
 ## ParameterValues
 
 1. `ipm_id`: The 6 digit alphanumeric `ipm_id` from the Metadata table.
+
+2. `demographic_parameter`: The demographic process that the parameter relates to. For example, could be "Survival", "Growth", "Fecundity", or "Clonal". Use "General" for a parameter that appears in multiple sub-kernels.
+
+3. `state_variable`: ignore for now. This column is probably going to get deleted.
+
+4. `parameter_name`: The name of the parameter. This should match the name that appears in `VitalRateExpr$formula` or `IpmKernels$formula`. The exception here is when using the suffix syntax. In this case, the actual value of the suffix must replace the suffix itself, and the parameter value should change from level to level. Consider the following example:
+
+    + In `VitalRateExprformula`, `"mu_g_yr = int_g_yr + slope_g * z_1"`. The `"yr"` suffix can take on values 2008:2010. We would need to enter 3 values in the ParamterValues table: `"int_g_2008`", `"int_g_2009"`, and `"int_g_2010"`.
+
+5. `parameter_value`: The numeric value for the parameter.
 
 ## EnvironmentalVariables
 
 1. `ipm_id`: The 6 digit alphanumeric `ipm_id` from the Metadata table.
 
+2. `env_variable`: Qualitative description of the environmental variable.
+
+3. `vr_expr_name`: The name of the variable as it appears in either the `IpmKernels$formula`, `VitalRateExpr$formula`, or `EnvironmentalVariables$env_function`.
+
+4. `env_range`: Three possibilities:
+
+    + A. Two numbers separated by a semicolon (";") denoting the minimum and maximum values that the environmental variable can take on. Use this when `env_function` is `"sample"`. 
+    
+    + B. A single number corresponding to the value that the parameter can take. Use this when the `env_function` is `NULL`.
+    
+    + C. `NULL`. Use this when `env_function` is something other than `sample` or `NULL`. 
+    
+5. `env_function`: Either the name of a function, or a mathematical expression to compute some value as a function of the parameters listed in this table or in ParameterValues. These will usually be either simple arithmetic  (e.g. `"SE_rain * sqrt(n_env)"`), or a function that samples randomly from some distribution. This table also makes use of the [Density Function Dictionary](https://github.com/levisc8/Padrino/blob/master/metadata/digitization/dens_fun_dictionary.csv), but substitutes `rdist` instead of `ddist`. There are couple additional functions that may appear:
+
+    + `c`: used to generate vectors of parameters. This is most commonly used to create a vector of means to pass to a multivariate normal distribution.
+    
+    + `sig_mat`: used to generate a variance-covariance matrix to pass to a multivariate normal distribution. It takes a set of numbers and converts it to matrix in **ROW MAJOR** order (i.e. `matrix(..., byrow = TRUE)`). 
+    
+6. `model_type`: Should be either "Evaluated", "Parameter", or "Substituted". Anything that contains a probability distribution should be "Substituted". Anything that is not probability distribution or raw parameter value should be "Evaluated" (i.e. `env_range` is `NULL` and `env_function` is something other than a probability distribution). Anything that is a parameter value should be "Parameter" (i.e. `env_range` is a single number, and `env_function` is `NULL`).
+
 ## HierarchTable
 
 1. `ipm_id`: The 6 digit alphanumeric `ipm_id` from the Metadata table.
 
+2. `env_variable`: a qualitative explanation of the suffix. 
+
+3. `vr_expr_name`: the suffix that is used to abbreviate the `env_variable` in the `IpmKernels` formula/kernel_id, `VitalRateExpr` formula/kernel_id.
+
+4. `range`: An expression denoting the different levels that the each suffix can take on. For example, `2008:2011` to denote sampling years, or `c("GNone", "GLow", "GMedium", "GHigh")` to denote grazing levels. 
+
+5. `kernel_id`: the sub-kernel(s) that are modified by the suffix. 
+
+6. `drop_levels`: This is used to denote which levels in a continuous sequence don't actually appear in the model. `ipmr` assumes the suffixes get fully crossed, and so we need to indicate that some levels are missing. For example, say a study sampled multiple sites (`site = c("A", "B", "C")`) in multiple years (`yr = 2010:2014`). However, site A didn't get sampled in 2012 for some reason. We would add `c("A_2012")` to the `drop_levels` column to make sure `ipmr` doesn't try to find parameters/sub-kernels for that level when rebuilding the model. 
+
 ## UncertaintyTable
+
+This table is not yet active, so skip for now.
 
 1. `ipm_id`: The 6 digit alphanumeric `ipm_id` from the Metadata table.
 
 ## TestTargets
 
+This table is not user-facing, but we keep it to validate the models numerically. Basically, we want to make sure that the model, as we've entered it, can reproduce some target metric when re-constructed by `ipmr`. The target is usually $\lambda$, because it's quick and easy to compute, and it's a single number (as opposed to, say, the right eigenvector or $\lambda_s$). 
+
 1. `ipm_id`: The 6 digit alphanumeric `ipm_id` from the Metadata table.
+
+2. `target_name`: Usually `"lambda"` or `"lambda_suffixValue"` (if working with a grouped model). If you find that $\lambda$ values are hard to come by for some publications, but other values may work, let me know and we'll figure out a syntax for supporting those.
+
+3. `target_value`: The numerical value of the target.
+
+4. `precision`: The number of digits that the `target_value` is reported to. Used to make sure floating point/rounding error doesn't cause us to exclude working models from data base builds.
+
+## Summary
+
+You've made it this far! Good work! There are a number of potential pitfalls one may encounter when digitizing. These are described below.
 
 
 # Common issues {#common-probs}
@@ -267,7 +365,7 @@ There are a number of issues can (and probably will) arise when digitizing paper
 
 ## Missing information {#missing-data}
 
-Tragically, the vast majority of papers published do not contain all the information we need to re-build these IPMs. Therefore, we also contact authors to request the missing details. The most common ones are things like the numerical integration rule, the number of meshpoints, and the upper/lower bounds for the state variables used. Functional forms for some vital rates are also pretty common. We have a template for requesting information available in `metadata/digitization/author_contact_pdb.Rmd` (at some point, I'll convert that to a function that automatically generates email text given an `ipm_id` from a `pdb_raw` object. For now, you'll need to edit it manually).
+Tragically, the vast majority of papers published simply do not contain all the information we need to re-build these IPMs. Therefore, we also contact authors to request the missing details. The most common ones are things like the numerical integration rule, the number of meshpoints, and the upper/lower bounds for the state variables used. Functional forms for some vital rates are also pretty common. We have a template for requesting information available in `metadata/digitization/author_contact_pdb.Rmd` (at some point, I'll convert that to a function that automatically generates email text given an `ipm_id` from a `pdb_raw` object. For now, you'll need to edit it manually).
 
 ## Exceptions to our digitization rules {#exceptions-to-model-alterations}
 
@@ -282,4 +380,4 @@ However, the paper may contain the following form (notice the missing $-$ in the
 $$
 s_z = \frac{1}{1 + exp(\alpha_s + \beta_s *z)}
 $$
-In this case, it is appropriate to contact the author to double check what the exact functional form used in the model is. If this turns out to be a typo, then we would update the form in the database. 
+In this case, it is appropriate to contact the author to double check what the exact functional form used in the model is. If this turns out to be a typo, then we would update the functional form in the database to reflect the code used, rather than the text used in the manuscript.
