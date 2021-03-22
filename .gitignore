@@ -12,5 +12,6 @@ manuscript/lit*
 *.html
 *.log
 *.toc
+*.aux
 *.synctex.gz
 metadata/CompadreSchema.jpg
