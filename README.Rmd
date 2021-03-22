@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 ## Padrino
 
-This repo hosts the code used to generate and upload data to the `Padrino` data base. This is more for back end management and to help Padriños (we need a better name for this one) to find their way as they get started. I've created a separate repo called `RPadrino` that will be eventually become the equivalent of `Rcompadre`.
+This repo hosts the code used to generate and upload data to the `Padrino` data base. This is more for back end management and to help Padriños to find their way as they get started. I've created a separate repo called `RPadrino` that will be eventually become the equivalent of `Rcompadre`.
 
 Currently, the data base is an Excel file with 11 tables and consists of ASCII representation of model formulae, the coefficients associated with said models, and the upper/lower bounds of the state variables. We are closing in on a finalized design, at which point it seems likely that this will transition to an SQL instance hosted remotely. Eventually, it would be nice to be able to generate `.rda` objects (a la Compadre) and/or query it directly from R through an API. 
 

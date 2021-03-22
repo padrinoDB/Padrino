@@ -8,9 +8,9 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 
 This repo hosts the code used to generate and upload data to the
 `Padrino` data base. This is more for back end management and to help
-Padriños (we need a better name for this one) to find their way as they
-get started. I’ve created a separate repo called `RPadrino` that will be
-eventually become the equivalent of `Rcompadre`.
+Padriños to find their way as they get started. I’ve created a separate
+repo called `RPadrino` that will be eventually become the equivalent of
+`Rcompadre`.
 
 Currently, the data base is an Excel file with 11 tables and consists of
 ASCII representation of model formulae, the coefficients associated with
