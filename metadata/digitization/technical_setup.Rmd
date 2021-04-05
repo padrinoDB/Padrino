@@ -2,10 +2,7 @@
 title: "PADRINO technical setup"
 author: "Sam Levin"
 date: "Last updated: `r Sys.Date()`"
-output: 
-  pdf_document:
-    toc: true
-    toc_depth: 3
+output: pdf_document
 linkcolor: red
 urlcolor: blue
 ---
