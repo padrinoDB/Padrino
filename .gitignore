@@ -14,4 +14,7 @@ manuscript/lit*
 *.toc
 *.aux
 *.synctex.gz
-metadata/CompadreSchema.jpg
+metadata/CompadreSchema.
+metadata/digitization/*SE.pdf
+metadata/digitization/*rsg.pdf
+metadata/build_artefacts/*
