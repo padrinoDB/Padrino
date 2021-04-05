@@ -1,19 +1,20 @@
-Distribution Name,Abbreviation,R_Function
-Beta,Beta,dbeta
-Binomial,Binom,dbinom
-Bernoulli,Bernoulli,dbinom
-Cauchy,Cauchy,dcauchy
-Chi-Squard,Chi,dchisq
-Exponential,Expo,dexp
-F-Distribution,F_dist,df
-Gamma,Gamma,dgamma
-Geometric,Geom,dgeom
-Hypergeometric,Hgeom,dhyper
-Log-normal,Lognorm,dlnorm
-Multinomial,Multinom,dmultinom
-Negative binomial,Negbin,dnbinom
-Normal,Norm,dnorm
-Poisson,Pois,dpois
-T-Distribution,T_Dist,dt
-Uniform,Unif,dunif
-Weibull,Weib,dweibull
+Distribution Name,Abbreviation,Density Function,RNG Function
+Beta,Beta,dbeta,rbeta
+Binomial,Binom,dbinom,rbinomial
+Bernoulli,Bernoulli,dbinom,rbinom
+Cauchy,Cauchy,dcauchy,rcauchy
+Chi-Squard,Chi,dchisq,rchisq
+Exponential,Expo,dexp,rexp
+F-Distribution,F_dist,df,rf
+Gamma,Gamma,dgamma,rgamma
+Geometric,Geom,dgeom,rgeom
+Hypergeometric,Hgeom,dhyper,rhyper
+Log-normal,Lognorm,dlnorm,rlnorm
+Multinomial,Multinom,dmultinom,rmultinom
+Negative binomial,Negbin,dnbinom,rnbinom
+Normal,Norm,dnorm,rnorm
+Poisson,Pois,dpois,rpois
+T-Distribution,T_Dist,dt,rt
+Uniform,Unif,dunif,runif
+Weibull,Weib,dweibull,rweibull
+Multivariate Normal,MVN,dmvnorm,rmvnorm
