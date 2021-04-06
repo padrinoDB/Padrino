@@ -1,9 +1,0 @@
-^README\.Rmd$
-^README-.*\.png$
-^Literature/*$
-^Padrino\.Rproj$
-^\.Rproj\.user$
-^data-raw$
-^metadata$
-^docs$
-^\.travis\.yml$
