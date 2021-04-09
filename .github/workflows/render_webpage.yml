@@ -19,7 +19,7 @@ jobs:
           Rscript -e "install.packages('bookdown', repos = 'https://cloud.r-project.org/')"
       - name: Render Webpage
         run: |-
-          Rscript -e "bookdown::render_book(input = 'webpage', output_dir = '../docs')"
+          Rscript -e "webpage/build_webpage.R"
       - name: Push webpage
         run: |-
           git config user.name ${{github.actor}}
