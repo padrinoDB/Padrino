@@ -212,7 +212,7 @@ You've made it through the metadata table! Next, we will get into IPM specific d
 
 3. `discrete`: Whether or not the state variable is discretely or continuously distributed.
 
-## DiscreteStates
+### DiscreteStates
 
 Ignore this table for now, I'm fairly certain it will be removed soon.
 
