@@ -1,8 +1,6 @@
 ---
 title: "About"
-output: 
-  bookdown::gitbook:
-   output_dir: "docs" 
+output: bookdown::gitbook
 ---
 
 # PADRINO IPM Database
