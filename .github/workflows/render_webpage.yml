@@ -2,8 +2,10 @@ on:
   push:
     branches:
       - gh2
+      - main
   pull_request:
     branches:
+      - main
       - gh2
 
 name: renderbook
@@ -19,7 +21,7 @@ jobs:
       - name: Install rmarkdown
         run: Rscript -e 'install.packages(c("rmarkdown","bookdown"))'
       - name: Render Book
-        run: Rscript -e 'bookdown::render_book("index.Rmd")'
+        run: Rscript -e 'bookdown::render_book(input = list.files(pattern = "*.Rmd"))'
       - uses: actions/upload-artifact@v1
         with:
           name: _book
