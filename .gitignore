@@ -9,7 +9,6 @@ metadata/digitization/*.png
 *.docx
 metadata/*-1c*
 manuscript/lit*
-*.html
 *.log
 *.toc
 *.aux
@@ -18,4 +17,5 @@ metadata/CompadreSchema.
 metadata/digitization/*SE.pdf
 metadata/digitization/*rsg.pdf
 metadata/build_artefacts/*
+metadata/digitization/*.html
 web_build_fails/*
