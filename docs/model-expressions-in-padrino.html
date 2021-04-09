@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Model expressions in PADRINO | About</title>
-  <meta name="description" content="Chapter 3 Model expressions in PADRINO | About" />
+  <title>3 Model expressions in PADRINO | padrino-webpage.utf8</title>
+  <meta name="description" content="" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Model expressions in PADRINO | About" />
+  <meta property="og:title" content="3 Model expressions in PADRINO | padrino-webpage.utf8" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Model expressions in PADRINO | About" />
+  <meta name="twitter:title" content="3 Model expressions in PADRINO | padrino-webpage.utf8" />
   
   
   
@@ -127,7 +127,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> PADRINO IPM Database</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a></li>
 <li class="chapter" data-level="2" data-path="digitization-guide.html"><a href="digitization-guide.html"><i class="fa fa-check"></i><b>2</b> Digitization Guide</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="digitization-guide.html"><a href="digitization-guide.html#required-tools"><i class="fa fa-check"></i><b>2.1</b> Required tools</a>
@@ -217,7 +217,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">About</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
           </h1>
         </div>
 
@@ -226,7 +226,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="model-expressions-in-padrino" class="section level1" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Model expressions in PADRINO</h1>
+<h1><span class="header-section-number">3</span> Model expressions in PADRINO</h1>
 <p>PADRINO aims to store the mathematical forms of IPMs as text strings. This means that we need to be able to write out the IPM on paper/<span class="math inline">\(LaTeX\)</span>/somewhere before we can really know how to enter it. It is important to have a basic understanding of how to write out functional forms for the mean response of a GLM. If you are not already familiar with these, please let speak to either Rob or Sam ASAP so we can get you up to speed!</p>
 <p>Models stored in PADRINO are rebuilt using <a href="https://github.com/levisc8/ipmr">ipmr</a>. It will also be helpful to read that project’s <a href="https://levisc8.github.io/ipmr/">homepage</a>, as well as the first two articles on simple and general IPMs. These readings will give you a much better understanding of how this package handles different vital rate expressions and kernel formulae. Since PADRINO depends on this package to rebuild models, the syntax it uses will look very similar to what should go into PADRINO (with a couple exceptions, namely when digitizing probability density functions).</p>
 <p>Finally, <code>ipmr</code> is designed to generate all model outputs via iteration, rather than generating large kernels and then using linear algebra methods to derive the relevant metrics. Therefore, we don’t actually need to digitize the <span class="math inline">\(K(z&#39;,z)\)</span> iteration kernel, only the sub-kernels that comprise the model (e.g. <span class="math inline">\(P(z&#39;,z), F(z&#39;,z), C(z&#39;,z)\)</span>). However, the notation in many publications reports the iteration kernel, rather than the model iteration. Therefore, it will sometimes be necessary to re-write the published model in terms of the population state at time <span class="math inline">\(t\)</span> and <span class="math inline">\(t+1\)</span>, rather than simply <span class="math inline">\(K(z&#39;,z) = ...\)</span>. There will be an example of this below as well.</p>
