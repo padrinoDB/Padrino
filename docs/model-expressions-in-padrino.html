@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Model expressions in PADRINO | About</title>
+  <meta name="description" content="Chapter 3 Model expressions in PADRINO | About" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Model expressions in PADRINO | About" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Model expressions in PADRINO | About" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="digitization-guide.html"/>
+
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> PADRINO IPM Database</a></li>
+<li class="chapter" data-level="2" data-path="digitization-guide.html"><a href="digitization-guide.html"><i class="fa fa-check"></i><b>2</b> Digitization Guide</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="digitization-guide.html"><a href="digitization-guide.html#required-tools"><i class="fa fa-check"></i><b>2.1</b> Required tools</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="digitization-guide.html"><a href="digitization-guide.html#initial-setup"><i class="fa fa-check"></i><b>2.1.1</b> Initial setup</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="digitization-guide.html"><a href="digitization-guide.html#steps-to-digitizing"><i class="fa fa-check"></i><b>2.2</b> Steps to digitizing</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="digitization-guide.html"><a href="digitization-guide.html#identify-whether-a-publication-contains-an-ipm"><i class="fa fa-check"></i><b>2.2.1</b> Identify whether a publication contains an IPM</a></li>
+<li class="chapter" data-level="2.2.2" data-path="digitization-guide.html"><a href="digitization-guide.html#determine-the-number-of-ipm_ids-in-the-paper"><i class="fa fa-check"></i><b>2.2.2</b> Determine the number of <code>ipm_id</code>’s in the paper</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="digitization-guide.html"><a href="digitization-guide.html#begin-digitizing-the-model"><i class="fa fa-check"></i><b>2.3</b> Begin digitizing the model</a></li>
+<li class="chapter" data-level="2.4" data-path="digitization-guide.html"><a href="digitization-guide.html#test-the-model"><i class="fa fa-check"></i><b>2.4</b> Test the model</a></li>
+<li class="chapter" data-level="2.5" data-path="digitization-guide.html"><a href="digitization-guide.html#the-tables"><i class="fa fa-check"></i><b>2.5</b> The tables</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="digitization-guide.html"><a href="digitization-guide.html#metadata"><i class="fa fa-check"></i><b>2.5.1</b> Metadata</a></li>
+<li class="chapter" data-level="2.5.2" data-path="digitization-guide.html"><a href="digitization-guide.html#statevariables"><i class="fa fa-check"></i><b>2.5.2</b> StateVariables</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="digitization-guide.html"><a href="digitization-guide.html#discretestates"><i class="fa fa-check"></i><b>2.6</b> DiscreteStates</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="digitization-guide.html"><a href="digitization-guide.html#continuousdomains"><i class="fa fa-check"></i><b>2.6.1</b> ContinuousDomains</a></li>
+<li class="chapter" data-level="2.6.2" data-path="digitization-guide.html"><a href="digitization-guide.html#integrationrules"><i class="fa fa-check"></i><b>2.6.2</b> IntegrationRules</a></li>
+<li class="chapter" data-level="2.6.3" data-path="digitization-guide.html"><a href="digitization-guide.html#statevectors"><i class="fa fa-check"></i><b>2.6.3</b> StateVectors</a></li>
+<li class="chapter" data-level="2.6.4" data-path="digitization-guide.html"><a href="digitization-guide.html#ipmkernels"><i class="fa fa-check"></i><b>2.6.4</b> IpmKernels</a></li>
+<li class="chapter" data-level="2.6.5" data-path="digitization-guide.html"><a href="digitization-guide.html#vitalrateexpr"><i class="fa fa-check"></i><b>2.6.5</b> VitalRateExpr</a></li>
+<li class="chapter" data-level="2.6.6" data-path="digitization-guide.html"><a href="digitization-guide.html#parametervalues"><i class="fa fa-check"></i><b>2.6.6</b> ParameterValues</a></li>
+<li class="chapter" data-level="2.6.7" data-path="digitization-guide.html"><a href="digitization-guide.html#environmentalvariables"><i class="fa fa-check"></i><b>2.6.7</b> EnvironmentalVariables</a></li>
+<li class="chapter" data-level="2.6.8" data-path="digitization-guide.html"><a href="digitization-guide.html#hierarchtable"><i class="fa fa-check"></i><b>2.6.8</b> HierarchTable</a></li>
+<li class="chapter" data-level="2.6.9" data-path="digitization-guide.html"><a href="digitization-guide.html#uncertaintytable"><i class="fa fa-check"></i><b>2.6.9</b> UncertaintyTable</a></li>
+<li class="chapter" data-level="2.6.10" data-path="digitization-guide.html"><a href="digitization-guide.html#testtargets"><i class="fa fa-check"></i><b>2.6.10</b> TestTargets</a></li>
+<li class="chapter" data-level="2.6.11" data-path="digitization-guide.html"><a href="digitization-guide.html#summary"><i class="fa fa-check"></i><b>2.6.11</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="digitization-guide.html"><a href="digitization-guide.html#common-probs"><i class="fa fa-check"></i><b>2.7</b> Common issues</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="digitization-guide.html"><a href="digitization-guide.html#missing-data"><i class="fa fa-check"></i><b>2.7.1</b> Missing information</a></li>
+<li class="chapter" data-level="2.7.2" data-path="digitization-guide.html"><a href="digitization-guide.html#exceptions-to-model-alterations"><i class="fa fa-check"></i><b>2.7.2</b> Exceptions to our digitization rules</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html"><i class="fa fa-check"></i><b>3</b> Model expressions in PADRINO</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#simple-models"><i class="fa fa-check"></i><b>3.1</b> Simple models</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#an-example-model---summary"><i class="fa fa-check"></i><b>3.1.1</b> An example model - Summary</a></li>
+<li class="chapter" data-level="3.1.2" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#how-to-digitize-this"><i class="fa fa-check"></i><b>3.1.2</b> How to digitize this?</a></li>
+<li class="chapter" data-level="3.1.3" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#sub-kernels"><i class="fa fa-check"></i><b>3.1.3</b> Sub-kernels</a></li>
+<li class="chapter" data-level="3.1.4" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#vital-rate-expressions"><i class="fa fa-check"></i><b>3.1.4</b> Vital rate expressions</a></li>
+<li class="chapter" data-level="3.1.5" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#survival"><i class="fa fa-check"></i><b>3.1.5</b> Survival</a></li>
+<li class="chapter" data-level="3.1.6" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#growth"><i class="fa fa-check"></i><b>3.1.6</b> Growth</a></li>
+<li class="chapter" data-level="3.1.7" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#seed-production"><i class="fa fa-check"></i><b>3.1.7</b> Seed production</a></li>
+<li class="chapter" data-level="3.1.8" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#probability-of-flowering-and-recruit-size-distributions."><i class="fa fa-check"></i><b>3.1.8</b> Probability of flowering and recruit size distributions.</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#gen-mods"><i class="fa fa-check"></i><b>3.2</b> General models</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#where-to-begin"><i class="fa fa-check"></i><b>3.2.1</b> Where to begin</a></li>
+<li class="chapter" data-level="3.2.2" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#digitizing-the-kernel-formulae"><i class="fa fa-check"></i><b>3.2.2</b> Digitizing the kernel formulae</a></li>
+<li class="chapter" data-level="3.2.3" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#vr-gen-mods"><i class="fa fa-check"></i><b>3.2.3</b> Digitizing the Vital rate expressions</a></li>
+<li class="chapter" data-level="3.2.4" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#survival-1"><i class="fa fa-check"></i><b>3.2.4</b> Survival</a></li>
+<li class="chapter" data-level="3.2.5" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#growth-1"><i class="fa fa-check"></i><b>3.2.5</b> Growth</a></li>
+<li class="chapter" data-level="3.2.6" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#seed-production-1"><i class="fa fa-check"></i><b>3.2.6</b> Seed production</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#suff-not"><i class="fa fa-check"></i><b>3.3</b> Suffix syntax</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#re-writing-the-model-iteration"><i class="fa fa-check"></i><b>3.3.1</b> Re-writing the model iteration</a></li>
+<li class="chapter" data-level="3.3.2" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#time-varying-vital-rate-expressions"><i class="fa fa-check"></i><b>3.3.2</b> Time-varying vital rate expressions</a></li>
+<li class="chapter" data-level="3.3.3" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#survival-2"><i class="fa fa-check"></i><b>3.3.3</b> Survival</a></li>
+<li class="chapter" data-level="3.3.4" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#growth-2"><i class="fa fa-check"></i><b>3.3.4</b> Growth</a></li>
+<li class="chapter" data-level="3.3.5" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#the-rest-of-the-vital-rates"><i class="fa fa-check"></i><b>3.3.5</b> The rest of the vital rates</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#parameter-resampled-models"><i class="fa fa-check"></i><b>3.4</b> Parameter resampled models</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#model-iterations"><i class="fa fa-check"></i><b>3.4.1</b> Model iterations</a></li>
+<li class="chapter" data-level="3.4.2" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#vital-rate-expressions-1"><i class="fa fa-check"></i><b>3.4.2</b> Vital rate expressions</a></li>
+<li class="chapter" data-level="3.4.3" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#environmentalvariables-expressions"><i class="fa fa-check"></i><b>3.4.3</b> EnvironmentalVariables expressions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#age-times-size-models"><i class="fa fa-check"></i><b>3.5</b> Age <span class="math inline">\(\times\)</span> size models</a></li>
+<li class="chapter" data-level="3.6" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#exercise-answers"><i class="fa fa-check"></i><b>3.6</b> Answers to exercises</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#simple-model-prflowering-and-recruit-size"><i class="fa fa-check"></i><b>3.6.1</b> Simple model Pr(flowering) and recruit size</a></li>
+<li class="chapter" data-level="3.6.2" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#general-ipm-kernel-formulae"><i class="fa fa-check"></i><b>3.6.2</b> General IPM kernel formulae</a></li>
+<li class="chapter" data-level="3.6.3" data-path="model-expressions-in-padrino.html"><a href="model-expressions-in-padrino.html#suff-answers"><i class="fa fa-check"></i><b>3.6.3</b> Suffix syntax kernel formulae</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">About</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="model-expressions-in-padrino" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Model expressions in PADRINO</h1>
+<p>PADRINO aims to store the mathematical forms of IPMs as text strings. This means that we need to be able to write out the IPM on paper/<span class="math inline">\(LaTeX\)</span>/somewhere before we can really know how to enter it. It is important to have a basic understanding of how to write out functional forms for the mean response of a GLM. If you are not already familiar with these, please let speak to either Rob or Sam ASAP so we can get you up to speed!</p>
+<p>Models stored in PADRINO are rebuilt using <a href="https://github.com/levisc8/ipmr">ipmr</a>. It will also be helpful to read that project’s <a href="https://levisc8.github.io/ipmr/">homepage</a>, as well as the first two articles on simple and general IPMs. These readings will give you a much better understanding of how this package handles different vital rate expressions and kernel formulae. Since PADRINO depends on this package to rebuild models, the syntax it uses will look very similar to what should go into PADRINO (with a couple exceptions, namely when digitizing probability density functions).</p>
+<p>Finally, <code>ipmr</code> is designed to generate all model outputs via iteration, rather than generating large kernels and then using linear algebra methods to derive the relevant metrics. Therefore, we don’t actually need to digitize the <span class="math inline">\(K(z&#39;,z)\)</span> iteration kernel, only the sub-kernels that comprise the model (e.g. <span class="math inline">\(P(z&#39;,z), F(z&#39;,z), C(z&#39;,z)\)</span>). However, the notation in many publications reports the iteration kernel, rather than the model iteration. Therefore, it will sometimes be necessary to re-write the published model in terms of the population state at time <span class="math inline">\(t\)</span> and <span class="math inline">\(t+1\)</span>, rather than simply <span class="math inline">\(K(z&#39;,z) = ...\)</span>. There will be an example of this below as well.</p>
+<p>We’ll start with simple models, and build complexity as we go through. Note that for the sake of realism, we’re going to use examples where the notation used in the papers is not consistent with how we’d write them in PADRINO (or perhaps even with how the rest of the “foundational literature” deals with these models). This will be prominent in the first three examples used here.</p>
+<div id="simple-models" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Simple models</h2>
+<p>A simple IPM is an IPM that makes use of 1, and only 1, continuous state variable. It does not include any additional discrete states. These were more common in the early literature, though now more demanding analyses have required authors to create more complicated models. Models that use more than 1 continuous state, and/or include discrete states, are general models, and are detailed below.</p>
+<div id="an-example-model---summary" class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> An example model - Summary</h3>
+<p>Below is a shortened description of a simple IPM for <em>Lonicera maackii</em> from <a href="https://esajournals.onlinelibrary.wiley.com/action/downloadSupplement?doi=10.1002%2Fecy.2681&amp;file=ecy2681-sup-0002-MetadataS1.pdf">Levin et al. 2019</a>.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> <span class="math inline">\(x,y\)</span> correspond to plant size at time <span class="math inline">\(t\)</span> and <span class="math inline">\(t+1\)</span>, respectively. We will use <code>size_1</code> and <code>size_2</code> in place of <span class="math inline">\(x,y\)</span> when writing out the model in PADRINO format (see below).</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(s(x)\)</span> (survival of plants) was estimated using a Bayesian logistic regression with both linear and quadratic fixed effects.</p></li>
+<li><p><span class="math inline">\(g(y,x)\)</span> (growth of surviving plants) was estimated using a linear regression of <code>y ~ x</code>. We also fit GAMs to our data to see if they produced better predictions. GAMs produced lower AIC scores, but visual inspection of the data for the competitor removal treatment showed that the GAM overfit the data. Thus, to ensure our control and competitor removal treatment IPMs were comparable, we modeled growth using the the linear model. We correct for eviction by adding evicted individuals into the smallest or largest bins after generating the growth kernel.</p></li>
+<li><p><span class="math inline">\(f_p(x)\)</span> (probability of becoming reproductive) was estimated using a logistic regression of reproductive status on size. We used a logit link and a quasi-binomial error structure to account for overdispersion in our data.</p></li>
+<li><p><span class="math inline">\(f_s(x)\)</span> (fruits per reproductive plant) was estimated using a generalized linear model with a log link and a Poisson error structure.</p></li>
+<li><p><span class="math inline">\(f_f\)</span> (seeds per fruit) is a constant based on sampling fruits from 12 individuals.</p></li>
+<li><p><span class="math inline">\(E_p\)</span> (seedling establishment probability) was taken from a separate experiment in our study that measured new recruits per estimated seed production per plot (Guthrie et al. 2016).</p></li>
+<li><p><span class="math inline">\(f_d(y)\)</span> (recruit size distribution) was estimated as a Gaussian distribution with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span> from the 17 new recruits that we found in July of 2013.</p></li>
+<li><p><span class="math inline">\(L,U\)</span> are constants corresponding to the lower and upper bounds of integration. <span class="math inline">\(L\)</span> was defined as the smallest observed size <span class="math inline">\(\times\)</span> 0.9, and U was defined as the largest observed size <span class="math inline">\(\times\)</span> 1.1. We used 500 meshpoints for integration.</p></li>
+<li><p><span class="math inline">\(n(x,t)\)</span> is the relative frequency of individuals of size <span class="math inline">\(x\)</span> at time <span class="math inline">\(t\)</span>.</p></li>
+</ol>
+<p>The kernels take the following form:</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(n(y, t+1) = \int_L^U[P(y,x) + F(y,x)]n(x,t)dx\)</span></p></li>
+<li><p><span class="math inline">\(P(y,x) = s(x) * g(y,x)\)</span></p></li>
+<li><p><span class="math inline">\(F(y,x) = E_p * f_p(x) * f_s(x) * f_d(y)\)</span></p></li>
+</ol>
+<p>The vital rates take the following form:<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(Logit(s(x)) = \alpha_s + \beta_{s,1} * x + \beta_{s,2} * x^2\)</span></p>
+<ul>
+<li><span class="math inline">\(\alpha_s\)</span> = -2.831, <span class="math inline">\(\beta_{s,1}\)</span> = 0.4035, <span class="math inline">\(\beta_{s,2}\)</span> =
+-0.000421</li>
+</ul></li>
+<li><p><span class="math inline">\(g(y,x) = \alpha_g + \beta_g * x\)</span></p>
+<ul>
+<li><span class="math inline">\(\alpha_g\)</span> = 16.884, <span class="math inline">\(\beta_g\)</span> = 0.9972, <span class="math inline">\(sd(g(y,x)) = 32.74774\)</span></li>
+</ul></li>
+<li><p><span class="math inline">\(Logit(f_p(x)) = \alpha_{f_p} + \beta_{f_p} * x\)</span></p>
+<ul>
+<li><span class="math inline">\(\alpha_{f_p}\)</span> = -10.4478, <span class="math inline">\(\beta_{f_p}\)</span> = 0.0485</li>
+</ul></li>
+<li><p><span class="math inline">\(Log(f_s(x)) = \alpha_{f_s} + \beta_{f_s} * x\)</span></p>
+<ul>
+<li><span class="math inline">\(\alpha_{f_s}\)</span> = 3.391, <span class="math inline">\(\beta_{f_s}\)</span> = 0.0105</li>
+</ul></li>
+<li><p><span class="math inline">\(f_d(y) = Norm(\mu_{f_d} = 3.118, \sigma_{f_d} = 1.215)\)</span></p></li>
+</ol>
+</div>
+<div id="how-to-digitize-this" class="section level3" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> How to digitize this?</h3>
+<p>Now that we’ve written out the model based on the Appendix’s description of how it works, we need to convert this to something PADRINO and <code>ipmr</code> can work with. I’ve found that it’s usually easiest to start with the sub-kernels and work “top-down”, though you are free to start with parameters and work “bottom-up”. It’s up to you!</p>
+</div>
+<div id="sub-kernels" class="section level3" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Sub-kernels</h3>
+<p>We’ll start with the IPM kernels. PADRINO basically uses the mathematical notation from above, but removes the <span class="math inline">\((x,y)\)</span> portion. So the <span class="math inline">\(P(x,y) = s(x) * g(y,x)\)</span> becomes <code>P = s * g</code>. Similarly, <span class="math inline">\(F(y,x) = ...\)</span> becomes <code>F = e_p * f_p * f_s * f_d</code>. We do not need to write out the model iteration from Equation 1. <code>ipmr</code> infers the correct form of that, provided we use the right states in <code>domain_start</code> and <code>domain_end</code> columns for each kernel formula.</p>
+<p>Another important thing to note is that is that it really doesn’t matter what you call the kernels, vital rates, and parameters. What matters is that their names match across the various tables in the database. Thus, if an author gives some vital rate a ludicrously long name, feel free to shorten it.<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a> The examples below use the same names as the notation above for kernels, vital rates, and parameters, but this is not required!</p>
+<p>Finally, because of some design decisions early in the development process, <strong>you must always separate the left and right hand side of an <code>=</code> with a space.</strong> For example, the <code>P = s * g</code> from above will not work if it is entered as <code>P=s*g</code>. On the bright side, it will make the formulae that you enter easier to read!<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a></p>
+</div>
+<div id="vital-rate-expressions" class="section level3" number="3.1.4">
+<h3><span class="header-section-number">3.1.4</span> Vital rate expressions</h3>
+<p>PADRINO uses a similar notation as above, except now there are two new elements:</p>
+<ol style="list-style-type: decimal">
+<li><p>We will move all the link functions on the left hand side of each equation to the right hand side, and use the inverse link function instead. Table 1 below contains translations of some common link functions and their inverses.<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a></p></li>
+<li><p>We only remove the <span class="math inline">\(x,y\)</span> from the left hand side of the equation.</p></li>
+</ol>
+</div>
+<div id="survival" class="section level3" number="3.1.5">
+<h3><span class="header-section-number">3.1.5</span> Survival</h3>
+<p>The survival function <span class="math inline">\(Logit(s(x)) = \alpha_s + \beta_{s,1} * x + \beta_{s,2} * x^2\)</span> becomes:</p>
+<ul>
+<li><code>s = 1 / (1 + exp(-(alpha_s + beta_s_1 * size_1 + beta_s_2 * size_1 ^ 2)))</code></li>
+</ul>
+<p>The <code>1 / (1 + exp(- (...)))</code> is the inverse logit transformation. This generates probabilities of survival, which is what we want for the IPM. Additionally, notice how the <span class="math inline">\(x\)</span>’s were replaced by <code>size_1</code>’s on the right hand side of the equation. Next, we’ll deal with the growth kernel.</p>
+<p>NB: Many more recent papers will have more complicated forms for the linear predictor which include terms for things like climate or competition. If the linear predictor gets really long, we can actually split it out into its own line in PADRINO like so:</p>
+<p>-<code>s_lin_p = alpha_s + beta_s_1 * size_1 + beta_s_2 * size_1 ^ 2</code></p>
+<p>-<code>s = 1 / (1 + exp(- s_lin_p))</code></p>
+</div>
+<div id="growth" class="section level3" number="3.1.6">
+<h3><span class="header-section-number">3.1.6</span> Growth</h3>
+<p>In this case, the growth kernel uses a notation that will not work with PADRINO. However, the written description of the model indicates this is a linear regression with a Gaussian error structure. We can re-write this model using a more conventional notation. We can do this like so:</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(g(y,x) = f_g(y, \mu_g, \sigma_g)\)</span> Where <span class="math inline">\(f_g\)</span> denotes a Gaussian
+probability density function.</p></li>
+<li><p><span class="math inline">\(\mu_g = \alpha_g + \beta_g * x\)</span></p></li>
+</ol>
+<p>This format will correspond more closely to how we enter it PADRINO. Note that PADRINO does not use the <em>R</em> functions like <code>dnorm</code>, <code>dgamma</code>, etc. Rather, it uses its own shorthand that roughly follows the accepted statistical abbreviations for each probability function family (with some exceptions to avoid name conflicts in <em>R</em>/other languages). A table that contains the PADRINO format is <a href="https://github.com/levisc8/PADRINO/blob/main/metadata/digitization/dens_fun_dictionary.csv">here</a>. PADRINO uses the “Abbreviation” column of this table. The PADRINO format for (1) and (2) become:</p>
+<ul>
+<li><p><code>g = Norm(mu_g, sigma_g)</code></p></li>
+<li><p><code>mu_g = alpha_g + beta_g * size_1</code></p></li>
+</ul>
+<p>Notice that we omit the <span class="math inline">\(y\)</span> from the right hand side of (1). PADRINO will infer the correct state variable based on the kernel it appears in. Additionally, in this particular case, their is no link function (or, rather, it’s an identity link function which we can ignore), so we don’t need to wrap the right hand side of (2) in any thing.</p>
+</div>
+<div id="seed-production" class="section level3" number="3.1.7">
+<h3><span class="header-section-number">3.1.7</span> Seed production</h3>
+<p>The next vital rate we’ll go to is seed production: <span class="math inline">\(Log(f_s(x)) = \alpha_{f_s} + \beta_{f_s} * x\)</span>. Much like the survival model, we’ll need to use an inverse link function on the right hand side. Unlike the survival model, we don’t need the inverse logit, but rather, the exponential function (the inverse of the <span class="math inline">\(Log\)</span>).</p>
+<ul>
+<li><code>f_s = exp(alpha_f_s + beta_f_s * size_1)</code></li>
+</ul>
+</div>
+<div id="probability-of-flowering-and-recruit-size-distributions." class="section level3" number="3.1.8">
+<h3><span class="header-section-number">3.1.8</span> Probability of flowering and recruit size distributions.</h3>
+<p>These are similar to survival probability and the growth distributions. In the spirit of learning, try writing these down on your own and then checking them against the answers given down <a href="model-expressions-in-padrino.html#exercise-answers">here</a>.</p>
+</div>
+</div>
+<div id="gen-mods" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> General models</h2>
+<p>Above, we dealt with a simple model. It was a simple model because it used only 1 state variable, and had no discrete states. The vast majority of newly published IPMs are not simple models. Complex lifecycles often cannot be described by a single trait value. General IPMs allow for multiple continuous traits, and/or multiple discrete states. In PADRINO, little changes with respect to vital rate expressions and parameter values. However, the IPM kernels table will have more entries per model now, as we need more sub-kernels to describe the extra transitions.</p>
+<p>Examples of discrete states are things like a seed bank for a plant, or the number of eggs produced by an insect that do not hatch immediately. These are discrete because they do not have any continuous trait that describes their population dynamics, only a single number indicating how many of them there are.</p>
+<p>Some IPMs may have multiple continuous state variables. For example, a tree species may use height to describe dynamics of a seedlings below a certain size threshold, and then DBH (diameter at breast height) to describe the dynamics of larger trees.</p>
+<p>Below, we’ll go through another example from Baer &amp; Maron (2018). We’ll look at a single transition year from a single population first, and then use the rest of the data in the next example to demonstrate the suffix syntax that PADRINO uses. You can find the main text <a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/1365-2745.13086">here</a> and the appendix containing the necessary information <a href="https://besjournals.onlinelibrary.wiley.com/action/downloadSupplement?doi=10.1111%2F1365-2745.13086&amp;file=jec13086-sup-0001-AppendixS1.docx">here</a>.</p>
+<div id="where-to-begin" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Where to begin</h3>
+<p>Assuming we’ve already entered most of the Metadata table, the first step is figuring out where to get the rest of it. Browsing through the paper, it looks like section 2.4 is likely to contain the information on the actual IPM. The end of the first paragraph contains key information on the number of kernels:</p>
+<blockquote>
+<p>“Our IPMs contained a continuous stage describing size based vital
+rates of juvenile and reproductive adult plants and two discrete
+stages in which constants described the vital rates of seedlings
+(whose size was not recorded) and seeds within the seed bank. The
+continuous stage of our IPMs was structured according to
+logtransformed basal rosette area (hereafter, size) and integrated
+across a range of sizes from the minimum size to 1.2 times the maximum
+size of any individual recorded in a population throughout all years
+of the study.”</p>
+</blockquote>
+<p>Ok, so we have 3 different states that we’ll need to track: size of non-seedling plants, the number of seedlings, and the number of seeds in the seedbank. Next, we need to find out how they move around within and between those states. It becomes apparent from reading on that we won’t find that information in the main text. However, the first sentence in the second column on page 5 indicates that we might be able to find it in Appendix S1. Let’s open that up!</p>
+</div>
+<div id="digitizing-the-kernel-formulae" class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Digitizing the kernel formulae</h3>
+<p>Let’s start with the seed bank terms. They’ve written it out as:</p>
+<p><span class="math display">\[
+B_{t+1} = B_t * p_{sbanksurv} * (1-p_{sbankgerm}) + \int_L^Up_{flower}(x)*f_{seeds}(x) * (1-p_{germ})n_t(x)dx
+\]</span></p>
+<p>This expression is comprised of two sub-kernels, which we can recognize by the <code>+</code> that occurs about halfway through, and the fact that one part is multiplied by a discrete state (<span class="math inline">\(B_t\)</span>) and another part is multiplied by a continuous state (<span class="math inline">\(n_t(x)\)</span>). Thus, we need to split this single expression into two lines in the <code>IpmKernels</code> table. Bearing in mind that we do not include the actual state in these expressions (i.e. <span class="math inline">\(B_t\)</span> and <span class="math inline">\(n_t(x)\)</span>), these will take the form (column names now separated by commas):</p>
+<ol style="list-style-type: decimal">
+<li><p>formula = <code>SbStay = sb_surv * (1 - sb_germ)</code>, model_family =
+<code>DD</code>, domain_start = <code>seedbank</code>, domain_end = <code>seedbank</code></p></li>
+<li><p><code>SbGo = p_fl * n_seeds * (1 - p_germ) * d_size</code>, model_family =
+<code>CD</code>, domain_start = <code>size</code>, domain_end = <code>seedbank</code></p></li>
+</ol>
+<p>One critical aspect to note is that in this case, we’ve added the <code>d_size</code> variable to expression 2. <code>ipmr</code> requires us to specify the integration for general IPMs, whereas it will automatically infer it for simple ones. In all cases, if you encounter an integral, this <code>d_size</code> will correspond to the <span class="math inline">\(dx\)</span> in the integral. We just need to make sure we choose the state variable correctly.</p>
+<p>Additionally, we now have different values for model_family, domain_start, and domain_end.</p>
+<p>We can now move onto the second expression in the IPM iteration:</p>
+<p><span class="math display">\[
+S_{t+1} = p_{sbankgerm} * B_t + \int_L^U p_{flower}(x) * f_{seeds}(x) * p_{germ} n_t(x)dx
+\]</span></p>
+<p>Again, we have two sub-kernels defined in this portion of the iteration. The first moves seeds out of the seedbank to create seedlings, and the other creates seedlings from adult plants that are reproductive. We write them as follows:</p>
+<ol style="list-style-type: decimal">
+<li><p>formula = <code>SbSdl = p_sb_germ</code>, model_family = <code>DD</code>, domain_start = <code>seedbank</code>, domain_end = <code>seedling</code></p></li>
+<li><p>formula = <code>goSdl = p_fl * n_seeds * p_germ * d_size</code>, model_family = <code>CD</code>, domain_start = <code>size</code>, domain_end = <code>seedling</code></p></li>
+</ol>
+<p>The final part of the IPM iteration generates plants with some size distribution. It has the following form:</p>
+<p><span class="math display">\[
+K = p_{seedlingsurv} * f_{recrsize}(x&#39;) * S_t + \int_L^Us(x) * g(x&#39;|x)n_t(x)dx
+\]</span></p>
+<p>Try writing out the formula, model_family, domain_start, and domain_end on your own. You can check your answers <a href="model-expressions-in-padrino.html#exercise-answers">here</a>. This one will be tricky because the notation in this particular equation tells you what the iteration kernel <span class="math inline">\(K\)</span> looks like for the continuously distributed variable, size. We need to re-write it so the left hand side is the continuous portion of the population state at <span class="math inline">\(t+1\)</span> (i.e. <span class="math inline">\(n(x&#39;,t+1) = ...\)</span>)?. Hint: the function for new recruit sizes (<span class="math inline">\(f_{recrsize}(x&#39;)\)</span>) is a probability density function.</p>
+</div>
+<div id="vr-gen-mods" class="section level3" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Digitizing the Vital rate expressions</h3>
+<p>Most of the vital rate expressions are only described qualitatively, rather than explicitly written out. Additionally, they are mostly written out in the main text, specifically in the second and third paragraphs of section 2.4. We’ll start by parsing the following section:</p>
+<blockquote>
+<p>“Within the continuous portion of the IPMs, logistic regressions with
+a logit link described size‐based binomial survival probability.
+Linear models described size‐based growth rates and variance around
+this relationship. Log‐transformation of plant size eliminated the
+need for a size‐based estimate of the variance around the size–
+growth relationship for most models, as verified by a Breusch–Pagan
+test performed on each model for this relationship (bptest, lmtest
+package, Zeileis &amp; Hothorn, 2002). In these cases, variance was
+described according to the residual standard deviation. For
+size‐growth models that remained heteroscedastic following
+log‐transformation of plant size, we described variance in growth as
+an exponential function of log‐transformed plant size when
+constructing growth models:
+<span class="math inline">\(\sigma(size) = \sqrt{\sigma^{2[2 * constant * size]}}\)</span>, where the
+constant and <span class="math inline">\(\sigma^2\)</span> were calculated within IPMpack… We compared
+the fit of models containing linear and quadratic terms for each vital
+rate using their corrected Aikake Index Criterion scores (AICc;
+quasi‐AICc—QAICc—for models of overdispersed per capita seed
+production). If <span class="math inline">\(\Delta(Q)AICc &gt; 2\)</span>, we selected the model with the
+lower score unless the model was graphically determined to be
+biologically unrealistic (Supporting Information Appendix S1). In
+cases where <span class="math inline">\(\Delta(Q)AICc \leq 2\)</span>, we constructed models with
+averaged parameters weighted by (Q)AICc score (<code>model.avg()</code>; MuMIn
+package; Barton, 2016).”</p>
+</blockquote>
+</div>
+<div id="survival-1" class="section level3" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> Survival</h3>
+<p>It helps to split out the different vital rates when working out the correct functional form. We’ll start with survival, which we’ll denote <span class="math inline">\(s(x)\)</span> to follow their notation in the IPM kernels. They first specify that they used logistic regression with a logit link, so we know that the left hand side of the vital rate will look like this:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(Logit(s(x)) = ...\)</span></li>
+</ol>
+<p>Next, we need to work out what the linear predictor looks like. In the latter half of the quoted section above, the authors state that they compared models that included linear and quadratic fits, and then possibly averaged over the predictions if the two candidate models were not sufficiently different in their predictive ability. However, it will be more general of an approach to always included the quadratic term in the vital rate expression, and then set the coefficient to 0 if it turns out that the model selection procedure chose the linear model over the quadratic/averaged model. Thus, we write:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(Logit(s(x)) = \alpha_s + \beta_{s,1} * x + \beta_{s,2} * x^2\)</span></li>
+</ol>
+<p>with the understanding that <span class="math inline">\(\beta_{s,2}\)</span> can be 0, which yields the linear model. We’ll get into why this is helpful in the <em>Suffix syntax</em> section below. Now that we have our nice functional form for the regression model, we can re-write it with PADRINO’s syntax (remember to use the inverse link function!):</p>
+<ul>
+<li><code>s = 1/ (1 + exp( - (s_int + s_slope_1 * size_1 + s_slope_2 * size_1 ^ 2)))</code></li>
+</ul>
+</div>
+<div id="growth-1" class="section level3" number="3.2.5">
+<h3><span class="header-section-number">3.2.5</span> Growth</h3>
+<p>The growth model is similar to the survival model in terms of how the mean is parameterized, but the variance is something new for us. Fear not! We can actually accommodate this form with just one extra row in the VitalRateExpr table. Again, the first step is to write out what’s going on. We have our linear and quadratic models that compute the mean size at <span class="math inline">\(t+1\)</span> given the size at <span class="math inline">\(t\)</span>. Furthermore, it sounds like this is a linear regression with a Gaussian error distribution. However, they also mention that the variance in growth may be a function of size as well. Fortunately, they also provide the equation that tells us exactly how to compute that quantity (rather, they provide even more conveniently, the formula for the standard deviation, which is what we need for the growth kernel anyway). So, lets write down what’s going on, first using the trick we used above for the linear/quadratic functional form.</p>
+<ul>
+<li><span class="math inline">\(\mu_g = \alpha_g + \beta_{g,1} * x + \beta_{g,2} * x^2\)</span></li>
+</ul>
+<p>Next, we also need to write out how to compute the standard deviation. The authors note that sometimes, they assume a constant variance around the growth curve, while other times, there is an exponential change in it as a function of initial size. We’ll write it so that it’s always an exponential function, and then see how to alter the way we enter the data so that we can use that functional form, no matter which type of model was actually used:</p>
+<ul>
+<li><span class="math inline">\(\sigma(x) = \sqrt{\sigma^2 * e^{2 * \beta_{gv} * x]}}\)</span></li>
+</ul>
+<p>Ok, so what does this mean for us? For the exponential function case, we just need to find the value for the model’s variance <span class="math inline">\(\sigma^2\)</span> and <span class="math inline">\(\beta_{gv}\)</span>, the parameter that controls how rapidly the standard deviation changes with size. These are reported in the Appendix of this paper. For the model that uses constant variance, these authors report the standard deviation, rather than the variance. Thus, when we enter the parameter values for the constant variance models, we should enter the squared value of the standard deviation as the model’s variance, and then set <span class="math inline">\(\beta_{gv}\)</span> to 0, as anything raised to the zero-th power is 1 (i.e. it will become <span class="math inline">\(\sqrt{\sigma^2 * 1}\)</span>). In PADRINO syntax, the complete set of expressions are:</p>
+<pre><code>- `g = Norm(mu_g, sigma_g)`
+
+- `mu_g = g_int + g_slope_1 * size_1 + g_slope_2 * size_1^2`
+
+- `sigma_g = sqrt(sigma_2_g * exp(2 * g_var_slope * size_1))`</code></pre>
+</div>
+<div id="seed-production-1" class="section level3" number="3.2.6">
+<h3><span class="header-section-number">3.2.6</span> Seed production</h3>
+<p>The final bit of new syntax we’ll introduce here is for the seed production part of the model. The authors state that they used a GLM with a quasi-Poisson error and a log link. We are only interested in the link function for now.<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a> The authors state that they compared linear and quadratic forms, so we’ll use the same trick as before to enter a general formula for the vital rate expression and adjust the parameter values to work with it. Furthermore, they state that seed production was capped at the maximum observed seed number for each year <span class="math inline">\(\times\)</span> site combination. This indicates we’ll need a second expression to implement to the capping. Fortunately, they tell us the cap’s value at each year <span class="math inline">\(\times\)</span> site combination in the appendix, so we can add that as a parameter.</p>
+<p>First, we need to write out what’s going on. The model can generally be summarized as:</p>
+<ul>
+<li><p><span class="math inline">\(Log(f_{s}(x)) = \alpha_{f_s} + \beta_{f_s,1} * x + \beta_{f_s,2} * x^2\)</span></p></li>
+<li><p><span class="math inline">\(f_{seeds}(x) = \begin{cases} f_s(x) &amp; \text{if } f_s(x) &lt; f_{max} \\ f_{max} &amp; \text{if } f_s(x) \geq f_{max} \end{cases}\)</span></p></li>
+</ul>
+<p>The first equation should look familiar based on the first example we did. The second one is a piece-wise function with a condition that sets out when to use the estimated fecundity and when to use the maximum value. PADRINO does its best to remain “language-agnostic”, that is provide a syntax that is not specific to <em>R</em>, even if that’s what we’re working with. However, for the second expression, we’ve decided to use <em>R</em>’s <code>ifelse()</code> in PADRINO.<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a> These expressions then become:</p>
+<ul>
+<li><p><code>f_s = exp(f_s_int + f_s_b_1 * size_1 + f_s_b_2 * size_1 ^2</code></p></li>
+<li><p><code>n_seeds = ifelse(f_s &lt; seed_max, f_s, seed_max)</code></p></li>
+</ul>
+<p>Rather than attempt to write out the rest of the expressions, we’ll now move on to the suffix syntax that <code>ipmr</code> and <code>PADRINO</code> use. We’ll now work on a single site from Baer 2018, but we’ll start writing expressions that represent all years sampled.</p>
+</div>
+</div>
+<div id="suff-not" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Suffix syntax</h2>
+<p><code>ipmr</code> implements a suffix syntax that’s meant to mirror the sub-/super-script notation of the math that represents IPMs. This allows us to create expressions that are indexed by some variable, usually time or space (e.g. sites, population, etc.), and can save a considerable amount of duplication in the database. We’ll go through a quick introduction here, and then the worked example. If you want to read more about it, there is a vignette with a lengthier <a href="https://levisc8.github.io/ipmr/articles/hierarchical-notation.html">here</a>.</p>
+<p>We’ll use the same paper as the general IPM example above, except this time, we’re going to modfiy the time-varying expressions by appending a suffix to each parameter/vital rate/kernel. Since the interval of time-varying is year to year, we’ll use the subscript <span class="math inline">\(x_{yr}\)</span> in the mathematical formulae, and the suffix <code>_yr</code> in PADRINO.</p>
+<div id="re-writing-the-model-iteration" class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Re-writing the model iteration</h3>
+<p>As before, we want to write out the expressions first. The catch here is that we need to take note of which parameters are time-varying and modify those symbols accordingly. Glancing at the parameter tables in Appendix 1, we note that for each site, the only time-invariant parameters are <span class="math inline">\(p_{sbanksurv}, p_{germ}, p_{sbankgerm}\)</span>. Therefore, we’ll add a subscript (<span class="math inline">\(x_{yr}\)</span>) for each year to every other vital rate function and parameter.</p>
+<p>Beginning with the iteration for the seedbank, we get:</p>
+<p><span class="math display">\[
+B_{t+1} = B_t * p_{sbanksurv} * (1-p_{sbankgerm}) + \int_L^Up_{flower,yr}(x)*f_{seeds,yr}(x) * (1-p_{germ})n_t(x)dx
+\]</span></p>
+<p>Next, we modify the iteration for the seedling stage:</p>
+<p><span class="math display">\[
+S_{t+1} = p_{sbankgerm} * B_t + \int_L^U p_{flower,yr}(x) * f_{seeds,yr}(x) * p_{germ} n_t(x)dx
+\]</span></p>
+<p>And finally, we update the continuous distribution of plant sizes: <a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a></p>
+<p><span class="math display">\[
+n_{t+1}(x&#39;) = p_{seedlingsurv,yr} * S_t * \int_L^U f_{recrsize,yr}(x&#39;)dx  + \int_L^Us_{yr}(x) * g_{yr}(x&#39;|x)n_t(x)dx
+\]</span></p>
+<p>Now that we’ve modified the model iteration, we can enter these into the IpmKernels table. For the seedling class (<span class="math inline">\(S_{t+1}\)</span>), will have the following form:</p>
+<ol style="list-style-type: decimal">
+<li><p>formula = <code>SbSdl = p_sb_germ</code>, model_family = <code>DD</code>, domain_start = <code>seedbank</code>, domain_end = <code>seedling</code></p></li>
+<li><p>formula = <code>goSdl = p_fl_yr * n_seeds_yr * p_germ * d_size</code>, model_family = <code>CD</code>, domain_start = <code>size</code>, domain_end = <code>seedling</code></p></li>
+</ol>
+<p>Try writing out the formulae, model_family, and domain_start/end for the other two states in the model. You can check your answers <a href="model-expressions-in-padrino.html#suff-answers">here</a>.</p>
+</div>
+<div id="time-varying-vital-rate-expressions" class="section level3" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Time-varying vital rate expressions</h3>
+<p>In order to express the time varying functions, we also need to add subscripts/suffixes to each of the symbols in the vital rate expressions. In the case of this model, we can see that, relative to the General IPM exercise, we need to add suffixes to the following vital rates:</p>
+<ul>
+<li><p><span class="math inline">\(p_{flower,yr}\)</span></p></li>
+<li><p><span class="math inline">\(f_{seeds,yr}\)</span></p></li>
+<li><p><span class="math inline">\(p_{seedlingsurv,yr}\)</span></p></li>
+<li><p><span class="math inline">\(f_{recrsize,yr}\)</span></p></li>
+<li><p><span class="math inline">\(s_{yr}\)</span></p></li>
+<li><p><span class="math inline">\(g_{yr}\)</span></p></li>
+</ul>
+</div>
+<div id="survival-2" class="section level3" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Survival</h3>
+<p>Starting with survival at the Bountiful population, we see that 2 of the years have quadratic terms, and the first year does not. We can still write all of these using the quadratic functional form, and then just set <code>s_slope_2_2013</code> to 0 in the ParameterValues table. On paper, we can express the model like this:</p>
+<ul>
+<li><span class="math inline">\(Logit(s_{yr}(x)) = \alpha_{s,yr} + \beta_{s,1,yr} * x + \beta_{s,2,yr} * x^2\)</span></li>
+</ul>
+<p>In PADRINO, we append the suffix <code>_yr</code> to each parameter value it modifies:</p>
+<ul>
+<li><code>s_yr = s_int_yr + s_slope_1_yr * size_1 + s_slope_2_yr * size_1^2</code></li>
+</ul>
+<p>In the ParameterValues table, we’ll need to enter 9 rows for this vital rate:</p>
+<ul>
+<li><p>Intercepts: <code>s_int_2013</code>, <code>s_int_2014</code>, <code>s_int_2015</code></p></li>
+<li><p>First slope: <code>s_slope_1_2013</code>, <code>s_slope_1_2014</code>, <code>s_slope_1_2015</code></p></li>
+<li><p>Second slope: <code>s_slope_2_2013</code>, <code>s_slope_2_2014</code>, <code>s_slope_2_2015</code></p></li>
+</ul>
+<p>Next, in the HierarchTable, we need to enter the following:</p>
+<ul>
+<li>vr_expr_name = <code>yr</code>, range = <code>2013:2015</code></li>
+</ul>
+</div>
+<div id="growth-2" class="section level3" number="3.3.4">
+<h3><span class="header-section-number">3.3.4</span> Growth</h3>
+<p>Next, we’ll do growth. Like survival, growth at Bountiful will have the same functional form as the General IPM example, except now with subscripts/suffixes. We write it out as follows:</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(g_{yr}(x&#39;, x) = f_g(x&#39;, \mu_{g,yr}, \sigma_{g,yr})\)</span> where <span class="math inline">\(f_g\)</span> is a Normal probability density function.</p></li>
+<li><p><span class="math inline">\(\mu_{g,yr} = \alpha_{g,yr} + \beta_{g,1,yr} * x + \beta_{g,2,yr} * x^2\)</span></p></li>
+<li><p><span class="math inline">\(\sigma_{g,yr} = \sqrt{\sigma^2_{g,yr} * e ^ {2 * \beta_{gv, yr} * x}}\)</span></p></li>
+</ol>
+<p>We can write out the PADRINO expressions like so:</p>
+<ul>
+<li><p><code>g_yr = Norm(mu_g_yr, sigma_g_yr)</code></p></li>
+<li><p><code>mu_g_yr = g_int_yr + g_slope_1_yr * size_1 + g_slope_2_yr * size_1 ^ 2</code></p></li>
+<li><p><code>sigma_g_yr = sqrt(sigma_2_g_yr * exp(2 * beta_gv_yr * size_1))</code></p></li>
+</ul>
+<p>The next step will be to enter the parameter values in the ParameterValues table. We don’t need to enter anything more in the HierarchTable - those values can be used by the whole IPM.</p>
+</div>
+<div id="the-rest-of-the-vital-rates" class="section level3" number="3.3.5">
+<h3><span class="header-section-number">3.3.5</span> The rest of the vital rates</h3>
+<p>Try writing these out on your own, and checking the answers <a href="model-expressions-in-padrino.html#suff-answers">here</a></p>
+</div>
+</div>
+<div id="parameter-resampled-models" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Parameter resampled models</h2>
+<p>Parameter re-sampled models refer to stochastic models where some parameters are treated as time-varying random variables. The <code>EnvironmentalVariables</code> table is meant to hold the parameters associated with these random variables (e.g. the mean and variance of a temperature distribution), and the random number generators that produce values (e.g. the <code>Norm(temp_mu, temp_sd)</code>). These distribution functions use the same notation as the density functions, so you can still use the <a href="https://github.com/levisc8/PADRINO/blob/main/metadata/digitization/dens_fun_dictionary.csv">Probability Function Dictionary</a> to translate these into PADRINO notation.</p>
+<p>The way that we enter vital rate expressions and IPM sub-kernels doesn’t change when working with these models. The only additional bit is that we now enter some of the parameters and expressions into the <code>EnvironmentalVariables</code> table. I will find a suitable example for this in the not so distant future.</p>
+<div id="model-iterations" class="section level3" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Model iterations</h3>
+<p>Coming soon!</p>
+</div>
+<div id="vital-rate-expressions-1" class="section level3" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Vital rate expressions</h3>
+<p>Coming soon!</p>
+</div>
+<div id="environmentalvariables-expressions" class="section level3" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> EnvironmentalVariables expressions</h3>
+<p>Coming soon!</p>
+</div>
+</div>
+<div id="age-times-size-models" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Age <span class="math inline">\(\times\)</span> size models</h2>
+<p>Coming soon!</p>
+</div>
+<div id="exercise-answers" class="section level2" number="3.6">
+<h2><span class="header-section-number">3.6</span> Answers to exercises</h2>
+<div id="simple-model-prflowering-and-recruit-size" class="section level3" number="3.6.1">
+<h3><span class="header-section-number">3.6.1</span> Simple model Pr(flowering) and recruit size</h3>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(Logit(f_p(x)) = \alpha_{f_p} + \beta_{f_p} * x\)</span></li>
+</ol>
+<ul>
+<li><code>f_p = 1 / (1 + exp(-(alpha_f_p + beta_f_p * size_1)))</code></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><span class="math inline">\(f_d(y) = Norm(\mu_{f_d}, \sigma_{f_d})\)</span></li>
+</ol>
+<ul>
+<li><code>f_d = Norm(mu_f_d, sigma_f_d)</code></li>
+</ul>
+<p><a href="model-expressions-in-padrino.html#gen-mods">Resume from General models</a></p>
+</div>
+<div id="general-ipm-kernel-formulae" class="section level3" number="3.6.2">
+<h3><span class="header-section-number">3.6.2</span> General IPM kernel formulae</h3>
+<p><span class="math inline">\(K = p_{seedlingsurv} * f_{recrsize}(x&#39;) * S_t + \int_L^Us(x) * g(x&#39;|x)n_t(x)dx\)</span></p>
+<ol style="list-style-type: decimal">
+<li><p>formula = <code>SdlOut = p_sdl_surv * sdl_size * d_size</code>, model_family = <code>DC</code>, domain_start = <code>seedling</code>, domain_end = <code>size</code></p></li>
+<li><p>formula = <code>P = s * g * d_size</code>, model_family = <code>CC</code>, domain_start = <code>size</code>, domain_end = <code>size</code></p></li>
+<li><p><span class="math inline">\(K\)</span> re-write: <span class="math inline">\(n(x&#39;,t+1) = p_{seedlingsurv} * S_t * \int_L^Uf_{recrsize}(x&#39;)dx + \int_L^Us(x) * g(x&#39;|x)n_t(x)dx\)</span></p></li>
+</ol>
+<p><a href="model-expressions-in-padrino.html#vr-gen-mods">Back to vital rate expressions in General IPMs</a></p>
+</div>
+<div id="suff-answers" class="section level3" number="3.6.3">
+<h3><span class="header-section-number">3.6.3</span> Suffix syntax kernel formulae</h3>
+<div id="seed-bank" class="section level4" number="3.6.3.1">
+<h4><span class="header-section-number">3.6.3.1</span> Seed bank</h4>
+<ol style="list-style-type: decimal">
+<li><p>formula = <code>SbStay = sb_surv * (1 - sb_germ)</code>, model_family =
+<code>DD</code>, domain_start = <code>seedbank</code>, domain_end = <code>seedbank</code></p></li>
+<li><p><code>SbGo_yr = p_fl_yr * n_seeds_yr * (1 - p_germ) * d_size</code>, model_family =
+<code>CD</code>, domain_start = <code>size</code>, domain_end = <code>seedbank</code></p></li>
+</ol>
+</div>
+<div id="plants" class="section level4" number="3.6.3.2">
+<h4><span class="header-section-number">3.6.3.2</span> Plants</h4>
+<ol style="list-style-type: decimal">
+<li><p>formula = <code>SdlOut_yr = p_sdl_surv * sdl_size_yr * d_size</code>, model_family
+= <code>DC</code>, domain_start = <code>seedling</code>, domain_end = <code>size</code></p></li>
+<li><p>formula = <code>P_yr = s_yr * g_yr * d_size</code>, model_family = <code>CC</code>, domain_start = <code>size</code>, domain_end = <code>size</code></p></li>
+</ol>
+</div>
+<div id="vital-rates" class="section level4" number="3.6.3.3">
+<h4><span class="header-section-number">3.6.3.3</span> Vital Rates</h4>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(Logit(p_{flower,yr}(x)) = \alpha_{p_f,yr} + \beta_{1,p_f,yr} * x + \beta_{2,p_f,yr} * x^2\)</span></li>
+</ol>
+<ul>
+<li><p><code>p_fl_yr = 1 / (1 + exp(-(p_fl_int_yr + p_fl_slope_1_yr * size_1 + p_fl_slope_2_yr * size_2 ^ 2)))</code></p></li>
+<li><p><code>ParameterValues</code> entries:</p>
+<ul>
+<li><p><code>p_fl_int_2013</code>, <code>p_fl_int_2014</code>, <code>p_fl_int_2015</code></p></li>
+<li><p><code>p_fl_slope_1_2013</code>, <code>p_fl_slope_1_2014</code>, <code>p_fl_slope_1_2015</code></p></li>
+<li><p><code>p_fl_slope_2_2013</code>, <code>p_fl_slope_2_2014</code>, <code>p_fl_slope_2_2015</code></p></li>
+</ul></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>There are two expressions here. One for the predicted mean, and the other for the conditional cap on seed production</li>
+</ol>
+<ul>
+<li><p><span class="math inline">\(f_{s,yr} = \alpha_{f_s,yr} + \beta_{f_s,1, yr} * x + \beta_{f_s, 2, yr} * x ^ 2\)</span></p></li>
+<li><p><span class="math inline">\(f_{seeds,yr}(x) = \begin{cases} f_{s,yr}(x) &amp; \text{if } f_{s,yr}(x) &lt; f_{max,yr} \\ f_{max,yr} &amp; \text{if } f_{s,yr}(x) \geq f_{max,yr} \end{cases}\)</span></p></li>
+<li><p><code>f_s_yr = exp(f_s_int_yr + f_s_slope_1_yr * size_1 + f_s_slope_2_yr * size_1 ^ 2)</code></p></li>
+<li><p><code>f_seeds_yr = ifelse(f_s_yr &lt; seed_max_yr, f_s_yr, seed_max_yr)</code></p>
+<ul>
+<li><p><code>ParameterValues</code> entries:</p>
+<ul>
+<li><p><code>f_s_int_2013</code>, <code>f_s_int_2014</code>, <code>f_s_int_2015</code></p></li>
+<li><p><code>f_s_slope_1_2013</code>, <code>f_s_slope_1_2014</code>, <code>f_s_slope_1_2015</code></p></li>
+<li><p><code>f_s_slope_2_2013</code>, <code>f_s_slope_2_2014</code>, <code>f_s_slope_2_2015</code></p></li>
+<li><p><code>seed_max_2013</code>, <code>seed_max_2014</code>, <code>seed_max_2015</code></p></li>
+</ul></li>
+</ul></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li><span class="math inline">\(p_{seedlingsurv,yr}\)</span>: This actually has no expression, it’s just a set of 3 parameter values.</li>
+</ol>
+<ul>
+<li><code>sdl_s_2013</code>, <code>sdl_s_2014</code>, <code>sdl_s_2015</code></li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li><span class="math inline">\(f_{recrsize, yr} = Norm(\mu_{recrsize,yr}, \sigma_{recrsize, yr})\)</span></li>
+</ol>
+<ul>
+<li><p><code>ParameterValues</code> entries:</p>
+<ul>
+<li><p><code>mu_rcsz_2013</code>, <code>mu_rcsz_2014</code>, <code>mu_rcsz_2015</code></p></li>
+<li><p><code>sigma_rcsz_2013</code>, <code>sigma_rcsz_2014</code>, <code>sigma_rcsz_2015</code></p></li>
+</ul></li>
+</ul>
+<p><a href="model-expressions-in-padrino.html#suff-not">Back to Suffix Notation</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="4">
+<li id="fn4"><p>We will only look at the control treatment for now<a href="model-expressions-in-padrino.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>The notation used here is from the paper. We will need to re-write some of these to work in PADRINO.<a href="model-expressions-in-padrino.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>Caveat: in the course of debugging, it may be harder to track very short names. Additionally, if you have to wait a while for an author response to a question, you may forget what everything stand for by the time you return to a model!<a href="model-expressions-in-padrino.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p>I hope to update this to take names from a separate column at some point, rather than using the left hand side of the <code>=</code>. However, since it currently works and only requires a bit of care when digitizing, this change isn’t particularly high on my priority list.<a href="model-expressions-in-padrino.html#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p>Table 15.1 on the second page of <a href="https://www.sagepub.com/sites/default/files/upm-binaries/21121_Chapter_15.pdf">this book</a><a href="model-expressions-in-padrino.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>The error family is important in the estimation step, and when quantifying uncertainty in the model. However, implementing a model with observed parameter values is unaffected by this, so we’ll ignore quasi-Poisson part for now, and return to it when we need to deal with the UncertaintyTable.<a href="model-expressions-in-padrino.html#fnref9" class="footnote-back">↩︎</a></p></li>
+<li id="fn10"><p>This should be translatable to, for example, <em>C++</em>’s ternary operator equivalent <code>x &gt; y ? a : b</code>.<a href="model-expressions-in-padrino.html#fnref10" class="footnote-back">↩︎</a></p></li>
+<li id="fn11"><p>NB: This has been re-written from the notation used in the appendix so that it is a model iteration rather than an iteration kernel. This is suffix-notation version of the exercise in the General IPMs section.<a href="model-expressions-in-padrino.html#fnref11" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="digitization-guide.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
