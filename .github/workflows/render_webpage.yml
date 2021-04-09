@@ -1,0 +1,30 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+name: Render Webpage
+jobs:
+if: !contains(github.event.head_commit.message, '[ci skip]')
+  render:
+    name: Render Webpage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: r-lib/actions/setup-r@v1
+      - name: Install package dependencies
+        run: |-
+          Rscript -e "install.packages('bookdown', repos = 'https://cloud.r-project.org/')"
+      - name: Render Webpage
+        run: |-
+          Rscript -e "bookdown::render_book(input = 'webpage', output_dir = '../docs')"
+      - name: Push webpage
+        run: |-
+          git config user.name ${{github.actor}}
+          git config user.email ${{github.actor}}
+          git add docs
+          git commit -m 'update website [ci skip]' || echo "No changes"
+          git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{github.ref}} || echo "No changes"

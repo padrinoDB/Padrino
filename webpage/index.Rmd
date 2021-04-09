@@ -1,0 +1,10 @@
+---
+title: "About"
+output: 
+  bookdown::gitbook:
+   output_dir: "docs" 
+---
+
+# PADRINO IPM Database
+
+Welcome to the PADRINO IPM Database website! This is a work in progress, more info coming soon! 
