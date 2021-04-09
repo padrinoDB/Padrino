@@ -14,7 +14,6 @@ knitr::opts_chunk$set(
 
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental) 
 
-
 ## Padrino  <a href='https://levisc8.github.io/Padrino'><img src='metadata/pdb_logo.png' align="right" height="139" /></a>
 
 This repo hosts the code used to generate and upload data to the `Padrino` data base. This is more for back end management and to help Padriños to find their way as they get started. I've created a separate repo called `RPadrino` that will be eventually become the equivalent of `Rcompadre`.
