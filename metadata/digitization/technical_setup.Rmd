@@ -9,22 +9,53 @@ urlcolor: blue
 
 ### Initial setup
 
-Once you've set up GitHub and RStudio to talk to each other, it will be useful to create a local copy of the Padrino repository on your computer. This will give you access to, among other things, local copies of this guide and the others, as well as a the "Email an Author" template. To do this:
+Once you've set up GitHub and RStudio to talk to each other, it will be useful to create your own copy of the Padrino repository on your computer. This will give you access to, among other things, local copies of this guide and the others, as well as a the "Email an Author" template. To do this:
 
-1. Open Rstudio
+1. Go to `https://github.com/levisc8/Padrino` in your web browser.
 
-2. In the top right corner, there will be a "Project: (None)" tab. Click this dropdown, and select "New Project".
+2. Click the `Fork` button in the top right corner. This will create a version of the repository that you control.
 
-3. Select "Version Control" from the first menu.
+3. Open Rstudio
 
-4. Select "Git" from the second menu.
+4. In the top right corner, there will be a "Project: (None)" tab. Click this dropdown, and select "New Project".
 
-5. Enter `https://github.com/levisc8/Padrino` into the "Repository URL" bar. Select a directory to place your version in using the "Create project as subdirectory of:".
+5. Select "Version Control" from the first menu.
 
-6. Click "Create" button.
+6. Select "Git" from the second menu.
 
-7. Once all files are downloaded and the new R session is started, click on the Git tab. This will usually be in the same Pane as the Environment and History tabs in RStudio.
+7. Enter `https://github.com/<your_username>/Padrino` into the "Repository URL" bar. Select a directory to place your version in using the "Create project as subdirectory of:".
 
-8. Once in that tab, click "New Branch" and give your branch an easily recognizable name (e.g. "sam_branch"). The name should not have any spaces or apostrophes. 
+8. Click "Create" button.
 
-You can now safely edit documents and add notes as you like without affecting the main branch. Test this out by inserting an innocuous change to a document (e.g. add a space or line break), commit the change, and push it to your branch. Go to the repository in the web browser, and select the branch drop down (it will be a little tab that says "main" on the left side of the screen above the files pane). Select your branch - you should see your commit message pop up when you switch over.
+You can now safely edit documents and add notes as you like without affecting the main branch. Test this out by inserting an innocuous change to a document (e.g. add a space or line break), commit the change, and push it to your fork. Go to the repository in the web browser, and select your copy of the repo - you should see your commit message pop up when you switch over.
+
+### Keeping things up to date
+
+This project is constantly evolving, and so our two roads (repository versions) will diverge with time. Fortunately, git provides us with a method to keep the parts we like from both: pull requests.
+
+These is usually doable via the web browser, and if there are problems with the following steps, please contact me at <levisc8@gmail.com> and we'll figure out a solution.
+
+**In order to sync your fork with the main one (`levisc8/Padrino`):**
+
+1. Navigate to your fork of the repository (`https://github.com/<your_username>/Padrino).
+
+2. Click the `Pull Requests` tab. Click `New Pull Request`.
+
+3. Change the `base repository` tab to your fork: `<your_username/Padrino`.
+
+4. A couple tabs will disappear now. We can get those back by clicking `compare across forks` link.
+
+5. Change the `head repository: levisc8/Padrino`. Make sure that `base: main` and `compare: main` are still selected. 
+
+6. Click `Create Pull Request`. You can add a helpful title and/or comment to keep up with the changes. Once again, click `Create Pull Request`. 
+
+7. If you're satisfied with the contents, and there are no merge conflicts, you can click `Merge pull request`. This will complete the process, and your fork will now be synced with the base repository for Padrino. 
+
+    - NB: if there are merge conflicts, contact me at <levisc8@gmail.com> and we'll figure something out.
+
+**Adding changes to the base repository (`levisc8/Padrino`):**    
+
+This is a similar process as above, except that steps 3-5 no longer apply. The default `base repository` should be `levisc8/Padrino`, and the default `head repository` should be `<your_username>/Padrino` when you click `New Pull Request` in step 2. If this is the case, then proceed to step 6. Once you've created the pull request on `levisc8/Padrino`, a maintainer will review it and, if necessary, request changes. Once it's ready, we can merge it into the base repository!
+
+
+
