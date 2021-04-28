@@ -378,10 +378,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>How to recognize</strong>: Authors usually state “we computed the amount of evicted individuals and added them back into the smallest and largest size bins…” OR “we used the”discretizeExtremes" correction in <code>IPMpack</code>…"</li>
 </ul></li>
 </ul></li>
-<li><p><code>treatment</code>: A brief description of any experimental treatment that the authors applied to a given population.</p>
-<ul>
-<li>UPDATE THIS ONE DEAL WITH MULTIPLE TREATMENTS IN SAME IPM_ID</li>
-</ul></li>
+<li><p><code>treatment</code>: A brief description of any experimental treatment that the authors applied to a given population. When there are multiple treatments with the same <code>ipm_id</code>, enter them separated by a semi-colon (“;”). Also see the <a href="#trt-suff">note</a> about how to enter this information in the <code>HierarchTable</code>.</p></li>
 <li><p><code>has_time_lag</code>: Indicates whether any vital rates have a time lag (i.e. are a function of <span class="math inline">\(n(z^*,t-1)\)</span> rather than <span class="math inline">\(n(z, t)\)</span>).</p></li>
 <li><p><code>has_age</code>: Indicates whether the model has age structure.</p></li>
 <li><p><code>has_dd</code>: Indicates whether the model incorporates density dependence.</p></li>
@@ -517,7 +514,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">2.5.11</span> HierarchTable</h3>
 <ol style="list-style-type: decimal">
 <li><p><code>ipm_id</code>: The 6 digit alphanumeric <code>ipm_id</code> from the Metadata table.</p></li>
-<li><p><code>env_variable</code>: a qualitative explanation of the suffix.</p></li>
+<li><p><code>env_variable</code>: a qualitative explanation of the suffix. For experimental treatments that have been entered with the same <code>ipm_id</code>, enter <code>"Experimental Treatments"</code> here.</p></li>
 <li><p><code>vr_expr_name</code>: the suffix that is used to abbreviate the <code>env_variable</code> in the <code>IpmKernels</code> formula/kernel_id, <code>VitalRateExpr</code> formula/kernel_id.</p></li>
 <li><p><code>range</code>: An expression denoting the different levels that the each suffix can take on. For example, <code>2008:2011</code> to denote sampling years, or <code>c("GNone", "GLow", "GMedium", "GHigh")</code> to denote grazing levels.</p></li>
 <li><p><code>kernel_id</code>: the sub-kernel(s) that are modified by the suffix.</p></li>

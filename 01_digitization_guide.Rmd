@@ -196,9 +196,7 @@ The metadata table contains information on species taxonomy, publication informa
     
         + **How to recognize**: Authors usually state "we computed the amount of evicted individuals and added them back into the smallest and largest size bins..." OR "we used the "discretizeExtremes" correction in `IPMpack`..."
 
-38. `treatment`: A brief description of any experimental treatment that the authors applied to a given population.
-
-    - UPDATE THIS ONE DEAL WITH MULTIPLE TREATMENTS IN SAME IPM_ID
+38. `treatment`: A brief description of any experimental treatment that the authors applied to a given population. When there are multiple treatments with the same `ipm_id`, enter them separated by a semi-colon (";"). Also see the [note](#trt-suff) about how to enter this information in the `HierarchTable`.
 
 39. `has_time_lag`: Indicates whether any vital rates have a time lag (i.e. are a function of $n(z^*,t-1)$ rather than $n(z, t)$).
 
@@ -356,7 +354,7 @@ Because of the way that `ipmr` implements models, we only need to digitize sub-k
 
 1. `ipm_id`: The 6 digit alphanumeric `ipm_id` from the Metadata table.
 
-2. `env_variable`: a qualitative explanation of the suffix. 
+2. `env_variable`: a qualitative explanation of the suffix. For experimental treatments that have been entered with the same `ipm_id`, enter `"Experimental Treatments"` here.
 
 3. `vr_expr_name`: the suffix that is used to abbreviate the `env_variable` in the `IpmKernels` formula/kernel_id, `VitalRateExpr` formula/kernel_id.
 
