@@ -31,7 +31,7 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="model-expressions-in-padrino.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -363,9 +363,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="35" style="list-style-type: decimal">
 <li><p><code>studied_sex</code>: The sex of the population studied. Options are <code>M</code> (male only), <code>F</code> (female only), <code>H</code> (hermaphrodites), <code>M/F</code> (males and females modeled separately, but in the same IPM), and <code>A</code> (all sexes studied together).</p></li>
 <li><p><code>eviction_used</code>: Whether or not the authors account for <a href="https://esajournals.onlinelibrary.wiley.com/doi/10.1890/11-2147.1">unintentional eviction</a>. This should either be <code>TRUE</code> or <code>FALSE</code>. Only put <code>TRUE</code> if an eviction correction is explicitly discussed, or you find model code in the supplementary materials and are able to discern the correct <code>evict_type</code>.</p></li>
-<li><p><code>evict_type</code>: If an eviction correction was used, then the name of the method to correct it. Options are <code>stretched_domain</code>, <code>rescale_kernel</code>, <code>truncated_distributions</code> and <code>discrete_extrema</code>. <code>rescale_kernel</code> is the same as <code>truncated_distributions</code> and a relic of the past. Feel free to update those entries to <code>truncated_distributions</code> as you go.</p>
+<li><p><code>evict_type</code>: If an eviction correction was used, then the name of the method to correct it. Options are <code>stretched_domain</code>, <code>rescale_kernel</code>, <code>truncated_distributions</code> and <code>discrete_extrema</code>. <code>rescale_kernel</code> is the same as <code>truncated_distributions</code> and a relic of the past. Feel free to update those entries to <code>truncated_distributions</code> as you go. Notes on each are provided below.</p>
 <ul>
-<li>NB: <code>stretched_domain</code> does not indicate that any function was applied to the kernels to return individuals. Rather, it just means that the authors extended the size boundaries some amount beyond the observed size distributions and relied on vital rate functions to prevent individuals from ever getting to the bounds. This information is included in PADRINO so users can understand what approach was used to deal with the problem, and, theoretically, try implementing models with different eviction corrections.</li>
+<li><p><code>stretched_domain</code>: This means that the authors extended the size boundaries some amount beyond the observed size distributions and relied on vital rate functions to prevent individuals from ever getting to the bounds. It doesn’t apply any correction to the kernel, only extends the bounds of integration. It is possible that authors may use this in conjunction with another technique (e.g. stretched domain and a truncated distribution). When this happens, the other eviction correction should be entered, as those <em>do</em> apply a mathematical correction to the kernel.</p>
+<ul>
+<li><strong>How to recognize</strong>: Authors usually state something to the effect of “we multiplied the smallest observed value by 0.8 and the largest observed value by 1.2 to extend the range of integration…”</li>
+</ul></li>
+<li><p><code>truncated_distributions</code>: This takes a distribution whose natural bounds extend beyond the desired integration bounds, and applies a correction that results in 0 density below the lower bound and above the upper bound. This is accomplished with <span class="math inline">\(\frac{g(x)}{F(b) - F(a)}\)</span> where <span class="math inline">\(g(x)\)</span> is the un-truncated density function, and <span class="math inline">\(F(a)\)</span> and <span class="math inline">\(F(b)\)</span> denote the cumulative density function values for the lower and upper truncation bounds, respectively.</p>
+<ul>
+<li><strong>How to recognize</strong>: Authors usually state “we truncated the growth density function at the upper and lower bounds…” OR “we used the”constant" correction in <code>IPMPack</code>…"</li>
+</ul></li>
+<li><p><code>discrete_extrema</code>: This takes the smallest and largest trait binds and effectively turns them into classes that correspond to “smallest size in our model and also everything smaller”. It does this by computing the amount of probability that is excluded at each value of <span class="math inline">\(z&#39;\)</span> at the lower and upper bounds and adding that back in to the kernel at each extreme.</p>
+<ul>
+<li><strong>How to recognize</strong>: Authors usually state “we computed the amount of evicted individuals and added them back into the smallest and largest size bins…” OR “we used the”discretizeExtremes" correction in <code>IPMpack</code>…"</li>
+</ul></li>
 </ul></li>
 <li><p><code>treatment</code>: A brief description of any experimental treatment that the authors applied to a given population.</p>
 <ul>

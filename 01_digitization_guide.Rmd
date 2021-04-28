@@ -182,10 +182,20 @@ The metadata table contains information on species taxonomy, publication informa
 
 36. `eviction_used`: Whether or not the authors account for [unintentional eviction](https://esajournals.onlinelibrary.wiley.com/doi/10.1890/11-2147.1). This should either be `TRUE` or `FALSE`. Only put `TRUE` if an eviction correction is explicitly discussed, or you find model code in the supplementary materials and are able to discern the correct `evict_type`.
 
-37. `evict_type`: If an eviction correction was used, then the name of the method to correct it. Options are `stretched_domain`, `rescale_kernel`, `truncated_distributions` and `discrete_extrema`. `rescale_kernel` is the same as `truncated_distributions` and a relic of the past. Feel free to update those entries to `truncated_distributions` as you go. 
+37. `evict_type`: If an eviction correction was used, then the name of the method to correct it. Options are `stretched_domain`, `rescale_kernel`, `truncated_distributions` and `discrete_extrema`. `rescale_kernel` is the same as `truncated_distributions` and a relic of the past. Feel free to update those entries to `truncated_distributions` as you go. Notes on each are provided below.
 
-    + NB: `stretched_domain` does not indicate that any function was applied to the kernels to return individuals. Rather, it just means that the authors extended the size boundaries some amount beyond the observed size distributions and relied on vital rate functions to prevent individuals from ever getting to the bounds. This information is included in PADRINO so users can understand what approach was used to deal with the problem, and, theoretically, try implementing models with different eviction corrections.
+    + `stretched_domain`: This means that the authors extended the size boundaries some amount beyond the observed size distributions and relied on vital rate functions to prevent individuals from ever getting to the bounds. It doesn't apply any correction to the kernel, only extends the bounds of integration. It is possible that authors may use this in conjunction with another technique (e.g. stretched domain and a truncated distribution). When this happens, the other eviction correction should be entered, as those *do* apply a mathematical correction to the kernel. 
     
+        + **How to recognize**: Authors usually state something to the effect of "we multiplied the smallest observed value by 0.8 and the largest observed value by 1.2 to extend the range of integration..."
+    
+    + `truncated_distributions`: This takes a distribution whose natural bounds extend beyond the desired integration bounds, and applies a correction that results in 0 density below the lower bound and above the upper bound. This is accomplished with $\frac{g(x)}{F(b) - F(a)}$ where $g(x)$ is the un-truncated density function, and $F(a)$ and $F(b)$ denote the cumulative density function values for the lower and upper truncation bounds, respectively.
+    
+        + **How to recognize**: Authors usually state "we truncated the growth density function at the upper and lower bounds..." OR "we used the "constant" correction in `IPMPack`..." 
+        
+    + `discrete_extrema`: This takes the smallest and largest trait binds and effectively turns them into classes that correspond to "smallest size in our model and also everything smaller". It does this by computing the amount of probability that is excluded at each value of $z'$ at the lower and upper bounds and adding that back in to the kernel at each extreme.
+    
+        + **How to recognize**: Authors usually state "we computed the amount of evicted individuals and added them back into the smallest and largest size bins..." OR "we used the "discretizeExtremes" correction in `IPMpack`..."
+
 38. `treatment`: A brief description of any experimental treatment that the authors applied to a given population.
 
     - UPDATE THIS ONE DEAL WITH MULTIPLE TREATMENTS IN SAME IPM_ID
