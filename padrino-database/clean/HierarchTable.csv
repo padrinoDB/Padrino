@@ -1,0 +1,47 @@
+"ipm_id","env_variable","vr_expr_name","range","kernel_id","drop_levels"
+"aaaa17","year","yr","2004:2012","K_yr; P_yr; F_yr",NA
+"aaaa18","year","yr","2004:2012","K_yr; P_yr; F_yr",NA
+"aaaa19","year","yr","2004:2012","K_yr; P_yr; F_yr",NA
+"aaaa20","year","yr","2004:2012","K_yr; P_yr; F_yr",NA
+"aaaa24","Light_env","le","2:6","K_le; P_le; stayBG_le; inBG_le",NA
+"aaaa25","Light_env","le","1:6","K_le; P_le; stayBG_le; inBG_le",NA
+"aaaa26","Light_env","le","1:6","K_le; P_le; stayBG_le; inBG_le",NA
+"aaaa27","Light_env","le","1:5","K_le; P_le; stayBG_le; inBG_le",NA
+"aaaa28","Light_env","le","1:6","K_le; P_le; stayBG_le; inBG_le",NA
+"aaaa29","Light_env","le","1:6","K_le; P_le; stayBG_le; inBG_le",NA
+"aaaa30","Light_env","le","1:6","K_le; P_le; stayBG_le; inBG_le",NA
+"aaaa31","Light_env","le","1:6","K_le; P_le; stayBG_le; inBG_le",NA
+"aaaa32","Light_env","le","1:6","K_le; P_le; stayBG_le; inBG_le",NA
+"aaaa38","year","yr","2014:2016","K_yr_pl; P_yr_pl; F_yr_pl",NA
+"aaaa38","plot","pl","1:3","K_yr_pl; P_yr_pl; F_yr_pl",NA
+"aaaa39","year","yr","2014:2016","K_yr_pl; P_yr_pl; F_yr_pl",NA
+"aaaa39","plot","pl","1:4","K_yr_pl; P_yr_pl; F_yr_pl",NA
+"aaaa41","year","yr","2014:2016","K_yr_pl; P_yr_pl; F_yr_pl",NA
+"aaaa41","plot","pl","1:2","K_yr_pl; P_yr_pl; F_yr_pl",NA
+"aaaa42","year","yr","2014:2016","K_yr_pl; P_yr_pl; F_yr_pl",NA
+"aaaa42","plot","pl","1:2","K_yr_pl; P_yr_pl; F_yr_pl",NA
+"aaaa43","year","yr","2014:2016","K_yr_pl; P_yr_pl; F_yr_pl",NA
+"aaaa43","plot","pl","1:3","K_yr_pl; P_yr_pl; F_yr_pl",NA
+"aaaa44","year","yr","2014:2016","K_yr_pl; P_yr_pl; F_yr_pl",NA
+"aaaa44","plot","pl","1:4","K_yr_pl; P_yr_pl; F_yr_pl",NA
+"aaaa46","year","yr","2014:2016","K_yr_pl; P_yr_pl; F_yr_pl",NA
+"aaaa46","plot","pl","1:4","K_yr_pl; P_yr_pl; F_yr_pl",NA
+"aaaa47","year","yr","2014:2016","K_yr_pl; P_yr_pl; F_yr_pl",NA
+"aaaa47","plot","pl","1:4","K_yr_pl; P_yr_pl; F_yr_pl",NA
+"aaaa49","year","yr","2014:2016","K_yr_pl; P_yr_pl; F_yr_pl",NA
+"aaaa49","plot","pl","1:3","K_yr_pl; P_yr_pl; F_yr_pl",NA
+"aaaa50","year","yr","2014:2016","K_yr_pl; P_yr_pl; F_yr_pl",NA
+"aaaa50","plot","pl","1:4","K_yr_pl; P_yr_pl; F_yr_pl",NA
+"aaaa52","year","yr","2014:2016","K_yr_pl; P_yr_pl; F_yr_pl",NA
+"aaaa52","plot","pl","1:4","K_yr_pl; P_yr_pl; F_yr_pl",NA
+"aaaa53","year","yr","2014:2016","K_yr_pl; P_yr_pl; F_yr_pl",NA
+"aaaa53","plot","pl","1:4","K_yr_pl; P_yr_pl; F_yr_pl",NA
+"aaaa55","year","yr","c(""2004"", ""2005"", ""2006"", ""2007"", ""2009"", ""2010"", ""2011"", ""2012"", ""2013"", ""2014"")","K_all_yr; K_yr; P_yr; F_yr; B_yr; B1_yr; B2_yr; B1C_yr; B2C_yr",NA
+"aaa313","Year","yr","2013:2015","K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr; staySB_yr; SBSdl_yr; S_yr; B_yr",NA
+"aaa314","Year","yr","2013:2015","K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr; staySB_yr; SBSdl_yr; S_yr; B_yr",NA
+"aaa315","Year","yr","2013:2015","K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr; staySB_yr; SBSdl_yr; S_yr; B_yr",NA
+"aaa317","Year","yr","2013:2015","K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr; staySB_yr; SBSdl_yr; S_yr; B_yr",NA
+"aaa321","NormalOrDryYear","yr","1:2","K_yr; P_yr; C_yr",NA
+"aaa343","EnvironmentType","en","c(""Open"", ""Dense"")","K_en; P_en; F_en",NA
+"aaa344","Year","yr","c(""standard"", ""dry"")","K_yr; P_yr; F_yr",NA
+"aaa345","Year","yr","c(""standard"", ""dry"")","K_yr; P_yr; F_yr",NA

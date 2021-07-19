@@ -1,9 +1,21 @@
 library(fs)
 
 source("../RPadrino/data-raw/dev_utils.R")
-library(RPadrino)
+library(pdbDigitUtils)
 
-xl <- .read_all_sheets("../RPadrino/data-raw/hand_cleaned_padrino.xlsx")
+xl <- read_pdb("../RPadrino/data-raw/hand_cleaned_padrino.xlsx")
+tl <- read_pdb("../RPadrino/data-raw/pdb_tomos.xlsx")
+
+xl <- lapply(seq_along(xl),
+             function(ind, pdb, tomos) {
+               
+               rbind(pdb[[ind]], tomos[[ind]])
+               
+             },
+             pdb = xl,
+             tomos = tl)
+
+names(xl) <- names(tl)
 
 if(dir_exists("padrino-database")) {
 
