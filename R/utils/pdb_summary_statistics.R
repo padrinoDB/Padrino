@@ -37,3 +37,13 @@ tab <- pdb$Metadata %>%
     spp  = length(unique(species_accepted)),
     pap  = length(unique(apa_citation))
   )
+
+tot <- pdb$Metadata %>% 
+  summarise(
+    kingdom = "Totals",
+    IPMs = length(unique(ipm_id)),
+    spp  = length(unique(species_accepted)),
+    pap  = length(unique(apa_citation))
+  )
+
+rbind(tab,tot)
