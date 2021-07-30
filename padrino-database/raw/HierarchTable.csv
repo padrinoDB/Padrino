@@ -4,8 +4,8 @@
 "aaaa18","year","yr","2004:2012","K_yr; P_yr; F_yr",NA
 "aaaa19","year","yr","2004:2012","K_yr; P_yr; F_yr",NA
 "aaaa20","year","yr","2004:2012","K_yr; P_yr; F_yr",NA
-"aaaa21","host_species","hst_sp","0:1","P; F; C",NA
-"aaaa21","clone","clone","0:1","P; F; C",NA
+"aaaa21","host_species","hstSp","0:1","P_hstSp_clone; F_hstSp_clone; C_hstSp_clone",NA
+"aaaa21","clone","clone","0:1","P_hstSp_clone; F_hstSp_clone; C_hstSp_clone",NA
 "aaaa23","year","yr","2006:2009","K_yr; P_yr; F_yr",NA
 "aaaa24","Light_env","le","2:6","K_le; P_le; stayBG_le; inBG_le",NA
 "aaaa25","Light_env","le","1:6","K_le; P_le; stayBG_le; inBG_le",NA
@@ -62,10 +62,10 @@
 "aaa316","Year","yr","2014:2015","K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr; staySB_yr; SBSdl_yr; S_yr; B_yr",NA
 "aaa317","Year","yr","2013:2015","K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr; staySB_yr; SBSdl_yr; S_yr; B_yr",NA
 "aaa318","Year","yr","2013:2015","K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr; staySB_yr; SBSdl_yr; S_yr; B_yr",NA
-"aaa319","Herbivory","h","0:1","K_h_c; P0_h_c; P1_h_c; F_h_c",NA
-"aaa319","Competition","c","1:3","K_h_c; P0_h_c; P1_h_c; F_h_c",NA
-"aaa320","Herbivory","h","0:1","K_h_c; P0_h_c; P1_h_c; F_h_c",NA
-"aaa320","Competition","c","1:3","K_h_c; P0_h_c; P1_h_c; F_h_c",NA
+"aaa319","Herbivory","herb","0:1","K_herb_comp; P0_herb_comp; P1_herb_comp; F_herb_comp",NA
+"aaa319","Competition","comp","1:3","K_herb_comp; P0_herb_comp; P1_herb_comp; F_herb_comp",NA
+"aaa320","Herbivory","herb","0:1","K_herb_comp; P0_herb_comp; P1_herb_comp; F_herb_comp",NA
+"aaa320","Competition","comp","1:3","K_herb_comp; P0_herb_comp; P1_herb_comp; F_herb_comp",NA
 "aaa321","NormalOrDryYear","yr","1:2","K_yr; P_yr; C_yr",NA
 "aaa325","Year","yr","c(""1994"", ""1996"")","K_all_yr; K_yr; P_yr; F_yr; goSB_yr; goCont_yr; SB_yr",NA
 "aaa334","Proportion_grazed","PG","c(""GNone"", ""GLow"", ""GMedium"", ""GHigh"")","Psingle_fireAll_PG_PH; Pramet_fireAll_PG_PH; Psr_fireAll_PG_PH; F_fireAll_PG_PH; C_fireAll_PG_PH",NA
@@ -139,8 +139,11 @@
 "bbbb68","year","yr","2012:2013","K_yr;P_yr;F_yr; C_yr",NA
 "bbbb69","year","yr","2012:2013","K_yr;P_yr;F_yr; C_yr",NA
 "bbbb70","year","yr","2012:2013","K_yr;P_yr;F_yr; C_yr",NA
-"ddddd_1","Lambda Scenario","LS","c(""a"", ""b"")","F_LS",NA
-"ddddd_2","Lambda Scenario","LS","c(""a"", ""b"", ""c"")","F_LS",NA
+"ddddd1","Lambda Scenario","LS","c(""x"", ""y"")","F_LS",NA
+"ddddd_2","Lambda Scenario","LS","c(""x"", ""y"", ""z"")","F_LS",NA
 "ddddd9","Season","sn","c(1, 2)","P_sn; F_sn",NA
 "dddd22","drainage","dz","c(""aripo"", ""guanapo"")","P_dz_tz; F_dz_tz",NA
 "dddd22","treatment","tz","c(""LPLD"", ""LPHD"", ""HPLD"", ""HPHD"")","P_dz_tz; F_dz_tz",NA
+"dddd23","huricane strength","hur","c(""no"")","P_hur; F_hur",NA
+NA,NA,NA,"c(""no"", ""weak"",  ""strong"")",NA,NA
+"dddd25","study year","yr","c(""1969"", ""2007"")","P_yr",NA

@@ -20,7 +20,7 @@
 "aaaa18","size","size_all",0,15,"K_yr; P_yr; F_yr",NA
 "aaaa19","size","size_all",0,15,"K_yr; P_yr; F_yr",NA
 "aaaa20","size","size_all",0,15,"K_yr; P_yr; F_yr",NA
-"aaaa21","size","size_all",0.1,23.5,"K_yr; P_yr; F_yr; C_yr",NA
+"aaaa21","size","size_all",0.1,23.5,"P_hstSp_clone; F_hstSP_clone; C_hstSp_clone",NA
 "aaaa22","logrosd","logD_all",NA,NA,"K; P; F","0.9 * miniumum and 1.1*maximum size. Kachi & Hirose simulated max size was 32 cm"
 "aaaa23","size","size_all",0,45,"K_yr; P_yr; F_yr",NA
 "aaaa24","size","size_most",0,7.6004023345004,"K_le; P_le; inBG_le",NA
@@ -53,13 +53,12 @@
 "aaaa51","nleaves","nleaves_all",0.9,75.9,"K_yr_pl; P_yr_pl; F_yr_pl",NA
 "aaaa52","nleaves","nleaves_all",0.9,67.1,"K_yr_pl; P_yr_pl; F_yr_pl",NA
 "aaaa53","nleaves","nleaves_all",0.9,105.6,"K_yr_pl; P_yr_pl; F_yr_pl",NA
-"aaaa54","lnleaf","lnleaf_all",NA,NA,"K; P; F",NA
-"aaaa55","lnsize","lnsize_all",-5.282196,17.20633,"K_all_yr; K_yr; P_yr; F_yr; B1C_yr; B2C_yr",NA
-"aaaa56","logsize","logsize_all",1,9.6,"K_tsf_ctl_site_block; P_tsf_ctl_site_block; F_tsf_ctl_site_block;",NA
-"aaaa57","logrosette","logrosette_age_1",4,15,"K; P; F",NA
-"aaaa57","logrosette","logrosette_age_2",4,15,"K; P; F",NA
-"aaaa58","logrosette","logrosette_age_1",4,15,"K; P; F",NA
-"aaaa58","logrosette","logrosette_age_2",4,15,"K; P; F",NA
+"aaaa54","lnleaf","lnleaf_all",1.5,5,"P; F",NA
+"aaaa55","lnsize","lnsize_all",-5.282196,17.20633,"P_yr; F_yr; B1C_yr; B2C_yr",NA
+"aaaa56","logsize","logsize_all",1,9.6,"P_tsf_ctl_site_block; F_tsf_ctl_site_block;",NA
+"aaaa57","logrosette_0","logrosette_age",4,15,"P_0; F_1",NA
+"aaaa57","logrosette_1","logrosette_age",4,15,"P_0; F_1",NA
+"aaaa58","logrosette","logrosette_age_1",4,15,"P_0; F_1",NA
 "aaaa59","logarea","logarea_alll",2,25,"K; P; F",NA
 "aaaa60","logarea","logarea_alll",2,25,"K; P; F",NA
 "aaaa61","size","size_all",2,55,"K; P; F",NA
@@ -320,8 +319,8 @@
 "aaa316","size","size_all",0.131028262406404,7.59899735406811,"K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr",NA
 "aaa317","size","size_all",0.148420005118273,7.33258950423555,"K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr",NA
 "aaa318","size","size_all",0.131028262406404,6.96174420219558,"K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr",NA
-"aaa319","size","size_all",-2.8,8.04,"K_h_c; P0_h_c; P1_h_c; F_h_c",NA
-"aaa320","size","size_all",-2.8,8.04,"K_h_c; P0_h_c; P1_h_c; F_h_c",NA
+"aaa319","size","size_all",-2.8,8.04,"K_herb_comp; P0_herb_comp; P1_herb_comp; F_herb_comp",NA
+"aaa320","size","size_all",-2.8,8.04,"K_herb_comp; P0_herb_comp; P1_herb_comp; F_herb_comp",NA
 "aaa321","size","size_all",0,200,"K_yr; P_yr; C_yr",NA
 "aaa322","size","size_all",0,80,"K; P; F; goSB; goCont",NA
 "aaa323","size","size_all",0.45,9.735,"K; P; F",NA
@@ -470,20 +469,32 @@
 "ddddd2","size_age",NA,0,300,"P_age; F_LS",NA
 "ddddd2","age",NA,0,15,"P_age",NA
 "ddddd3","svl",NA,13.1,250,"P; F",NA
+"ddddd4","size",NA,1,125,"P; F",NA
 "ddddd5","svl",NA,160,1000,"P; F",NA
 "ddddd6","svl",NA,160,1000,"P; F",NA
 "ddddd7","wt",NA,0.1,38,"P; F",NA
 "ddddd8","wt",NA,0.1,38,"P; F",NA
 "ddddd9","svl",NA,0,65,"P_sn; F_sn",NA
 "dddd10","len",NA,30,400,"P; F",NA
-NA,NA,NA,NA,NA,NA,NA
-NA,NA,NA,NA,NA,NA,NA
-NA,NA,NA,NA,NA,NA,NA
-NA,NA,NA,NA,NA,NA,NA
-NA,NA,NA,NA,NA,NA,NA
-NA,NA,NA,NA,NA,NA,NA
-NA,NA,NA,NA,NA,NA,NA
-NA,NA,NA,NA,NA,NA,NA
-NA,NA,NA,NA,NA,NA,NA
-NA,NA,NA,NA,NA,NA,NA
+"dddd11","len",NA,30,400,"P; F",NA
+"dddd12","len",NA,30,400,"P; F",NA
+"dddd13","len",NA,30,400,"P; F",NA
+"dddd14","len",NA,30,400,"P; F",NA
+"dddd15","len",NA,30,400,"P; F",NA
+"dddd16","len",NA,30,400,"P; F",NA
+"dddd17","len",NA,30,400,"P; F",NA
+"dddd18","len",NA,30,400,"P; F",NA
+"dddd19","len",NA,30,400,"P; F",NA
+"dddd20","len",NA,30,400,"P; F",NA
+"dddd21","len",NA,30,400,"P; F",NA
 "dddd22","sl",NA,5,30,"P_dz_tz; F_dz_tz",NA
+"dddd23","logsize",NA,0,7,"P_hur; F_hur",NA
+"dddd24","sl",NA,1,200,"P; F",NA
+"dddd25","size",NA,0.02,1.4,"P_yr; F",NA
+"dddd26","len",NA,0.01,200,"P; F",NA
+"dddd27","svl",NA,10,80,"P; F",NA
+"dddd28","svl",NA,10,80,"P; F",NA
+"dddd29","svl",NA,10,80,"P; F",NA
+"dddd30","svl",NA,120,1200,"P; F",NA
+"dddd31","svl",NA,120,1200,"P; F",NA
+"dddd32","svl",NA,120,1200,"P; F",NA

@@ -19,3 +19,4 @@ metadata/digitization/*rsg.pdf
 metadata/build_artefacts/*
 metadata/digitization/*.html
 web_build_fails/*
+padrino-database/xl

@@ -1,10 +1,10 @@
 library(fs)
 
-source("../RPadrino/data-raw/dev_utils.R")
 library(pdbDigitUtils)
 
-xl <- read_pdb("../RPadrino/data-raw/hand_cleaned_padrino.xlsx")
-tl <- read_pdb("../RPadrino/data-raw/pdb_tomos.xlsx")
+xl <- read_pdb("padrino-database/xl/hand_cleaned_padrino.xlsx")
+tl <- read_pdb("padrino-database/xl/pdb_tomos.xlsx")
+tl$Metadata$.test_passed <- NA
 
 xl <- lapply(seq_along(xl),
              function(ind, pdb, tomos) {
@@ -17,15 +17,9 @@ xl <- lapply(seq_along(xl),
 
 names(xl) <- names(tl)
 
-if(dir_exists("padrino-database")) {
+dir_walk("padrino-database/raw", fun = file_delete)
 
-  dir_delete("padrino-database")
-  
-  dir_create("padrino-database/raw")
-  dir_create("padrino-database/clean")
-  
-} 
-
+ 
 xl <- lapply(xl, function(x) {
   class(x) <- 'data.frame'
   x[x == "NA"] <- NA

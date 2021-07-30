@@ -216,8 +216,17 @@ target_missed <- target_missed[!is.na(target_missed$error) |
                                  !is.na(target_missed$error_magnitude), ]
 add_tests     <- no_target[!is.na(no_target$lambda), ]
 
+# These are based on lambdas from "test_targets_needed.csv". Most are > 5, which
+# is just ludicrous and must be checked by hand before going into production. 
+
+no_target_bad_model <- c(
+  paste0("aaaa", c(57:58, 60:99)),
+  paste0("aaa", c(100:143, 349, 350, 352, 354:357,360:373, 379, 390,392))
+)
+
 write.csv(target_missed, "metadata/unreliable_models.csv", row.names = FALSE)
 write.csv(add_tests, "metadata/test_targets_needed.csv", row.names = FALSE)
+
 
 # Get the models that hit their targets, and drop out the ones where authors
 # have requested an embargo period
@@ -226,6 +235,8 @@ prod_db_ids <- names(completed_mods)
 embargo_ids <- good_db$Metadata$ipm_id[good_db$Metadata$.embargo]
 
 use_ids     <- setdiff(prod_db_ids, embargo_ids)
+use_ids     <- setdiff(use_ids, no_target_bad_model)
+
 
 prod_db     <- pdb_subset(good_db, ipm_ids = use_ids)
 
