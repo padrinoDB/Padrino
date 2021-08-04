@@ -17,6 +17,7 @@ metadata/CompadreSchema.
 metadata/digitization/*SE.pdf
 metadata/digitization/*rsg.pdf
 metadata/build_artefacts/*
+metadata/*.csv
 metadata/digitization/*.html
 web_build_fails/*
 padrino-database/xl

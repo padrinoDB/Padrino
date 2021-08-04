@@ -8,6 +8,7 @@ tl$Metadata$.test_passed <- NA
 
 xl <- lapply(seq_along(xl),
              function(ind, pdb, tomos) {
+               cat("Table", ind, "successfully combined.\n")
                
                rbind(pdb[[ind]], tomos[[ind]])
                
