@@ -76,11 +76,11 @@
 "aaa344","Year","yr","c(""standard"", ""dry"")","K_yr; P_yr; F_yr",NA
 "aaa345","Year","yr","c(""standard"", ""dry"")","K_yr; P_yr; F_yr",NA
 "aaa381","Site","site","1:2","K_site_yr; P_site_yr; F_site_yr; goSB_site_yr",NA
-"aaa381","Year","yr","c(""2008"", ""2009"", ""2010"")","K_site_yr; P_site_yr; F_site_yr; goSB_site_yr",NA
+"aaa381","Year","yr","2008:2010","K_site_yr; P_site_yr; F_site_yr; goSB_site_yr",NA
 "aaa382","Site","site","1:2","K_site_yr; P_site_yr; F_site_yr; goSB_site_yr",NA
-"aaa382","Year","yr","c(""2008"", ""2009"", ""2010"")","K_site_yr; P_site_yr; F_site_yr; goSB_site_yr",NA
+"aaa382","Year","yr","2008:2010","K_site_yr; P_site_yr; F_site_yr; goSB_site_yr",NA
 "aaa383","Site","site","1:2","K_site_yr; P_site_yr; F_site_yr; goSB_site_yr",NA
-"aaa383","Year","yr","c(""2008"", ""2009"", ""2010"")","K_site_yr; P_site_yr; F_site_yr; goSB_site_yr",NA
+"aaa383","Year","yr","2008:2010","K_site_yr; P_site_yr; F_site_yr; goSB_site_yr",NA
 "aaa384","Year","yr","c(""2013"", ""2014"", ""2015"", ""2016"")","K_yr; P_yr; F_yr",NA
 "bbbbb0","year","yr","2001:2004","P_yr; F_yr; K_yr",NA
 "bbbbb1","year","yr","2000:2006","P_yr; F_yr; K_yr",NA
@@ -140,7 +140,7 @@
 "bbbb69","year","yr","2012:2013","K_yr;P_yr;F_yr; C_yr",NA
 "bbbb70","year","yr","2012:2013","K_yr;P_yr;F_yr; C_yr",NA
 "ddddd1","Lambda Scenario","LS","c(""x"", ""y"")","F_LS",NA
-"ddddd_2","Lambda Scenario","LS","c(""x"", ""y"", ""z"")","F_LS",NA
+"ddddd2","Lambda Scenario","LS","c(""x"", ""y"", ""z"")","F_LS",NA
 "ddddd9","Season","sn","c(1, 2)","P_sn; F_sn",NA
 "dddd22","drainage","dz","c(""aripo"", ""guanapo"")","P_dz_tz; F_dz_tz",NA
 "dddd22","treatment","tz","c(""LPLD"", ""LPHD"", ""HPLD"", ""HPHD"")","P_dz_tz; F_dz_tz",NA

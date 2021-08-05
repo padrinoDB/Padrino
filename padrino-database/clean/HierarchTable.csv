@@ -50,9 +50,9 @@
 "aaaa55","year","yr","c(""2004"", ""2005"", ""2006"", ""2007"", ""2009"", ""2010"", ""2011"", ""2012"", ""2013"", ""2014"")","K_all_yr; K_yr; P_yr; F_yr; B_yr; B1_yr; B2_yr; B1C_yr; B2C_yr",NA
 "aaa311","ShortOrLongLived","sp","1:2","K_sp; P_sp; F_sp",NA
 "aaa312","Year","yr","2013:2015","P_yr; SdlOut_yr; goSB_yr; goSdl_yr; staySB_yr; SBSdl_yr",NA
-"aaa313","Year","yr","2013:2015","K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr; staySB_yr; SBSdl_yr; S_yr; B_yr",NA
 "aaa314","Year","yr","2013:2015","K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr; staySB_yr; SBSdl_yr; S_yr; B_yr",NA
 "aaa315","Year","yr","2013:2015","K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr; staySB_yr; SBSdl_yr; S_yr; B_yr",NA
+"aaa316","Year","yr","2014:2015","K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr; staySB_yr; SBSdl_yr; S_yr; B_yr",NA
 "aaa317","Year","yr","2013:2015","K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr; staySB_yr; SBSdl_yr; S_yr; B_yr",NA
 "aaa318","Year","yr","2013:2015","K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr; staySB_yr; SBSdl_yr; S_yr; B_yr",NA
 "aaa321","NormalOrDryYear","yr","1:2","K_yr; P_yr; C_yr",NA

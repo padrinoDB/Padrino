@@ -16,9 +16,7 @@
 "aaaa30","size","size_most",0,7.6004023345004,"K_le; P_le; inBG_le",NA
 "aaaa31","size","size_most",0,7.6004023345004,"K_le; P_le; inBG_le",NA
 "aaaa32","size","size_most",0,7.6004023345004,"K_le; P_le; inBG_le",NA
-"aaaa35","lnsize","lnsize_all",0,5,"K; P; F",NA
-"aaaa36","lnsize","lnsize_all",0,5,"K; P; F",NA
-"aaaa37","lnsize","lnsize_all",0,5,"K; P; F",NA
+"aaaa34","lnsize","lnsize_all",0,5,"K; P; F",NA
 "aaaa38","nleaves","nleaves_all",0.9,36.3,"K_yr_pl; P_yr_pl; F_yr_pl",NA
 "aaaa39","nleaves","nleaves_all",0.9,69.3,"K_yr_pl; P_yr_pl; F_yr_pl",NA
 "aaaa40","nleaves","nleaves_all",0.9,95.7,"K_yr_pl; P_yr_pl; F_yr_pl",NA
@@ -207,9 +205,9 @@
 "aaa310","size","size_all",0,5.83,"K; P; F",NA
 "aaa311","size","size_all",0,5.83,"K_sp; P_sp; F_sp",NA
 "aaa312","size","size_all",0.113328685307003,7.23592774819172,"K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr",NA
-"aaa313","size","size_all",0.559615787935423,8.38529850560948,"K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr",NA
 "aaa314","size","size_all",0.19062035960865,7.09898955947908,"K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr",NA
 "aaa315","size","size_all",0.131028262406404,7.70635640752294,"K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr",NA
+"aaa316","size","size_all",0.131028262406404,7.59899735406811,"K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr",NA
 "aaa317","size","size_all",0.148420005118273,7.33258950423555,"K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr",NA
 "aaa318","size","size_all",0.131028262406404,6.96174420219558,"K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr",NA
 "aaa321","size","size_all",0,200,"K_yr; P_yr; C_yr",NA
@@ -218,8 +216,6 @@
 "aaa329","rcd","rcd_all",-0.5,3.5,"K; P; F",NA
 "aaa339","size","size_all",1.2,624,NA,NA
 "aaa340","size","size_all",1.2,624,NA,NA
-"aaa341","size","size_all",1.26,482.9,"K; P; F",NA
-"aaa342","size","size_all",1.26,482.9,"K; P; F",NA
 "aaa343","size","size_all",5,250,"K_en; P_en; F_en",NA
 "aaa344","lnCV","lnCV_all",1,17,"K_yr; P_yr; F_yr",NA
 "aaa345","lnCV","lnCV_all",1,17,"K_yr; P_yr; F_yr",NA
