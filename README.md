@@ -34,7 +34,7 @@ usually requires too many computing resources to be feasible.
 
 | \# of Species | \# of Publications | \# of IPM id’s |
 |--------------:|-------------------:|---------------:|
-|            43 |                 32 |            254 |
+|            41 |                 32 |            250 |
 
 ## For developers
 
