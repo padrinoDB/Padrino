@@ -1,0 +1,29 @@
+---
+output: html_document
+--- 
+
+# to-do for PDB paper
+
+1. update digitization guide w/ new info
+
+    + first_arg for PDFs
+    
+    + TestTarget explanations
+    
+2. Figures
+
+    + revisit these
+    
+    + phylogeny?
+    
+        + If yes, find animal one
+        
+3. work on failing models
+
+4. draft to co-authors
+
+5. case study
+
+    + finish it!
+    
+    + Add more?
