@@ -5589,6 +5589,7 @@
 "ccccc1"	"Fecundity"	"r_s = exp(r_s_int + r_s_slope * sa_1)"	"Evaluated"	"F"
 "ccccc1"	"Fecundity"	"r_d = Norm(r_d_mu, r_d_sd)"	"Substituted"	"F"
 "ccccc1"	"Fecundity"	"r_r = n_new / sum(r_s)"	"Evaluated"	"F"
+"ccccc2"	NA	NA	NA	NA
 "ddddd1"	"Survival"	"s = 1 / ( 1 + exp ( - ( int_s + slope_s * size_1)))"	"Evaluated"	"P; F_LS"
 "ddddd1"	"Growth"	"mu_g = int_g + slope_g * size_1"	"Evaluated"	"P"
 "ddddd1"	"Growth"	"deltax = ifelse(size_2-size_1>0, size_2-size_1, 1e-6)"	"Evaluated"	"P"

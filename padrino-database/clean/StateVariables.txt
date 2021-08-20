@@ -50,6 +50,8 @@
 "aaaa52"	"nleaves"	FALSE
 "aaaa53"	"nleaves"	FALSE
 "aaaa54"	"lnleaf"	FALSE
+"aaaa55"	"lnsize"	FALSE
+"aaaa55"	"seedbank"	TRUE
 "aaaa59"	"logarea"	FALSE
 "aaa144"	"size"	FALSE
 "aaa145"	"size"	FALSE
@@ -250,6 +252,9 @@
 "aaa340"	"seeds"	TRUE
 "aaa341"	"size"	FALSE
 "aaa342"	"size"	FALSE
+"aaa343"	"size"	FALSE
+"aaa344"	"lnCV"	FALSE
+"aaa345"	"lnCV"	FALSE
 "aaa346"	"lnsize"	FALSE
 "aaa346"	"seedbank"	TRUE
 "aaa346"	"seedling"	TRUE

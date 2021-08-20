@@ -26,11 +26,15 @@ pdb <- lapply(rd_nms, function(x) {
              stringsAsFactors = FALSE,
              sep              = "\t",
              fileEncoding     = "UTF-8",
+             quote            = "\"",
              header           = TRUE)
 })
 
 names(pdb) <- name_ind
 class(pdb) <- c("pdb", "list")
+
+pdb$ParSetIndices$range <- gsub("\\\\", "'", pdb$ParSetIndices$range)
+
 
 int_rules <- c("midpoint")
 
@@ -242,11 +246,11 @@ prod_db     <- pdb_subset(good_db, ipm_ids = use_ids)
 prod_db$Metadata <- prod_db$Metadata %>%
   select(-c(.embargo, .embargo_date))
 
-prod_db <- lapply(prod_db, function(x) {
-  
-  vapply(x, function(y) y[])
-  
-})
+# prod_db <- lapply(prod_db, function(x) {
+#   
+#   vapply(x, function(y) y[])
+#   
+# })
 
 
 pdb_save(prod_db, destination = "padrino-database/clean/")

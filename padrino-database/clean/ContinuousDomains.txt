@@ -37,6 +37,7 @@
 "aaaa52"	"nleaves"	"nleaves_all"	0.9	67.1	"K_yr_pl; P_yr_pl; F_yr_pl"	NA
 "aaaa53"	"nleaves"	"nleaves_all"	0.9	105.6	"K_yr_pl; P_yr_pl; F_yr_pl"	NA
 "aaaa54"	"lnleaf"	"lnleaf_all"	1.5	5	"P; F"	NA
+"aaaa55"	"lnsize"	"lnsize_all"	-5.282196	17.20633	"P_yr; F_yr; B1C_yr; B2C_yr"	NA
 "aaaa59"	"logarea"	"logarea_alll"	2	25	"K; P; F"	NA
 "aaa144"	"size"	"size_all"	2	55	"K; P; F"	NA
 "aaa145"	"size"	"size_all"	2	55	"K; P; F"	NA
@@ -221,6 +222,9 @@
 "aaa340"	"size"	"size_all"	1.2	624	NA	NA
 "aaa341"	"size"	"size_all"	1.26	482.9	"K; P; F"	NA
 "aaa342"	"size"	"size_all"	1.26	482.9	"K; P; F"	NA
+"aaa343"	"size"	"size_all"	5	250	"K_en; P_en; F_en"	NA
+"aaa344"	"lnCV"	"lnCV_all"	1	17	"K_yr; P_yr; F_yr"	NA
+"aaa345"	"lnCV"	"lnCV_all"	1	17	"K_yr; P_yr; F_yr"	NA
 "aaa346"	"lnsize"	"lnsize_all"	-0.6931472	3.465736	"K; P; F; goSB; goCont"	NA
 "aaa347"	"lnsize"	"lnsize_all"	-0.6931472	3.465736	"K; P; F; goSB; goCont"	NA
 "aaa348"	"lnsize"	"lnsize_all"	-0.6931472	3.465736	"K; P; F; goSB; goCont"	NA
