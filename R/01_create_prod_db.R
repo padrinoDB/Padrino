@@ -9,7 +9,6 @@ library(RPadrino)
 
 name_ind <- c("Metadata", 
               "StateVariables",
-              "DiscreteStates", 
               "ContinuousDomains", 
               "IntegrationRules", 
               "StateVectors",
@@ -17,16 +16,17 @@ name_ind <- c("Metadata",
               "VitalRateExpr", 
               "ParameterValues", 
               "EnvironmentalVariables",
-              "HierarchTable", 
-              "UncertaintyTable", 
+              "ParSetIndices", 
               "TestTargets")
 
-rd_nms <- paste('padrino-database/raw/', name_ind, ".csv", sep = "")
+rd_nms <- paste('padrino-database/raw/', name_ind, ".txt", sep = "")
 
 pdb <- lapply(rd_nms, function(x) {
-  read.csv(x,
-           stringsAsFactors = FALSE,
-           fileEncoding = "UTF-8")
+  read.table(x,
+             stringsAsFactors = FALSE,
+             sep              = "\t",
+             fileEncoding     = "UTF-8",
+             header           = TRUE)
 })
 
 names(pdb) <- name_ind
@@ -237,21 +237,30 @@ embargo_ids <- good_db$Metadata$ipm_id[good_db$Metadata$.embargo]
 use_ids     <- setdiff(prod_db_ids, embargo_ids)
 use_ids     <- setdiff(use_ids, no_target_bad_model)
 
-
 prod_db     <- pdb_subset(good_db, ipm_ids = use_ids)
 
 prod_db$Metadata <- prod_db$Metadata %>%
   select(-c(.embargo, .embargo_date))
 
+prod_db <- lapply(prod_db, function(x) {
+  
+  vapply(x, function(y) y[])
+  
+})
+
+
+pdb_save(prod_db, destination = "padrino-database/clean/")
+
 for(i in seq_along(prod_db)) {
-  
+
   nm <- names(prod_db)[i]
-  
-  write.csv(prod_db[[i]], 
-            file         = paste("padrino-database/clean/", nm,".csv", sep = ""),
-            row.names    = FALSE,
-            quote        = TRUE,
-            na           = "NA",
-            fileEncoding = "UTF-8")
-  
+
+  write.table(prod_db[[i]],
+              file         = paste("padrino-database/clean/", nm,".txt", sep = ""),
+              row.names    = FALSE,
+              quote        = TRUE,
+              na           = "NA",
+              sep          = "\t",
+              fileEncoding = "UTF-8")
+
 }

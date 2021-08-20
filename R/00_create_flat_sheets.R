@@ -33,11 +33,14 @@ for(i in seq_along(xl)) {
   
   temp <- names(xl)[i]
   
-  write.csv(xl[[i]], 
-            file         = paste("padrino-database/raw/", temp,".csv", sep = ""),
-            row.names    = FALSE,
-            quote        = TRUE,
-            na           = "NA",
-            fileEncoding = "UTF-8")
+  if(temp == "HierarchTable") temp <- "ParSetIndices"
+  
+  write.table(xl[[i]], 
+              file         = paste("padrino-database/raw/", temp,".txt", sep = ""),
+              row.names    = FALSE,
+              sep          = "\t",
+              quote        = TRUE,
+              na           = "NA",
+              fileEncoding = "UTF-8")
   
 }

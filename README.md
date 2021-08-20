@@ -13,7 +13,7 @@ repo called `RPadrino` that will be eventually become the equivalent of
 `Rcompadre`. That is where prospective users should go to find an
 interface to this database that is actually useful.
 
-Currently, the data base is a set of 12 CSV files that consist of ASCII
+Currently, the data base is a set of 12 text files that consist of ASCII
 representation of model formulae, the coefficients associated with said
 models, and the upper/lower bounds of the state variables. We are
 closing in on a finalized design, at which point it seems likely that
@@ -34,7 +34,7 @@ usually requires too many computing resources to be feasible.
 
 | \# of Species | \# of Publications | \# of IPM id’s |
 |--------------:|-------------------:|---------------:|
-|            41 |                 32 |            250 |
+|            41 |                 30 |            253 |
 
 ## For developers
 
