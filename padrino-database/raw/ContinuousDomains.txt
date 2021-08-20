@@ -1,0 +1,501 @@
+"ipm_id"	"state_variable"	"domain"	"lower"	"upper"	"kernel_id"	"notes"
+"aaaaa0"	"size"	"size_all"	0.0034	750	"K; P; F"	NA
+"aaaaa1"	"size"	"size_all"	0.0034	750	"K; P; F"	NA
+"aaaaa2"	"size"	"size_all"	0.0034	750	"K; P; F"	NA
+"aaaaa3"	"size"	"size_all"	0.0034	750	"K; P; F"	NA
+"aaaaa4"	"size"	"size_all"	1	24	"K; P; F"	NA
+"aaaaa5"	"size"	"size_all"	1	24	"K; P; F"	NA
+"aaaaa6"	"size"	"size_all"	1	24	"K; P; F"	NA
+"aaaaa7"	"size"	"size_all"	1	24	"K; P; F"	NA
+"aaaaa8"	"dbh"	"dbh_all"	10	250	"K_yr; P_yr; F_yr"	NA
+"aaaaa9"	"leaves"	"leaves"	0	39	"K; P; F"	NA
+"aaaa10"	"leaves"	"leaves"	0	39	"K; P; F"	NA
+"aaaa11"	"leaves"	"leaves"	0	39	"K; P; F"	NA
+"aaaa12"	"leaves"	"leaves"	0	39	"K; P; F"	NA
+"aaaa13"	"leaves"	"leaves"	0	39	"K; P; F"	NA
+"aaaa14"	"leaves"	"leaves"	0	39	"K; P; F"	NA
+"aaaa15"	"leafarea"	"leafarea_all"	0.57	11.9	"K; P; F"	NA
+"aaaa16"	"leafarea"	"leafarea_all"	0.78	11.07	"K; P; F"	NA
+"aaaa17"	"size"	"size_all"	0	15	"K_yr; P_yr; F_yr"	NA
+"aaaa18"	"size"	"size_all"	0	15	"K_yr; P_yr; F_yr"	NA
+"aaaa19"	"size"	"size_all"	0	15	"K_yr; P_yr; F_yr"	NA
+"aaaa20"	"size"	"size_all"	0	15	"K_yr; P_yr; F_yr"	NA
+"aaaa21"	"size"	"size_all"	0.1	23.5	"P_hstSp_clone; F_hstSP_clone; C_hstSp_clone"	NA
+"aaaa22"	"logrosd"	"logD_all"	NA	NA	"K; P; F"	"0.9 * miniumum and 1.1*maximum size. Kachi & Hirose simulated max size was 32 cm"
+"aaaa23"	"size"	"size_all"	0	45	"K_yr; P_yr; F_yr"	NA
+"aaaa24"	"size"	"size_most"	0	7.6004023345004	"K_le; P_le; inBG_le"	NA
+"aaaa25"	"size"	"size_most"	0	7.6004023345004	"K_le; P_le; inBG_le"	NA
+"aaaa26"	"size"	"size_most"	0	7.6004023345004	"K_le; P_le; inBG_le"	NA
+"aaaa27"	"size"	"size_most"	0	7.6004023345004	"K_le; P_le; inBG_le"	NA
+"aaaa28"	"size"	"size_most"	0	7.6004023345004	"K_le; P_le; inBG_le"	NA
+"aaaa29"	"size"	"size_most"	0	7.6004023345004	"K_le; P_le; inBG_le"	NA
+"aaaa30"	"size"	"size_most"	0	7.6004023345004	"K_le; P_le; inBG_le"	NA
+"aaaa31"	"size"	"size_most"	0	7.6004023345004	"K_le; P_le; inBG_le"	NA
+"aaaa32"	"size"	"size_most"	0	7.6004023345004	"K_le; P_le; inBG_le"	NA
+"aaaa33"	"nrosettes"	"nrosettes_all"	1	60	"K_yr; P_yr; F_yr"	NA
+"aaaa34"	"lnsize"	"lnsize_all"	0	5	"K; P; F"	NA
+"aaaa35"	"lnsize"	"lnsize_all"	0	5	"K; P; F"	NA
+"aaaa36"	"lnsize"	"lnsize_all"	0	5	"K; P; F"	NA
+"aaaa37"	"lnsize"	"lnsize_all"	0	5	"K; P; F"	NA
+"aaaa38"	"nleaves"	"nleaves_all"	0.9	36.3	"K_yr_pl; P_yr_pl; F_yr_pl"	NA
+"aaaa39"	"nleaves"	"nleaves_all"	0.9	69.3	"K_yr_pl; P_yr_pl; F_yr_pl"	NA
+"aaaa40"	"nleaves"	"nleaves_all"	0.9	95.7	"K_yr_pl; P_yr_pl; F_yr_pl"	NA
+"aaaa41"	"nleaves"	"nleaves_all"	0.9	69.3	"K_yr_pl; P_yr_pl; F_yr_pl"	NA
+"aaaa42"	"nleaves"	"nleaves_all"	0.9	60.5	"K_yr_pl; P_yr_pl; F_yr_pl"	NA
+"aaaa43"	"nleaves"	"nleaves_all"	0.9	40.7	"K_yr_pl; P_yr_pl; F_yr_pl"	NA
+"aaaa44"	"nleaves"	"nleaves_all"	0.9	79.2	"K_yr_pl; P_yr_pl; F_yr_pl"	NA
+"aaaa45"	"nleaves"	"nleaves_all"	0.9	147.4	"K_yr_pl; P_yr_pl; F_yr_pl"	NA
+"aaaa46"	"nleaves"	"nleaves_all"	0.9	150.7	"K_yr_pl; P_yr_pl; F_yr_pl"	NA
+"aaaa47"	"nleaves"	"nleaves_all"	0.9	145.2	"K_yr_pl; P_yr_pl; F_yr_pl"	NA
+"aaaa48"	"nleaves"	"nleaves_all"	0.9	134.2	"K_yr_pl; P_yr_pl; F_yr_pl"	NA
+"aaaa49"	"nleaves"	"nleaves_all"	0.9	148.5	"K_yr_pl; P_yr_pl; F_yr_pl"	NA
+"aaaa50"	"nleaves"	"nleaves_all"	0.9	96.9	"K_yr_pl; P_yr_pl; F_yr_pl"	NA
+"aaaa51"	"nleaves"	"nleaves_all"	0.9	75.9	"K_yr_pl; P_yr_pl; F_yr_pl"	NA
+"aaaa52"	"nleaves"	"nleaves_all"	0.9	67.1	"K_yr_pl; P_yr_pl; F_yr_pl"	NA
+"aaaa53"	"nleaves"	"nleaves_all"	0.9	105.6	"K_yr_pl; P_yr_pl; F_yr_pl"	NA
+"aaaa54"	"lnleaf"	"lnleaf_all"	1.5	5	"P; F"	NA
+"aaaa55"	"lnsize"	"lnsize_all"	-5.282196	17.20633	"P_yr; F_yr; B1C_yr; B2C_yr"	NA
+"aaaa56"	"logsize"	"logsize_all"	1	9.6	"P_tsf_ctl_site_block; F_tsf_ctl_site_block;"	NA
+"aaaa57"	"logrosette_0"	"logrosette_age"	4	15	"P_0; F_1"	NA
+"aaaa57"	"logrosette_1"	"logrosette_age"	4	15	"P_0; F_1"	NA
+"aaaa58"	"logrosette"	"logrosette_age_1"	4	15	"P_0; F_1"	NA
+"aaaa59"	"logarea"	"logarea_alll"	2	25	"K; P; F"	NA
+"aaaa60"	"logarea"	"logarea_alll"	2	25	"K; P; F"	NA
+"aaaa61"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa62"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa63"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa64"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa65"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa66"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa67"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa68"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa69"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa70"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa71"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa72"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa73"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa74"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa75"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa76"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa77"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa78"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa79"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa80"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa81"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa82"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa83"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa84"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa85"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa86"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa87"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa88"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa89"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa90"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa91"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa92"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa93"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa94"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa95"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa96"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa97"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa98"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaaa99"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa100"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa101"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa102"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa103"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa104"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa105"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa106"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa107"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa108"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa109"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa110"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa111"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa112"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa113"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa114"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa115"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa116"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa117"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa118"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa119"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa120"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa121"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa122"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa123"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa124"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa125"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa126"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa127"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa128"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa129"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa130"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa131"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa132"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa133"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa134"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa135"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa136"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa137"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa138"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa139"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa140"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa141"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa142"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa143"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa144"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa145"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa146"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa147"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa148"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa149"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa150"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa151"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa152"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa153"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa154"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa155"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa156"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa157"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa158"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa159"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa160"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa161"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa162"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa163"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa164"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa165"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa166"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa167"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa168"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa169"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa170"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa171"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa172"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa173"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa174"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa175"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa176"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa177"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa178"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa179"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa180"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa181"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa182"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa183"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa184"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa185"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa186"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa187"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa188"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa189"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa190"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa191"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa192"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa193"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa194"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa195"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa196"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa197"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa198"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa199"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa200"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa201"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa202"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa203"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa204"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa205"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa206"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa207"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa208"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa209"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa210"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa211"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa212"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa213"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa214"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa215"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa216"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa217"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa218"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa219"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa220"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa221"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa222"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa223"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa224"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa225"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa226"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa227"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa228"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa229"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa230"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa231"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa232"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa233"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa234"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa235"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa236"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa237"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa238"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa239"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa240"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa241"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa242"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa243"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa244"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa245"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa246"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa247"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa248"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa249"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa250"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa251"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa252"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa253"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa254"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa255"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa256"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa257"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa258"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa259"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa260"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa261"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa262"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa263"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa264"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa265"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa266"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa267"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa268"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa269"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa270"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa271"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa272"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa273"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa274"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa275"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa276"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa277"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa278"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa279"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa280"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa281"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa282"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa283"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa284"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa285"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa286"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa287"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa288"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa289"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa290"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa291"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa292"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa293"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa294"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa295"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa296"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa297"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa298"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa299"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa300"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa301"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa302"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa303"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa304"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa305"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa306"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa307"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa308"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa309"	"size"	"size_all"	2	55	"K; P; F"	NA
+"aaa310"	"size"	"size_all"	0	5.83	"K; P; F"	NA
+"aaa311"	"size"	"size_all"	0	5.83	"K_sp; P_sp; F_sp"	NA
+"aaa312"	"size"	"size_all"	0.113328685307003	7.23592774819172	"K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr"	NA
+"aaa313"	"size"	"size_all"	0.559615787935423	8.38529850560948	"K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr"	NA
+"aaa314"	"size"	"size_all"	0.19062035960865	7.09898955947908	"K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr"	NA
+"aaa315"	"size"	"size_all"	0.131028262406404	7.70635640752294	"K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr"	NA
+"aaa316"	"size"	"size_all"	0.131028262406404	7.59899735406811	"K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr"	NA
+"aaa317"	"size"	"size_all"	0.148420005118273	7.33258950423555	"K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr"	NA
+"aaa318"	"size"	"size_all"	0.131028262406404	6.96174420219558	"K_yr; P_yr; SdlOut_yr; goSB_yr; goSdl_yr"	NA
+"aaa319"	"size"	"size_all"	-2.8	8.04	"K_herb_comp; P0_herb_comp; P1_herb_comp; F_herb_comp"	NA
+"aaa320"	"size"	"size_all"	-2.8	8.04	"K_herb_comp; P0_herb_comp; P1_herb_comp; F_herb_comp"	NA
+"aaa321"	"size"	"size_all"	0	200	"K_yr; P_yr; C_yr"	NA
+"aaa322"	"size"	"size_all"	0	80	"K; P; F; goSB; goCont"	NA
+"aaa323"	"size"	"size_all"	0.45	9.735	"K; P; F"	NA
+"aaa324"	"size"	"size_all"	0.6067623	9.621902	"K; P; F; C"	NA
+"aaa325"	"size"	"size_all"	1	81	"K_yr; P_yr; F_yr; goSB_yr; goCont_yr"	NA
+"aaa326"	"size"	"size_all"	-2	2	"K; P; F"	NA
+"aaa327"	"size"	"size_all"	0.92	15.28	"K; P; F"	NA
+"aaa328"	"rcd"	"rcd_all"	-0.5	3.5	"K; P; F"	NA
+"aaa329"	"rcd"	"rcd_all"	-0.5	3.5	"K; P; F"	NA
+"aaa330"	"size"	"size_all"	1	12	"K; P; F"	NA
+"aaa331"	"size"	"size_all"	1	12	"K; P; F"	NA
+"aaa332"	"lnrosette"	"lnrosette_all"	0.989	4.553	"K; P; F"	NA
+"aaa333"	"lnrosette"	"lnrosette_all"	2.039	5.828	"K; P; F"	NA
+"aaa334"	"seedling"	"size_single"	0.095	0.5	"K_fireAll_PG_PH; Psingle_fireAll_PG_PH; Pramet_fireAll_PG_PH; GSR_fireAll_PG_PH; F_fireAll_PG_PH; C_fireAll_PG_PH"	NA
+"aaa334"	"ramet"	"size_ramet"	0.095	1.575	"K_fireAll_PG_PH; Psingle_fireAll_PG_PH; Pramet_fireAll_PG_PH; GSR_fireAll_PG_PH; F_fireAll_PG_PH; C_fireAll_PG_PH"	NA
+"aaa335"	"dbh"	"dbh_all"	0.45	231	"K_all; K; P; F; C; goCont; goSB"	NA
+"aaa336"	"dbh"	"dbh_all"	0.27	231	"K_all; K; P; F; C; goCont; goSB"	NA
+"aaa337"	"size"	"size_all"	2.96	405.6	NA	NA
+"aaa338"	"size"	"size_all"	2.96	405.6	NA	NA
+"aaa339"	"size"	"size_all"	1.2	624	NA	NA
+"aaa340"	"size"	"size_all"	1.2	624	NA	NA
+"aaa341"	"size"	"size_all"	1.26	482.9	"K; P; F"	NA
+"aaa342"	"size"	"size_all"	1.26	482.9	"K; P; F"	NA
+"aaa343"	"size"	"size_all"	5	250	"K_en; P_en; F_en"	NA
+"aaa344"	"lnCV"	"lnCV_all"	1	17	"K_yr; P_yr; F_yr"	NA
+"aaa345"	"lnCV"	"lnCV_all"	1	17	"K_yr; P_yr; F_yr"	NA
+"aaa346"	"lnsize"	"lnsize_all"	-0.6931472	3.465736	"K; P; F; goSB; goCont"	NA
+"aaa347"	"lnsize"	"lnsize_all"	-0.6931472	3.465736	"K; P; F; goSB; goCont"	NA
+"aaa348"	"lnsize"	"lnsize_all"	-0.6931472	3.465736	"K; P; F; goSB; goCont"	NA
+"aaa349"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa350"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa351"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa352"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa353"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa354"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa355"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa356"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa357"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa358"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa359"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa360"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa361"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa362"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa363"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa364"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa365"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa366"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa367"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa368"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa369"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa370"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa371"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa372"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa373"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa374"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa375"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa376"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa377"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa378"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa379"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa380"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
+"aaa381"	"lnD"	"lnD_all"	0	4	"K_all_yr_site; K_yr_site; P_yr_site; F_yr_site;  goSB_yr; goCont"	NA
+"aaa382"	"lnD"	"lnD_all"	0	4	"K_all_yr_site; K_yr_site; P_yr_site; F_yr_site;  goSB_yr; goCont"	NA
+"aaa383"	"lnD"	"lnD_all"	0	4	"K_all_yr_site; K_yr_site; P_yr_site; F_yr_site;  goSB_yr; goCont"	NA
+"aaa384"	"Rvol"	"Rvol_all"	-2.832581	9.729942	"K_yr; P_yr; F_yr"	NA
+"aaa385"	"height"	"height_all"	0	250	"K; P; F"	NA
+"aaa386"	"height"	"height_all"	0	250	"K; P; F"	NA
+"aaa387"	"height"	"height_all"	0	250	"K; P; F"	NA
+"aaa388"	"height"	"height_all"	0	250	"K; P; F"	NA
+"aaa389"	"lnmass"	"lnmass_all"	-10	10	"K; P; F"	NA
+"aaa390"	"lnmass"	"lnmass_all"	-10	10	"K; P; F"	NA
+"aaa391"	"lnmass"	"lnmass_all"	-10	10	"K; P; F"	NA
+"aaa392"	"lnmass"	"lnmass_all"	-10	10	"K; P; F"	NA
+"bbbbb0"	"size"	"all_size"	0.989	7.519	"K_yr; P_yr; F_yr"	NA
+"bbbbb1"	"size"	"all_size"	0.624	7.844	"K_yr; P_yr; F_yr"	NA
+"bbbbb2"	"size"	"all_size"	0.365	8.966	"K_yr; P_yr; F_yr"	NA
+"bbbbb3"	"size"	"all_size"	0.624	7.862	"K_yr; P_yr; F_yr"	NA
+"bbbbb4"	"size"	"all_size"	0.365	7.762	"K_yr; P_yr; F_yr"	NA
+"bbbbb5"	"size"	"all_size"	0.624	8.299	"K_yr; P_yr; F_yr"	NA
+"bbbbb6"	"size"	"all_size"	0.624	7.43	"K_yr; P_yr; F_yr"	NA
+"bbbbb7"	"size"	"all_size"	0	5	"K; P; F"	NA
+"bbbbb8"	"dbh"	"all_dbh"	7.5	160.6	"K; P; F"	NA
+"bbbbb9"	"dbh"	"all_dbh"	7.5	330	"K; P; F"	NA
+"bbbb10"	"dbh"	"all_dbh"	7.5	220	"K; P; F"	NA
+"bbbb11"	"dbh"	"all_dbh"	7.5	162.8	"K; P; F"	NA
+"bbbb12"	"dbh"	"all_dbh"	7.5	198	"K; P; F"	NA
+"bbbb13"	"dbh"	"all_dbh"	7.5	150.7	"K; P; F"	NA
+"bbbb14"	"dbh"	"all_dbh"	7.5	163.9	"K; P; F"	NA
+"bbbb15"	"dbh"	"all_dbh"	7.5	141.9	"K; P; F"	NA
+"bbbb16"	"dbh"	"all_dbh"	7.5	198	"K; P; F"	NA
+"bbbb17"	"dbh"	"all_dbh"	7.5	167.2	"K; P; F"	NA
+"bbbb18"	"dbh"	"all_dbh"	7.5	189.2	"K; P; F"	NA
+"bbbb19"	"dbh"	"all_dbh"	7.5	313.5	"K; P; F"	NA
+"bbbb20"	"dbh"	"all_dbh"	7.5	161.7	"K; P; F"	NA
+"bbbb21"	"size"	"all_size"	1.420137	36.76947	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb22"	"size"	"all_size"	1.352471	28.02383	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb23"	"size"	"all_size"	1.420137	36.76947	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb24"	"size"	"all_size"	1.352471	28.02383	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb25"	"size"	"all_size"	1.420137	36.76947	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb26"	"size"	"all_size"	1.352471	28.02383	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb27"	"size"	"all_size"	1.420137	36.76947	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb28"	"size"	"all_size"	1.352471	28.02383	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb29"	"size"	"all_size"	1.420137	36.76947	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb30"	"size"	"all_size"	1.352471	28.02383	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb31"	"size"	"all_size"	1.420137	36.76947	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb32"	"size"	"all_size"	1.352471	28.02383	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb33"	"size"	"all_size"	3.441034	12.43631	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb34"	"size"	"all_size"	3.492614	10.18924	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb35"	"size"	"all_size"	3.441034	12.43631	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb36"	"size"	"all_size"	3.492614	10.18924	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb37"	"size"	"all_size"	3.441034	12.43631	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb38"	"size"	"all_size"	3.492614	10.18924	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb39"	"size"	"all_size"	3.441034	12.43631	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb40"	"size"	"all_size"	3.492614	10.18924	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb41"	"size"	"all_size"	3.441034	12.43631	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb42"	"size"	"all_size"	3.492614	10.18924	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb43"	"size"	"all_size"	3.441034	12.43631	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb44"	"size"	"all_size"	3.492614	10.18924	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb45"	"size"	"all_size"	3.441034	12.43631	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb46"	"size"	"all_size"	3.492614	10.18924	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb47"	"size"	"all_size"	3.441034	12.43631	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb48"	"size"	"all_size"	3.492614	10.18924	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb49"	"size"	"all_size"	1.449	10.58944	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb50"	"size"	"all_size"	3.10557	9.555353	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb51"	"size"	"all_size"	1.449	10.58944	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb52"	"size"	"all_size"	3.10557	9.555353	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb53"	"size"	"all_size"	1.449	10.58944	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb54"	"size"	"all_size"	3.10557	9.555353	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb55"	"size"	"all_size"	1.449	10.58944	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb56"	"size"	"all_size"	3.10557	9.555353	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb57"	"size"	"all_size"	1.449	10.58944	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb58"	"size"	"all_size"	3.10557	9.555353	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb59"	"size"	"all_size"	1.449	10.58944	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb60"	"size"	"all_size"	3.10557	9.555353	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb61"	"size"	"all_size"	1.449	10.58944	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb62"	"size"	"all_size"	3.10557	9.555353	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb63"	"size"	"all_size"	0.703	8.604626	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb64"	"size"	"all_size"	0.703	9.292949	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb65"	"size"	"all_size"	0.703	8.604626	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb66"	"size"	"all_size"	0.703	9.292949	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb67"	"size"	"all_size"	0.703	8.604626	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb68"	"size"	"all_size"	0.703	9.292949	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb69"	"size"	"all_size"	0.703	8.604626	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb70"	"size"	"all_size"	0.703	9.292949	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"ccccc1"	"sa"	"all_sa"	-7.256	3.979	"P; F"	NA
+"ddddd1"	"size"	NA	0	300	"P; F_LS"	NA
+"ddddd2"	"size_age"	NA	0	300	"P_age; F_LS"	NA
+"ddddd2"	"age"	NA	0	15	"P_age"	NA
+"ddddd3"	"svl"	NA	13.1	250	"P; F"	NA
+"ddddd4"	"size"	NA	1	125	"P; F"	NA
+"ddddd5"	"svl"	NA	160	1000	"P; F"	NA
+"ddddd6"	"svl"	NA	160	1000	"P; F"	NA
+"ddddd7"	"wt"	NA	0.1	38	"P; F"	NA
+"ddddd8"	"wt"	NA	0.1	38	"P; F"	NA
+"ddddd9"	"svl"	NA	0	65	"P_sn; F_sn"	NA
+"dddd10"	"len"	NA	30	400	"P; F"	NA
+"dddd11"	"len"	NA	30	400	"P; F"	NA
+"dddd12"	"len"	NA	30	400	"P; F"	NA
+"dddd13"	"len"	NA	30	400	"P; F"	NA
+"dddd14"	"len"	NA	30	400	"P; F"	NA
+"dddd15"	"len"	NA	30	400	"P; F"	NA
+"dddd16"	"len"	NA	30	400	"P; F"	NA
+"dddd17"	"len"	NA	30	400	"P; F"	NA
+"dddd18"	"len"	NA	30	400	"P; F"	NA
+"dddd19"	"len"	NA	30	400	"P; F"	NA
+"dddd20"	"len"	NA	30	400	"P; F"	NA
+"dddd21"	"len"	NA	30	400	"P; F"	NA
+"dddd22"	"sl"	NA	5	30	"P_dz_tz; F_dz_tz"	NA
+"dddd23"	"logsize"	NA	0	7	"P_hur; F_hur"	NA
+"dddd24"	"sl"	NA	1	200	"P; F"	NA
+"dddd25"	"size"	NA	0.02	1.4	"P_yr; F"	NA
+"dddd26"	"len"	NA	0.01	200	"P; F"	NA
+"dddd27"	"svl"	NA	10	80	"P; F"	NA
+"dddd28"	"svl"	NA	10	80	"P; F"	NA
+"dddd29"	"svl"	NA	10	80	"P; F"	NA
+"dddd30"	"svl"	NA	120	1200	"P; F"	NA
+"dddd31"	"svl"	NA	120	1200	"P; F"	NA
+"dddd32"	"svl"	NA	120	1200	"P; F"	NA
