@@ -53,7 +53,7 @@ We have quite a few to choose from! However, quite a few of these may be stochas
 ```{r}
 
 stoch_ind <- unique(c(simple_pdb$EnvironmentalVariables$ipm_id,
-                      simple_pdb$HierarchTable$ipm_id,
+                      simple_pdb$ParSetIndices$ipm_id,
                       simple_pdb$Metadata$ipm_id[simple_pdb$Metadata$has_dd]))
 
 det_pdb <- pdb_subset(simple_pdb, setdiff(simple_pdb$Metadata$ipm_id,
@@ -384,7 +384,7 @@ proto_list[[3]]
 
 ```
 
-We can see that each $P = s(z) * G(z',z)$. In the second and third models, $s(z)$ is comprised of two additional functions, which we could perturb individually. We'll show a quick example of that after applying our perturbation kernels to all 3. 
+We can see that each $P = s(z) * G(z',z)$. In the third models, $s(z)$ is comprised of two additional functions, which we could perturb individually. We'll show a quick example of that after applying our perturbation kernels to all 3. 
 
 Our perturbation kernel for all 3 models will take the following form: $C(z',z) = \delta_{z_0}(z)G(z',z)$. With a little rearranging (see Ellner, Childs, & Rees 2016 Chapter 4), we find the following:
 
@@ -421,7 +421,7 @@ vr_funs <- vital_rate_funs(ipm_list)
 
 vr_funs$aaaa34
 
-vr_funs$aaa227
+vr_funs$aaa144
 
 ```
 
@@ -468,48 +468,49 @@ for(i in seq_along(sens_list)) {
 
 ### Other perturbation kernels
 
-As mentioned above, the survival function in the last two IPMs is comprised of two additional functions: `ssurv` and `wsurv`. Thus, we could re-write the $P$ kernel as $P(z',z) = s_s(z) * s_w(z) * G(z',z)$. Thus, if we wanted to know the effect of perturbing only $s_w(z)$, we would re-write our perturbation kernel as $C(z',z) = \delta(z_0) * s_s(z) * G(z',z)$, and our perturbation formula (in operator notation) becomes $\textbf{s}_s(z_0) = \frac{ (vs_sG) \: \circ \: w}{\langle v, w \rangle}$. We'll drop the first model from our lists because this analysis doesn't apply to it. We can implement this by slightly modifying the code above:
+As mentioned above, the survival function in the last IPM is comprised of two additional functions: `ssurv` and `wsurv`. Thus, we could re-write the $P$ kernel as $P(z',z) = s_s(z) * s_w(z) * G(z',z)$. Thus, if we wanted to know the effect of perturbing only $s_w(z)$, we would re-write our perturbation kernel as $C(z',z) = \delta(z_0) * s_s(z) * G(z',z)$, and our perturbation formula (in operator notation) becomes $\textbf{s}_s(z_0) = \frac{ (vs_sG) \: \circ \: w}{\langle v, w \rangle}$. We'll drop the first model from our lists because this analysis doesn't apply to it. We can implement this by slightly modifying the code above:
 
 ```{r}
 
-sens_list <- lapply(2:3,
-                    function(idx, r_evs, vr_funs, l_evs, d_zs) {
-                      
-                      s_s <- vr_funs[[idx]]$P$ssurv
-                      G <- vr_funs[[idx]]$P$g
-                      v <- unlist(l_evs[[idx]])
-                      w <- unlist(r_evs[[idx]])
-                      d_z <- d_zs[[idx]]
-                      
-                      numerator <- left_mult(s_s * G, v) * w
-                      denominator <- sum(v * w * d_z)
-                      
-                      numerator / denominator
-                      
-                    },
-                    r_evs = r_evs,
-                    l_evs = l_evs,
-                    vr_funs = vr_funs,
-                    d_zs = d_zs) %>% 
-  setNames(names(vr_funs)[2:3])
 
-par(mfrow = c(2, 1))
+s_s <- vr_funs[[3]]$P$ssurv
+G <- vr_funs[[3]]$P$g
+v <- unlist(l_evs[[3]])
+w <- unlist(r_evs[[3]])
+d_z <- d_zs[[3]]
 
-for(i in seq_along(sens_list)) {
-  
-  mesh_ps <- mesh[[(i + 1)]][[2]]
-  nm      <- names(mesh)[(i + 1)]
-  
-  plot(y = sens_list[[i]], x = mesh_ps,
-       type = "l",
-       main = nm,
-       ylab = expression(bold(s)[w](z[0])),
-       xlab = expression(z[0]))
-  
-}
+numerator <- left_mult(s_s * G, v) * w
+denominator <- sum(v * w * d_z)
+
+sens_s_w <- numerator / denominator
+
+par(mfrow = c(1, 1))
+
+
+mesh_ps <- mesh[[3]][[2]]
+nm      <- names(mesh)[3]
+
+plot(y = sens_s_w, x = mesh_ps,
+     type = "l",
+     main = nm,
+     ylab = expression(bold(s)[s[w]](z[0])),
+     xlab = expression(z[0]))
+
+
 
 ```
 
 ## Mean size at death and size at death kernels
 
 To write...
+
+## Citations
+
+1. Caswell, H. (2001) Matrix population models: construction, analysis, and interpretation, 2nd edn. Sunderland, MA: Sinauer Associates Inc
+
+
+2. Wickham, H., François, R., Henry, L., & Müller, K. (2021). dplyr: A Grammar of Data Manipulation. R package version 1.0.6. https://CRAN.R-project.org/package=dplyr
+
+3. Shelley, M. (1818) Frankenstein; or, the Modern Prometheus. London, Lackington, Hughes, Harding, Mayor, & Jones.
+
+4. Ellner, S.P., Childs, D.Z., Rees, M. (2016) Data-driven modelling of structured populations: a practical guide to the integral projection model. Basel, Switzerland: Springer International Publishing AG

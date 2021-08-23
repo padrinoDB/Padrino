@@ -27,3 +27,5 @@ output: html_document
     + finish it!
     
     + Add more?
+    
+    + Deterministic eigenvectors w/ parset models seems to fail?? check ipmr...
