@@ -23,7 +23,7 @@ install.packages("dplyr")
 
 ```
 
-Next, we'll show how to compute sensitivity and elasticity for simple models, as well as derive a few life history traits from models housed in PADRINO. The first step is to identify models that have the information we want. Sensitivity and elasticity computations will make use of functions contained in _ipmr_, and we'll define a couple of our own to help wiht the 
+Next, we'll show how to compute sensitivity and elasticity for simple models, as well as derive a few life history traits from models housed in PADRINO. The first step is to identify models that have the information we want. Sensitivity and elasticity computations will make use of functions contained in _ipmr_, and we'll define a couple of our own to help tie it all together.
 
 For this example, we'll compute the mean lifetime output of recruits as a function of initial size $z_0$, $\bar r(z_0)$. This is defined as $\bar r(z_0) = eFN$, where $F$ represents a the fecundity kernel, and $N$ is the fundamental operator. The fundamental operator can be thought of as the expected amount of time spent in any state $z'$ prior to death given an initial state $z_0$ (Caswell 2001), and is computed as $N = (I - P)^{-1}$ (where $P$ is the survival/growth kernel). Thus, we need models that contain information on survival and growth, and sexual reproduction. To keep things simpler, we will restrict ourselves to simple IPMs. 
 
@@ -68,6 +68,7 @@ keep_ind <- setdiff(det_pdb$Metadata$ipm_id, c("dddd24", "dddd26"))
 det_pdb <- pdb_subset(det_pdb, keep_ind)
 
 ```
+
 For simple models in PADRINO, the kernels are pretty consistently named with respect to the broader IPM literature: `P` denotes survival and growth, `F` denotes sexual reproduction, and `C` denotes asexual reproduction. We can do a quick sanity check to make sure our subsetting produced only these kernels like so:
 
 ```{r}
@@ -99,7 +100,7 @@ simple_det_list <- pdb_make_proto_ipm(my_pdb)
 
 ```
 
-First, we note that the building process threw out a few messages. The first is that the coordinates and duration information come from COMPADRE, not necessarily the original publication. This isn't really alarming - COMPADRE is pretty trustworthy. The next few are related to demographic data sources and GPS location. "Frankenstein IPM" refers to a situation where some vital rates are measured directly from demographic data the authors collected, while other vital rates were retrieved from the literature. Thus, the authors have cobbled together an IPM with disparate data sources. Again, not necessarily alarming, though we'd want to know that if our study question required that all vital rates come from one place (e.g. matching environmental conditions to demographic performance).
+First, we note that the building process threw out a few messages. The first is that the coordinates and duration information come from COMPADRE, not necessarily the original publication. This isn't really alarming - COMPADRE is pretty trustworthy. The next few are related to demographic data sources and GPS location. "Frankenstein IPM" refers to a situation where some vital rates are measured directly from demographic data the authors collected, while other vital rates were retrieved from the literature (i.e. the model is cobbled together from disparate sources, Shelley 1818). Thus, the authors have cobbled together an IPM with disparate data sources. Again, not necessarily alarming, though we'd want to know that if our study question required that all vital rates come from one place (e.g. matching environmental conditions to demographic performance).
 
 We'll inspect a couple of the objects in this list to get a feel for what a `proto_ipm` contains:
 
@@ -510,3 +511,5 @@ for(i in seq_along(sens_list)) {
 ```
 
 ## Mean size at death and size at death kernels
+
+To write...
