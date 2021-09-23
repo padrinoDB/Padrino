@@ -89,18 +89,18 @@
 "bbbbb4"	"year"	"yr"	"2000:2006"	"P_yr; F_yr; K_yr"	NA
 "bbbbb5"	"year"	"yr"	"2000:2006"	"P_yr; F_yr; K_yr"	NA
 "bbbbb6"	"year"	"yr"	"2000:2006"	"P_yr; F_yr; K_yr"	NA
-"bbbb21"	"year"	"yr"	"2012:2013"	"K_yr;P_yr;F_yr; C_yr"	NA
-"bbbb22"	"year"	"yr"	"2012:2013"	"K_yr;P_yr;F_yr; C_yr"	NA
-"bbbb23"	"year"	"yr"	"2012:2013"	"K_yr;P_yr;F_yr; C_yr"	NA
-"bbbb24"	"year"	"yr"	"2012:2013"	"K_yr;P_yr;F_yr; C_yr"	NA
-"bbbb25"	"year"	"yr"	"2012:2013"	"K_yr;P_yr;F_yr; C_yr"	NA
-"bbbb26"	"year"	"yr"	"2012:2013"	"K_yr;P_yr;F_yr; C_yr"	NA
-"bbbb27"	"year"	"yr"	"2012:2013"	"K_yr;P_yr;F_yr; C_yr"	NA
-"bbbb28"	"year"	"yr"	"2012:2013"	"K_yr;P_yr;F_yr; C_yr"	NA
-"bbbb29"	"year"	"yr"	"2012:2013"	"K_yr;P_yr;F_yr; C_yr"	NA
-"bbbb30"	"year"	"yr"	"2012:2013"	"K_yr;P_yr;F_yr; C_yr"	NA
-"bbbb31"	"year"	"yr"	"2012:2013"	"K_yr;P_yr;F_yr; C_yr"	NA
-"bbbb32"	"year"	"yr"	"2012:2013"	"K_yr;P_yr;F_yr; C_yr"	NA
+"bbbb21"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
+"bbbb22"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
+"bbbb23"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
+"bbbb24"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
+"bbbb25"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
+"bbbb26"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
+"bbbb27"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
+"bbbb28"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
+"bbbb29"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
+"bbbb30"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
+"bbbb31"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
+"bbbb32"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
 "bbbb33"	"year"	"yr"	"2012:2013"	"K_yr;P_yr;F_yr; C_yr"	NA
 "bbbb34"	"year"	"yr"	"2012:2013"	"K_yr;P_yr;F_yr; C_yr"	NA
 "bbbb35"	"year"	"yr"	"2012:2013"	"K_yr;P_yr;F_yr; C_yr"	NA
@@ -148,10 +148,12 @@
 "ccccc5"	"altitude"	"altitude"	"c(1400, 1750, 1950, 2200)"	"P_altitude_comunity; F_altitude_community"	NA
 "ccccc5"	"community"	"community"	"c(\"current\", \"novel\")"	"P_altitude_comunity; F_altitude_community"	NA
 "ddddd1"	"Lambda Scenario"	"LS"	"c(\"x\", \"y\")"	"F_LS"	NA
-"ddddd2"	"Lambda Scenario"	"LS"	"c(\"x\", \"y\", \"z\")"	"F_LS"	NA
+"ddddd_2"	"Lambda Scenario"	"LS"	"c(\"a\", \"b\", \"c\")"	"F_LS"	NA
 "ddddd9"	"Season"	"sn"	"c(1, 2)"	"P_sn; F_sn"	NA
 "dddd22"	"drainage"	"dz"	"c(\"aripo\", \"guanapo\")"	"P_dz_tz; F_dz_tz"	NA
 "dddd22"	"treatment"	"tz"	"c(\"LPLD\", \"LPHD\", \"HPLD\", \"HPHD\")"	"P_dz_tz; F_dz_tz"	NA
 "dddd23"	"huricane strength"	"hur"	"c(\"no\")"	"P_hur; F_hur"	NA
 NA	NA	NA	"c(\"no\", \"weak\",  \"strong\")"	NA	NA
 "dddd25"	"study year"	"yr"	"c(\"1969\", \"2007\")"	"P_yr"	NA
+"dddd34"	"survival functional form"	"yx"	"c(\"lin\", \"quad\", \"asymp\")"	"P_yx_z"	NA
+"dddd34"	"recruitment probability"	"z"	"c(\"0.1\", \"0.2\", \"0.3\", \"0.4\")"	"F_yx_z"	NA

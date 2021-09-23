@@ -609,3 +609,7 @@
 "dddd30"	"n_svl"	1000	NA
 "dddd31"	"n_svl"	1000	NA
 "dddd32"	"n_svl"	1000	NA
+"dddd33"	"n_size"	100	NA
+"dddd34"	"n_svl"	1000	NA
+"dddd35"	"n_size"	300	NA
+"dddd36"	"n_size"	300	NA

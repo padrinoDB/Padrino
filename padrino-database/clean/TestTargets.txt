@@ -50,3 +50,6 @@
 "dddd30"	"lambda"	0.48	2
 "dddd31"	"lambda"	1.03	2
 "dddd32"	"lambda"	1.39	2
+"dddd33"	"lambda"	0.9911	2
+"dddd35"	"lambda"	1.07	2
+"dddd36"	"lambda"	0.96	2

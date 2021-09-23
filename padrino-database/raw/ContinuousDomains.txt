@@ -58,7 +58,8 @@
 "aaaa56"	"logsize"	"logsize_all"	1	9.6	"P_tsf_ctl_site_block; F_tsf_ctl_site_block;"	NA
 "aaaa57"	"logrosette_0"	"logrosette_age"	4	15	"P_0; F_1"	NA
 "aaaa57"	"logrosette_1"	"logrosette_age"	4	15	"P_0; F_1"	NA
-"aaaa58"	"logrosette"	"logrosette_age_1"	4	15	"P_0; F_1"	NA
+"aaaa58"	"logrosette_1"	"logrosette_age"	4	15	"P_0; F_1"	NA
+"aaaa58"	"logrosette_0"	"logrosette_age"	4	15	"P_0; F_1"	NA
 "aaaa59"	"logarea"	"logarea_alll"	2	25	"K; P; F"	NA
 "aaaa60"	"logarea"	"logarea_alll"	2	25	"K; P; F"	NA
 "aaaa61"	"size"	"size_all"	2	55	"K; P; F"	NA
@@ -503,3 +504,7 @@
 "dddd30"	"svl"	NA	120	1200	"P; F"	NA
 "dddd31"	"svl"	NA	120	1200	"P; F"	NA
 "dddd32"	"svl"	NA	120	1200	"P; F"	NA
+"dddd33"	"size"	NA	100	16334	"P; F"	NA
+"dddd34"	"svl"	NA	120	1200	"P_yx_z; F_yx_z"	NA
+"dddd35"	"size"	NA	0.4984966	3.912023	"P; F"	NA
+"dddd36"	"size"	NA	0.4984966	4.60517	"P; F"	NA

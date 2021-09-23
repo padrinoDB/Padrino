@@ -240,6 +240,18 @@
 "aaa380"	"lnsize"	"lnsize_all"	-0.621	11.605	"K; P; F"	NA
 "aaa385"	"height"	"height_all"	0	250	"K; P; F"	NA
 "aaa388"	"height"	"height_all"	0	250	"K; P; F"	NA
+"bbbb21"	"size"	"all_size"	1.420137	36.76947	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb22"	"size"	"all_size"	1.352471	28.02383	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb23"	"size"	"all_size"	1.420137	36.76947	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb24"	"size"	"all_size"	1.352471	28.02383	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb25"	"size"	"all_size"	1.420137	36.76947	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb26"	"size"	"all_size"	1.352471	28.02383	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb27"	"size"	"all_size"	1.420137	36.76947	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb28"	"size"	"all_size"	1.352471	28.02383	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb29"	"size"	"all_size"	1.420137	36.76947	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb30"	"size"	"all_size"	1.352471	28.02383	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb31"	"size"	"all_size"	1.420137	36.76947	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
+"bbbb32"	"size"	"all_size"	1.352471	28.02383	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
 "ccccc1"	"sa"	"all_sa"	-7.256	3.979	"P; F"	NA
 "ddddd3"	"svl"	NA	13.1	250	"P; F"	NA
 "ddddd4"	"size"	NA	1	125	"P; F"	NA
@@ -256,3 +268,6 @@
 "dddd30"	"svl"	NA	120	1200	"P; F"	NA
 "dddd31"	"svl"	NA	120	1200	"P; F"	NA
 "dddd32"	"svl"	NA	120	1200	"P; F"	NA
+"dddd33"	"size"	NA	100	16334	"P; F"	NA
+"dddd35"	"size"	NA	0.4984966	3.912023	"P; F"	NA
+"dddd36"	"size"	NA	0.4984966	4.60517	"P; F"	NA

@@ -60,3 +60,15 @@
 "aaa343"	"EnvironmentType"	"en"	"c('Open', 'Dense')"	"K_en; P_en; F_en"	NA
 "aaa344"	"Year"	"yr"	"c('standard', 'dry')"	"K_yr; P_yr; F_yr"	NA
 "aaa345"	"Year"	"yr"	"c('standard', 'dry')"	"K_yr; P_yr; F_yr"	NA
+"bbbb21"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
+"bbbb22"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
+"bbbb23"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
+"bbbb24"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
+"bbbb25"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
+"bbbb26"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
+"bbbb27"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
+"bbbb28"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
+"bbbb29"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
+"bbbb30"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
+"bbbb31"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
+"bbbb32"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
