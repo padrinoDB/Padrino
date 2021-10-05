@@ -1,0 +1,25 @@
+---
+output: pdf_document
+---
+
+```{r, echo = FALSE}
+
+library(png)
+library(ggplot2)
+library(grid)
+
+pic <- readPNG("../Figures/schema.png")
+
+pic_grob <- rasterGrob(pic, interpolate = TRUE)
+
+plt <- qplot(1:14, 1:14, geom = "blank") +
+  annotation_custom(pic_grob,
+                    xmin = -Inf,
+                    xmax = Inf,
+                    ymin = -Inf,
+                    ymax = Inf) + 
+  theme_void()
+
+print(plt)
+
+```

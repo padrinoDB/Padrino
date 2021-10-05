@@ -7,19 +7,22 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 ## Padrino <a href='https://levisc8.github.io/Padrino'><img src='metadata/pdb_logo.png' align="right" height="139" /></a>
 
 This repo hosts the code used to generate and upload data to the
-`Padrino` data base. This is more for back end management and to help
-Padriños to find their way as they get started. I’ve created a separate
-repo called `RPadrino` that will be eventually become the equivalent of
-`Rcompadre`. That is where prospective users should go to find an
-interface to this database that is actually useful.
+`Padrino` data base, as well as the flat tables that comprise both raw
+and clean versions of it. Users will find a clean interface between the
+database and `R` in the
+[`RPadrino`](https://github.com/levisc8/RPadrino) package.
 
 Currently, the data base is a set of 10 text files that consist of ASCII
 representation of model formulae, the coefficients associated with said
-models, and the upper/lower bounds of the state variables. We are
-closing in on a finalized design, at which point it seems likely that
-this will transition to an SQL instance hosted remotely. Eventually, it
-would be nice to be able to generate `.rda` objects (a la Compadre)
-and/or query it directly from R through an API.
+models, and the upper/lower bounds of the state variables. Additionally,
+there are metadata to aid IPM selection, and further information on
+continuous and discrete environmental variation whenever it is present.
+
+Since the database itself isn’t especially useful without an engine that
+translates IPM formulae into parse-able code, I strongly suggest using
+the `RPadrino` interface to download it, select models, and generate
+kernels! However, if you’re interested in the structure, see the
+`padrino-database/clean` folder for the tables.
 
 ## Useful Numbers
 
@@ -34,7 +37,7 @@ usually requires too many computing resources to be feasible.
 
 | \# of Species | \# of Publications | \# of IPM id’s |
 |--------------:|-------------------:|---------------:|
-|            44 |                 33 |            257 |
+|            48 |                 36 |            272 |
 
 ## For developers
 
