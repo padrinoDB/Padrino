@@ -3,19 +3,19 @@
 library(dplyr)
 library(RPadrino)
 
-pdb <- pdb_download(save = FALSE)
-# name_ind <- c("Metadata", 
+# pdb <- pdb_download(save = FALSE)
+# name_ind <- c("Metadata",
 #               "StateVariables",
-#               "DiscreteStates", 
-#               "ContinuousDomains", 
-#               "IntegrationRules", 
+#               "DiscreteStates",
+#               "ContinuousDomains",
+#               "IntegrationRules",
 #               "StateVectors",
 #               "IpmKernels",
-#               "VitalRateExpr", 
-#               "ParameterValues", 
+#               "VitalRateExpr",
+#               "ParameterValues",
 #               "EnvironmentalVariables",
-#               "HierarchTable", 
-#               "UncertaintyTable", 
+#               "HierarchTable",
+#               "UncertaintyTable",
 #               "TestTargets")
 # 
 # rd_nms <- paste('padrino-database/clean/', name_ind, ".csv", sep = "")
@@ -30,7 +30,7 @@ pdb <- pdb_download(save = FALSE)
 # class(pdb) <- c("pdb", "list")
 # 
 
-tab <- pdb$Metadata %>% 
+tab <- prod_db$Metadata %>% 
   group_by(kingdom) %>%
   summarise(
     IPMs = length(unique(ipm_id)),
@@ -38,7 +38,7 @@ tab <- pdb$Metadata %>%
     pap  = length(unique(apa_citation))
   )
 
-tot <- pdb$Metadata %>% 
+tot <- prod_db$Metadata %>% 
   summarise(
     kingdom = "Totals",
     IPMs = length(unique(ipm_id)),

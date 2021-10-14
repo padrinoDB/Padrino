@@ -1,12 +1,14 @@
 ---
+title: "PADRINO: an open-access database of Integral Projection Models"
 output:  
   word_document:
     toc: no
-    pandoc_args: ["-Fpandoc-crossref"]
 fig_caption: yes
 ---
 
-Sam C. Levin $^{\ast1,2,3}$, Sanne Evers $^{1,2}$, Tomos Potter$^{3}$, Mayra Pena-Guerrero $^{1,2}$,  Aldo Compagnoni $^{1,2,3}$, Dylan Z. Childs $^4$, Tiffany M. Knight $^{1,2,5\ddagger}$, Roberto Salguero-Gomez $^{3\ddagger}$
+A manuscript in preparation for submission to Methods in Ecology and Evolution
+
+Sam C. Levin $^{\ast1,2,3}$, Sanne Evers $^{1,2}$, Tomos Potter$^{3}$, Mayra Pe$\tilde{\mathrm{n}}$a-Guerrero $^{1,2}$, Dylan Z. Childs $^4$, Aldo Compagnoni $^{1,2,3}$, Tiffany M. Knight $^{1,2,5\ddagger}$, Roberto Salguero-Gomez $^{3\ddagger}$
 
 $^1$Institute of Biology, Martin Luther University Halle-Wittenberg, Am Kirchtor 1, 06108 Halle (Saale), Germany
 
@@ -28,8 +30,6 @@ Puschstrasse 4, 04103 Leipzig, Germany
 
 email: <levisc8@gmail.com>
 
-Target journal: Probably Methods in Ecology & Evolution, but open to other suggestions. Maybe a Frontiers in E&E [Technology+Code article](https://www.frontiersin.org/journals/ecology-and-evolution#article-types)?
-
 
 ```{r echo = FALSE, message = FALSE, warning = FALSE}
 library(dplyr)
@@ -39,6 +39,8 @@ library(gridExtra)
 library(ggplot2)
 library(RPadrino)
 library(knitr)
+library(sf)
+
 
 ipm_pubs <- read.csv('../../metadata/all_ipm_papers_20210806.csv',
                      stringsAsFactors = FALSE)
@@ -83,31 +85,44 @@ tot <- pdb$Metadata %>%
   ) %>%
   rbind(tab)
 
-
-
+n_animalia <- tot[tot$kingdom == "Animalia", "pap"]
+n_plantae  <- tot[tot$kingdom == "Plantae", "pap"]
 
 ```
 
+# Abstract
+
+
+
+**Keywords**: Integral projection model, database, demography, population dynamics, life history
 
 # Introduction
 
-Demography is a key component of ecology and evolutionary biology (Metcalf & Pavard 2007). Environmental conditions and biotic interactions influence vital rates across the entire life cycle, often in different ways, with implications for both short term and long term fitness (XXXX). There is a rich history of using structured population models across a variey of sub-disciplines in ecology (_e.g._ Leslie 1945, Caswell 2001, Easterling et al. 2000, Adler et al. 2010, Ellner et al. 2016). Integral projection models (IPMs) are a relatively new, but increasingly important tool for ecologists interested in these fields (Easterling et al. 2000, Ellner & Rees 2006). IPMs have been used to investigate a variety of topics, such as invasive species spread (_e.g._ Jongejans et al. 2011, Erickson et al. 2017) to evolutionary stable strategies (_e.g._ Childs et al. 2004) to the effect of climate drivers on population persistence (Salguero-Gomez et al. 2012, Compagnoni et al. 2021a). To date, there are at least `r sum(kingdoms$N[1:2])` publications covering at least `r sum(kingdoms$n_spp[1:2])` species (SC Levin, unpublished data). The field of ecology would benefit from a source that enables researchers to reconstruct and analyze these models to address synthetic questions. 
+Demography provides an excellent approach to examine the ecology (Crone et al. 2010), evolutionary biology (Metcalf & Pavard 2007), and conservation biology of any species (Doak & Morris 2001). Environmental conditions and biotic interactions influence vital rates across the entire life cycle, which then govern its short-term and long-term performace (REFS). A variety of methods exist for summarizing vital rates into demographic models; discrete-time, structured population models are among the most popular. Indeed, there is a rich history of using structured population models across a variey of sub-disciplines in ecology (_e.g._ Leslie 1945, Caswell 2001, Easterling et al. 2000, Adler et al. 2010, Ellner et al. 2016). In a discretely structured population model (e.g. a matrix population model), the population is divided into classes corresponding to some trait value (e.g. developmental state, age, or size), and the population is modeled using vital rates computed for each class. Integral projection models (IPMs) are a relatively new, but increasingly important tool for ecologists interested in addressing broad biological questions through a demographic lens (Gonzalez et al. 2021). IPMs have been used to investigate a variety of topics, such as invasive species spread (_e.g._ Jongejans et al. 2011, Erickson et al. 2017),evolutionary stable strategies (_e.g._ Childs et al. 2004, the effect of climate drivers on population persistence (Salguero-Gomez et al. 2012, Compagnoni et al. 2021a), and linking evolutionary feedbacks to population dynamics (Coulson et al. 2011). To date, there are at least `r sum(kingdoms$N[1:2])` publications covering over `r round(sum(kingdoms$n_spp[1:2]), -1)` species (SC Levin, unpublished data). Given the existing volume of data and its rate of increase, the field of ecology would benefit from a centralized repository that enables researchers to reconstruct and analyze these models to address a multitude of questions. 
 
-Recent advances in the availability of structured demographic information have powered large scale syntheses to answer a variety of questions in both theoretical and applied ecology. For example, Jelbert and colleagues (2019) used a comprehensive database of discretely structured plant population models (COMPADRE, Salguero-Gomez et al. 2014) to show that demographic amplification predicts degree of invasiveness in new environmental contexts. Healy and colleagues (2019) used a separate database (COMADRE, Salguero-Gomez et al. 2015) to demonstrate how patterns of animal life history strategies are shaped by trade offs between distributions of age-specific mortality and reproduction. Hartemink & Caswell (2018) decomposed the variance in individual longevity into contributions from individual heterogeneity and individual stochasticity using a set of ten invertebrate species (DATLife Database 2021). The number of IPMs in the literature (Figure 1) indicates that there is a growing, yet currently untapped, source of data that can augment existing approaches and enable novel ones (e.g. Compagnoni et al. 2021b).  
+Many species' vital rates are best predicted as a function of one or more continuous trait (e.g. size, height, mass). IPMs summarize these vital rate functions by combining these vital rate functions into projection kernels which describe how the abundance and distribution of trait values in a population change in discrete time (Easterling et al. 2000). The simplest form of the model can be expressed as
 
-IPMs are constructed from a set of continuous functions which represent vital rates. These are combined to form projection kernels which describe how the abundance and distribution of trait values in a population change in discrete time (Easterling et al. 2000). Analytical solutions to the integrals in these models are usually not possible(Ellner & Rees 2006), so they are numerically approximated, resulting in a large iteration matrix (ranging from $45 \times 45$ to $5000 \times 5000$ in size), and then some quantities of interest are computed. The fact that these models rely on continuous functions, rather than discrete transition values, presents unique challenges with respect to creating a database to house them. Existing approaches to digitizing structured population models entail entering individual transition parameter values (_e.g._ COMPADRE and COMADRE). This would be difficult for the smallest IPMs, and impossible to do accurately for even modestly sized ones. However, the development of more advanced computational tools mean we can now create IPMs from their symbolic representations and the parameters used to implement them (Henry & Wickham 2021, Levin et al. 2021). A database containing the functional forms of sub-kernels and vital rate functions, and the parameter values that go into each of those, can accommodate nearly all of the existing IPM literature.
+$n(z',t+1) = \int_L^U [P(z',z) + F(z',z) + C(z',z)]n(z,t)dz,$
 
-In this paper, we introduce PADRINO and _RPadrino_. PADRINO houses symbolic representations of IPMs, their parameter values, and associated metadata to aid users in selecting appropriate models. PADRINO is not opinionated in the sense that models are provided _as they are published_, and does not make any attempt to ensure they are biologically/technically correct (except to correct typographical errors in the publication itself). Furthermore, PADRINO does not store any raw data used to create the IPMs. _RPadrino_ provides functionality that enable users to reconstruct, and potentially modify, IPMs from PADRINO with _R_. First, we describe PADRINO's structure and how to interact with it using _RPadrino_. We discuss how models are digitized into the database and the challenges therein. We conclude with discussion of future directions for the database. We also provide a number of worked examples of how to use PADRINO and _RPadrino_ in the Supplementary Materials.
+where $n(z',t+1)$ and $n(z,t)$ are the distributions of trait $z$ at time $t+1$ and $t$, $P(z',z)$ is a kernel describing survival and development of existing individuals, $F(z',z)$ is a kernel describing per-capita sexual reproduction, and $C(z',z)$ is a kernel describing per-capita asexual reproduction. Each kernel may be comprised of an arbitrary number of vital rate functions (Ellner, Childs, & Rees 2016). Analytical solutions to the integrals in Eq 1 are not available (Ellner & Rees 2006) Therefore, the integrals are numerically approximated, resulting in a large iteration matrix (ranging from $45 \times 45$ to $5000 \times 5000$ in size), and then some quantities of interest are computed. The fact that these models rely on continuous functions, rather than discrete transition values, presents unique challenges with respect to creating a database to house them. Existing approaches to digitizing structured population models entail entering individual transition and reproductive contributions of discrete stages, which are represented by scalar values (_e.g._ COMPADRE and COMADRE). Entering the scalar transition probabilities and reproductive contributions would be difficult for even the smallest IPMs whose kernels are approximated with relatively small iteration matrices (e.g. $45 \times 45$), and impossible for more typical sizes ($100 \times 100$ - $1000 \times 1000$). However, the recent development of more advanced computational tools, namely _rlang_ (Henry & Wickham 2021) and _ipmr_ (Levin et al. 2021), mean we can now create IPMs from their symbolic representations and the parameters used to implement them. A database containing the functional forms of sub-kernels and vital rate functions, and the parameter values that go into each of those, could accommodate *nearly* all of the existing IPM literature.
+
+Recent advances in the availability of structured demographic information have powered large scale syntheses to answer a variety of questions in both theoretical and applied ecology. For example, Jelbert and colleagues (2019) used the COMPADRE database (Salguero-Gomez et al. 2014) of plant matrix population models to show that the intrinsic ability of populations to benefit from disturbance (amplification *sensu* Stott et al. 2011) predicts invasiveness in new environmental contexts. Similarly, Healy and colleagues (2019) used the COMADRE database animal matrix population models (Salguero-Gomez et al. 2015) to demonstrate how patterns of animal life history strategies are shaped by trade-offs between distributions of age-specific mortality and reproduction. Using DATLife (DATLife Database 2021), an open access repository of life tables, Hartemink & Caswell (2018) decomposed the variance in individual longevity into contributions from individual heterogeneity and individual stochasticity in 10 invertebrate species. The increasing number of IPMs in the literature (Figure 1) means there is an untapped (but see Compagnoni et al. 2021b) source of data that can augment existing approaches and enable novel ones.  
+
+Here, we introduce PADRINO and _RPadrino_. PADRINO is an open access database of IPMs. Specifically, PADRINO houses symbolic representations of IPMs, their parameter values, and associated metadata to aid users in selecting appropriate models. _RPadrino_ is an R package that enable users to reconstruct and modify IPMs from PADRINO. In the following, we describe PADRINO's structure and how to interact with it using _RPadrino_. Next, we discuss how IPMs are digitized into the database, along with associated assumptions and challenges. We conclude with discussion of future directions for the database. We also provide a number of worked examples of how to use PADRINO and _RPadrino_ in the Supplementary Materials.
 
 # PADRINO
 
-PADRINO is an open-access database of integral projection models. PADRINO defines a syntax to symbolically represent IPMs as text strings, and stores the values of those symbols in a separate table. The syntax used is very similar to the mathematical notation of IPMs, and is intended to be largely "language-agnostic", meaning it tries to avoid idiosyncracies specific to certain programming languages (_e.g._ R or Julia). For example, a survival/growth kernel with the form $P(z',z) = s(z) * G(z',z)$ would be `P = s * G` in PADRINO's syntax. $G(z',z) = f_G(z'|\mu_g, \sigma_G)$ (where $f_G$ denotes a normal probability density function) becomes `G = Norm(mu_g, sd_g)`. This means that bindings to many languages should be possible provided that a translation layer exists between PADRINO and the language in question. 
+PADRINO is an open-access database of integral projection models. PADRINO defines a syntax to symbolically represent IPMs as text strings, and stores the values of those symbols in a separate table. The syntax used is very similar to the mathematical notation of IPMs, and is intended to be largely "language-agnostic", meaning it tries to avoid idiosyncracies of any one programming languages. For example, a survival/growth kernel with the form $P(z',z) = s(z) * G(z',z)$ would be `P = s * G` in PADRINO's syntax. $G(z',z) = f_G(z'|\mu_g(z), \sigma_G)$ (where $f_G$ denotes a normal probability density function) becomes `G = Norm(mu_g, sd_g)`. This notation should be translatable to many computing languages beyond just _R_ (e.g. Python or Julia). 
 
-PADRINO consists of 10 tables, stored on GitHub as text files. The table names and a brief description of each are provided in Table 1. Each table is linked to every other table by a common column, called `ipm_id`. For now, this takes the place of an SQL key, and ensures that all information pertaining to a given model is linked to every other piece of the model correctly (PADRINO will eventually become an SQL database hosted elsewhere, but is currently only on GitHub). The scope of each `ipm_id` is determined by the way that a model is parameterized. Models that characterize the same species across, for example, many years or sites, with the same functional form, are included under a single `ipm_id`. One exception to this is when the sites (i.e. where the raw data are reported to have come from) are far enough apart that separate sets of GPS coordinates are used to describe them. These are split into separate `ipm_id`s so that the spatial distinctions are preserved, which facilitates matching PADRINO data with, for example, gridded environmental data.
+PADRINO consists of 10 tables, stored on GitHub as text files. The table names and a brief description of each are provided in Table 1. These tables form a database which we link using a common column across all tables, called `ipm_id`. For now, this takes the place of an SQL key. The scope of each `ipm_id` is determined by the way that a model is parameterized. Models that characterize the same species across, for example, many years or sites, with the same functional form, are included under a single `ipm_id`. For example, a growth model that includes a random intercept for different years could be used to generate many unique projection kernels. However, we would store these under a single `ipm_id` because the functional form for the mean is identical for each year, and only the parameter values change. One exception to this is when the sites (i.e. where the raw data are reported to have come from) are far enough apart that separate sets of GPS coordinates are used to describe them. The IPMs are split into separate `ipm_id`s so that the spatial distinctions are preserved, which facilitates matching PADRINO data with, for example, gridded environmental data (e.g. Compagnoni et al. 2021b). 
+
+Finally, it is worth mentioning that PADRINO is not opinionated in the sense that models are provided _as they are published_, and does not make any attempt to ensure they are biologically/technically correct (except to correct typographical errors in the publication itself). Furthermore, PADRINO does not store any raw data used to create the IPMs. Users should be aware of this, and we encourage all users to consult (as well as cite!) the original publications of each IPM before including it in an analysis. 
 
 ## The Digitization Process
 
-To date, we have incorporated and tested `r tot[1, 2]` IPMs for `r tot[1, 3]` species from `r tot[1, 4]` publications (Table 2). We are actively working on collecting and digitizing every published IPM we can find, though challenges arise in the process (see below). The digitization process begins when a paper containing an IPM is published. We start by entering the publication information on a private Google Spreadsheet that tracks digitization progress and who is responsible for that particular publication. Once the metadata is extracted from the publication (see Table 3 for details), we begin extracting functional forms of each sub-kernel, vital rate expression, how the environment varies (if applicable), all parameter values, as well as information on the domains of the traits used and how they are numerically approximated. Often times, not all information is present. Therefore, we often contact authors to request the required information and/or clarifications. We also extract a target value for the data validation step (see next section), so that we can ensure that released data really does replicate the published behavior. A complete guide to our digitization process and documentation of the database syntax are publicly available on PADRINO's webpage (https://levisc8.github.io/Padrino/).
+The digitization process begins when a peer-reviewed paper containing an IPM is published. We set alerts for the following searches: "Integral Projection Model OR IPM OR sensitivit* OR elasticit* OR Vital rate OR LTRE" on Google Scholar and Scopus, and then check results to find publications that contain an IPM. Once a candidate paper is identified, we extract 5 types of metadata: taxonomic information (e.g. species names, functional groups), publication information (e.g. authors, complete citation, year of publication), temporal metadata (e.g. study duration, data collection beginning and ending months and years), spatial metadata (e.g. latitude/longitude, ecoregion), and model specific metadata (e.g. experimental treatments applied, whether the model is density-(in)dependent). Table 3 contains a complete description of the metadata table. 
+
+Following the metadata extraction, we extract functional forms of each sub-kernel, vital rate expression, and how the environment varies (if applicable). The functional forms of each component of the model are expressed in the syntax introduced above. Finally, we extract all of the parameter values, as well as information on the range of values each trait can take on and how they are numerically approximated. The parameter values and integration information are then substituted for symbol names when the user requests a built model (see _RPadrino_ below for more details). Often times, not all information is present. Therefore, we often contact authors to request the required information and/or clarifications. We also extract a target value for the data validation step (see next section), so that we can ensure that released data really does replicate the published behavior. A complete guide to our digitization process and documentation of the database syntax are publicly available on PADRINO's webpage (https://levisc8.github.io/Padrino/).
 
 ```{r echo = FALSE}
 
@@ -117,19 +132,19 @@ md_desc <- "This table contains metadata for each model. This is organized into 
 
 sv_desc <- "This table contains the names of the state variables used in the model and whether or not they are discrete or continuously distributed."
 
-cd_desc <- "This table contains names and ranges for each continuously distributed state variable in the model, as well as which kernels they apply to."
+cd_desc <- "This table contains names and ranges for each continuously distributed state variable in the model, as well as which kernels they apply to (kernels are the $P(z',z)$, $F(z',z)$, and $C(z',z)$ in Eq 1)."
 
 ir_desc <- "This table contains information on how each continuous state variable is numerically approximated in the model (i.e. number of meshpoints, which integration rule was used)."
 
-ps_desc <- "This table contains the names of the population trait distributions used in the model."
+ps_desc <- "This table contains the names of the population trait distributions used in the model ($n(z,t)$ and $n(z',t+1)$ in Eq. 1)."
 
-ik_desc <- "This table contains the functional forms of each sub-kernel in the IPM (e.g. `P = s * G`), and information on which traits it acts on and creates. This table makes use of _ipmr_'s [parameter set index notation](https://levisc8.github.io/ipmr/articles/index-notation.html) to concisely represent models which may produce many kernels."
+ik_desc <- "This table contains the functional forms of each sub-kernel in the IPM (e.g. $P(z',z)$ in Eq 1 becomes `P = s * G`), and information on which traits it acts on and creates. This table makes use of _ipmr_'s [parameter set index notation](https://levisc8.github.io/ipmr/articles/index-notation.html) to concisely represent models which may produce many kernels."
 
 vr_desc <- "This table contains the functional forms of each vital rate in the IPM (e.g. `mu_g = int_g + slope_g * z_1`). This table makes use of _ipmr_'s [parameter set index notation](https://levisc8.github.io/ipmr/articles/index-notation.html) to concisely represent models which may produce many kernels."
 
 pv_desc <- "This table contains the names and values of each parameter in the model, with the exception of parameters that are associated with continuous environmental variation."
 
-ev_desc <- "This table contains parameter values and functional forms of any continuously varying environmental conditions (e.g. precipitation, temperature). Any model that contains information in this table is considered stochastic by default, as these variables must be sampled at least once to construct a model with _RPadrino_."
+ev_desc <- "This table contains parameter values and functional forms of any continuously varying environmental conditions (e.g. yearly variation in precipitation and/or temperature). Any model that contains information in this table is considered stochastic by default, as these variables must be sampled at least once to construct a model with _RPadrino_."
 
 pi_desc <- "This table contains the parameter set indices. These are substituted into the IPM kernels and vital rate expressions when a model is built, so that a single symbolic expression can represent an arbitrary number of realized expression. For example, the vital rate expression `mu_g_yr = g_int_yr + g_slope * z_1` can be used to represent a range of years for a model with year-specific intercepts. This table contains values substituted in for `'_yr'` across the model. See the [ipmr vignette on Index Notation](https://levisc8.github.io/ipmr/articles/index-notation.html) for more details."
 
@@ -164,7 +179,7 @@ kable(col_df,
 
 ```{r echo = FALSE}
 
-cap <- "**Table 2**: The number of studies in PADRINO broken down by kingdom. These represent the number of models that are error checked and considered production quality (see 'Data Validation' for more details). Models that are entered, but do not pass error checking are not considered here."
+cap <- "**Table 2**: The number of studies in PADRINO broken down by kingdom. These numbers represent the number of models that are error checked and accurately reproduce the published IPM (see 'Data Validation' for more details). Models that are partially entered or still contain errors are not considered here (though we are in the process of correcting them and/or retrieving additional information from the authors)."
   
 kable(tot,
       col.names = c("Kingdom", 
@@ -177,21 +192,21 @@ kable(tot,
 
 ## Data Validation
 
-PADRINO has automated testing built into the data release process. All models are checked to ensure they recover the behavior of the published version. Because publications vary greatly in their goals, this can encompass a variety of metrics. In most cases, this means reproducing the kernel-specific asymptotic population growth rate to a given tolerance level (usually to within $\pm 0.03$ of the published per-capita growth rate). It is worth noting that this margin of error is considerably less than the uncertainty that arises from fitting statistical models to the raw data used in the IPM, and so should be acceptable for almost any application. For stochastic models with continuously varying environments, it is often not computationally feasible to re-run the IPM for 10-50,000 iterations. Thus, we manually check for shorter term behavior that is similar to published dynamics (e.g. $\lambda_s$ after 1000 iterations). For publications where this type of information is not available, we manually examine the publication and check the entered model against some reported behavior. A model cannot enter a released version of the database unless it is explicitly flagged by a digitizer as validated, or passes its automated test. The manual testing functionality is contained in the open source _R_ package _pdbDigitUtils_ (available on [GitHub](https://github.com/levisc8/pdbDigitUtils)), and PADRINO's build scripts are in the project's [GitHub repository](https://github.com/levisc8/Padrino/tree/main/R). 
+PADRINO has automated testing built into the data release process. All IPMs are checked to ensure they recover the behavior of the published version prior to release via GitHub (https://github.com/levisc8/Padrino). Because publications vary greatly in their goals, this can encompass a variety of metrics. In most cases, this means reproducing the kernel-specific asymptotic population growth rate to a given tolerance level (within $\pm 0.03$ of the published per-capita growth rate). It is worth noting that this margin of error is considerably less than the uncertainty that arises from fitting statistical models to the raw data used in the IPM (e.g. Clark 2003, Levin et al. 2019), and so should be acceptable for almost any application. For stochastic models with continuously varying environments, it is often not computationally feasible to re-run the IPM for 10-50,000 iterations (because they are time consuming to run and there are many in PADRINO). Thus, we manually check for shorter term behavior that is similar to published dynamics (e.g. $\lambda_s$ after 1000 iterations). For publications where this type of information is not available, we manually examine the publication and check the entered model against some reported behavior. An IPM cannot enter a released version of the database unless it is explicitly flagged by a digitizer as validated, or passes its automated test. The manual testing functionality is contained in the open source _R_ package _pdbDigitUtils_ (available on [GitHub](https://github.com/levisc8/pdbDigitUtils)), and PADRINO's build scripts are in the project's [GitHub repository](https://github.com/levisc8/Padrino/tree/main/R). 
 
 ## RPadrino
 
-_RPadrino_ is an _R_ package that contains functions for downloading the PADRINO database, data querying and management, and modifying existing functional forms and parameter values. However, the syntax described above is unlikely to be useful on its own. Therefore, _RPadrino_ also provides wrappers around functions from _ipmr_, an engine for implementing IPMs in _R_ (Levin et al. 2021). These wrappers translate PADRINO's syntax into _ipmr_'s syntax, enabling users to select appropriate models using the provided metadata, and then reconstruct the IPMs with only a few function calls. _RPadrino_ leverages a common data structure from _ipmr_ to symbolically represent IPM objects, the `proto_ipm`. The `proto_ipm` serves as an intermediate step between a set of functional forms and parameters, and an implemented IPM in both _ipmr_ and _RPadrino_. The intermediate step facilitates combining user-specified IPMs with ones from PADRINO, allowing users to augment PADRINO-based analyses with their own data. Finally, _RPadrino_ provides methods for PADRINO objects for almost all of the generic functions in _ipmr_. Users of _ipmr_ will find a consistent API across their IPM analyses. We provide a number of worked examples of how to work with the database and package in the Supplementary Materials, and the package contains vignettes on further usage on [RPadrino's webpage](https://levisc8.github.io/RPadrino/). 
+_RPadrino_ is an _R_ package that contains functions for downloading the PADRINO database from GitHub, data querying and management, and modifying existing functional forms and parameter values. Additionally, _RPadrino_ provides wrappers around functions from _ipmr_ (Levin et al. 2021). These wrappers translate PADRINO's syntax into _ipmr_'s syntax, enabling users to select appropriate models based on the provided metadata, and then reconstruct the IPMs with only a few function calls. _RPadrino_ leverages a common data structure from _ipmr_ to symbolically represent IPM objects: the `proto_ipm`. `proto_ipm`'s serve as an intermediate step between a set of functional forms and parameters, and an implemented IPM in both _ipmr_ and _RPadrino_. The intermediate step enables users to combine their own IPMs with ones from PADRINO. Finally, _RPadrino_ provides methods for PADRINO objects for almost all of the generic analysis functions in _ipmr_. Users of _ipmr_ will find a consistent API across their IPM analyses. 
 
-The flexibility of IPMs and their broad application across ecology, demography, and evolutionary biology mean that there is no fixed set of steps in a workflow using _RPadrino_. However, there are generally four steps that a researcher must take when using these tools. The first step is always to identify studies of interest, and, optionally, augment PADRINO's metadata with additional information from other sources. The class system in _RPadrino_ is designed to accommodate the range of further analyses that researchers may be interested in. The tables themselves are represented as an S3 `pdb` object, and so users may augment any table with additional information corresponding to, for example, spatial or temporal covariates from other open access databases. The next step is to construct an S3 `pdb_proto_ipm_list` object using `pdb_make_proto_ipm()`. `pdb_make_proto_ipm()` translates PADRINO's syntax into _ipmr_ code, and then builds a `proto_ipm` object for each unique `ipm_id`. For some models, users may choose to create deterministic or stochastic IPMs at this step. _RPadrino_'s default behavior is to generate deterministic models whenever possible, and only falls back to generating stochastic models when the IPM contains continuous environmental variation. Following creation of the `pdb_proto_ipm_list`, users call `pdb_make_ipm()` to generate a list of IPM objects, called a `pdb_ipm` (also an S3 object). `pdb_make_ipm()` is a thin wrapper around _ipmr_'s `make_ipm()` function, and users may specify additional options to pass to to `make_ipm()`. Once the `pdb_ipm` is created, the next step is to conduct the analyses of interest. _RPadrino_ provides wrappers around _ipmr_ functions to extract per-capita growth rates, eigenvectors, assess convergence to asymptotic stability, compute mean kernels for stochastic IPMs, and modify existing IPMs with new parameter values and functional forms. Additionally, the documentation on the [package website](https://levisc8.github.io/RPadrino/index.html) and the Supplementary Materials for this paper contain details on how to conduct more complicated analyses with `pdb_ipm` objects. The publication describing _ipmr_ contains examples of more complicated analyses for individual IPM objects which can be extended via the `apply` family of functions (Levin et al. 2021).  
+The flexibility of IPMs and their broad application across ecology, evolution, and conservation biology mean that there is no fixed set of steps in a workflow using _RPadrino_. However, there are generally four steps that a researcher must take when using these tools. The first step is always to identify studies of interest, and, optionally, augment PADRINO's metadata with additional information from other sources (e.g. environmental data, GBIF). The class system in _RPadrino_ is designed to accommodate the range of further analyses that researchers may be interested in. The tables themselves are represented as an S3 object. This class system is very flexible, and means users may augment any table with additional information corresponding to, for example, spatial or temporal covariates from other open access databases. The next step is to construct a list of `proto_ipm` objects using `pdb_make_proto_ipm()`. `pdb_make_proto_ipm()` translates PADRINO's syntax into _ipmr_ code, and then builds a `proto_ipm` object for each unique `ipm_id`. For some models, users may choose to create deterministic or stochastic IPMs at this step. _RPadrino_'s default behavior is to generate deterministic models whenever possible, and only falls back to generating stochastic models when the IPM contains continuous environmental variation. Following creation of the `proto_ipm` list, users call `pdb_make_ipm()` to generate a list of IPM objects. `pdb_make_ipm()` is a thin wrapper around _ipmr_'s `make_ipm()` function, and users may specify additional options to pass to to `make_ipm()`. Once the IPMs are created, the next step is to conduct the analyses of interest. _RPadrino_ provides wrappers around _ipmr_ functions to extract per-capita growth rates, eigenvectors, assess convergence to asymptotic dynamics, compute mean kernels for stochastic IPMs, and modify existing IPMs with new parameter values and functional forms. Additionally, the documentation on the [package website](https://levisc8.github.io/RPadrino/index.html) and the Supplementary Materials for this paper contain details on how to conduct more complicated analyses with IPM objects (_e.g._ perturbation analyses, size at death calculations). The package documentation and the recent publication describing _ipmr_ also contain code demonstrating analyses on single IPM objects (Levin et al. 2021). These can be extended via the `apply` family of functions.  
 
 # Challenges
 
-The digitization effort is not without issues. First, it is often the case that the complete form of the IPM is not reported. Many studies may report the general form of the model (e.g. $n(z',t+1) = \int_{\Omega} K(z',z)n(z,t)dz$), but do not then report the functional forms of the sub-kernels or vital rates. Second, some parameter values may be missing - common culprits are terms for the variation of the growth/fecundity kernels, number of meshpoints, and integration bounds (i.e. $\Omega$ in the previous equation). The authors of this paper have also been guilty of this in their own publications (one of whom committed this heinous crime as recently as spring of 2021). We do not intend to call out other authors, but offer a gentle reminder that reporting all parameter values and functional forms can go a long way towards making their science reusable and extensible.  
+The digitization effort is not without issues. First, it is often the case that the complete form of the IPM is not reported (~80% of papers fall into this category). Many studies may report the general form of the model (e.g. $n(z',t+1) = \int_L^U K(z',z)n(z,t)dz$), but do not then report the functional forms of the sub-kernels or vital rates. Without the functional form of all vital rates and sub-kernels, it is impossible to rebuild an IPM. Second, some parameter values may be missing - common culprits are terms for the variation of the growth/fecundity kernels, number of meshpoints, and integration bounds (i.e. $L,U$ in Eq 1). The authors of this paper have also been guilty of this in their own publications (one of whom committed this heinous crime as recently as spring of 2021). We do not intend to call out other authors, but offer a gentle reminder that reporting all parameter values and functional forms can go a long way towards making their science reusable and extensible.  
 
-In addition to the challenges on the data digitization side, there are challenges in the reconstruction of these models too. Semi- or non-parametric models may be used to generate IPMs, and we have not yet defined a syntax for representing these vital rate models. Additionally, _ipmr_ is not yet able to handle two-sex models, time-lagged models, or periodic models. These types of IPMs do not yet represent a substantial portion of the literature, but it is worth noting that IPMs like these won't be appearing in PADRINO's initial releases. Furthermore, _ipmr_ is still under active development and new classes of IPMs are expected to be implemented in the not too distant future, alleviating this concern. 
+In addition to the challenges on the data digitization side, important challenges remain in the reconstruction of IPMs. Semi- or non-parametric models may be used to generate IPMs, and we have not yet defined a syntax for representing these vital rate models, though work is ongoing. Additionally, _ipmr_ is not yet able to handle two-sex models (e.g. Carp or something), time-lagged models (Rose et al. 2005), or periodic models (??). These types of IPMs do not yet represent a substantial portion of the literature. Nonetheless, it is our intention to continue developing functionality to accommodate them in future releases of PADRINO, _ipmr_, and _RPadrino_. 
 
-```{r echo = FALSE, message = FALSE, warning = FALSE, fig.cap = "**Figure 1**: Cumulative number of publications in PADRINO by year, and their geographic distribution. The map panel only contains fully digitized publications - there are many more that are in progress but not yet complete."}
+```{r echo = FALSE, message = FALSE, warning = FALSE, fig.height = 10, fig.width = 8, fig.cap = "**Figure 1**: (A) Geographic distribution of publications currently contained in PADRINO (i.e. studies from Table 2). (B) Cumulative number of publications found by our search criteria by year. Not all of these publications are in PADRINO (i.e. some are awaiting digitization, and some are awaiting author responses to queries for more information)."}
 
 met <- pdb$Metadata
 
@@ -205,12 +220,13 @@ pub_rates <- ipm_pubs %>%
   mutate(run_sum = cumsum(n_tot)) %>% 
   filter(!is.na(Kingdom))
 
+wrld <- st_read("../World_Continents/continents.shp", quiet = TRUE) 
+
 wrld_data <- met %>%
   mutate(lat = as.numeric(lat),
          lon = as.numeric(lon)) %>%
   filter(!is.na(lat) | !is.na(lon))
 
-wrld <- map_data("world")
 
 rate_plt <- ggplot(pub_rates,
                    aes(x = Year,
@@ -222,46 +238,72 @@ rate_plt <- ggplot(pub_rates,
   xlab("Year") + 
   scale_color_manual(
     breaks = c("Animalia", "Plantae"),
-    values = c("red", "black")
-  )
+    values = c("red", "black"),
+    labels = c(paste0("Animalia: ", n_animalia),
+               paste0("Plantae: ", n_plantae))
+  ) +
+  theme(legend.direction = "horizontal",
+        legend.text  = element_text(size = 24),
+        legend.title = element_blank(),
+        axis.text    = element_text(size = 20),
+        axis.title   = element_text(size = 22) ) +
+  geom_text(aes(x = 2000, y = 175, label = "B"), size = 8, show.legend =  FALSE)
 
 wrld_plt <- ggplot(wrld,
-                   aes(x     = long,
-                       y     = lat,
-                       group = group)) +
-  geom_polygon(color = "grey50",
+                   aes(group = CONTINENT)) +
+  geom_sf(color = "grey50",
                fill = NA) + 
-  coord_map(xlim = c(-180, 180)) +
+  coord_sf(xlim = c(-180, 180)) +
   geom_point(data = wrld_data,
              aes(x = lon,
-                 y = lat),
-             color = "blue",
+                 y = lat,
+                 color = kingdom),
              size = 1.5,
              alpha = 0.6,
              inherit.aes = FALSE) +
   theme_bw() +
   xlab("Longitude") +
-  ylab("Latitude")
+  ylab("Latitude") +
+  scale_color_manual(
+    breaks = c("Animalia", "Plantae"),
+    values = c("red", "black"),
+    labels = c(paste0("Animalia: ", n_animalia),
+               paste0("Plantae: ", n_plantae))
+  ) + 
+  theme(legend.position = "none",
+        plot.background = element_blank()) +
+  geom_text(aes(x = -179, y = 80, label = "A"), size = 8)
 
-grid.arrange(wrld_plt, rate_plt,
-             layout_matrix = matrix(c(1, 1,
-                                      1, 1,
-                                      1, 1,
-                                      2, 2,
-                                      2, 2),
-                                    nrow = 5,
-                                    ncol = 2,
-                                    byrow = TRUE))
+g_legend<-function(a.gplot){
+  tmp <- ggplot_gtable(ggplot_build(a.gplot))
+  leg <- which(sapply(tmp$grobs, function(x) x$name) == "guide-box")
+  legend <- tmp$grobs[[leg]]
+  legend
+}
+
+g_rate <- ggplotGrob(rate_plt)
+g_wrld <- ggplotGrob(wrld_plt)
+
+stripT <- subset(g_rate$layout, grepl("spacer", g_rate$layout$name))
+g_wrld <- g_wrld[-stripT$t, ]
+
+
+legend <- g_legend(rate_plt)
+
+
+grid.arrange(arrangeGrob(legend, g_wrld, heights = c(1/12, 11/12)), 
+             arrangeGrob(rate_plt + theme(legend.position = "none")),
+             heights = c(0.5, 0.5),
+             ncol = 1, nrow = 2)
 
 ```
 
 
 # Opportunities and Future Directions
 
-PADRINO is designed to integrate with data from other databases. Its Metadata table closely resembles that of COMPADRE's, meaning that users which are familiar with that database should find a smooth transition to working with PADRINO. Furthermore, we provide a comprehensive set of metadata that allows users to match information in PADRINO with other databases, including, for example, gridded climate data, functional trait information, and phylogenetic information. This will enable researchers to carry out more detailed and comprehensive analyses at various spatial, temporal, and phylogenetic scales.
+PADRINO is designed to be fully interoperable with other databases. Its metadata table closely resembles that of COMPADRE and COMADRE (Salguero-Gomez et al. 2015), meaning that users which are familiar with that database should find a smooth transition to working with PADRINO. Furthermore, we provide a comprehensive set of metadata that allows users to match information in PADRINO with other databases  (e.g. gridded climate data, functional trait information, phylogenetic. This will enable researchers to carry out more detailed and comprehensive analyses at various spatial, temporal, and phylogenetic scales.
 
-PADRINO presents unique opportunities for synthesis in both theoretical and applied contexts. The expanded range of phylogenetic and geographical coverage can be used in conjunction with other demographic databases (e.g. COM(P)ADRE (Salguero-Gomez et al. 2015, Salguero-Gomez et al. 2016), popler (Compagnoni et al. 2019), DatLife (DatLife 2021)) to power larger scale syntheses than were possible before (e.g. Compagnoni et al. 2021b). Fu
-rthermore, recent recent work on combining biotic and abiotic interactions into demographic models provide a robust theoretical toolbox for exploring species responses to climate change (e.g. Simmonds et al. 2020, Abrego et al. 2021). _RPadrino_ also provides functionality to modify parameter values and functional forms of the IPMs it stores, giving theoreticians a wide array of realistic life histories to experiment with. This is far from an exhaustive list, but hopefully demonstrates the potential for this new tool in demography, ecology, and evolutionary biology. 
+PADRINO presents unique opportunities for synthesis in both theoretical and applied contexts. The expanded range of phylogenetic and geographical coverage can be used in conjunction with other demographic databases (e.g. COM(P)ADRE (Salguero-Gomez et al. 2015, Salguero-Gomez et al. 2016), popler (Compagnoni et al. 2019), DatLife (DatLife 2021)) to power larger scale syntheses than were possible before (e.g. Compagnoni et al. 2021b). For example, one could use IPMs from PADRINO (Ellner, Childs & Rees 2016) and matrix models from COMPADRE and COMADRE to create life tables (Caswell 2001), which could then be combined with information DATLife to create common model types for further analysis. The intermediate life table conversion steps may not be necessary, as many life history traits and population level parameters may be calculated from these models, though caution may be needed when comparing values. Furthermore, recent recent work on combining biotic and abiotic interactions into demographic models provide a robust theoretical toolbox for exploring species responses to climate change (e.g. Simmonds et al. 2020, Abrego et al. 2021). _RPadrino_ also provides functionality to modify parameter values and functional forms of the IPMs it stores, giving theoreticians a wide array of realistic life histories to experiment with. This is far from an exhaustive list, but hopefully demonstrates the potential for this new tool in demography, ecology, and evolutionary biology. 
 
 ```{r echo = FALSE, message = FALSE, warning = FALSE}
 
@@ -364,7 +406,7 @@ met_tab <- data.frame(
     "The terrestrial or aquatic ecoregion corresponding to the [World Wildlife Fund](https://www.worldwildlife.org/biomes) classification. If data are from a controlled setting (greenhouse, lab), denoted with 'LAB'.",
     "Sexes used to construct the model.",
     "Whether or not the authors explicitly state that they corrected for eviction (see Williams et al. 2012).",
-    "If the authors did correct for eviction, then the type of correction that was applied.",
+    "If the authors did correct for eviction, then the type of correction that was applied. Current options are 'stretched_domain', 'truncated_distributions', and 'disctrete_extrema'.",
     "A description of any experimental treatment applied to the population.",
     "Whether or not the model contains a time lagged vital rate/kernel.",
     "Whether or not the model has age structure in addition to other continuous state variables.",
@@ -421,8 +463,22 @@ kable(met_tab)
 
 19. Henry, L., & Wickham, H. (2021). rlang: Functions for Base Types and Core R and 'Tidyverse' Features. R package version 0.4.11. https://CRAN.R-project.org/package=rlang
 
+20. Crone, E.E., Menges, E.S., Ellis, M.M., Bell, T., Bierzychudek, P, Ehrlen, J. et al. (2011) How do ecologists use matrix population models? Ecology Letters 14(1): 1-8. DOI: https://doi.org/10.1111/j.1461-0248.2010.01540.x
+
+21. Doak, D. & Morris W.F. (2002). Quantitative Conservation Biology: Theory and Practice of Population Viability Analysis. Oxford, UK: Oxford University Press
+
+22. RSG + Gamelon M. (2021). Demographic Methods Across the Tree of Life. Oxford, UK: Oxford University Press
+
+23. Coulson, T., MacNulty, D.R., Stahler, D.R., von Holdt, B., Wayne, R.K., & Smith, D.W. (2011). Modeling effects of environmental change on wolf population dynamics, trait evolution, and life history. Science 334(6060): 1275-1278. https://doi.org/10.1126/science.1209441
+
+24. Stott, I., et al. (2011). A framework for studying transient dynamics of population projection matrix models. Ecology Letters 14: 959-970. DOI: https://doi.org/10.1111/j.1461-0248.2011.01659.x
+
+25. Clark, J.S. (2003) Uncertainty and variability in demography and population growth: A hierarchical approach. Ecology 84(6): 1370-1381. 
+
+26. Levin, S.C., Crandall, R.M., & Knight T.M. (2019) Population projection models for 14 invasive species in the presence and absence of above ground competition. Ecology 100(6) e02681. DOI: https://doi.org/10.1002/ecy.2681
+
 ## Acknowledgments
 
-Funding: R.S-G. was supported by a NERC Independent Research Fellowship (NE/M018458/1). SCL, AC, SE, and TMK were funded by the Alexander von Humboldt Foundation in the framework of the Alexander von Humboldt Professorship of TM Knight endowed by the German Federal Ministry of Education and Research. 
+Funding: R.SG. was supported by a NERC Independent Research Fellowship (NE/M018458/1). SCL, AC, SE, and TMK were funded by the Alexander von Humboldt Foundation in the framework of the Alexander von Humboldt Professorship of TM Knight endowed by the German Federal Ministry of Education and Research. 
 
 Author Contributions: RSG, TMK, DZC, AC, and SCL designed the database. SE, TP, MP-G and SCL collected the data. SCL implemented _ipmr_, _RPadrino_, and _pdbDigitUtils_. SCL wrote the first draft of the manuscript and all authors provided comments.

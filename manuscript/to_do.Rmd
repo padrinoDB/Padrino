@@ -10,6 +10,10 @@ output: html_document
     
     + TestTarget explanations
     
+    + Rename tables
+    
+    + new columns??
+    
 2. Figures
 
     + revisit these
@@ -22,6 +26,18 @@ output: html_document
 
 4. draft to co-authors
 
+    + Round 2! 
+    
+      + so far only ocmments from Rob + Aldo. 
+      
+          + Just do those for now. If anyone else responds, then great. if not, finish case study and address comments -> re-send.
+          
+    + SI needs:
+    
+        + Figure w database schema
+        
+        +
+
 5. case study
 
     + finish it!
@@ -29,3 +45,5 @@ output: html_document
     + Add more?
     
     + Deterministic eigenvectors w/ parset models seems to fail?? check ipmr...
+    
+        - done!
