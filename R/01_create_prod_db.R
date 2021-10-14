@@ -7,6 +7,8 @@ library(pander)
 library(lubridate)
 library(RPadrino)
 
+source("R/utils/pdb_build_utils.R")
+
 name_ind <- c("Metadata", 
               "StateVariables",
               "ContinuousDomains", 
@@ -166,6 +168,14 @@ for(i in seq_along(good_db$Metadata$ipm_id)) {
     
     test_ipm <- test_ipm[[1]]$result
     
+    # Re-iterate model to ensure convergence (or, at least, better convergence)
+    if(!is_conv_to_asymptotic(test_ipm)) {
+      
+      append_args[[1]]$iterations <- 250L
+      test_ipm <- pdb_make_ipm(test_proto, addl_args = append_args)
+      
+    }
+    
     test_lam <- unlist(lambda(test_ipm))
     
   } 
@@ -175,7 +185,7 @@ for(i in seq_along(good_db$Metadata$ipm_id)) {
     
     target_prec <- test_cases$precision[test_cases$ipm_id == use_id]
     
-    if(target_prec > 3) target_prec <- 3
+    if(any(target_prec > 3)) target_prec <- 3
     
     test_tol    <- build_prec * 10^(-target_prec)
     
@@ -252,19 +262,21 @@ prod_db$Metadata <- prod_db$Metadata %>%
 #   
 # })
 
+prod_db <- set_pdb_col_types(prod_db)
+
 
 pdb_save(prod_db, destination = "padrino-database/clean/")
 
-for(i in seq_along(prod_db)) {
-
-  nm <- names(prod_db)[i]
-
-  write.table(prod_db[[i]],
-              file         = paste("padrino-database/clean/", nm,".txt", sep = ""),
-              row.names    = FALSE,
-              quote        = TRUE,
-              na           = "NA",
-              sep          = "\t",
-              fileEncoding = "UTF-8")
-
-}
+# for(i in seq_along(prod_db)) {
+# 
+#   nm <- names(prod_db)[i]
+# 
+#   write.table(prod_db[[i]],
+#               file         = paste("padrino-database/clean/", nm,".txt", sep = ""),
+#               row.names    = FALSE,
+#               quote        = TRUE,
+#               na           = "NA",
+#               sep          = "\t",
+#               fileEncoding = "UTF-8")
+# 
+# }

@@ -72,3 +72,11 @@
 "bbbb30"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
 "bbbb31"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
 "bbbb32"	"year"	"yr"	"2012:2013"	"P_yr; F_yr; C_yr; B_yr"	NA
+"ccccc2"	"altitude"	"altitude"	"c(1400, 1750, 1950, 2200)"	"P_altitude_community; F_altitude_community"	"2200_novel"
+"ccccc2"	"community"	"community"	"c('current', 'novel')"	"P_altitude_community; F_altitude_community"	"2200_novel"
+"ccccc3"	"altitude"	"altitude"	"c(1400, 1750, 1950, 2200)"	"P_altitude_community; F_altitude_community"	"2200_novel"
+"ccccc3"	"community"	"community"	"c('current', 'novel')"	"P_altitude_community; F_altitude_community"	"2200_novel"
+"ccccc4"	"altitude"	"altitude"	"c(1400, 1750, 1950, 2200)"	"P_altitude_community; F_altitude_community"	"2200_novel"
+"ccccc4"	"community"	"community"	"c('current', 'novel')"	"P_altitude_community; F_altitude_community"	"2200_novel"
+"ccccc5"	"altitude"	"altitude"	"c(1400, 1750, 1950, 2200)"	"P_altitude_community; F_altitude_community"	"2200_novel"
+"ccccc5"	"community"	"community"	"c('current', 'novel')"	"P_altitude_community; F_altitude_community"	"2200_novel"

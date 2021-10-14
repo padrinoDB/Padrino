@@ -301,6 +301,10 @@
 "bbbb31"	"seedbank"	TRUE
 "bbbb32"	"seedbank"	TRUE
 "ccccc1"	"sa"	FALSE
+"ccccc2"	"leafN"	FALSE
+"ccccc3"	"leafN"	FALSE
+"ccccc4"	"leafN"	FALSE
+"ccccc5"	"leafN"	FALSE
 "ddddd3"	"svl"	FALSE
 "ddddd4"	"size"	FALSE
 "ddddd5"	"svl"	FALSE
@@ -319,3 +323,7 @@
 "dddd33"	"size"	FALSE
 "dddd35"	"size"	FALSE
 "dddd36"	"size"	FALSE
+"dddd37"	"laydate"	FALSE
+"dddd39"	"size"	FALSE
+"dddd40"	"length"	FALSE
+"dddd41"	"length"	FALSE

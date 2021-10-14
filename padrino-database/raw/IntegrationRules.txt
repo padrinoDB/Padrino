@@ -507,3 +507,8 @@
 "dddd34"	"svl"	NA	1000	"midpoint"	"P_yx_z; F_yx_z"
 "dddd35"	"size"	NA	300	"midpoint"	"P; F"
 "dddd36"	"size"	NA	300	"midpoint"	"P; F"
+"dddd37"	"laydate"	NA	200	"midpoint"	"P; F"
+"dddd38"	"size"	NA	100	"midpoint"	"P; F"
+"dddd39"	"size"	NA	306	"midpoint"	"P; F"
+"dddd40"	"length"	NA	200	"midpoint"	"P; F"
+"dddd41"	"length"	NA	200	"midpoint"	"P; F"

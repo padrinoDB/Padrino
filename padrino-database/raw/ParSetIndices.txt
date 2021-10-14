@@ -139,17 +139,17 @@
 "bbbb68"	"year"	"yr"	"2012:2013"	"K_yr;P_yr;F_yr; C_yr"	NA
 "bbbb69"	"year"	"yr"	"2012:2013"	"K_yr;P_yr;F_yr; C_yr"	NA
 "bbbb70"	"year"	"yr"	"2012:2013"	"K_yr;P_yr;F_yr; C_yr"	NA
-"ccccc2"	"altitude"	"altitude"	"c(1400, 1750, 1950, 2200)"	"P_altitude_comunity; F_altitude_community"	NA
-"ccccc2"	"community"	"community"	"c(\"current\", \"novel\")"	"P_altitude_comunity; F_altitude_community"	NA
-"ccccc3"	"altitude"	"altitude"	"c(1400, 1750, 1950, 2200)"	"P_altitude_comunity; F_altitude_community"	NA
-"ccccc3"	"community"	"community"	"c(\"current\", \"novel\")"	"P_altitude_comunity; F_altitude_community"	NA
-"ccccc4"	"altitude"	"altitude"	"c(1400, 1750, 1950, 2200)"	"P_altitude_comunity; F_altitude_community"	NA
-"ccccc4"	"community"	"community"	"c(\"current\", \"novel\")"	"P_altitude_comunity; F_altitude_community"	NA
-"ccccc5"	"altitude"	"altitude"	"c(1400, 1750, 1950, 2200)"	"P_altitude_comunity; F_altitude_community"	NA
-"ccccc5"	"community"	"community"	"c(\"current\", \"novel\")"	"P_altitude_comunity; F_altitude_community"	NA
+"ccccc2"	"altitude"	"altitude"	"c(1400, 1750, 1950, 2200)"	"P_altitude_community; F_altitude_community"	"2200_novel"
+"ccccc2"	"community"	"community"	"c(\"current\", \"novel\")"	"P_altitude_community; F_altitude_community"	"2200_novel"
+"ccccc3"	"altitude"	"altitude"	"c(1400, 1750, 1950, 2200)"	"P_altitude_community; F_altitude_community"	"2200_novel"
+"ccccc3"	"community"	"community"	"c(\"current\", \"novel\")"	"P_altitude_community; F_altitude_community"	"2200_novel"
+"ccccc4"	"altitude"	"altitude"	"c(1400, 1750, 1950, 2200)"	"P_altitude_community; F_altitude_community"	"2200_novel"
+"ccccc4"	"community"	"community"	"c(\"current\", \"novel\")"	"P_altitude_community; F_altitude_community"	"2200_novel"
+"ccccc5"	"altitude"	"altitude"	"c(1400, 1750, 1950, 2200)"	"P_altitude_community; F_altitude_community"	"2200_novel"
+"ccccc5"	"community"	"community"	"c(\"current\", \"novel\")"	"P_altitude_community; F_altitude_community"	"2200_novel"
 "ddddd1"	"Lambda Scenario"	"LS"	"c(\"x\", \"y\")"	"F_LS"	NA
 "ddddd_2"	"Lambda Scenario"	"LS"	"c(\"a\", \"b\", \"c\")"	"F_LS"	NA
-"ddddd9"	"Season"	"sn"	"c(1, 2)"	"P_sn; F_sn"	NA
+"ddddd9"	"Season"	"sn"	"c(1)"	"P_sn; F_sn"	NA
 "dddd22"	"drainage"	"dz"	"c(\"aripo\", \"guanapo\")"	"P_dz_tz; F_dz_tz"	NA
 "dddd22"	"treatment"	"tz"	"c(\"LPLD\", \"LPHD\", \"HPLD\", \"HPHD\")"	"P_dz_tz; F_dz_tz"	NA
 "dddd23"	"huricane strength"	"hur"	"c(\"no\")"	"P_hur; F_hur"	NA

@@ -467,10 +467,10 @@
 "bbbb69"	"size"	"all_size"	0.703	8.604626	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
 "bbbb70"	"size"	"all_size"	0.703	9.292949	"K_yr; P_yr; F_yr; C_yr; B1_yr"	NA
 "ccccc1"	"sa"	"all_sa"	-7.256	3.979	"P; F"	NA
-"ccccc2"	"leafN"	"all_leafn"	NA	NA	"P_altitude_community; F_altitude_community"	NA
-"ccccc3"	"leafN"	"all_leafn"	NA	NA	"P_altitude_community; F_altitude_community"	NA
-"ccccc4"	"leafN"	"all_leafn"	NA	NA	"P_altitude_community; F_altitude_community"	NA
-"ccccc5"	"leafN"	"all_leafn"	NA	NA	"P_altitude_community; F_altitude_community"	NA
+"ccccc2"	"leafN"	"all_leafn"	0.693147181	6.173786104	"P_altitude_community; F_altitude_community"	NA
+"ccccc3"	"leafN"	"all_leafn"	0	4.795790546	"P_altitude_community; F_altitude_community"	NA
+"ccccc4"	"leafN"	"all_leafn"	0	4.672828834	"P_altitude_community; F_altitude_community"	NA
+"ccccc5"	"leafN"	"all_leafn"	0	4.406719247	"P_altitude_community; F_altitude_community"	NA
 "ddddd1"	"size"	NA	0	300	"P; F_LS"	NA
 "ddddd2"	"size_age"	NA	0	300	"P_age; F_LS"	NA
 "ddddd2"	"age"	NA	0	15	"P_age"	NA
@@ -496,7 +496,7 @@
 "dddd22"	"sl"	NA	5	30	"P_dz_tz; F_dz_tz"	NA
 "dddd23"	"logsize"	NA	0	7	"P_hur; F_hur"	NA
 "dddd24"	"sl"	NA	1	200	"P; F"	NA
-"dddd25"	"size"	NA	0.02	1.4	"P_yr; F"	NA
+"dddd25"	"size"	NA	0.02	1.54	"P_yr; F"	NA
 "dddd26"	"len"	NA	0.01	200	"P; F"	NA
 "dddd27"	"svl"	NA	10	80	"P; F"	NA
 "dddd28"	"svl"	NA	10	80	"P; F"	NA
@@ -508,3 +508,8 @@
 "dddd34"	"svl"	NA	120	1200	"P_yx_z; F_yx_z"	NA
 "dddd35"	"size"	NA	0.4984966	3.912023	"P; F"	NA
 "dddd36"	"size"	NA	0.4984966	4.60517	"P; F"	NA
+"dddd37"	"laydate"	NA	110	150	"P; F"	NA
+"dddd38"	"size"	NA	0.1	10	"P; F"	NA
+"dddd39"	"size"	NA	27	180	"P; F"	NA
+"dddd40"	"length"	NA	100	605	"P; F"	NA
+"dddd41"	"length"	NA	0.15	1.11	"P; F"	NA
