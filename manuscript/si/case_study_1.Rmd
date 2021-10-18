@@ -8,9 +8,7 @@ output:
 
 # PADRINO and RPadrino
 
-PADRINO's syntax is rather opaque, requiring a variety of transformations to make it at all useful to most users. To that end, we've created _RPadrino_ to streamline the process of interacting with it from _R_. At some point, it would be nice to create bindings to Julia and Python, which would further enhance accessibility. 
-
-The goal of _RPadrino_ is data management and model construction - not necessarily to do analyses for you. Thus, there is still some minimum amount of programming knowledge required to use it. It will also be helpful to understand how _ipmr_, the engine that powers model reconstruction, creates model objects and the things that it returns. _ipmr_ is extensively documented [here](https://levisc8.github.io/ipmr/), and reading at least the introduction to that will certainly help understand the code that follows here. Eventually, we plan to create the _ipmtools_ package, which will house functions designed to work with the IPMs housed here to conduct more extensive analyses (e.g. perturbations, LTREs, life history traits).
+We've created _RPadrino_ to streamline the process of interacting with PADRINO from _R_. The goal of _RPadrino_ is data management and model construction - not necessarily to do analyses for you. Thus, there is still some minimum amount of programming knowledge required to use it. It will also be helpful to understand how _ipmr_, the engine that powers model reconstruction, creates model objects and the things that it returns. _ipmr_ is extensively documented [here](https://levisc8.github.io/ipmr/), and reading at least the introduction to that will certainly help understand the code that follows here. Eventually, we plan to create the _ipmtools_ package, which will house functions designed to work with the IPMs stored in PADRINO to conduct more extensive analyses (e.g. perturbations, LTREs, life history traits).
 
 # Usage
 
@@ -22,7 +20,7 @@ install.packages("dplyr")
 
 ```
 
-Next, we'll show how to compute sensitivity and elasticity for simple models, as well as derive a few life history traits from models housed in PADRINO. The first step is to identify models that have the information we want. Sensitivity and elasticity computations will make use of functions contained in _ipmr_, and we'll define a couple of our own to help tie it all together.
+We'll show how to compute sensitivity and elasticity for simple models, and then derive some demographic quantities from models housed in PADRINO. The first step is to identify models that have the information we want. Sensitivity and elasticity computations will make use of functions contained in _ipmr_, and we'll define a couple of our own to help tie it all together.
 
 After perturbation analyses, we'll compute the mean lifetime output of recruits as a function of initial size $z_0$, $\bar r(z_0)$. This is defined as $\bar r(z_0) = eFN$, where $F$ represents a the fecundity kernel, and $N$ is the fundamental operator. The fundamental operator can be thought of as the expected amount of time spent in any state $z'$ prior to death given an initial state $z_0$ (Caswell 2001), and is computed as $N = (I - P)^{-1}$ (where $P$ is the survival/growth kernel). 
 
@@ -32,7 +30,9 @@ Finally, we'll compute mean size at death ($\bar\omega(z_0) = (\textbf{i}\ \circ
 
 ## Subsetting using Metadata and other tables
 
-We can find those using a combination of _dplyr_ (Wickham et al. 2021) and _RPadrino_ code. _RPadrino_ provides the `pdb_subset` function, but this currently only takes `ipm_id`s that we want to keep. The functionality will get expanded, but it's surprisingly complicated to manage that in a user-friendly interface, so we're stuck with this for now. This means that we have to work out which `ipm_id`s correspond to the models we want, and then pass those to `pdb_subset()`. 
+We can find simple IPMs in PADRINO using a combination of _dplyr_ (Wickham et al. 2021) and _RPadrino_ code. _RPadrino_ provides the `pdb_subset()` function. `pdb_subset()` currently only takes `ipm_id`s that we want to keep. The functionality will get expanded, but it's surprisingly complicated to manage that in a user-friendly interface, so we're stuck with this for now. This means that we have to work out which `ipm_id`s correspond to the models we want, and then pass those to `pdb_subset()`. 
+
+It is a good idea to consult the [table guide](https://levisc8.github.io/Padrino/digitization-guide.html#the-tables) so that you are familiar with table and variable names, and what information they provide. This case study will introduce some of the variables and tables, but it does not cover them all!
 
 ```{r message = FALSE}
 
@@ -58,14 +58,16 @@ simple_pdb <- pdb_subset(pdb, simple_mod_ind)
 
 ```
 
-We have quite a few to choose from! However, a number of these may be stochastic models, as well as density-dependent models. We'll want to get rid of those too.
+We have quite a few to choose from! However, a number of these may be stochastic models, as well as density-dependent models. We'll want to get rid of those too, as sensitivity analyses can be trickier and more time consuming for them. This process will use the `Metadata`, `EnvironmentalVariables`, and `ParSetIndices` tables to find those. 
 
 ```{r}
 
 # The first piece of stoch_ind examines the EnvironmentalVariables table. This
 # contains information on IPMs that include continuous environmental variation.
-# RPadrino treats these as stochastic by default, because the continuous
-# variation must be sampled at least once when building these.
+# RPadrino treats these as stochastic by default, because  PADRINO almost
+# always uses random number generators to sample the distributions of environmental
+# values. Therefore, there isn't really a way to sample these in a way that makes 
+# them deterministic.
 
 # The second piece of stoch_ind examines the ParSetIndices table. This table
 # describes discrete environmental variation. These models don't have to be 
@@ -86,13 +88,14 @@ det_pdb <- pdb_subset(simple_pdb, setdiff(simple_pdb$Metadata$ipm_id,
 
 ```{r echo = FALSE}
 
-keep_ind <- setdiff(det_pdb$Metadata$ipm_id, c("dddd24", "dddd26"))
+keep_ind <- setdiff(det_pdb$Metadata$ipm_id, c("dddd24", "dddd26",
+                                               "dddd40", "dddd41"))
 
 det_pdb <- pdb_subset(det_pdb, keep_ind)
 
 ```
 
-For simple models in PADRINO, the kernels are pretty consistently named with respect to the broader IPM literature: `P` denotes survival and growth, `F` denotes sexual reproduction, and `C` denotes asexual reproduction. We can do a quick sanity check to make sure our subsetting produced only these kernels like so:
+For simple models in PADRINO, the kernels are pretty consistently named with respect to the broader IPM literature: `P` denotes survival and growth, `F` denotes sexual reproduction, and `C` denotes asexual reproduction. The `IpmKernels` table stores the names, functional forms of the kernels, as well as other information needed to implement them. We can use the kernel names column, `kernel_id`, to do a quick sanity check to make sure our subsetting produced only these kernels like so:
 
 ```{r}
 
@@ -100,7 +103,7 @@ unique(det_pdb$IpmKernels$kernel_id)
 
 ```
 
-Great, all `P`s and `F`s! Finally, we'll remove the duplicated species names so that we have a small-ish data set. This is certainly not required for any analyses, just to keep things tractable for now. 
+Great, all `P`s and `F`s! Finally, we're going to make sure we only have one IPM per species in our analysis. We can do this using the `Metadata` table. This is certainly not required for any analyses, just to keep things tractable for now. 
 
 ```{r}
 
@@ -110,10 +113,9 @@ my_pdb <- pdb_subset(det_pdb, keep_ind)
 
 ```
 
-
 ## Re-building IPMs
 
-Now that we have our data subsetted, we can start making IPMs. The first step is always to create `proto_ipm` objects. These are an intermediate step between the database and a set of usable kernels. Because _ipmr_ also uses these as an intermediate step, we can combine models from PADRINO with ones that we create ourselves. There is an example of this in the next case study. 
+Now that we have our data subsetted, we can start making IPMs. The first step is always to create `proto_ipm` objects. These are an intermediate step between the database and a set of usable kernels. Because _ipmr_ also uses these as an intermediate step, we can combine models from PADRINO with ones that we create ourselves. There is an example of this in the second case study. 
 
 Lets have a look at how PADRINO stores kernels, vital rates, and parameters. These are in the `IpmKernels`, `VitalRateExpr`, and `ParameterValues`s tables, respectively.
 
@@ -126,7 +128,7 @@ head(my_pdb$VitalRateExpr[ , 1:3])
 head(my_pdb$ParameterValues)
 ```
 
-We can see that the kernels and vital rate expressions are all defined symbolically, and the parameter values are stored elsewhere. This helps us reuse parameters that appear in multiple expressions without re-typing them, reducing the risk of errors. However, it also makes it a bit harder to work with if you aren't familiar with the syntax.  Therefore, _RPadrino_ provides the `pdb_make_proto_ipm()` function. This takes a `pdb` object and produces a list of `proto_ipm`s. In the chunk after next, we'll see that it translates the syntax in `IpmKernels` and `VitalRateExpr` into usable `R` code. There are additional options that we can pass to this, but we'll ignore those for now, and just focus on creating and understanding what the outputs are. 
+We can see that the kernels and vital rate expressions are all defined symbolically, and the parameter values are stored elsewhere. This helps us reuse parameters that appear in multiple expressions without re-typing them, reducing the risk of errors. Additionally, it'll make it easier for us to modify parameter values, vital rate expressions, and kernel formulae if we want to. However, the syntax in the tables is probably not the easiest to work with directly. Therefore, _RPadrino_ provides the `pdb_make_proto_ipm()` function. This takes a `pdb` object and produces a list of `proto_ipm`s. In the chunk after next, we'll see that it translates the syntax in `IpmKernels` and `VitalRateExpr` into usable `R` code. There are additional options that we can pass to this, but we'll ignore those for now, and just focus on creating and understanding what the outputs are. 
 
 ```{r}
 
@@ -134,7 +136,7 @@ simple_det_list <- pdb_make_proto_ipm(my_pdb)
 
 ```
 
-First, we note that the building process threw out a few messages. The first is that the coordinates and duration information come from COMPADRE, not necessarily the original publication. This isn't really alarming - COMPADRE is pretty trustworthy. The next few are related to demographic data sources and GPS location. "Frankenstein IPM" refers to a situation where some vital rates are measured directly from demographic data the authors collected, while other vital rates were retrieved from the literature (i.e. the model is cobbled together from disparate sources, Shelley 1818). Again, not necessarily alarming, though we'd want to know that if our study question required that all vital rates come from one place (e.g. matching environmental conditions to demographic performance).
+First, we note that the building process threw out a few messages. The first is that the coordinates and duration information come from COMPADRE, not necessarily the original publication. This isn't really alarming - COMPADRE is pretty trustworthy. The next few are related to demographic data sources and GPS location. "Frankenstein IPM" refers to a situation where some vital rates are measured directly from demographic data the authors collected, while other vital rates were retrieved from the literature (i.e. the object is cobbled together from disparate sources, Shelley 1818). Again, not necessarily alarming, though we'd want to know that if our study question required that all vital rates come from one place (e.g. matching environmental conditions to demographic performance).
 
 We'll inspect a couple of the objects in this list to get a feel for what a `proto_ipm` contains:
 
@@ -147,13 +149,15 @@ simple_det_list$aaaa34
 simple_det_list$dddd30
 ```
 
-We can see that _RPadrino_ has translated PADRINO's syntax into a set of _R_ expressions that correspond to the vital rate functions and sub-kernel functional forms, as well as checked that the model can be implemented with the parameter values that are present in PADRINO. Finally, it has generated the model iteration expression, which shows how the sub-kernels interact with each trait distribution to produce new trait distributions. We can now build the actual IPM objects. We'll also check for convergence to asymptotic dynamics using the `is_conv_to_asymptotic` function.
+We can see that _RPadrino_ has translated PADRINO's syntax into a set of _R_ expressions that correspond to the vital rate functions and sub-kernel functional forms, as well as checked that the model can be implemented with the parameter values that are present in PADRINO. Finally, it has generated the model iteration expression, which shows how the sub-kernels interact with each trait distribution at time $t$ to produce new trait distributions at time $t+1$. We can now build the actual IPM objects. We'll also check for convergence to asymptotic dynamics using the `is_conv_to_asymptotic` function.
 
 ```{r}
 
-all_ipms <- pdb_make_ipm(simple_det_list)
+all_ipms   <- pdb_make_ipm(simple_det_list)
 
 check_conv <- is_conv_to_asymptotic(all_ipms)
+
+check_conv
 
 ```
 
@@ -178,10 +182,12 @@ We replace the values in `<>` with the actual `ipm_id`s, argument names, and val
 ind_conv <- c(paste0("aaa", c(310,341)), 
               paste0("ccccc", 1),
               paste0("ddddd", c(3,5)), 
-              paste0("dddd", c(10, 30, 33, 35, 36)))
+              paste0("dddd", c(10, 30, 33, 35, 36, 37, 39)))
 
 # Next, we set create an entry in each list with iterations = <some number>
-# We'll use 250 for this example
+# We'll use 250 for this example. We need to set the names of the list to be 
+# the ipm_id's, so that pdb_make_ipm() knows which models to use the additional
+# arguments with.
 
 arg_list <- lapply(ind_conv, 
                    function(x, n_iter) list(iterations = n_iter), 
@@ -190,9 +196,13 @@ arg_list <- lapply(ind_conv,
 
 new_ipms <- pdb_make_ipm(simple_det_list, addl_args = arg_list)
 
-check_conv <- is_conv_to_asymptotic(new_ipms)
+# Check for convergence out to 5 digits. This should be close enough for what
+# we want to do.
 
-# We can also plot the lambda time series using conv_plot methods for pdb_ipms
+check_conv <- is_conv_to_asymptotic(new_ipms, tolerance = 1e-5)
+
+# We can also plot the lambda time series using conv_plot methods for pdb_ipms.
+# The last two models may not have converged
 par(mfrow = c(4, 2))
 
 conv_plot(new_ipms)
@@ -201,7 +211,7 @@ conv_plot(new_ipms)
 
 # Further analyses
 
-_RPadrino_ contains methods for some _ipmr_ functions. These include `lambda`, `left_ev`, and `right_ev`. We need all three of these to compute sensitivity and elasticity. We also need the binwidth of the integration mesh so we can perform integrations. _ipmr_ has the `int_mesh()` function for that, and the binwidth is always the first element in the list that it returns. We can extract them like so:
+_RPadrino_ contains methods for most of _ipmr_'s analysis functions. These include (but are not limited to!) `lambda`, `left_ev`, and `right_ev`. We need all three of these to compute sensitivity and elasticity. We also need the binwidth of the integration mesh so we can perform integrations. _RPadrino_'s has the `int_mesh()` function for that, and the binwidth is always the first element in the list that it returns. We can extract them like so:
 
 ```{r}
 
@@ -215,10 +225,18 @@ d_zs <- lapply(new_ipms, function(x) int_mesh(x, full_mesh = FALSE)[[1]])
 
 ## Sensitivity
 
-With these, we can now compute sensitivity. This is given by $\textbf{s}(z'_0,z_0) = \frac{v(z'_0) w(z_0)}{\langle v,w \rangle}$, where $v(z_0)$ is the left eigenvector and $w(z_0)$ is the right eigenvector. It will be helpful to write a function that takes these values as arguments and returns the sensitivity kernel. We'll use `lapply(seq_along())` to iterate over each model.
+With these, we can now compute sensitivity. This is given by $\textbf{s}(z'_0,z_0) = \frac{v(z'_0) w(z_0)}{\langle v,w \rangle}$, where $v(z'_0)$ is the left eigenvector and $w(z_0)$ is the right eigenvector. It will be helpful to write a function that takes these values as arguments and returns the sensitivity kernel. We'll use `lapply(seq_along())` to iterate over each model.
 
 ```{r}
 
+# r_evs: right eigenvectors
+# l_evs: left eigenvectors
+# d_zs:  binwidths
+# lapply(seq_along()) generates a sequence of numbers that correspond to indices
+# in the list of eigenvectors and binwidths. Since each of these objects is a 
+# list of lists, we need to use [[index]][[1]]. The first[[]] gets the correct list
+# entry, and the second [[1]] converts it to a numeric vector by unlisting the
+# second layer of the list.
 
 sens <- function(r_evs, l_evs, d_zs) {
   
@@ -282,18 +300,19 @@ image(t(elas_list$aaa385))
 
 # Mean lifetime recruit production
 
-This is defined as $\bar{r}(z_0) = eFN$. $F$ is the fecundity kernel, and we can get that from each IPM in our list using:
+We can calculate the expected number of recruits produced over an individuals lifetime as function of its initial size. This is defined as $\bar{r}(z_0) = eFN$. $F$ is the fecundity kernel, and we can get these kernels from each IPM in our list using:
 
 ```{r}
 
 F_kerns <- lapply(new_ipms, function(x) x$sub_kernels$F)
+
 ```
 
-$N(z', z_0)$ is the fundamental operator. This tells us the expected amount of time an individual will spend in state $z'$ given an initial state $z_0$. The fundamental operator is defined as $(I - P)^{-1}$ (see Ellner, Childs, & Rees 2016 Chapter 3 for the derivation of this). $I$ is an identity kernel, with 1s along the diagonal, and 0s elsewhere. This code is only a bit more complicated:
+$N(z', z_0)$ is the fundamental operator. This tells us the expected amount of time an individual will spend in state $z'$ given an initial state $z_0$. The fundamental operator is defined as $(I - P)^{-1}$ (see Ellner, Childs, & Rees 2016 Chapter 3 for the derivation of this). $I$ is an identity kernel ($I(z',z) = 1 \ \mathrm{for} \ z' = z$, and 0 everywhere else). This code is only a bit more complicated:
 
 ```{r}
 
-# Function to create an identity matrix with dimension equal to P
+# Function to create an identity kernel with dimension equal to P
 make_i <- function(P) {
   return(
     diag(nrow(P))
@@ -301,12 +320,13 @@ make_i <- function(P) {
 }
 
 N_kerns <- lapply(new_ipms, function(x) {
-  
+
   P <- x$sub_kernels$P
   I <- make_i(P)
-  
+
+  # solve() inverts the matrix for us (the ^(-1) part of the equation)
   solve(I - P)
-  
+
 })
 
 ```
@@ -351,11 +371,29 @@ for(i in seq_along(r_bars)) {
 
 # Troubleshooting and Modifying IPMs
 
-The plot of the output above provides a cautionary tale: $\bar r(z_0)$ is negative in model `aaa341`! This isn't biologically possible, so we know there is some quirk in that model that produces these results. Upon inspection, the IPM in question contains a survival function that equals 1 for all plants larger than 53rd bin value (and it contains 500 bins), meaning that according to the IPM, above some threshold size, plants become immortal! This results in negative values in the IPM's fundamental operator (we can check this by running `range(N_kerns$aaa341)`). This is certainly an issue for any subsequent analyses. It is important to remember that PADRINO provides models *as they are published*, and doesn't try to correct these problems. Thus, data in here can cause problems if not treated with care!
+The plot of the output above provides a cautionary tale: $\bar r(z_0)$ is negative in model `aaa341`! This isn't biologically possible - we can't make negative recruits. We know there is some quirk in that model that produces these results. PADRINO would flag a model with negative numbers in the $F$ kernel when it's built, so we need to check the $N$ kernel for that model for negative values.
 
-A workaround for this is to set a parallel minimum for the `s` function value in that model. We need to work with the `proto_ipm` object for this, because we want to propagate the function value changes to the sub-kernels (i.e. the P kernel).
+```{r}
 
-We can set these with `vital_rate_exprs<-` and `pdb_new_fun_form()`. We'll take the parallel minimum of the estimate from the publication and the maximum value we'd want the function to ideally have (in this case, 0.99).
+range(N_kerns$aaa341)
+
+```
+
+We've found the problem in the $N$ kernel, but what causes that? It turns out that the $P$ kernel, when discretized, is either close to or exactly singular, and so the determinant $(I-P)$ is very close to singular as well (and negative!).
+
+```{r}
+
+P <- new_ipms$aaa341$sub_kernels$P
+I <- make_i(P)
+det(I - P) # negative and very close to 0
+
+```
+
+It is important to remember that PADRINO provides models *as they are published*, and doesn't try to correct these problems. Thus, data in here can cause problems if not treated with care! 
+
+We can try to modify the model very slightly to see if we can make this kernel non-singular. We'll try to set a parallel minimum for the `s` function value in that model, which will hopefully pull our $det(I - P)$ into positive territory. We need to work with the `proto_ipm` object for this, because we want to propagate the function value changes to the sub-kernels (i.e. the P kernel).
+
+We can set these with `vital_rate_exprs<-` and `pdb_new_fun_form()`. We'll take the parallel minimum of the estimate from the publication and the maximum value we'd want the function to ideally have (in this case, 0.999).
 
 ```{r}
 
@@ -366,7 +404,7 @@ vital_rate_exprs(simple_det_list)$aaa341
 vital_rate_exprs(simple_det_list) <- pdb_new_fun_form(
   list(
     aaa341 = list(
-      s = pmin(0.99, 1/(1 + exp(-(si + ss1 * size_1 + ss2 * size_1^2))))
+      s = pmin(0.999, 1/(1 + exp(-(si + ss1 * size_1 + ss2 * size_1^2))))
     )
   )
 )
@@ -379,10 +417,12 @@ new_lonicera <- pdb_make_ipm(simple_det_list["aaa341"])
 P <- new_lonicera$aaa341$sub_kernels$P
 I <- make_i(P)
 
+cat("\n\nNew det(I - P) is: ", det(I - P))
+
 N <- solve(I - P)
 F <- new_lonicera$aaa341$sub_kernels$F
 
-r_bar_lonicera <- colSums(F %*% N)
+r_bar_lonicera <- as.vector(colSums(F) %*% N)
 
 plot(r_bar_lonicera,
      type = 'l',
@@ -391,7 +431,7 @@ plot(r_bar_lonicera,
 
 # Since we're now happier with how this IPM is behaving, we'll insert it into
 # our list for subsequent analyses
-new_ipms$aaa341 <- new_lonicera
+new_ipms$aaa341 <- new_lonicera$aaa341
 
 ```
 
@@ -399,13 +439,13 @@ That looks a bit closer to reality!
 
 # Vital rate and parameter level analyses
 
-We can also run analyses at the parameter and the vital rate level for PADRINO. These require more care - it is strongly recommended to check the original publications to for the meaning of each parameter and vital rate. There is simply too much variability in the way vital rates and parameters are estimated in the literature to provide comprehensive descriptions of them in PADRINO. With this caveat in mind, we'll proceed to a couple examples of using vital rate functions and parameters in further analyses.
+We can also run analyses at the parameter and the vital rate level for PADRINO. These require more care - it is strongly recommended to check the original publications to for the meaning of each parameter and vital rate. There is simply too much variability in the way vital rates and parameters are estimated in the literature to provide systematic descriptions of them in PADRINO. With this caveat in mind, we'll proceed to a couple examples of using vital rate functions and parameters in further analyses.
 
-The ability to perturb function values and parameter estimates is one of the great strengths of IPMs.  Furthermore, computing many life history traits requires the values of vital rate functions. Therefore, we took great pains when designing the database to ensure these analyses were still possible. As noted above, they require some additinal effort, but are usually worth it. We'll step through the code pieces required to extract these below. We'll start with an example computing the sensitivity of $\lambda$ to vital rate function values. After that, we'll show how to compute the mean size at death conditional on initial state $z_0$ and the size at death kernel $\Omega(z', z_0)$, both of which rely on extracting the survival functions. 
+The ability to perturb function values and parameter estimates is one of the great strengths of IPMs.  Furthermore, computing many life history traits requires the values of vital rate functions. Therefore, we took great pains when designing the database to ensure these analyses were still possible. As noted above, they require some additional effort, but are usually worth it. We'll step through the code pieces required to extract these below. We'll start with an example computing the sensitivity of $\lambda$ to vital rate function values. After that, we'll show how to compute the mean size at death conditional on initial state $z_0$ and the size at death kernel $\Omega(z', z_0)$, both of which rely on extracting the survival functions. 
 
 ## Vital rate function value perturbations
 
-These require modifying the general sensitivity formula to compute the partial derivative of $\lambda$ with respect to change in $f(z)$. These expressions depend on the formula for the kernel, and so no general formula exists. However, we can use the chain rule to work out what it should be. The general formula for a given perturbation is:
+These require modifying the general sensitivity formula to compute the partial derivative of $\lambda$ with respect to change in $f(z)$. These expressions depend on the form of the kernel, and so no general formula exists for function value perturbations. However, we can use the chain rule and the general formula for sensitivity to a given perturbation to work it out. The latter formula is:
 
 1. $\frac{\partial\lambda}{\partial \epsilon}\biggr\rvert_{\epsilon = 0} = \frac{\langle v, Cw \rangle}{\langle v, w \rangle}$.
 
@@ -438,7 +478,7 @@ init_ind <-
 keep_ind <- init_ind$ipm_id[init_ind$kernel_id == "P"] %>%
   unique()
 
-# To keep things easy, we'll just use the first 3 in this index
+# To keep things quick, we'll just use the first 3 in this index
 
 keep_ind <- keep_ind[1:3]
 
@@ -460,7 +500,7 @@ proto_list[[3]]
 
 ```
 
-We can see that each $P = s(z) * G(z',z)$. In the third models, $s(z)$ is comprised of two additional functions, which we could perturb individually. We'll show a quick example of that after applying our perturbation kernels to all 3. 
+We can see that for each IPM, $P = s(z) * G(z',z)$. In the third models, $s(z)$ is comprised of two additional functions, which we can perturb individually. We'll show a quick example of that after applying our perturbation kernels to all 3. 
 
 Our perturbation kernel for all 3 models will take the following form: $C(z',z) = \delta_{z_0}(z)G(z',z)$. With a little rearranging (see Ellner, Childs, & Rees 2016 Chapter 4), we find the following:
 
@@ -512,12 +552,16 @@ d_zs <- lapply(mesh, function(x) x[[1]])
 
 sens_list <- lapply(seq_along(vr_funs),
                     function(idx, r_evs, vr_funs, l_evs, d_zs) {
+                      
+                      # Extract objects to temporary values so the formula is more
+                      # readable
+                      
                       G <- vr_funs[[idx]]$P$g
                       v <- unlist(l_evs[[idx]])
                       w <- unlist(r_evs[[idx]])
                       d_z <- d_zs[[idx]]
                       
-                      numerator <- left_mult(G, v) * w
+                      numerator <- as.vector((v %*% G) * w)
                       denominator <- sum(v * w * d_z)
                       
                       numerator / denominator
@@ -555,7 +599,7 @@ v <- unlist(l_evs[[3]])
 w <- unlist(r_evs[[3]])
 d_z <- d_zs[[3]]
 
-numerator <- left_mult(s_s * G, v) * w
+numerator   <- as.vector((v %*% (s_s * G)) * w)
 denominator <- sum(v * w * d_z)
 
 sens_s_w <- numerator / denominator
@@ -578,11 +622,11 @@ plot(y = sens_s_w, x = mesh_ps,
 
 ## Mean size at death and size at death kernels
 
-We can also use vital rate function values in conjunction with sub-kernels to implement more advanced calculations. For this example, we'll examine mean size at death and the size at death kernel. These are given by the following equations:
+We can also use vital rate function values in conjunction with sub-kernels to implement calculations of life history traits. For this example, we'll examine mean size at death and the size at death kernel. These are given by the following equations:
 
 Mean size at death $= \bar\omega = (\textbf{i} \ \circ \ (1-s))N$ and size at death kernel $= \Omega(z',z_0) = (1 - s(z')) * N(z',z_0)$. 
 
-In these equations, $s$ and $s(z')$ are survival functions, and $N$ is the fundamental operator, which is defined as $N = (I-P)^{-1}$, where $P$ is the survival/growth kernel from the IPM and $I$ is an identity kernel (analogous to an identity matrix). Fortunately, we can reuse our `N_kerns` code from above. However, it is important to remember that the $(1-s)$ term represents all mortality pathways, and species may have more than one way to die (e.g. monocarpic perennials die through natural mortality as well as the flowering process, which is also fatal). Therefore, we also want to check our kernel formulae and see if those include additional terms that may represent alternative mortality pathways. Additionally, we need to get the meshpoints which correspond to $\textbf{i}$. 
+In these equations, $s$ and $s(z')$ are survival functions, and $N$ is the fundamental operator, which is defined as $N = (I-P)^{-1}$, where $P$ is the survival/growth kernel from the IPM and $I$ is an identity kernel (analogous to an identity matrix). Fortunately, we can reuse our `N_kerns` code from above. However, it is important to remember that the $(1-s)$ term represents all mortality pathways, and species may have more than one way to die (_e.g._ monocarpic perennials die through natural mortality as well as the flowering process). Therefore, we also want to check our kernel formulae and see if those include additional terms that may represent alternative mortality pathways. Additionally, we need to get the meshpoints which correspond to $\textbf{i}$. 
 
 This time, we'll use considerably more IPMs - we'll get those from the `new_ipms` object we created earlier. However, we need to rebuild them with `return_all_envs = TRUE` so that we can access the vital rate function values. 
 
@@ -607,7 +651,7 @@ and
 
 $\Omega(z',z_0) = (p_{fl}(z') + (1 - p_{fl}(z')) * (1-s(z')))N(z', z_0).$
 
-This can be summarized by saying "you die with flowering probability $p_{fl}$, and if you don't flower ($1-p_{fl}$), you die with probability $1-s$." We are now ready to proceed with our calculations!
+This can be summarized by saying "a plant dies with flowering probability $p_{fl}$, and if the plant does not flower ($1-p_{fl}$), it dies with probability $1-s$." We are now ready to proceed with our calculations!
 
 ```{r}
 
@@ -718,7 +762,7 @@ for(i in seq_along(omega_bar_z)) {
 
 ```
 
-## Citations
+# Citations
 
 1. Caswell, H. (2001) Matrix population models: construction, analysis, and interpretation, 2nd edn. Sunderland, MA: Sinauer Associates Inc
 

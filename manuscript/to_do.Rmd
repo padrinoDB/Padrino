@@ -6,6 +6,8 @@ output: html_document
 
 1. update digitization guide w/ new info
 
+    + Split into user-facing and Hiwi facing???
+
     + first_arg for PDFs
     
     + TestTarget explanations
