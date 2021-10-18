@@ -149,7 +149,11 @@ This format will correspond more closely to how we enter it PADRINO. Note that P
 
   - `mu_g = alpha_g + beta_g * size_1`
 
-Notice that we omit the $y$ from the right hand side of (1). PADRINO will infer the correct state variable based on the kernel it appears in. Additionally, in this particular case, their is no link function (or, rather, it's an identity link function which we can ignore), so we don't need to wrap the right hand side of (2) in any thing.
+Notice that we omit the $y$ from the right hand side of (1). PADRINO will infer the correct state variable based on the kernel it appears in (however, see the next section for an exception to this rule!). Additionally, in this particular case, their is no link function (or, rather, it's an identity link function which we can ignore), so we don't need to wrap the right hand side of (2) in any thing.
+
+#### `first_arg` and when to use it
+
+Directly above, we said that we do not write $y$ in the call to `Norm(...)`. This is almost always true. However, there is an exception to this. Say that the computed value is the probablity density of a difference in values. This happens in some models that include mating preferences. In this case, we'd need to specify `Norm(z_2 - z_1, mu, sigma)`. However, that won't work either, because _RPadrino_ will still assume it needs to insert the state variable. We can switch off that behavior (i.e. automatically inserting state variables) by adding an additional argument to `Norm(...)`: `first_arg`. This is a logical and it's assumed to be `FALSE` all the time, so you only need to add it when you need this. In that case, we would write `Norm(z_2 - z_1, mu, sigma, first_arg = TRUE)`. This will prevent _RPadrino_ from doing any kind of state variable substitution, and simply evaluate the rest of the statement. Note that it *doesn't* switch off the parameter set index notation, so you can still use that when `first_arg = TRUE`!
 
 ### Seed production
 

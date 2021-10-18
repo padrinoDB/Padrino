@@ -88,6 +88,8 @@ This package contains a couple helpful functions for loading a locally stored de
 
 If the newly entered model passes all tests, then it is ready to enter the production version of the database. At this point, I am still working out who should have access to that, so for now, just send me your version of the database via email (<levisc8@gmail.com>). 
 
+For more on testing, see the [TestTargets](#test-targets) table overview below.
+
 ## The tables
 
 Next, we will walk through individual tables and the columns within them. The first is `Metadata`.
@@ -104,9 +106,9 @@ The metadata table contains information on species taxonomy, publication informa
 
     - NB: If you are already familiar with COMPADRE, we DO NOT use the the extra `_#` to distinguish between models/publications. For example, two publications in COMPADRE on `Lonicera_maackii` would be entereed as `Lonicera_maackii` and `Lonicera_maackii_2`. We just use different `ipm_id`'s and `apa_citation`'s to distinguish these models.
 
-3. `species_accepted`: The accepted name of the species (currently from [Global Names Resolver](https://resolver.globalnames.org/) and [Catalog of Life](https://www.catalogueoflife.org/), but may switch to the [Leipzig List](https://github.com/idiv-biodiversity/lcvplants) for Plantae soon). This follows the format `genus_species`, but does not contain any varietal or sub-species information. You can use the experimental `resolve_pdb_tax` function in `pdbDigitUtils` for this, though it may not work perfectly, and results should be checked.
+3. `species_accepted`: The accepted name of the species (currently from [Global Names Resolver](https://resolver.globalnames.org/) and [Catalog of Life](https://www.catalogueoflife.org/), but may switch to the [Leipzig List](https://github.com/idiv-biodiversity/lcvplants) for Plantae soon). This follows the format `genus_species_subspecies`. You can use the experimental `resolve_pdb_tax` function in `pdbDigitUtils` for this, though it may not work perfectly, and results should be checked.
 
-*The following taxonomic categories contain the `"tax_"` prefix to prevent naming ambiguity with some R functions.*
+*The following taxonomic categories contain the `"tax_"` prefix to prevent naming collisions with some R functions.*
 
 4. `tax_genus`: The accepted genus.
 
@@ -204,6 +206,8 @@ The metadata table contains information on species taxonomy, publication informa
 
 41. `has_dd`: Indicates whether the model incorporates density dependence.
 
+42. `is_periodic`: Indicates whether or not the model is periodic. Periodic models aren't currently supported by `ipmr`, and hence aren't possible in PADRINO yet. 
+
 #### Database specific information
 
 42 `.embargo`: Have the authors requested an embargo period for the model?
@@ -219,10 +223,6 @@ You've made it through the metadata table! Next, we will get into IPM specific d
 2. `state_variable`: the name of the of state variable that the model uses. This is largely up to you to choose. It can be descriptive (e.g. `"dbh"`, `"leaf_area"`), or vague (`"size"`). 
 
 3. `discrete`: Whether or not the state variable is discretely or continuously distributed.
-
-### DiscreteStates
-
-Ignore this table for now, I'm fairly certain it will be removed soon.
 
 ### ContinuousDomains
 
@@ -306,7 +306,7 @@ Because of the way that `ipmr` implements models, we only need to digitize sub-k
     
         + `"g = Norm(int_g + slope_g * z_1, sigma_g)"`
         
-    + See [Writing kernels, vital rate, and environmental stochasticity expressions guide](https://github.com/levisc8/PADRINO/blob/master/metadata/digitization/pdb_expr_guide.pdf) for more details. See PADRINO's [Probability Distribution Dictionary](https://github.com/levisc8/PADRINO/blob/master/metadata/digitization/dens_fun_dictionary.csv) for each distribution's notation.
+    + See [Writing kernels, vital rate, and environmental stochasticity expressions guide](https://levisc8.github.io/Padrino/model-expressions-in-padrino.html) for more details. See PADRINO's [Probability Distribution Dictionary](https://github.com/levisc8/PADRINO/blob/master/metadata/digitization/dens_fun_dictionary.csv) for each distribution's notation.
     
 4. `model_type`: Should be either "Evaluated" or "Substituted". Anything that contains a probability density function should be "Substituted", and everything else will be "Evaluated".
 
@@ -350,7 +350,7 @@ Because of the way that `ipmr` implements models, we only need to digitize sub-k
     
 6. `model_type`: Should be either "Evaluated", "Parameter", or "Substituted". Anything that contains a probability distribution should be "Substituted". Anything that is not probability distribution or raw parameter value should be "Evaluated" (i.e. `env_range` is `NULL` and `env_function` is something other than a probability distribution). Anything that is a parameter value should be "Parameter" (i.e. `env_range` is a single number, and `env_function` is `NULL`).
 
-### HierarchTable
+### ParSetIndices
 
 1. `ipm_id`: The 6 digit alphanumeric `ipm_id` from the Metadata table.
 
@@ -370,13 +370,13 @@ This table is not yet active, so skip for now.
 
 1. `ipm_id`: The 6 digit alphanumeric `ipm_id` from the Metadata table.
 
-### TestTargets
+### TestTargets {#test-targets}
 
-This table is not user-facing, but we keep it to validate the models numerically. Basically, we want to make sure that the model, as we've entered it, can reproduce some target metric when re-constructed by `ipmr`. The target is usually $\lambda$, because it's quick and easy to compute, and it's a single number (as opposed to, say, the right eigenvector or $\lambda_s$). 
+This table is not user-facing, but we keep it to validate the models numerically. Basically, we want to make sure that the model, as we've entered it, can reproduce some target metric when re-constructed by `ipmr`. For now, the only supported target $\lambda$, because it's quick and easy to compute, and it's a single number (as opposed to, say, the right eigenvector or $\lambda_s$). Stochastic $\lambda$ ($\lambda_s$) is not supported because it can take quite some time to reproduce, and, because it's the result of a stochastic process, may not be fully reproducible anyway. 
 
 1. `ipm_id`: The 6 digit alphanumeric `ipm_id` from the Metadata table.
 
-2. `target_name`: Usually `"lambda"` or `"lambda_suffixValue"` (if working with a grouped model). If you find that $\lambda$ values are hard to come by for some publications, but other values may work, let me know and we will figure out a syntax for supporting those.
+2. `target_name`: `"lambda"` or `"lambda_suffixValue"` (if working with a grouped model). If you find that $\lambda$ values are hard to come by for some publications, but other values may work, let me know and we will figure out a syntax for supporting those.
 
 3. `target_value`: The numerical value of the target.
 

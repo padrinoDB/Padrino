@@ -1,3 +1,4 @@
+tab:unnamed-chunk-1
 about
 digitization-guide
 required-tools
@@ -15,7 +16,6 @@ data-collection-information
 model-information
 database-specific-information
 statevariables
-discretestates
 continuousdomains
 integrationrules
 statevectors
@@ -23,9 +23,9 @@ ipmkernels
 vitalrateexpr
 parametervalues
 environmentalvariables
-hierarchtable
+parsetindices
 uncertaintytable
-testtargets
+test-targets
 summary
 common-probs
 missing-data
@@ -38,6 +38,7 @@ sub-kernels
 vital-rate-expressions
 survival
 growth
+first_arg-and-when-to-use-it
 seed-production
 probability-of-flowering-and-recruit-size-distributions.
 gen-mods

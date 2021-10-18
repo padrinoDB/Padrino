@@ -9,3 +9,39 @@ output: bookdown::gitbook
 Welcome to the PADRINO IPM Database project. We are in the process of digitizing as many Integral Projection Models (IPMs) as possible. The ultimate goal is to provide an interface to reconstruct these models for synthesis with a user-friendly interface. Right now, the only engine available for this is written in _R_, though a long term goal is to provide bindings to other languages (a technical document describing how to write those is on the to-do list).
 
 PADRINO stores IPMs as a text strings that represent the form for the sub-kernels, vital rate models, and any other expressions needed to generate an IPM iteration. It stores parameter values in  a separate table, and substitutes those in for the symbols in the text strings when a user requests a built model. The result is a set of sub-kernels, trait distributions, and, optionally, other user-requested information, such as vital rate functions. 
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+
+library(knitr)
+library(RPadrino)
+library(dplyr)
+
+pdb <- pdb_download(save = FALSE)
+
+tab <- pdb$Metadata %>% 
+  group_by(kingdom) %>%
+  summarise(
+    IPMs = length(unique(ipm_id)),
+    spp  = length(unique(species_accepted)),
+    pap  = length(unique(apa_citation))
+  )
+
+tot <- pdb$Metadata %>% 
+  summarise(
+    kingdom = "Totals",
+    IPMs = length(unique(ipm_id)),
+    spp  = length(unique(species_accepted)),
+    pap  = length(unique(apa_citation))
+  ) %>%
+  rbind(tab)
+
+kable(tab, format = "html",
+      caption = paste(
+        "Total number of `ipm_id`'s, species, and publications contained in PADRINO. ",
+        "All of these models are quality checked, and will reproduce the published ",
+        "IPM behavior."
+      ),
+      col.names = c("Kingdom", "IPMs", "Species", "Publications
+                    "))
+
+```
