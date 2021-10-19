@@ -8,44 +8,11 @@ output: html_document
 
     + Split into user-facing and Hiwi facing???
 
-    + first_arg for PDFs
-    
-    + TestTarget explanations
-    
-    + Rename tables
-    
-    + new columns??
-    
-2. Figures
+2. work on failing models
 
-    + revisit these
-    
-    + phylogeny?
-    
-        + If yes, find animal one
-        
-3. work on failing models
+3. draft to co-authors
 
-4. draft to co-authors
+    + Sent, wait for responses
+    
 
-    + Round 2! 
-    
-      + so far only ocmments from Rob + Aldo. 
-      
-          + Just do those for now. If anyone else responds, then great. if not, finish case study and address comments -> re-send.
-          
-    + SI needs:
-    
-        + Figure w database schema
-        
-        +
 
-5. case study
-
-    + finish it!
-    
-    + Add more?
-    
-    + Deterministic eigenvectors w/ parset models seems to fail?? check ipmr...
-    
-        - done!

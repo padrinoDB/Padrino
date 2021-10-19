@@ -4,7 +4,6 @@
 library(fs)
 library(dplyr)
 library(pander)
-library(lubridate)
 library(RPadrino)
 
 source("R/utils/pdb_build_utils.R")
@@ -254,7 +253,7 @@ use_ids     <- setdiff(use_ids, no_target_bad_model)
 prod_db     <- pdb_subset(good_db, ipm_ids = use_ids)
 
 prod_db$Metadata <- prod_db$Metadata %>%
-  select(-c(.embargo, .embargo_date))
+  select(-c(.embargo, .embargo_date, .test_passed))
 
 # prod_db <- lapply(prod_db, function(x) {
 #   
@@ -262,7 +261,7 @@ prod_db$Metadata <- prod_db$Metadata %>%
 #   
 # })
 
-prod_db <- set_pdb_col_types(prod_db)
+prod_db <- pdb_correct_common_metadata_issues(prod_db)
 
 
 pdb_save(prod_db, destination = "padrino-database/clean/")
