@@ -4,13 +4,13 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
-## Padrino <a href='https://levisc8.github.io/Padrino'><img src='metadata/pdb_logo.png' align="right" height="139" /></a>
+## Padrino <a href='https://padrinoDB.github.io/Padrino'><img src='metadata/pdb_logo.png' align="right" height="139" /></a>
 
 This repo hosts the code used to generate and upload data to the
 `Padrino` data base, as well as the flat tables that comprise both raw
 and clean versions of it. Users will find a clean interface between the
 database and `R` in the
-[`RPadrino`](https://github.com/levisc8/RPadrino) package.
+[`RPadrino`](https://github.com/padrinoDB/RPadrino) package.
 
 Currently, the data base is a set of 10 text files that consist of ASCII
 representation of model formulae, the coefficients associated with said
@@ -47,13 +47,13 @@ pointless. This will change immediately before/after the first major
 release.
 
 Development of the package `RPadrino` is taking place over
-[here](https://github.com/levisc8/RPadrino).
+[here](https://github.com/padrinoDB/RPadrino).
 
 ## For Compadrinos
 
 The digitization guide and other help files are located in
 `metadata/digitization` and on the project’s
-[webpage](https://levisc8.github.io/Padrino/). The
-[pdbDigitUtils](https://github.com/levisc8/pdbDigitUtils) package can
+[webpage](https://padrinoDB.github.io/Padrino/). The
+[pdbDigitUtils](https://github.com/padrinoDB/pdbDigitUtils) package can
 help detect some problems with freshly digitized models. The
 digitization guide has more information on how that package works.
