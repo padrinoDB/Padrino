@@ -360,10 +360,7 @@ temp_db <- use_cdb@data %>%
 
 study_coords <- st_as_sf(temp_db,
                          coords = c("lon", "lat"),
-                         crs = "WGS84") %>%
-  arrange(species_accepted) %>%
-  .[!duplicated(.$species_accepted), ]
-
+                         crs = "WGS84")
 ```
 
 ## Querying BIEN
@@ -379,12 +376,17 @@ After converting the range maps to an `sf` object, we also need to create a diff
 study_coords$species_accepted <- gsub("_", " ", study_coords$species_accepted)
 
 rng_maps <- BIEN_ranges_load_species(study_coords$species_accepted) %>%
-  st_as_sf()
+  st_as_sf() %>%
+  st_make_valid() %>%
+  arrange(species)
 
-line_maps     <- st_cast(rng_maps, "MULTILINESTRING")
+line_maps <- st_cast(rng_maps, "MULTILINESTRING")
 
 # Put the "_"'s back in so that we can match all names later on.
 study_coords$species_accepted <- gsub(" ", "_", study_coords$species_accepted)
+
+study_coords <- arrange(study_coords, species_accepted)  %>%
+  .[!duplicated(.$species_accepted), ]
 
 ```
 
@@ -442,7 +444,9 @@ Already, we can see that our range maps don't perfectly align with the PADRINO p
 
 ```{r}
 
-covered_ind <- st_covered_by(study_coords, rng_maps, sparse = FALSE) %>%
+covered_ind <- st_covered_by(study_coords, 
+                             st_make_valid(rng_maps), 
+                             sparse = FALSE) %>%
   diag()
 
 # Print studies not covered by BIEN range map

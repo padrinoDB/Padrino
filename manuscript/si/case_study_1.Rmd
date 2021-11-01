@@ -12,11 +12,15 @@ We've created _RPadrino_ to streamline the process of interacting with PADRINO f
 
 # Usage
 
-This case study makes use of _dplyr_ to help with data transformation. If you don't already have it, install with:
+This case study makes use of _dplyr_ to help with data transformation. If you don't already have it, install it (and _RPadrino_) with:
 
 ```{r eval = FALSE}
 
 install.packages("dplyr")
+
+if(!require("remotes")) install.packages("remotes")
+
+remotes::install_github("levisc8/RPadrino")
 
 ```
 
