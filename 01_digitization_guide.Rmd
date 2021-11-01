@@ -8,7 +8,7 @@ Throughout the course of this guide and the Writing PADRINO Expressions Guide, r
 
 ## Required tools
 
-For digitizers, this project makes heavy use of GitHub, RStudio, Google Sheets, and Slack. If you do not already have a GitHub account, you can make one [here](https://github.com) and walk through the steps of linking GitHub and RStudio [here](https://happygitwithr.com/install-intro.html). For the most part, you will only need to know how to clone a repository, and then how to keep your local version in sync with the online version (via pulling, pushing, and branching). Please let me know if you'd like a more thorough introduction to this during on boarding and I'll make sure to go through the linking/syncing steps with you! A technical setup guide is availabe [here](https://github.com/levisc8/Padrino/blob/main/metadata/digitization/technical_setup.pdf).
+For digitizers, this project makes heavy use of GitHub, RStudio, Google Sheets, and Slack. If you do not already have a GitHub account, you can make one [here](https://github.com) and walk through the steps of linking GitHub and RStudio [here](https://happygitwithr.com/install-intro.html). For the most part, you will only need to know how to clone a repository, and then how to keep your local version in sync with the online version (via pulling, pushing, and branching). Please let me know if you'd like a more thorough introduction to this during on boarding and I'll make sure to go through the linking/syncing steps with you! A technical setup guide is availabe [here](https://github.com/padrinoDB/Padrino/blob/main/metadata/digitization/technical_setup.pdf).
 
 ### Initial setup
 
@@ -22,7 +22,7 @@ Once you've set up GitHub and RStudio to talk to each other, it will be useful t
 
 4. Select "Git" from the second menu.
 
-5. Enter `https://github.com/levisc8/Padrino` into the "Repository URL" bar. Select a directory to place your version in using the "Create project as subdirectory of:".
+5. Enter `https://github.com/padrinoDB/Padrino` into the "Repository URL" bar. Select a directory to place your version in using the "Create project as subdirectory of:".
 
 6. Click "Create" button.
 
@@ -68,7 +68,7 @@ Once we have decided how many entries the paper is going to get, then we can beg
 
 ## Begin digitizing the model
 
-Details on each column and each table are provided below. Some details on functional form syntax are given below, but a much longer introduction is available [here](https://github.com/levisc8/PADRINO/blob/master/metadata/digitization/pdb_expr_guide.pdf), and an introduction to `ipmr` (which powers all of PADRINO) is available [here](https://levisc8.github.io/ipmr/articles/ipmr-introduction.html). 
+Details on each column and each table are provided below. Some details on functional form syntax are given below, but a much longer introduction is available [here](https://github.com/padrinoDB/PADRINO/blob/master/metadata/digitization/pdb_expr_guide.pdf), and an introduction to `ipmr` (which powers all of PADRINO) is available [here](https://levisc8.github.io/ipmr/articles/ipmr-introduction.html). 
 
 ## Test the model
 
@@ -80,11 +80,11 @@ if(!requireNamespace("remotes")) {
   install.packages("remotes")
 }
 
-remotes::install_github("levisc8/pdbDigitUtils")
+remotes::install_github("padrinoDB/pdbDigitUtils")
 
 ```
 
-This package contains a couple helpful functions for loading a locally stored development version of the database, and testing outputs from individual models. `read_pdb` loads the Excel version of the database into _R_, and `test_model` lets you test a newly entered model. The package is still under development, so additional functionality can be added as requested. Please use the [Issues Tab](https://github.com/levisc8/pdbDigitUtils/issues) on the Github repository to create function requests and report bugs.
+This package contains a couple helpful functions for loading a locally stored development version of the database, and testing outputs from individual models. `read_pdb` loads the Excel version of the database into _R_, and `test_model` lets you test a newly entered model. The package is still under development, so additional functionality can be added as requested. Please use the [Issues Tab](https://github.com/padrinoDB/pdbDigitUtils/issues) on the Github repository to create function requests and report bugs.
 
 If the newly entered model passes all tests, then it is ready to enter the production version of the database. At this point, I am still working out who should have access to that, so for now, just send me your version of the database via email (<levisc8@gmail.com>). 
 
@@ -266,13 +266,13 @@ You've made it through the metadata table! Next, we will get into IPM specific d
 
 ### IpmKernels
 
-Because of the way that `ipmr` implements models, we only need to digitize sub-kernels to generate a complete IPM. In other words, there shouldn't be any need to enter expressions that create the $K(z',z)$ iteration kernel, we only the need the $P(z',z)$ and $F(z',z)$. The rest of this guide is a sort of a quick-reference to remind you what goes where - for help writing kernel formulae, you should consult the [Writing kernels, vital rate, and environmental stochasticity expressions guide](https://github.com/levisc8/PADRINO/blob/master/metadata/digitization/pdb_expr_guide.pdf).
+Because of the way that `ipmr` implements models, we only need to digitize sub-kernels to generate a complete IPM. In other words, there shouldn't be any need to enter expressions that create the $K(z',z)$ iteration kernel, we only the need the $P(z',z)$ and $F(z',z)$. The rest of this guide is a sort of a quick-reference to remind you what goes where - for help writing kernel formulae, you should consult the [Writing kernels, vital rate, and environmental stochasticity expressions guide](https://github.com/padrinoDB/PADRINO/blob/master/metadata/digitization/pdb_expr_guide.pdf).
 
 1. `ipm_id`: The 6 digit alphanumeric `ipm_id` from the Metadata table.
 
 2. `kernel_id`: The name of the IPM sub-kernel. 
 
-3. `formula`: The formula describing how the vital rates combine to generate a sub-kernel. This field can make use of `ipmr`'s [suffix syntax](https://levisc8.github.io/ipmr/articles/suffix-notation.html), so kernels with identical functional forms do not need to be re-entered to work with different parameter values.
+3. `formula`: The formula describing how the vital rates combine to generate a sub-kernel. This field can make use of `ipmr`'s [suffix syntax](https://levisc8.github.io/ipmr/articles/index-notation.html), so kernels with identical functional forms do not need to be re-entered to work with different parameter values.
 
 4. `model_family`: One of 4 options:
 
@@ -294,7 +294,7 @@ Because of the way that `ipmr` implements models, we only need to digitize sub-k
 
 2. `demographic_parameter`: The demographic process that the vital rate relates to. For example, could be "Survival", "Growth", "Fecundity", or "Clonal".
 
-3. `formula`: The mathematical formula for the vital rate. This field can make use of `ipmr`'s [suffix syntax](https://levisc8.github.io/ipmr/articles/suffix-notation.html), so vital rates with identical functional forms do not need to be re-entered to work with different parameter values. These can be split out into different cells if they are too long to safely write in a single cell. Vital rates that include probability distributions (e.g. growth, recruitment) must have their own line, and only take the parameters that the distribution accepts. For example:
+3. `formula`: The mathematical formula for the vital rate. This field can make use of `ipmr`'s [suffix syntax](https://levisc8.github.io/ipmr/articles/index-notation.html), so vital rates with identical functional forms do not need to be re-entered to work with different parameter values. These can be split out into different cells if they are too long to safely write in a single cell. Vital rates that include probability distributions (e.g. growth, recruitment) must have their own line, and only take the parameters that the distribution accepts. For example:
 
     + A growth kernel with a Gaussian distribution parameterized by a linear model must have two lines:
     
@@ -306,7 +306,7 @@ Because of the way that `ipmr` implements models, we only need to digitize sub-k
     
         + `"g = Norm(int_g + slope_g * z_1, sigma_g)"`
         
-    + See [Writing kernels, vital rate, and environmental stochasticity expressions guide](https://levisc8.github.io/Padrino/model-expressions-in-padrino.html) for more details. See PADRINO's [Probability Distribution Dictionary](https://github.com/levisc8/PADRINO/blob/master/metadata/digitization/dens_fun_dictionary.csv) for each distribution's notation.
+    + See [Writing kernels, vital rate, and environmental stochasticity expressions guide](https://padrinoDB.github.io/Padrino/model-expressions-in-padrino.html) for more details. See PADRINO's [Probability Distribution Dictionary](https://github.com/padrinoDB/PADRINO/blob/master/metadata/digitization/dens_fun_dictionary.csv) for each distribution's notation.
     
 4. `model_type`: Should be either "Evaluated" or "Substituted". Anything that contains a probability density function should be "Substituted", and everything else will be "Evaluated".
 
@@ -342,7 +342,7 @@ Because of the way that `ipmr` implements models, we only need to digitize sub-k
     
     + C. `NULL`. Use this when `env_function` is something other than `sample` or `NULL`. 
     
-5. `env_function`: Either the name of a function, or a mathematical expression to compute some value as a function of the parameters listed in this table or in ParameterValues. These will usually be either simple arithmetic  (e.g. `"SE_rain * sqrt(n_env)"`), or a function that samples randomly from some distribution. This table also makes use of the [Probability Distribution Dictionary](https://github.com/levisc8/PADRINO/blob/master/metadata/digitization/dens_fun_dictionary.csv), but substitutes `rdist` instead of `ddist`. There are couple additional functions that may appear:
+5. `env_function`: Either the name of a function, or a mathematical expression to compute some value as a function of the parameters listed in this table or in ParameterValues. These will usually be either simple arithmetic  (e.g. `"SE_rain * sqrt(n_env)"`), or a function that samples randomly from some distribution. This table also makes use of the [Probability Distribution Dictionary](https://github.com/padrinoDB/PADRINO/blob/master/metadata/digitization/dens_fun_dictionary.csv), but substitutes `rdist` instead of `ddist`. There are couple additional functions that may appear:
 
     + `c`: used to generate vectors of parameters. This is most commonly used to create a vector of means to pass to a multivariate normal distribution.
     
@@ -393,7 +393,7 @@ There are a number of issues that can (and probably will) arise when digitizing 
 
 ### Missing information {#missing-data}
 
-The vast majority of papers published do not contain all the information we need to re-build these IPMs. Therefore, we also contact authors to request the missing details. The most common ones are things like the numerical integration rule, the number of meshpoints, and the upper/lower bounds for the state variables used. Functional forms for some vital rates are also pretty common. We have a template for requesting information available in [here](https://github.com/levisc8/Padrino/blob/main/metadata/digitization/author_contact_pdb.Rmd) (at some point, I'll convert that to a function that automatically generates email text given an `ipm_id` from a `pdb_raw` object. For now, you'll need to edit it manually).
+The vast majority of papers published do not contain all the information we need to re-build these IPMs. Therefore, we also contact authors to request the missing details. The most common ones are things like the numerical integration rule, the number of meshpoints, and the upper/lower bounds for the state variables used. Functional forms for some vital rates are also pretty common. We have a template for requesting information available in [here](https://github.com/padrinoDB/Padrino/blob/main/metadata/digitization/author_contact_pdb.Rmd) (at some point, I'll convert that to a function that automatically generates email text given an `ipm_id` from a `pdb_raw` object. For now, you'll need to edit it manually).
 
 ### Exceptions to our digitization rules {#exceptions-to-model-alterations}
 

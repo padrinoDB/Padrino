@@ -4,7 +4,7 @@ output: bookdown::gitbook
 
 # About  
 
-<a href='https://levisc8.github.io/Padrino'><img src='https://raw.githubusercontent.com/levisc8/Padrino/main/metadata/pdb_logo.png' align="right" height="140" /></a>
+<a href='https://padrinoDB.github.io/Padrino'><img src='https://raw.githubusercontent.com/padrinoDB/Padrino/main/metadata/pdb_logo.png' align="right" height="140" /></a>
 
 Welcome to the PADRINO IPM Database project. We are in the process of digitizing as many Integral Projection Models (IPMs) as possible. The ultimate goal is to provide an interface to reconstruct these models for synthesis with a user-friendly interface. Right now, the only engine available for this is written in _R_, though a long term goal is to provide bindings to other languages (a technical document describing how to write those is on the to-do list).
 

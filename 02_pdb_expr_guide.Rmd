@@ -143,7 +143,7 @@ In this case, the growth kernel uses a notation that will not work with PADRINO.
 
 2.  $\mu_g = \alpha_g + \beta_g * x$
 
-This format will correspond more closely to how we enter it PADRINO. Note that PADRINO does not use the *R* functions like `dnorm`, `dgamma`, etc. Rather, it uses its own shorthand that roughly follows the accepted statistical abbreviations for each probability function family (with some exceptions to avoid name conflicts in *R*/other languages). A table that contains the PADRINO format is [here](https://github.com/levisc8/PADRINO/blob/main/metadata/digitization/dens_fun_dictionary.csv). PADRINO uses the "Abbreviation" column of this table. The PADRINO format for (1) and (2) become:
+This format will correspond more closely to how we enter it PADRINO. Note that PADRINO does not use the *R* functions like `dnorm`, `dgamma`, etc. Rather, it uses its own shorthand that roughly follows the accepted statistical abbreviations for each probability function family (with some exceptions to avoid name conflicts in *R*/other languages). A table that contains the PADRINO format is [here](https://github.com/padrinoDB/PADRINO/blob/main/metadata/digitization/dens_fun_dictionary.csv). PADRINO uses the "Abbreviation" column of this table. The PADRINO format for (1) and (2) become:
 
   - `g = Norm(mu_g, sigma_g)`
 
@@ -312,7 +312,7 @@ Rather than attempt to write out the rest of the expressions, we'll now move on 
 
 ## Suffix syntax {#suff-not}
 
-`ipmr` implements a suffix syntax that's meant to mirror the sub-/super-script notation of the math that represents IPMs. This allows us to create expressions that are indexed by some variable, usually time or space (e.g. sites, population, etc.), and can save a considerable amount of duplication in the database. We'll go through a quick introduction here, and then the worked example. If you want to read more about it, there is a vignette with a lengthier [here](https://levisc8.github.io/ipmr/articles/hierarchical-notation.html). 
+`ipmr` implements a suffix syntax that's meant to mirror the sub-/super-script notation of the math that represents IPMs. This allows us to create expressions that are indexed by some variable, usually time or space (e.g. sites, population, etc.), and can save a considerable amount of duplication in the database. We'll go through a quick introduction here, and then the worked example. If you want to read more about it, there is a vignette with a lengthier [here](https://levisc8.github.io/ipmr/articles/index-notation.html). 
 
 We'll use the same paper as the general IPM example above, except this time, we're going to modfiy the time-varying expressions by appending a suffix to each parameter/vital rate/kernel. Since the interval of time-varying is year to year, we'll use the subscript $x_{yr}$ in the mathematical formulae, and the suffix `_yr` in PADRINO. 
 
@@ -410,7 +410,7 @@ Try writing these out on your own, and checking the answers [here](#suff-answers
 
 ## Parameter resampled models
 
-Parameter re-sampled models refer to stochastic models where some parameters are treated as time-varying random variables. The `EnvironmentalVariables` table is meant to hold the parameters associated with these random variables (e.g. the mean and variance of a temperature distribution), and the random number generators that produce values (e.g. the `Norm(temp_mu, temp_sd)`). These distribution functions use the same notation as the density functions, so you can still use the [Probability Function Dictionary](https://github.com/levisc8/PADRINO/blob/main/metadata/digitization/dens_fun_dictionary.csv) to translate these into PADRINO notation. 
+Parameter re-sampled models refer to stochastic models where some parameters are treated as time-varying random variables. The `EnvironmentalVariables` table is meant to hold the parameters associated with these random variables (e.g. the mean and variance of a temperature distribution), and the random number generators that produce values (e.g. the `Norm(temp_mu, temp_sd)`). These distribution functions use the same notation as the density functions, so you can still use the [Probability Function Dictionary](https://github.com/padrinoDB/PADRINO/blob/main/metadata/digitization/dens_fun_dictionary.csv) to translate these into PADRINO notation. 
 
 The way that we enter vital rate expressions and IPM sub-kernels doesn't change when working with these models. The only additional bit is that we now enter some of the parameters and expressions into the `EnvironmentalVariables` table. I will find a suitable example for this in the not so distant future.
 
