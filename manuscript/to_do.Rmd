@@ -4,15 +4,51 @@ output: html_document
 
 # to-do for PDB paper
 
-1. update digitization guide w/ new info
+1. Migrate to `padrinoDB` organization
+    
+    + Done for Padrino and RPadrino. Not sure about ipmr just yet...
+    
+2. Update RPadrino w/ feedback
 
-    + Split into user-facing and Hiwi facing???
+3. Paper comments!
+
+4. SI Comments
+
+    + CS1: 
+    
+      + repro_vals calculation crashes Tomos's R session...?
+      
+          + No Clue, won't fix
+    
+      + Add recap section
+      
+          + Done w/ Sanne + Tomos.
+      
+    + CS2:
+    
+      + More code annotation and expand overview section. More case study background explanation before each part. 
+      
+    + SI: 
+        
+      + Add text
+      
+      + DONE!
+      
+5. Shiny app
+
+    + Add report generation functionality.
+    
+      + Done!
+    
+    + Auto-deploys(?)
+    
+      + Working, but need a testing framework in place to ensure deployments actually work for other pushers
 
 2. work on failing models
 
 3. draft to co-authors
 
-    + Sent, wait for responses
+    + Monday, 11/8
     
 
 

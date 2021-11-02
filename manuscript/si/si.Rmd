@@ -1,8 +1,13 @@
 ---
 output: pdf_document
+urlcolor: blue
 ---
 
-```{r, echo = FALSE}
+## Technical overview of PADRINO
+
+PADRINO is structured such that each model gets one row for the Metadata table, and an arbitrary number of rows for every table after that. Some models may have 0, 1, or many rows for some of these tables. Information for each model is linked across tables by the `ipm_id` column. Complete descriptions of each column are provided [here](https://padrinodb.github.io/Padrino/digitization-guide.html#the-tables).
+
+```{r, echo = FALSE, warning = FALSE}
 
 library(png)
 library(ggplot2)
@@ -23,3 +28,6 @@ plt <- qplot(1:14, 1:14, geom = "blank") +
 print(plt)
 
 ```
+
+When a user calls `pdb_make_proto_ipm()` and specifies `ipm_id`s, the function loops over the specified IDs subsetting the database to each single one. It then calls `.make_proto()`, which first translates each IPM component from PADRINO syntax into `ipmr` syntax, then calls `define_*` functions from `ipmr` to generate a `proto_ipm`. If there is more than one ID requested, then `pdb_make_proto_ipm()` repeats the process as many times as requested to generate a list of `proto_ipm`s. This list can be passed to `pdb_make_ipm()`, `pdb_make_ipm()` is a thin wrapper around `ipmr`'s `make_ipm()`, and allows for different sets of additional arguments to be passed to each individual IPM build process. 
+
