@@ -10,7 +10,11 @@ output: html_document
     
 2. Update RPadrino w/ feedback
 
+    + Mostly done, but re-check in a bit
+
 3. Paper comments!
+
+    + DONE
 
 4. SI Comments
 
@@ -28,6 +32,8 @@ output: html_document
     
       + More code annotation and expand overview section. More case study background explanation before each part. 
       
+      + DONE!
+      
     + SI: 
         
       + Add text
@@ -44,11 +50,14 @@ output: html_document
     
       + Working, but need a testing framework in place to ensure deployments actually work for other pushers
 
-2. work on failing models
+6. New pdb object
 
-3. draft to co-authors
+    + `rstudioapi::jobRunScript(...)`
+    
+7. draft to co-authors
 
     + Monday, 11/8
     
+8. work on failing models
 
 

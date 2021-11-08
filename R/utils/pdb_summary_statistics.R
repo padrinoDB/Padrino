@@ -1,7 +1,7 @@
 # summary stats
 
 library(dplyr)
-library(RPadrino)
+library(Rpadrino)
 
 # pdb <- pdb_download(save = FALSE)
 # name_ind <- c("Metadata",

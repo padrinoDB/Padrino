@@ -4,7 +4,7 @@
 library(fs)
 library(dplyr)
 library(pander)
-library(RPadrino)
+library(Rpadrino)
 
 source("R/utils/pdb_build_utils.R")
 

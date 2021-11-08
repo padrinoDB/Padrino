@@ -10,7 +10,7 @@ This repo hosts the code used to generate and upload data to the
 `Padrino` data base, as well as the flat tables that comprise both raw
 and clean versions of it. Users will find a clean interface between the
 database and `R` in the
-[`RPadrino`](https://github.com/padrinoDB/RPadrino) package.
+[`Rpadrino`](https://github.com/padrinoDB/Rpadrino) package.
 
 Currently, the data base is a set of 10 text files that consist of ASCII
 representation of model formulae, the coefficients associated with said
@@ -20,7 +20,7 @@ continuous and discrete environmental variation whenever it is present.
 
 Since the database itself isn’t especially useful without an engine that
 translates IPM formulae into parse-able code, I strongly suggest using
-the `RPadrino` interface to download it, select models, and generate
+the `Rpadrino` interface to download it, select models, and generate
 kernels! However, if you’re interested in the structure, see the
 `padrino-database/clean` folder for the tables.
 
@@ -46,8 +46,8 @@ early in development that keeping a separate `devel` branch is
 pointless. This will change immediately before/after the first major
 release.
 
-Development of the package `RPadrino` is taking place over
-[here](https://github.com/padrinoDB/RPadrino).
+Development of the package `Rpadrino` is taking place over
+[here](https://github.com/padrinoDB/Rpadrino).
 
 ## For Compadrinos
 

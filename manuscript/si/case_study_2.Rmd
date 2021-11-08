@@ -1,5 +1,5 @@
 ---
-title: "Combined analyses with RPadrino, ipmr, and other databases"
+title: "Combined analyses with Rpadrino, ipmr, and other databases"
 output: 
   pdf_document:
     toc: true
@@ -7,9 +7,18 @@ output:
 urlcolor: blue
 ---
 
-# Combining PADRINO data with your own IPMs
+# Overview 
 
-In many cases, we may wish to combine data that we've collected and not yet published with data from PADRINO. We can do this using `ipmr` to create IPM objects, and then appending them to an list created with `pdb_make_ipm()`. We'll create two additional deterministic IPMs, and then attach them to a list created from PADRINO.
+In this case study, we demonstrate how PADRINO can be used in conjunction with (1) a users own, unpublished data, and (2) external data repositories. 
+
+In many cases, we may wish to combine data that we’ve collected and not yet published with data from PADRINO. For example, we may wish to compare the vital rates or sensitivities of our (as-yet-unpublished) study system with those from published IPMs on e.g. similar species. We describe how to do this in Section 1 of this case study.
+
+Using PADRINO in conjunction with external data sources presents unique opportunities to address synthetic questions in ecology, evolutionary biology, and conservation. External data sources could (though aren't limited to) include climate data, species range distributions, phylogenies, or life tables. We describe how to use PADRINO in conjunction with external data sources in Section 2 of this case study.
+
+
+# Combining your own data with PADRINO
+
+In this section, we demonstrate how to combine data from PADRINO with a users own unpublished data. The first part of the code generates two IPMs - these are our “unpublished IPMs”. The next section shows how to combine our unpublished IPMs with those stored in PADRINO, and how to perform simple analyses (i.e. calculate population growth rate) across the combined set of IPMs.
 
 ## Creating our own IPMs
 
@@ -19,8 +28,8 @@ Our first "homemade" IPM will be a general IPM. For now, we are only going to co
 
 ```{r, message = FALSE}
 
-# Loading RPadrino automatically loads ipmr, so we don't need to load both.
-library(RPadrino)
+# Loading Rpadrino automatically loads ipmr, so we don't need to load both.
+library(Rpadrino)
 
 # Set up the initial population conditions and parameters. 
 # These are hypothetical values and don't correspond to any particular
@@ -200,7 +209,7 @@ my_ipm_list = list(ipm_1 = my_general_ipm, ipm_2 = my_simple_ipm)
 
 ## Combining user-defined and PADRINO-defined IPMs
 
-Next, we'll create a list of `proto_ipm` objects from PADRINO, and then put everything together. For simplicity, we'll select a small number of plant species. The `pdb` object is contained within the `RPadrino` package. It is not a complete version of PADRINO. We'll use the complete data set in the next section, accessed with `pdb_download()`. 
+Next, we'll create a list of `proto_ipm` objects from PADRINO, and then put everything together. For simplicity, we'll select a small number of plant species. The `pdb` object is contained within the `Rpadrino` package. It is not a complete version of PADRINO. We'll use the complete data set in the next section, accessed with `pdb_download()`. 
 
 ```{r}
 
@@ -232,11 +241,13 @@ lambdas    <- lambda(ipm_list)
 
 ```
 
-We could now proceed with any further analyses just as we did in the previous case study. Since those types of analyses are already covered by the previous case study, we'll move on to combining PADRINO data with information from other databases.
+We could now proceed with any further analyses just as we did in the case study 1. Since those types of analyses are already covered by the previous case study, we'll move on to combining PADRINO data with information from other databases.
 
 # Extending analyses with other databases
 
-The possibilities for extending PADRINO with other databases are numerous, so we will only cover two here. We'll use [range maps](https://bien.nceas.ucsb.edu/bien/biendata/bien-2/species-range-models/) from [BIEN](https://bien.nceas.ucsb.edu/bien/) and augment PADRINO with data from COMPADRE to examine if distance from the edge of a species' range influences the population's per-capita growth rate. This analysis won't be the most complete, and is intended to demonstrate the steps for combining data, not to make a scientific point. With that in mind, let's dive in!
+Here, we show how to combine data from PADRINO with data from other external sources. Specifically, we show how to combine with data from [COMPADRE MPM database](https://compadre-db.org/) and [BIEN](https://bien.nceas.ucsb.edu/bien/) (database on the spatial distribution and phylogenies of plant species). We then demonstrate how we can use these combined datasets to address the question: “How do population growth rates vary by the distance of the studied population from the known range edge of that species?"
+
+Given the question we posed above, we need to get range maps for each species and the per-capita growth rate for some populations. For the former, we'll use [range maps](https://bien.nceas.ucsb.edu/bien/biendata/bien-2/species-range-models/) from BIEN.For the latter, we'll augment PADRINO with data from COMPADRE. This analysis won't be the most complete - it is intended to demonstrate the steps for combining data, not to make a scientific point. With that in mind, let's dive in!
 
 ## Required packages
 
@@ -257,7 +268,7 @@ library(ggplot2)
 library(sf)
 library(dplyr)
 library(Rcompadre)
-library(RPadrino)
+library(Rpadrino)
 library(mgcv)
 
 ```
@@ -272,7 +283,8 @@ bien_rng_spps <- BIEN_ranges_list()
 pdb           <- pdb_download(save = FALSE)
 cdb           <- cdb_fetch("compadre")
 
-# Insert an underscore to make sure name format matches BIEN and PADRINO
+# Insert an underscore to make sure name format matches between COMPADRE,
+# PADRINO, and BIEN
 
 cdb_spp <- gsub(" ", "_", cdb$SpeciesAccepted)
 
@@ -280,7 +292,7 @@ pdb_spp <- pdb$Metadata$species_accepted
 
 ```
 
-Nice! We have `r sum(unique(c(cdb_spp, pdb_spp)) %in% bien_rng_spps$species)` overlapping species between COMPADRE/PADRINO and BIEN's range maps. 
+Nice! We have `r sum(unique(c(cdb_spp, pdb_spp)) %in% bien_rng_spps$species)` overlapping species between COMPADRE/PADRINO and BIEN's range maps. This next chunk determines which species from PADRINO and COMPADRE have range maps available in BIEN:
 
 ```{r}
 
@@ -298,11 +310,19 @@ We probably shouldn't use all of these, as those calculations would take quite s
 
 ```{r}
 
+# First, we'll create a vector of ipm_id's which meet the following requirements:
+# 1. They have range maps in BIEN (species_accepted %in% pdb_rng_spp)
+# 2. The model is from data collected in North America (continent == "n_america")
+# 3. The data are from unmanipulated populations (treatment == "Unmanipulated")
+
 pdb_ids     <- pdb$Metadata$ipm_id[pdb$Metadata$species_accepted %in% pdb_rng_spp &
                                    pdb$Metadata$continent == "n_america" & 
                                    pdb$Metadata$treatment == "Unmanipulated"]
 
 use_pdb     <- pdb_subset(pdb, pdb_ids)
+
+# For COMPADRE, we have to first replace "_" in the species names with a space.
+# Then we can use filter() syntax to subset COMPADRE to the species we want. 
 
 cdb_rng_spp_f <- gsub("_", " ", cdb_rng_spp)
 
@@ -315,7 +335,7 @@ use_cdb <- filter(cdb,
 
 ## Check data quality 
 
-PADRINO data is validated before it is uploaded to ensure the IPM behaves as the published version behaves. There are additional checks you might want to perform on your own, and those depend on the subsequent anaylsis. Case study 1 shows an example of this where a singular kernel created some very strange results. However, there aren't built-in functions in `RPadrino` yet to assist with this. Therefore, it is usually a good idea to check the original publications just to be sure there aren't caveats to the model that the authors have raised. We can find the citations using `pdb_citation()` and `pdb_report()`. `pdb_citation()` returns a character vector of citations in APA style, whereas `pdb_report()` generates an RMarkdown report based on the information in the database.
+PADRINO data is validated before it is uploaded to ensure the IPM behaves as the published version behaves. There are additional checks you might want to perform on your own, and those depend on the subsequent anaylsis. Case study 1 shows an example of this where a singular kernel created some biologically impossible results. However, there aren't built-in functions in `Rpadrino` yet to assist with this. Therefore, it is usually a good idea to check the original publications just to be sure there aren't caveats to the model that the authors have raised. We can find the citations using `pdb_citation()` and `pdb_report()`. `pdb_citation()` returns a character vector of citations in APA style, whereas `pdb_report()` generates an RMarkdown report based on the information in the database.
 
 ```{r eval = FALSE}
 
@@ -340,23 +360,30 @@ use_cdb <- filter(cdb_f, !check_NA_A & !check_NA_U & !check_NA_F & !check_NA_C&
 
 ## Data transformation
 
-Next, we need to do a bit of data wrangling. We only need the `ipm_id` and species names for plotting and analyzing, so we'll just grab those from the metadata table. We're going to create an `sf` object for this data using the coordinates stored in the `"lat"` and `"lon"` columns of the metadata. [`sf`](https://r-spatial.github.io/sf/) provides a standardized interface for dealing with multiple types of spatial data, and also plays nicely with `dplyr`, which makes managing data much easier. The `st_as_sf()` function handles the conversion for us. 
+Next, we need to do a bit of data wrangling. From PADRINO, only need the `ipm_id` and species names for plotting and analyzing, so we'll just grab those from the metadata table. We're going to create an `sf` object for this data using the coordinates stored in the `"lat"` and `"lon"` columns of the metadata. [`sf`](https://r-spatial.github.io/sf/) provides a standardized interface for dealing with multiple types of spatial data, and also plays nicely with `dplyr`, which makes managing data much easier. The `st_as_sf()` function handles the conversion for us. 
 
 ```{r}
 
+# Create a standard data.frame with ipm_id, species, lat+lon data from PADRINO
+
 temp_coords <- use_pdb$Metadata %>% 
   select(ipm_id, species_accepted, lat, lon)
+
+# This next bit does the following:
+# 1. Creates a data.frame from COMPADRE data with the same columns as PADRINO.
+# 2. Changes the names so they match the PADRINO version.
+# 3. Combines the COMPADRE and PADRINO versions.
+# 4. Eliminates studies that do not have complete latitude/longitude information.
 
 temp_db <- use_cdb@data %>%
   select(MatrixID, SpeciesAccepted, Lat, Lon) %>%
   setNames(names(temp_coords)) %>%
   rbind(temp_coords) %>%
-  mutate(lat = lat,
-         lon = lon) %>%
   .[complete.cases(.), ] 
 
 
-# Create an 'sf' object with the combined coordinates from COMPADRE and PADRINO
+# Finally, create an 'sf' object with the combined coordinates from COMPADRE and
+# PADRINO
 
 study_coords <- st_as_sf(temp_db,
                          coords = c("lon", "lat"),
@@ -369,21 +396,39 @@ Now that we have our final species list, we're going to download the range maps 
 
 After converting the range maps to an `sf` object, we also need to create a different version of the polygons that are a set of lines representing the edges. This will allow us to quickly calculate the distance between our study points and the edge of the range. `st_cast()` handles this conversion for us. 
 
-> NB: while the data frame of species names we downloaded from BIEN before uses an "_" in species names, the `BIEN_ranges_load_species()` function expects names without underscores!
-
 ```{r}
 
+# First, convert species names back to spaced version without "_"s. while the
+# data.frame of species names we downloaded from BIEN before uses an "_" in
+# species names, the `BIEN_ranges_load_species()` function expects names without
+# underscores!
+
 study_coords$species_accepted <- gsub("_", " ", study_coords$species_accepted)
+
+# The next piece does:
+# 1. Downloads range maps
+# 2. Converts each range map into an 'sf' object
+# 3. Resolves issues that arise in the conversion process (e.g. self intersections)
+# 4. Sorts the resulting 'sf' object alphabetically on species
 
 rng_maps <- BIEN_ranges_load_species(study_coords$species_accepted) %>%
   st_as_sf() %>%
   st_make_valid() %>%
   arrange(species)
 
+# We need to create a copy of each range map that, rather than a polygon format,
+# is a line format. This enables us to use functions to compute distance to edge
+# much more easily.
+
 line_maps <- st_cast(rng_maps, "MULTILINESTRING")
 
-# Put the "_"'s back in so that we can match all names later on.
+# Put the "_"'s back into study_coords so that we can match all names later on.
+
 study_coords$species_accepted <- gsub(" ", "_", study_coords$species_accepted)
+
+# Finally, sort study_coords alphabetically as well. Now, the species_accepted
+# column should be identical to the species column in rng_maps. This will be 
+# important in the next step.
 
 study_coords <- arrange(study_coords, species_accepted)  %>%
   .[!duplicated(.$species_accepted), ]
@@ -404,14 +449,24 @@ We start by extracting a distance matrix and taking the diagonal. The diagonal r
 
 stopifnot(all(line_maps$species == study_coords$species_accepted))
 
+# This next piece does:
+# 1. Computes distances between all pairs of points and line objects
+# 2. Extracts the diagonal of the distance matrix. This represents the distance 
+# from a species' study site to the edge of its range (again, only because
+# we sorted study_coords and line_maps alphabetically).
+# 3. converts this information to a data.frame
+# 4. Adds the species names to that data.frame
+# 5. Sets column names for that data.frame
+# 6. Converts the distance to km
+
 dist_from_edge <- st_distance(study_coords, line_maps) %>%
   diag() %>%
   data.frame() %>%
   cbind(study_coords$species_accepted, .) %>%
-  setNames(c("species", "distance_in_meters"))
-
-dist_from_edge$distance_in_km <- 
-  round(as.numeric(dist_from_edge$distance_in_meters) / 1e3, 2)
+  setNames(c("species", "distance_in_meters")) %>%
+  mutate(
+    distance_in_km = round(as.numeric(distance_in_meters) / 1e3, 2)
+  )
 
 ```
 
@@ -440,9 +495,12 @@ ggplot(rng_maps) +
 
 ```
 
-Already, we can see that our range maps don't perfectly align with the PADRINO population coordinates. We can check and see which study populations are actually contained by their range map like so:
+Already, we can see that our range maps don't perfectly align with the COMPADRE and PADRINO population coordinates. We can check and see which study populations are actually contained by their range map like so:
 
 ```{r}
+
+# Notice that now we are using the POLYGONS object (rng_maps) as opposed to the 
+# to the LINESTRING version (line_maps).
 
 covered_ind <- st_covered_by(study_coords, 
                              st_make_valid(rng_maps), 
@@ -458,6 +516,7 @@ study_coords[!covered_ind , ]
 These are COMPADRE matrices. Rather than try to figure out what's going on, we'll just drop those out of our analysis.
 
 ```{r}
+
 study_coords <- study_coords[covered_ind, ]
 
 ```
@@ -472,17 +531,21 @@ Great! The next step is to generate and then join our lambda values with the dis
 
 pdb_ids <- study_coords$ipm_id[study_coords$ipm_id %in% pdb$Metadata$ipm_id]
 
+# Construct the proto_ipm list
 proto_list <- pdb_make_proto_ipm(
   use_pdb, 
   pdb_ids
 )
 
+# Construct the IPMs
+
 ipm_list <- pdb_make_ipm(proto_list)
 
-# We're going to use the mean value of lambda for IPMs with many values. 
-# We neeed to convert those from a list to a data.frame for modeling, and need
-# to keep track of which lambda belongs to which ID. The loop below will correctly
-# format this.
+# Some IPMs may have many values for lambda, because they were constructed from
+# vital rate models that have time varying parameters (e.g. random effects for
+# year). We'll need to account for this. We need to convert those from a list to
+# a data.frame for modeling, and need to keep track of which lambda belongs to
+# which ID. The loop below will correctly format this.
 
 lambdas <- lambda(ipm_list, type_lambda = "last")
 
@@ -565,7 +628,6 @@ ggplot(all_data, aes(x = distance_in_km, y = lambda)) +
               formula = y ~ x,
               method.args = list(family = Gamma("identity")),
               color = "red") +
-
   geom_line(data = preds, 
             aes(x = x, y = fit),
             inherit.aes = FALSE,
@@ -581,7 +643,7 @@ ggplot(all_data, aes(x = distance_in_km, y = lambda)) +
 
 ```
 
-There is a positive trend in range centrality and species performance (red line), and the GAM is likely overfit. There is a lot of residual variance, and we can certainly find better ways to model this phenomenon, but this is a good start for an exploratory analysis. We will leave the further analyses as an exercise to you! 
+There is a positive trend in range centrality and species performance (red line), and the GAM is likely overfit (blue line). There is a lot of residual variance, and we can certainly find better ways to model this phenomenon, but this is a good start for an exploratory analysis. We will leave the further analyses as an exercise to you! 
 
 # Recap
 
