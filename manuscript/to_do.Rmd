@@ -4,48 +4,34 @@ output: html_document
 
 # to-do for PDB paper
 
-1. Migrate to `padrinoDB` organization
-    
-    + Done for Padrino and RPadrino. Not sure about ipmr just yet...
-    
-2. Update RPadrino w/ feedback
-
-    + Mostly done, but re-check in a bit
-
 3. Paper comments!
 
-    + DONE
+    + Comments in general
+    
+      + DZC + AC + SE gave good comments. Get those done
+      
+        + DONE
+      
+      + Conceptual figures for each case study
+      
+        + These should show different steps in workflow - current fig blows TBH
+        
+        + Use each case study as a template to visualize how this works
+        
+        + DONE
 
 4. SI Comments
 
-    + CS1: 
-    
-      + repro_vals calculation crashes Tomos's R session...?
-      
-          + No Clue, won't fix
-    
-      + Add recap section
-      
-          + Done w/ Sanne + Tomos.
-      
-    + CS2:
-    
-      + More code annotation and expand overview section. More case study background explanation before each part. 
-      
-      + DONE!
-      
-    + SI: 
+    + SI: restructure some because copy+paste didn't catch all references to "syntax", etc.
         
       + Add text
       
-      + DONE!
+        + DONE
+      
+      + Update subsetting to use names of metadata vectors for IPM ids
       
 5. Shiny app
 
-    + Add report generation functionality.
-    
-      + Done!
-    
     + Auto-deploys(?)
     
       + Working, but need a testing framework in place to ensure deployments actually work for other pushers
@@ -56,8 +42,12 @@ output: html_document
     
 7. draft to co-authors
 
-    + Monday, 11/8
+    + Wednesday, 2/23
+
+9. Submit to MEE!!!
+
+    + Drink a bunch after that
     
-8. work on failing models
+10. work on failing models
 
 

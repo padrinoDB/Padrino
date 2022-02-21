@@ -3,9 +3,12 @@
 .RData
 .Ruserdata
 Literature
-metadata/*.pptx
+manuscript/figures/*.pptx
 metadata/*.xlsx
+metadata//*.PNG
 metadata/digitization/*.png
+manuscript/figures/*.png
+*.tmp
 *.docx
 metadata/*-1c*
 manuscript/lit*
