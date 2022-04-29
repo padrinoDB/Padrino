@@ -4,50 +4,26 @@ output: html_document
 
 # to-do for PDB paper
 
-3. Paper comments!
+1. ipmr update to include auto-reporting needs to go to CRAN
 
-    + Comments in general
+    + Add in eric scott's suggestions too
     
-      + DZC + AC + SE gave good comments. Get those done
-      
-        + DONE
-      
-      + Conceptual figures for each case study
-      
-        + These should show different steps in workflow - current fig blows TBH
+    + Mostly done, wrangling with CRAN now (4/27/22)
+    
+2. Update Rpadrino CRAN version so code in box in can run off the shelf (no remotes::install)
+
+    + Awaiting CRAN Acceptance
+
+3. update figure 1, it's trash.
+
+    + Mostly done
+
+4. Add more to appendix about contributing to PADRINO, and warnings/messages that appear during builds.
+
+    + Add padrino_warning class? ipmr_warning class?
+    
+        + Added as vignette - no specific warning classes yet
         
-        + Use each case study as a template to visualize how this works
-        
-        + DONE
-
-4. SI Comments
-
-    + SI: restructure some because copy+paste didn't catch all references to "syntax", etc.
-        
-      + Add text
-      
-        + DONE
-      
-      + Update subsetting to use names of metadata vectors for IPM ids
-      
-5. Shiny app
-
-    + Auto-deploys(?)
+        + Awaiting CRAN Acceptance
     
-      + Working, but need a testing framework in place to ensure deployments actually work for other pushers
-
-6. New pdb object
-
-    + `rstudioapi::jobRunScript(...)`
-    
-7. draft to co-authors
-
-    + Wednesday, 2/23
-
-9. Submit to MEE!!!
-
-    + Drink a bunch after that
-    
-10. work on failing models
-
-
+    + Too late on ipmr_warning(?)

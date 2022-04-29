@@ -107,7 +107,7 @@ n_pap      <- tot[tot$kingdom == "Totals", "pap"]
 
 # Introduction
 
-Demography provides an excellent approach to examine the ecology (Crone et al. 2011), evolutionary biology (Metcalf & Pavard 2007), and conservation biology of any species (Doak & Morris 2001). Environmental conditions and biotic interactions influence vital rates (_e.g._ survival, development, reproduction) across the entire life cycle, which then govern its short-term and long-term performance (Caswell 2001). A variety of methods exist for summarizing vital rates into demographic models; discrete-time, structured population models are among the most popular (Crone et al. 2011, Caswell 2001). Indeed, there is a rich history of using such structured population models across a variety of sub-disciplines in ecology (_e.g._ Leslie 1945, Caswell 2001, Easterling et al. 2000, Adler et al. 2010, Ellner et al. 2016).
+Demography provides an excellent approach to examine the ecology (Crone et al. 2011), evolutionary biology (Metcalf & Pavard 2007), and conservation biology of any species (Doak & Morris 2001). Environmental conditions and biotic interactions influence vital rates (_e.g._ survival, development, reproduction) across the entire life cycle, which then govern its short-term and long-term performance (Caswell 2001). A variety of methods exist for combining vital rates into demographic models; discrete-time, structured population models are among the most popular (Crone et al. 2011, Caswell 2001). Indeed, there is a rich history of using such structured population models across a variety of sub-disciplines in ecology (_e.g._ Leslie 1945, Caswell 2001, Easterling et al. 2000, Adler et al. 2010, Ellner et al. 2016).
 
 In ecology, matrix projection models (MPMs) are the most widely used structured population model. MPMs divide the population into discrete classes corresponding to some trait value (_e.g._ developmental state, age, or size), and then model the population using vital rates computed for each class. Researchers have also recognized that, for some species, vital rates are best predicted as a function of one or more continuous traits (_e.g._ size, height, mass), rather than as a function of discrete classes (Easterling et al. 2000).  Integral projection models (IPMs), which are continuously structured population models, have become an increasingly important tool for ecologists interested in addressing broad biological questions through a demographic lens (Gonzalez et al. 2021). IPMs combine vital rate functions of continuous traits into projection kernels, which describe how the abundance and distribution of trait values in a population change in discrete time (Easterling et al. 2000). IPMs have been used to investigate a variety of topics, such as invasive species spread (_e.g._ Jongejans et al. 2011, Erickson et al. 2017), evolutionary stable strategies (_e.g._ Childs et al. 2004), the effect of climate drivers on population persistence (Salguero-Gómez et al. 2012, Compagnoni et al. 2021a), and linking evolutionary feedbacks to population dynamics (Coulson et al. 2011). 
 
@@ -122,68 +122,48 @@ First, we provide a brief review of how IPMs are structured. The simplest form o
 
 $n(z',t+1) = \int_L^U [P(z',z) + F(z',z) + C(z',z)]n(z,t)dz,$ (1)
 
-where $n(z',t+1)$ and $n(z,t)$ are the distributions of trait $z$ at time $t+1$ and $t$, $P(z',z)$ is a kernel describing survival and development of existing individuals, $F(z',z)$ is a kernel describing per-capita sexual reproduction, and $C(z',z)$ is a kernel describing per-capita asexual reproduction (_i.e._ clonal reproduction). Each kernel may be comprised of any number of vital rate functions (Ellner, Childs, & Rees 2016). Analytical solutions to the integrals in Eq 1 are not available (Ellner & Rees 2006). Therefore, the integrals are numerically approximated, resulting in a large iteration matrix (typically ranging from $45 \times 45$ to $5000 \times 5000$ in dimension, SC Levin unpublished data), and then some quantities of interest are computed (Ellner, Childs & Rees 2016). 
+where $n(z',t+1)$ and $n(z,t)$ are the distributions of trait values ($z$) of individuals in the population at time $t+1$ and $t$, $P(z',z)$ is a kernel describing survival and development of existing individuals, $F(z',z)$ is a kernel describing per-capita sexual reproduction, and $C(z',z)$ is a kernel describing per-capita asexual reproduction (_i.e._ clonal reproduction). Each kernel may be comprised of any number of vital rate functions (Ellner, Childs, & Rees 2016). Analytical solutions to the integrals in Eq 1 are not available (Ellner & Rees 2006). Therefore, the integrals are numerically approximated, resulting in a large iteration matrix (typically ranging from $45 \times 45$ to $1000 \times 1000$ in dimension, based on data from PADRINO), and then some quantities of interest are computed (Ellner, Childs & Rees 2016). 
 
 Before introducing _Rpadrino_, we provide a brief overview of PADRINO. PADRINO is an open-access database of integral projection models. PADRINO defines a syntax to symbolically represent IPMs as text strings, and stores the values of those symbols in separate tables. The syntax used is very similar to the mathematical notation of IPMs, and is largely "language-agnostic" (_i.e._ aims to avoid idiosyncrasies of specific programming languages). For example, a survival/growth kernel with the form $P(z',z) = s(z) * G(z',z)$ would be `P = s * G` in PADRINO's syntax. $G(z',z) = f_G(z'|\mu_g(z), \sigma_G)$ (where $f_G$ denotes a normal probability density function) becomes `G = Norm(mu_g, sd_g)`. This notation should be translatable to many computing languages beyond just _R_ (_e.g._ Python or Julia). Additionally, PADRINO stores extensive metadata to help researchers find IPMs that work for their questions. A more complete description of the database, how IPMs are digitized, and the associated challenges is available in the ESM and the project webpage (https://padrinodb.github.io/Padrino/, Appendix, Tables S1 and S2).
 
 # Rpadrino and ipmr
 
-_Rpadrino_ is an _R_ package that contains functions for downloading the PADRINO database, data querying and management, modifying existing functional forms and parameter values, and reconstructing models. Model reconstruction is powered by the _ipmr_ _R_ package (Levin et al. 2021). While users do not need to know how to use _ipmr_ to use _Rpadrino_, the two package are designed to work with and enhance each other. This means that users can combine IPMs reconstructed with _Rpadrino_ with IPMs of their own constructed with _ipmr_ in a single, coherent analysis (case study 2). Furthermore, users can go from downloading the database to reconstructing IPM objects in as little as 3 function calls. A more in depth workflow is provided below.
+_Rpadrino_ is an _R_ package that contains functions for downloading the PADRINO database, data querying and management, modifying existing functional forms and parameter values, and reconstructing models. Model reconstruction is powered by the _ipmr_ _R_ package (Levin et al. 2021). While users do not need to know how to use _ipmr_ to use _Rpadrino_, the two packages are designed to work with and enhance each other. This means that users can combine IPMs reconstructed with _Rpadrino_ with IPMs of their own constructed with _ipmr_ in a single, coherent analysis (case study 2). Furthermore, users can go from downloading the database to reconstructing IPM objects in as little as 3 function calls. A more in depth workflow is provided below.
 
-
-```{r echo = FALSE, dpi = 250, fig.height = 20, fig.width = 36, fig.cap = "**Figure 1**: An overview of general workflows with *Rpadrino*. The first step is to download and subset PADRINO based on the research question at hand (1a). At this point, if the research question calls for it, users may augment the PADRINO object with data from other sources (in black box/arrow, 1b). The extensive metadata table in PADRINO is designed to make this as straightforward as possible. Once the dataset is prepared, users can also generate automated reports on their data subset. After preparing the dataset, users create `proto_ipm` objects using a single function: `pdb_make_proto_ipm()`. This function translates PADRINO's syntax into *ipmr* code and then uses *ipmr* to generate the `proto_ipm` objects. All of these steps take place internally, and so users do not need to understand PADRINO's syntax or how *ipmr* works to move forward (2). Once `proto_ipm`s are created, users generate IPM objects with a single function, `pdb_make_ipm()`. Examples of how to modify default building settings are in each case study in the supplementary materials and in the function's documentation (3). Finally, *Rpadrino* provides some basic analytical machinery, including deterministic and stochastic growth rates and eigenvectors, the ability to make iteration kernels from sub-kernels, and mean kernels (4). Examples of how to conduct more complex analyses are included in the package vignettes and the case studies in the supplementary materials."}
-
-fig <- readPNG("../figures/figure_1.png")
-
-fig_grob <- rasterGrob(fig, interpolate = TRUE)
-
-plt <- qplot(1:14, 1:14, geom = "blank") +
-  annotation_custom(fig_grob,
-                    xmin = -Inf,
-                    xmax = Inf,
-                    ymin = -Inf,
-                    ymax = Inf) +
-  theme_void()
-
-print(plt)
-
-```
-
-The flexibility of IPMs and their broad application across ecology, evolution, and conservation biology mean that there is no fixed set of steps in a workflow using _Rpadrino_. However, there are generally four steps that a researcher must take when using these _Rpadrino_. The first step is to identify studies of interest (Figure 1, Step 1a), and, optionally, augment PADRINO's metadata with additional information from other sources (_e.g._ environmental data,  GBIF, Figure 1, Step 1b). _Rpadrino_ represents PADRINO objects as a list of `data.frames` (referred to as tables in subsequent text). _Rpadrino_ uses the shared `ipm_id` column across all tables to track information related to each IPM. Therefore, subsetting relies on identifying the correct `ipm_id`'s, and then using those to select the IPMs of interest (Box 1, case study 1 and 2). `data.frames` should be familiar to most _R_ users, and the ability to modify them should readily accommodate the range of further analyses that researchers may be interested in. Users may augment any table with additional information corresponding to, for example, spatial or temporal covariates from other open access databases. Furthermore, _Rpadrino_ provides numerous access functions for metadata that streamline subsetting (Box 1).
+The flexibility of IPMs and their broad application across ecology, evolution, and conservation biology mean that there is no fixed set of steps in a workflow using _Rpadrino_. However, there are generally four steps that a researcher must take when using _Rpadrino_. The first step is to identify studies of interest (Figure 1, Step 1a), and, optionally, augment PADRINO's metadata with additional information from other sources (_e.g._ environmental data,  GBIF, Figure 1, Step 1b). _Rpadrino_ represents PADRINO objects as a list of `data.frames` (referred to as tables in subsequent text). _Rpadrino_ uses the shared `ipm_id` column across all tables to track information related to each IPM. Therefore, subsetting relies on identifying the correct `ipm_id`'s, and then using those to select the IPMs of interest (Box 1, case study 1 and 2). `data.frames` should be familiar to most _R_ users, and the ability to modify them should readily accommodate the range of further analyses that researchers may be interested in. Users may augment any table with additional information corresponding to, for example, spatial or temporal covariates from other open access databases. Furthermore, _Rpadrino_ provides numerous access functions for metadata that streamline subsetting (Box 1).
 
 The second step in the _Rpadrino_ workflow is to construct a list of `proto_ipm` objects using `pdb_make_proto_ipm()` (Figure 1, Box 1). This function translates PADRINO's syntax into _ipmr_ code, and then builds a `proto_ipm` object for each unique `ipm_id`. For some models, users may choose to create deterministic or stochastic IPMs at this step. _Rpadrino_'s default behavior is to generate deterministic models whenever possible. This behavior encompasses instances where authors generated models with no time or space varying parameters, and where authors included discretely varying environments. The latter can be implemented as deterministic models because all parameter values are known before the IPM is built. IPMs with continuous environmental variation require sampling the environment at each model iteration, usually by sampling from distributions randomly. These are always considered stochastic models. This is also the step where, if needed, users should combine their own `proto_ipm`'s produced by _ipmr_ with the `proto_ipm`'s produced by _Rpadrino_.
 
-The third step in the _Rpadrino_ workflow is creating IPM objects with `pdb_make_ipm()` (Figure 1, Box 1). `pdb_make_ipm()` uses _ipmr_'s `make_ipm()` function to build IPM objects. Users may specify additional options to pass to to `make_ipm()` (_e.g._ normalize the population size to always equal 1, return the vital rate function values as well as the sub-kernels and population state). The various arguments users can modify are described in the _ipmr_ documentation for `make_ipm()`.
+The third step in the _Rpadrino_ workflow is creating IPM objects with `pdb_make_ipm()` (Figure 1, Box 1). `pdb_make_ipm()` uses _ipmr_'s `make_ipm()` function to build IPM objects. Users may specify additional options to pass to `make_ipm()` (_e.g._ normalize the population size to always equal 1, return the vital rate function values as well as the sub-kernels and population state). The various arguments users can modify are described in the _ipmr_ documentation for `make_ipm()`.
 
 The fourth and final step in an _Rpadrino_ workflow is to conduct the analyses of interest (Figure 1, Box 1). _Rpadrino_ provides functions to extract per-capita growth rates, eigenvectors (Caswell 2001, Ellner, Childs & Rees 2016 Ch. 2, demonstrated in Box 1), assess convergence to asymptotic dynamics (Caswell 2001), compute mean kernels for stochastic IPMs (Ellner, Childs & Rees Ch 7), and modify existing IPMs with new parameter values and functional forms. Additionally, the documentation on the _Rpadrino_ website (https://padrinODB.github.io/Rpadrino/index.html) and the Supplementary Materials for this paper contain details on how to conduct more complicated analyses with IPM objects (_e.g._ perturbation analyses (Ellner, Childs & Rees 2016 Ch 4), size at death calculations (Metcalf et al. 2009)). The package documentation and the recent publication describing _ipmr_ also contain code demonstrating analyses on single IPM objects (Levin et al. 2021). These can be extended via the `apply` family of functions.  
 
 ```{r eval = FALSE}
 
 # Install and load the CRAN version:
-# install.packges("Rpadrino")
+# install.packages("Rpadrino")
 
 library(Rpadrino)
 
-# Step 1 from main text -----
-# pdb_download() downloads a copy PADRINO. We can specify a path
-# to save the tables using `save = TRUE` and `destination = 'path/to/file/'`.
+# Step 1 from main text ----- pdb_download() downloads a copy PADRINO. We can
+# specify a path to save the downloaded database using `save = TRUE` and
+# `destination = 'path/to/file/'`. We'll call the object we create 'pdb', which
+# is short for Padrino DataBase.
 
 pdb <- pdb_download(save = FALSE)
 
-# We can use Rpadrino's metadata accessors to get a selection of 'ipm_id's
-# that we want to use. For this example, we'll select models for Carpobrotus 
-# Geum radiatum. First, extract the 'species_accepted' column. The output of this
-# will be named, and the names are the ipm_id associated with each piece of 
-# metadata. Thus, we can subset the names of the 'spps' object to get 
-# the ipm_id's we need.
+# We can use Rpadrino's metadata accessors to get a selection of 'ipm_id's that
+# we want to use. For this example, we'll select models for Carpobrotus species
+# and Geum radiatum. First, extract the 'species_accepted' column. The output of
+# this will be named, and the names are the ipm_id associated with each piece of
+# metadata. Thus, we can subset the names of the 'spps' object to get the
+# ipm_id's we need.
 
 spps <- pdb_species_accepted(pdb)
 ids  <- names(spps)[spps %in% c("Carpobrotus_spp", "Geum_radiatum")]
 
 # Step 2 from main text -----
 # Next, we create a list of proto_ipm's using pdb_make_proto_ipm().
-# The second case study demonstrates how to use ipmr and Rpadrino to create
-# multiple lists of proto_ipm's and combine them.
 
 my_proto_ipms <- pdb_make_proto_ipm(pdb, ipm_id = ids)
 
@@ -193,11 +173,15 @@ my_proto_ipms <- pdb_make_proto_ipm(pdb, ipm_id = ids)
 
 my_ipms <- pdb_make_ipm(my_proto_ipms)
 
-# Step 4 from main text -----
-# After re-building our published IPMs, the next step is to analyze them.
-# In this case, we'll just extract the asymptotic population growth rates,
-# stable size distribution, and the reproductive values. Note that for the 
-# Geum IPMs, there are multiple year-specific values that are returned.
+# Step 4 from main text ----- After re-building our published IPMs, the next
+# step is to analyze them. In this case, we'll just extract the asymptotic
+# population growth rates, stable size distribution, and the reproductive
+# values. Note that for the Geum IPMs, there are multiple year-specific values
+# that are returned. All values related to population-level traits are computed via
+# iteration, as this approach handles more complicated IPM systems more
+# efficiently than eigenvector/eigenvalue based approaches for larger IPMs, and
+# introduces little to no additional computation time for simpler and/or smaller
+# IPMs.
 
 lambdas  <- lambda(my_ipms)
 ssds     <- right_ev(my_ipms, iterations = 150, tolerance = 1e-7)
@@ -209,7 +193,7 @@ repro_vs <- left_ev(my_ipms , iterations = 150, tolerance = 1e-7)
 
 # Challenges
 
-There are numerous challenges associated with reproducing published IPMs. Challenges related to digitizing and storing IPMs are discussed in the ESM. Important challenges remain in the reconstruction of IPMs. Semi- or non-parametric models may be used to generate IPMs whose functional form is not known _a priori_. We have not yet developed a general syntax for representing these models in PADRINO, though work is ongoing. Additionally, _ipmr_ is not yet able to handle two-sex models (_e.g._ Stubberud et al. 2019), time-lagged models (_e.g._ Rose et al. 2005), or periodic models (_e.g._ Letcher et al. 2014). These types of IPMs do not yet represent a substantial portion of the literature. Nonetheless, it is our intention to continue developing functionality to accommodate them in future releases of _Rpadrino_, _ipmr_, and PADRINO. 
+There are numerous challenges associated with reproducing published IPMs. Challenges related to digitizing and storing IPMs are discussed in the ESM. Important challenges remain in the reconstruction of IPMs. Semi- or non-parametric models may be used to generate IPMs whose functional form is not known _a priori_. We have not yet developed a general syntax for representing these models in PADRINO, though work is ongoing. Additionally, _ipmr_ is not yet able to handle two-sex models (_e.g._ Stubberud et al. 2019), time-lagged models (_e.g._ Kuss et al. 2008), or periodic models (_e.g._ Letcher et al. 2014). These types of IPMs do not yet represent a substantial portion of the literature. Nonetheless, it is our intention to continue developing functionality to accommodate them in future releases of _Rpadrino_, _ipmr_, and PADRINO. 
 
 # Opportunities and Future Directions
 
@@ -276,6 +260,8 @@ kable(tot,
 24. Stott, I., et al. (2011). A framework for studying transient dynamics of population projection matrix models. Ecology Letters 14: 959-970. DOI: https://doi.org/10.1111/j.1461-0248.2011.01659.x
 
 25. Clark, J.S. (2003) Uncertainty and variability in demography and population growth: A hierarchical approach. Ecology 84(6): 1370-1381. 
+
+25. Kuss, P., Rees, M., Aegisdottir, H.H., Ellner, S.P., & Stoecklin, J. (2008). Evolutionary demography of long-lived monocarpic perennials: A time-lagged integral projection model. Journal of Ecology 96: 821-832. DOI: https://doi.org/10.1111/j.1365-2745.2008.01374.x
 
 26. Letcher, B.H., Schueller, P., Bassar, R.D., Nislow, K.H., Coombs, J.A.,Sakrejda, K. _et al._ (2014). Robust estimates of environmental effects on population vital rates: an integrated capture-recapture model of seasonal brook trout growth, survival and movement in a stream network. Journal of Animal Ecology 84(2): 337-352. https://doi.org/10.1111/1365-2656.12308
 
