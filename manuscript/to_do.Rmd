@@ -8,15 +8,15 @@ output: html_document
 
     + Add in eric scott's suggestions too
     
-    + Mostly done, wrangling with CRAN now (4/27/22)
+    + DONE
     
 2. Update Rpadrino CRAN version so code in box in can run off the shelf (no remotes::install)
 
-    + Awaiting CRAN Acceptance
+    + Awaiting CRAN Acceptance (4/29/22)
 
 3. update figure 1, it's trash.
 
-    + Mostly done
+    + Mostly done (4/29/22)
 
 4. Add more to appendix about contributing to PADRINO, and warnings/messages that appear during builds.
 
