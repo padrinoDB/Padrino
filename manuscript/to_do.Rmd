@@ -4,26 +4,4 @@ output: html_document
 
 # to-do for PDB paper
 
-1. ipmr update to include auto-reporting needs to go to CRAN
-
-    + Add in eric scott's suggestions too
-    
-    + DONE
-    
-2. Update Rpadrino CRAN version so code in box in can run off the shelf (no remotes::install)
-
-    + Awaiting CRAN Acceptance (4/29/22)
-
-3. update figure 1, it's trash.
-
-    + Mostly done (4/29/22)
-
-4. Add more to appendix about contributing to PADRINO, and warnings/messages that appear during builds.
-
-    + Add padrino_warning class? ipmr_warning class?
-    
-        + Added as vignette - no specific warning classes yet
-        
-        + Awaiting CRAN Acceptance
-    
-    + Too late on ipmr_warning(?)
+1. Accepted!

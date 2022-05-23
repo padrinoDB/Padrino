@@ -253,11 +253,12 @@ Given the question we posed above, we need to get range maps for each species an
 
 ## Required packages
 
-BIEN allows users to download range maps programmatically from their database using the [BIEN](https://bien.nceas.ucsb.edu/bien/tools/rbien/) R package. You can install that from CRAN using the chunk below. we will also use `Rcompadre`, `mgcv`, `ggplot2`, `sf`, and `dplyr` to work with the data, so you'll need to install those as well.
+BIEN allows users to download range maps programmatically from their database using the [BIEN](https://bien.nceas.ucsb.edu/bien/tools/rbien/) R package. You can install that from CRAN using the chunk below. we will also use `Rcompadre`, `mgcv`, `ggplot2`, `sf`, and `dplyr` to work with the data, so you'll need to install those as well. Finally, we need to install `rgeos` so that we can slightly modify the function that downloads range maps from BIEN (the current version of this function does not work with the newest version of `sf` and `sp`).
 
 ```{r, eval = FALSE}
 
-install.packages(c("BIEN", "ggplot2", "sf", "dplyr", "Rcompadre", "mgcv"))
+install.packages(c("BIEN", "ggplot2", "sf", "rgeos" ,
+                   "dplyr", "Rcompadre", "mgcv"))
 
 ```
 
@@ -266,6 +267,8 @@ After that, we have to load them:
 ```{r, message = FALSE, warning = FALSE}
 
 library(BIEN)
+library(rgeos)
+library(methods)
 library(ggplot2)
 library(sf)
 library(dplyr)
@@ -394,18 +397,57 @@ study_coords <- st_as_sf(temp_db,
 
 ## Querying BIEN
 
-Now that we have our final species list, we're going to download the range maps for each species using the `BIEN_ranges_load_species()` function, and then convert that into an `sf` object which will make subsequent analysis and plotting easier. 
+Now that we have our final species list, we're going to download the range maps for each species using the `BIEN_ranges_load_species()` function, and then convert that into an `sf` object which will make subsequent analysis and plotting easier. Below, we define a modified version of the `BIEN_ranges_load_species()` function because the current package's version fails with the newest version of `sf` and `sp` installed.  
+
+```{r}
+
+BIEN_ranges_load_species <- function(species,
+                                     ...) {
+
+  species <- gsub(" ", "_", species)
+  
+  # set the query
+  query <- paste(
+    "SELECT ST_AsText(geom),species,gid FROM ranges WHERE species in (", 
+    paste(shQuote(species, type = "sh"), collapse = ', '),
+    ") ORDER BY species ;")
+  
+  # create query to retrieve
+  df <- BIEN:::.BIEN_sql(query, ...)
+  
+  if(length(df) == 0){
+    
+    message("No species matched")
+    
+  }else{
+    
+    poly <- list()
+    for(l in 1:length(df$species)){
+      Species<-df$species[l]
+      #sp_range<-readWKT(df$st_astext[l])
+      poly[[l]]<-readWKT(df$st_astext[l], p4s = st_crs(4326)[[2]])
+      
+      #assigns a unique ID to each species' polygon
+      slot(object = poly[[l]]@polygons[[1]],
+                    name = "ID") <- as.character(df$gid[l])
+      
+    } #for species in df loop
+    
+    
+  }
+  
+  poly <- SpatialPolygons(unlist(lapply(poly, function(x) x@polygons)))
+  poly <- SpatialPolygonsDataFrame(Sr = poly,data = df['species'],match.ID = FALSE)    
+  poly@proj4string <- CRS(projargs = st_crs(4326)[[2]])
+  return(poly) 
+  
+}
+
+```
 
 After converting the range maps to an `sf` object, we also need to create a different version of the polygons that are a set of lines representing the edges. This will allow us to quickly calculate the distance between our study points and the edge of the range. `st_cast()` handles this conversion for us. 
 
 ```{r}
-
-# First, convert species names back to spaced version without "_"s. while the
-# data.frame of species names we downloaded from BIEN before uses an "_" in
-# species names, the `BIEN_ranges_load_species()` function expects names without
-# underscores!
-
-study_coords$species_accepted <- gsub("_", " ", study_coords$species_accepted)
 
 # The next piece:
 # 1. Downloads range maps

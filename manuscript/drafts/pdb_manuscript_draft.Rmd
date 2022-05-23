@@ -7,7 +7,7 @@ output:
 fig_caption: yes
 ---
 
-Sam C. Levin $^{\ast1,2,3}$, Sanne Evers $^{1,2}$, Tomos Potter$^{3}$, Mayra Pe$\mathrm{\tilde{n}}$a Guerrero $^{1,2}$, Dylan Z. Childs $^4$, Aldo Compagnoni $^{1,2,3}$, Tiffany M. Knight $^{1,2,5\ddagger}$, Roberto Salguero-Gómez $^{3\ddagger}$
+Sam C. Levin $^{\ast1,2,3}$, Sanne Evers $^{1,2}$, Tomos Potter$^{3,4}$, Mayra Pe$\mathrm{\tilde{n}}$a Guerrero $^{1,2}$, Dylan Z. Childs $^5$, Aldo Compagnoni $^{1,2,3}$, Tiffany M. Knight $^{1,2,6\ddagger}$, Roberto Salguero-Gómez $^{3\ddagger}$
 
 $^1$Institute of Biology, Martin Luther University Halle-Wittenberg, Am Kirchtor 1, 06108 Halle (Saale), Germany
 
@@ -15,9 +15,11 @@ $^2$German Centre for Integrative Biodiversity Research (iDiv) Halle-Jena-Leipzi
 
 $^3$Department of Zoology, 11a Mansfield Rd, University of Oxford, Oxford, OX1 3SZ, UK
 
-$^4$Department of Animal and Plant Sciences, University of Sheffield, Sheffield, S10 2TN, UK
+$^4$Department of Biological Sciences, Florida State University, 319 Stadium Drive, Tallahassee, FL 32306-4340, USA
 
-$^5$Department of Community Ecology, Helmholtz Centre for Environmental Research-UFZ, Theodor-Lieser-Straße 4, 06120, Halle (Saale), Germany
+$^5$Department of Animal and Plant Sciences, University of Sheffield, Sheffield, S10 2TN, UK
+
+$^6$Department of Community Ecology, Helmholtz Centre for Environmental Research-UFZ, Theodor-Lieser-Straße 4, 06120, Halle (Saale), Germany
 
 $^\ddagger$ Joint senior authors
 
@@ -25,7 +27,7 @@ $^*$Corresponding Author:
 
 Sam C. Levin
 
-Puschstrasse 4, 04103 Leipzig, Germany
+Puschstraße 4, 04103 Leipzig, Germany
 
 email: <levisc8@gmail.com>
 
@@ -130,7 +132,7 @@ Before introducing _Rpadrino_, we provide a brief overview of PADRINO. PADRINO i
 
 _Rpadrino_ is an _R_ package that contains functions for downloading the PADRINO database, data querying and management, modifying existing functional forms and parameter values, and reconstructing models. Model reconstruction is powered by the _ipmr_ _R_ package (Levin et al. 2021). While users do not need to know how to use _ipmr_ to use _Rpadrino_, the two packages are designed to work with and enhance each other. This means that users can combine IPMs reconstructed with _Rpadrino_ with IPMs of their own constructed with _ipmr_ in a single, coherent analysis (case study 2). Furthermore, users can go from downloading the database to reconstructing IPM objects in as little as 3 function calls. A more in depth workflow is provided below.
 
-The flexibility of IPMs and their broad application across ecology, evolution, and conservation biology mean that there is no fixed set of steps in a workflow using _Rpadrino_. However, there are generally four steps that a researcher must take when using _Rpadrino_. The first step is to identify studies of interest (Figure 1, Step 1a), and, optionally, augment PADRINO's metadata with additional information from other sources (_e.g._ environmental data,  GBIF, Figure 1, Step 1b). _Rpadrino_ represents PADRINO objects as a list of `data.frames` (referred to as tables in subsequent text). _Rpadrino_ uses the shared `ipm_id` column across all tables to track information related to each IPM. Therefore, subsetting relies on identifying the correct `ipm_id`'s, and then using those to select the IPMs of interest (Box 1, case study 1 and 2). `data.frames` should be familiar to most _R_ users, and the ability to modify them should readily accommodate the range of further analyses that researchers may be interested in. Users may augment any table with additional information corresponding to, for example, spatial or temporal covariates from other open access databases. Furthermore, _Rpadrino_ provides numerous access functions for metadata that streamline subsetting (Box 1).
+The flexibility of IPMs and their broad application across ecology, evolution, and conservation biology mean that there is no fixed set of steps in a workflow using _Rpadrino_. However, there are generally four steps that a researcher must take when using _Rpadrino_. The first step is to identify studies of interest (Figure 1, Step 1a), and, optionally, augment PADRINO's metadata with additional information from other sources (_e.g._ environmental data,  GBIF, Figure 1, Step 1b). _Rpadrino_ represents PADRINO objects as a list of `data.frames` (referred to as tables in subsequent text). _Rpadrino_ uses the shared `ipm_id` column across all tables to track information related to each IPM. Therefore, subsetting relies on identifying the correct `ipm_id`s, and then using those to select the IPMs of interest (Box 1, case study 1 and 2). `data.frames` should be familiar to most _R_ users, and the ability to modify them should readily accommodate the range of further analyses that researchers may be interested in. Users may augment any table with additional information corresponding to, for example, spatial or temporal covariates from other open access databases. Furthermore, _Rpadrino_ provides numerous access functions for metadata that streamline subsetting (Box 1).
 
 The second step in the _Rpadrino_ workflow is to construct a list of `proto_ipm` objects using `pdb_make_proto_ipm()` (Figure 1, Box 1). This function translates PADRINO's syntax into _ipmr_ code, and then builds a `proto_ipm` object for each unique `ipm_id`. For some models, users may choose to create deterministic or stochastic IPMs at this step. _Rpadrino_'s default behavior is to generate deterministic models whenever possible. This behavior encompasses instances where authors generated models with no time or space varying parameters, and where authors included discretely varying environments. The latter can be implemented as deterministic models because all parameter values are known before the IPM is built. IPMs with continuous environmental variation require sampling the environment at each model iteration, usually by sampling from distributions randomly. These are always considered stochastic models. This is also the step where, if needed, users should combine their own `proto_ipm`'s produced by _ipmr_ with the `proto_ipm`'s produced by _Rpadrino_.
 
@@ -145,19 +147,20 @@ The fourth and final step in an _Rpadrino_ workflow is to conduct the analyses o
 
 library(Rpadrino)
 
-# Step 1 from main text ----- pdb_download() downloads a copy PADRINO. We can
-# specify a path to save the downloaded database using `save = TRUE` and
-# `destination = 'path/to/file/'`. We'll call the object we create 'pdb', which
-# is short for Padrino DataBase.
+# Step 1 from main text ----- 
+# pdb_download() downloads a copy PADRINO. We can specify a path to save the
+# downloaded database using `save = TRUE` and 
+# `destination = 'path/to/file/'`.  We'll call the object we create 'pdb',
+# which is short for Padrino DataBase.
 
 pdb <- pdb_download(save = FALSE)
 
-# We can use Rpadrino's metadata accessors to get a selection of 'ipm_id's that
-# we want to use. For this example, we'll select models for Carpobrotus species
-# and Geum radiatum. First, extract the 'species_accepted' column. The output of
-# this will be named, and the names are the ipm_id associated with each piece of
-# metadata. Thus, we can subset the names of the 'spps' object to get the
-# ipm_id's we need.
+# We can use Rpadrino's metadata accessors to get a selection of ipm_ids 
+# that we want to use. For this example, we'll select models for Carpobrotus
+# species and Geum radiatum. First, extract the 'species_accepted' column.
+# The output of this will be named, and the names are the ipm_id associated
+# with each piece of metadata. Thus, we can subset the names of the 'spps' 
+# object to get the ipm_ids we need.
 
 spps <- pdb_species_accepted(pdb)
 ids  <- names(spps)[spps %in% c("Carpobrotus_spp", "Geum_radiatum")]
@@ -173,15 +176,16 @@ my_proto_ipms <- pdb_make_proto_ipm(pdb, ipm_id = ids)
 
 my_ipms <- pdb_make_ipm(my_proto_ipms)
 
-# Step 4 from main text ----- After re-building our published IPMs, the next
-# step is to analyze them. In this case, we'll just extract the asymptotic
-# population growth rates, stable size distribution, and the reproductive
-# values. Note that for the Geum IPMs, there are multiple year-specific values
-# that are returned. All values related to population-level traits are computed via
-# iteration, as this approach handles more complicated IPM systems more
-# efficiently than eigenvector/eigenvalue based approaches for larger IPMs, and
-# introduces little to no additional computation time for simpler and/or smaller
-# IPMs.
+# Step 4 from main text ----- 
+# After re-building our published IPMs, the next step is to analyze them.
+# In this case, we'll just extract the asymptotic population growth rates, 
+# stable size distribution, and the reproductive values. Note that for the 
+# Geum IPMs, there are multiple year-specific values that are returned.
+# All values related to population-level traits are computed via iteration, 
+# as this approach handles more complicated IPM systems more efficiently
+# than eigenvector/eigenvalue based approaches for larger IPMs, and 
+# introduces little to no additional computation time for simpler and/or 
+# smaller IPMs.
 
 lambdas  <- lambda(my_ipms)
 ssds     <- right_ev(my_ipms, iterations = 150, tolerance = 1e-7)
@@ -189,7 +193,7 @@ repro_vs <- left_ev(my_ipms , iterations = 150, tolerance = 1e-7)
 
 ```
 
-**Box 1**: *An example of a simple analysis workflow using* Rpadrino *. The first step in using *Rpadrino *is to install and load the package. After that, we can use* RPadrino *to download* PADRINO *and, optionally, save it locally on our computer. Once the data are downloaded, we can make use of* Rpadrino*'s metadata accessor functions to quickly select models that meet our criteria (step 1). The concept of the * `ipm_id` *is explained in greater detail in the Appendix of this manuscript. The next step is to use these *`ipm_id`*'s to create a list of *`proto_ipm`*'s using *`pdb_make_proto_ipm()` *(step 2). After this step, we can create actual IPM objects using *`pdb_make_ipm()` *(step 3). Once IPM objects are created, the following steps are according to the demands of the research question. In this case, asymptotic population growth rates, stable size distributions, and reproductive values are extracted (step 4). Note that since the* Geum radiatum *model includes a number of year-specific estimates, multiple values are generated for each quantity we want to extract. The concise representation and reconstruction of models such as this is powered by *ipmr*'s parameter set index notation, which is described in greater detail on the pacakge website (https://levisc8.github.io/ipmr/articles/index-notation.html). However, users do not need to be familiar with this notation unless they wish to modify the IPM in question (see case study 1 for an example of modifying* PADRINO *IPMs with* Rpadrino*).* 
+**Box 1**: *An example of a simple analysis workflow using* Rpadrino *. The first step in using *Rpadrino *is to install and load the package. After that, we can use* Rpadrino *to download* PADRINO *and, optionally, save it locally on our computer. Once the data are downloaded, we can make use of* Rpadrino*'s metadata accessor functions to quickly select models that meet our criteria (step 1). The concept of the * `ipm_id` *is explained in greater detail in the Appendix of this manuscript. The next step is to use these *`ipm_id`*s to create a list of *`proto_ipm`*'s using *`pdb_make_proto_ipm()` *(step 2). After this step, we can create actual IPM objects using *`pdb_make_ipm()` *(step 3). Once IPM objects are created, the following steps are according to the demands of the research question. In this case, asymptotic population growth rates, stable size distributions, and reproductive values are extracted (step 4). Note that since the* Geum radiatum *model includes a number of year-specific estimates, multiple values are generated for each quantity we want to extract. The concise representation and reconstruction of models such as this is powered by *ipmr*'s parameter set index notation, which is described in greater detail on the package website (https://levisc8.github.io/ipmr/articles/index-notation.html). However, users do not need to be familiar with this notation unless they wish to modify the IPM in question (see case study 1 for an example of modifying* PADRINO *IPMs with* Rpadrino*).* 
 
 # Challenges
 
@@ -202,11 +206,11 @@ _Rpadrino_ presents unique opportunities for synthesis in both theoretical and a
 
 ```{r echo = FALSE}
 
-cap <- "**Table 1**: Taxonomic representation of IPMs accesible via Rpadrino. These numbers represent the number of models that are error checked and accurately reproduce the published IPM (see 'Data Validation' in the Appendix for more details). Models that are partially entered or still contain errors are not considered here. We are in the process of correcting them and/or retrieving additional information from the authors. See Appendix for details."
+cap <- "**Table 1**: Taxonomic representation of IPMs accessible via Rpadrino. These numbers represent the number of models that are error checked and accurately reproduce the published IPM (see 'Data Validation' in the Appendix for more details). Models that are partially entered or still contain errors are not considered here. We are in the process of correcting them and/or retrieving additional information from the authors. See Appendix for details."
   
 kable(tot,
       col.names = c("Kingdom", 
-                    "# of Unique ipm_id's", 
+                    "# of Unique ipm_ids", 
                     "# of Unique Species",
                     "# of Publications"),
       caption = cap)
@@ -279,6 +283,9 @@ kable(tot,
 
 ## Acknowledgments
 
-Funding: R.S-G. was supported by a NERC Independent Research Fellowship (NE/M018458/1). SCL, AC, SE, and TMK were funded by the Alexander von Humboldt Foundation in the framework of the Alexander von Humboldt Professorship of TM Knight endowed by the German Federal Ministry of Education and Research. 
+We want to thank L Sfedu for help designing the figures, and the associate editor and two
+anonymous reviewers for comments which greatly improved this manuscript.
+
+Funding: R.S-G. was supported by a NERC Independent Research Fellowship (NE/M018458/1). SCL, AC, SE, and TMK were funded by the Alexander von Humboldt Foundation in the framework of the Alexander von Humboldt Professorship of TM Knight. 
 
 Author Contributions: SCL designed _ipmr_ and _Rpadrino_ with contributions from all authors, and SCL implemented the packages. SCL wrote the first draft of the manuscript and all authors provided comments.
